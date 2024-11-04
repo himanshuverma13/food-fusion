@@ -183,6 +183,7 @@ const Invoice = ({ cart }) => {
         </tbody>
       </table>
 
+
       {/* Totals */}
       <div className="text-sm mb-4">
         <p className="flex justify-between">
