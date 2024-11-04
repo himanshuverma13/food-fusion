@@ -1,0 +1,56 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 18" width="22" height="18">
+	<title>12-svg</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m2 13h3v4.54h-3z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="m9 13h4v4.54h-4z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp3">
+			<path d="m5 11h4v6.54h-4z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp4">
+			<path d="m13 9h4v8.54h-4z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp5">
+			<path d="m17 7h4v10.54h-4z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp6">
+			<path d="m0.12 0.29h21.75v13.71h-21.75z"/>
+		</clipPath>
+	</defs>
+	<style>
+		.s0 { fill: #010101 } 
+	</style>
+	<g id="Clip-Path" clip-path="url(#cp1)">
+		<g>
+			<path class="s0" d="m4.9 13.6q0-0.1 0-0.1 0 0-0.1 0l-2.7 2.7q0 0 0 0.1v1.1q0 0.1 0.1 0.1h2.6q0.1 0 0.1-0.1z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp2)">
+		<g>
+			<path class="s0" d="m12.7 13.8q0 0 0-0.1 0 0-0.1 0.1l-1.7 1.7q0 0 0 0l-0.9-0.9q0 0-0.1 0 0 0 0 0v2.8q0 0.1 0.1 0.1h2.6q0.1 0 0.1-0.1z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp3)">
+		<g>
+			<path class="s0" d="m8.8 13.5q0-0.1 0-0.1l-1.8-1.8q-0.1-0.1-0.2 0l-0.8 0.8q0 0 0 0v5q0 0.1 0.1 0.1h2.6q0.1 0 0.1-0.1z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp4)">
+		<g>
+			<path class="s0" d="m16.6 9.9q0 0 0 0 0 0 0 0l-2.8 2.7q0 0 0 0v4.8q0 0.1 0.1 0.1h2.6q0.1 0 0.1-0.1z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp5)">
+		<g>
+			<path class="s0" d="m20.5 9.3q0 0 0-0.1l-1.5-1.5q-0.1-0.1-0.2 0l-1.1 1q0 0 0 0.1v8.6q0 0.1 0.1 0.1h2.6q0.1 0 0.1-0.1z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp6)">
+		<g>
+			<path class="s0" d="m21.7 0.3l-6.3 1.2q-0.1 0-0.1 0.1-0.1 0.1 0 0.1l1.6 1.6-5.9 5.8q-0.1 0.1-0.2 0l-3.8-3.8q-0.1-0.1-0.3 0l-6.5 6.5q-0.2 0.2 0 0.3l1.7 1.7q0.1 0.2 0.3 0l4.6-4.5q0.1-0.1 0.2 0l3.8 3.7q0.1 0.2 0.2 0l7.9-7.7 1.5 1.5q0.1 0.1 0.1 0 0.1 0 0.1-0.1l1.3-6.2q0-0.1-0.1-0.2 0 0-0.1 0z"/>
+		</g>
+	</g>
+</svg>

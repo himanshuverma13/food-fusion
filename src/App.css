@@ -1,0 +1,26 @@
+.background-image{
+    background-image: url(../src/Component/assets/Images/background-image.svg);
+    height: 100vh;
+}
+/* *{
+  font-family:"anton" ;
+  src: url(../src/Component/assets/Font/Anton-Regular.ttf) format("opentype"),;
+} */
+
+@font-face {
+    font-family: "Gagalin-Regular";
+    src: url(../src/Component/assets/Font/Gagalin-Regular.otf) format("opentype");
+  }
+ .food-fusion {
+    font-family: "Gagalin-Regular" !important;
+  }
+
+  @font-face {
+    font-family: 'Anton';
+    src: url('../src/Component/assets/Font/Anton-Regular.ttf') format('truetype');
+    /* Add other formats if needed */
+  }
+  
+ *{
+  font-family: "Anton";
+ }
