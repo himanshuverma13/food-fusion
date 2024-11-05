@@ -14,6 +14,7 @@ import StatusFooter from "../../Common/Footer/statusFooter";
 import CategoryModal from "../../Common/Modal/categoryModal";
 
 // Images
+
 import Pizza from "../../assets/Images/category/pizza.jpg";
 import Pizza2 from "../../assets/Images/category/pizza2.avif";
 import Pastry from "../../assets/Images/category/pastry.jpg";
@@ -32,6 +33,7 @@ import Tab4 from "../../assets/Images/menu/beverages.svg";
 import Tab5 from "../../assets/Images/menu/desserts.svg";
 import Tab6 from "../../assets/Images/menu/fastfood.svg";
 import Tab7 from "../../assets/Images/menu/soups.svg";
+import SplitBill from "../../Common/Modal/splitBillModal";
 
 const Category = ({ cart }) => {
   console.log("cart: ", cart);
@@ -188,8 +190,9 @@ const Category = ({ cart }) => {
       status: "open",
       quantity: 1,
       price: 1,
+      amount: 1,
     };
-console.log("Payload:", payload)
+    console.log("Payload:", payload);
     // setshowFoodData(selectedFoodItem);
     dispatch(add(payload));
     closeModal();
@@ -224,23 +227,23 @@ console.log("Payload:", payload)
             <div className="flex">
               {/* Search bar */}
               <div class="text-black flex justify-around items-center m-2">
-              <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
-              <input
-                type="text"
-                class="ps-5 py-1 w-full bg-[#f6f6e9]"
-                placeholder="Search items from menu"
-              />
-              <button class="flex items-center justify-center px-4">
-                <svg
-                  class="h-4 w-4 text-grey-dark"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
-                </svg>
-              </button>
-            </div>
+                <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
+                  <input
+                    type="text"
+                    class="ps-5 py-1 w-full bg-[#f6f6e9]"
+                    placeholder="Search items from menu"
+                  />
+                  <button class="flex items-center justify-center px-4">
+                    <svg
+                      class="h-4 w-4 text-grey-dark"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+                    </svg>
+                  </button>
+                </div>
               </div>
               <DropdownButton options={filter} buttonLabel="Filters" />
             </div>
@@ -280,7 +283,7 @@ console.log("Payload:", payload)
                       <div className="flex items-center">
                         <img
                           src={food?.image}
-                          className="h-24 w-24 rounded-full me-2"
+                          className="h-20 w-20 rounded-full me-2"
                           alt="Loading"
                         />
                         <div>
@@ -310,44 +313,87 @@ console.log("Payload:", payload)
 
               <p className="text-xl text-[#544013]">Order No. : 123</p>
             </div>
-            {selectedFoodItems?.map((items, index) => (
-              <ul className="flex justify-center my-10" key={index}>
-                <li className="mx-4">{items?.food}</li>
-                <span
-                  className="border px-1 border-black cursor-pointer"
-                  onClick={() => handleIncrementQuantity(items)}
-                >
-                  +
-                </span>
-                <li className="mx-4">{items?.quantity}</li>
-                <span
-                  className="border px-1 border-black cursor-pointer"
-                  onClick={() => handleDecrementQuantity(items)}
-                >
-                  -
-                </span>
-                <li className="mx-4">{items?.quantity * 2}</li>
-                <span
-                  className="border px-1 border-black cursor-pointer"
-                  onClick={() => handleRemoveFromCart(items)}
-                >
-                  Delete
-                </span>
-              </ul>
-            ))}
+            <hr className="p-1 bg-black my-2" />
+
+            {/* Table View */}
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-center text-[#544013]">
+                <thead class="text-lg text-[#544013] bg-[#ede9dd]">
+                  <tr>
+                    <th scope="col" class="px-6 text-lg font-normal">
+                      Item
+                    </th>
+                    <th scope="col" class="px-6 text-lg font-normal">
+                      Price
+                    </th>
+                    <th scope="col" class="px-6 text-lg font-normal">
+                      Qty.
+                    </th>
+
+                    <th scope="col" class="px-6 text-lg font-normal">
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-[#ede9dd]">
+                  {selectedFoodItems?.map((items, index) => (
+                    <tr>
+                      <th scope="row" class="py-2 px-6 font-light">
+                        {items?.food}
+                      </th>
+                      <td class="font-light py-2 px-6">{items.price}</td>
+                      <td class="flex items-center justify-center font-normal py-2 px-6">
+                        <span
+                          className="px-2 rounded-full text-white text-xl cursor-pointer bg-green-600"
+                          onClick={() => handleIncrementQuantity(items)}
+                        >
+                          +
+                        </span>
+                        <div className="mx-2">{items?.quantity}</div>
+                        <span
+                          className="px-2 rounded-full text-white text-xl cursor-pointer bg-red-600"
+                          onClick={() => handleDecrementQuantity(items)}
+                        >
+                          -
+                        </span>
+                        <div className="mx-2">{items?.quantity * 2}</div>
+                        <span
+                          className="px-2 text-white rounded-full text-lg bg-red-600 cursor-pointer"
+                          onClick={() => handleRemoveFromCart(items)}
+                        >
+                          x
+                        </span>
+                      </td>
+                      <td class="font-normal py-2 px-6">{items.amount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             <div>
-              <hr className="p-1 bg-black my-2" />
-              <ul className="flex justify-center items-center">
-                <li className="mx-2">Total Items: {cart?.totalCount}</li>
-                <li className="mx-3">Total Cost: ${cart?.totalCount * 2}</li>
-                <Link to="/payment" className="mx-3">
+              <ul>
+                <li className="mx-2 bg-[#f6f6e9] w-32 text-[#544013] border-2 border-[#d79555] rounded-lg py-1 px-4">
+                  Total Items: {cart?.totalCount}
+                </li>
+                <li className="mx-3 text-xl text-[#544013]">
+                  Sub Total: ${cart?.totalCount * 2}
+                </li>
+                <div className="flex">
+                  <SplitBill />
+                  <Button
+                    title="Apply Offer"
+                    btn_type="button"
+                    btn_class="mx-3 border-solid border-4 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 uppercase"
+                  />
+                </div>
+                {/* <Link to="/payment" className="mx-3">
                   <Button
                     title="PAYMENT"
                     onClick={() => handlePayment(cart)}
                     btn_type="button"
-                    btn_class="border-solid border-4 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 uppercase"
+                    btn_class="border-solid border-4 border-[#544013] rounded-xl my-2 bg-[#f6d8ba] px-3 py-1 uppercase"
                   />
-                </Link>
+                </Link> */}
               </ul>
             </div>
             <div className="flex justify-center gap-4 py-2">
@@ -365,6 +411,11 @@ console.log("Payload:", payload)
                 title="Save & Generate Reciept"
                 btn_type="button"
                 btn_class="border-solid border-4 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 uppercase"
+              />
+              <Button
+                title="x"
+                btn_type="button"
+                btn_class="border-4 border-black border-solid rounded-full bg-red-500 text-black px-2"
               />
             </div>
           </div>
