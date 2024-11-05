@@ -8,11 +8,11 @@ const DropdownButton = ({ options, buttonLabel }) => {
   };
 
   return (
-    <div className="relative inline-block text-left p-3">
+    <div className="relative inline-block text-left mx-2">
       <div>
         <button
           type="button"
-          className="inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-[#ede9dd] px-6 py-1 text-lg text-[#544013] shadow-sm ring-1 ring-inset ring-[#cd3f14] hover:bg-[#f6d8ba]"
+          className="inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-[#ede9dd] px-5 py-1 tracking-wider text-[#544013] shadow-sm ring-1 ring-inset ring-[#cd3f14] hover:bg-[#f6d8ba]"
           aria-expanded={isDropdownOpen}
           aria-haspopup="true"
           onClick={toggleDropdown}

@@ -16,7 +16,7 @@ const SplitBill = () => {
     <>
       <div className="relative flex items-center">
         <button
-          className="mx-3 border-solid border-4 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 uppercase"
+          className="mx-3 border-solid text-sm tracking-wider border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 uppercase"
           onClick={handleButtonClick}
         >
           Split Bill

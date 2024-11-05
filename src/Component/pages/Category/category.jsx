@@ -16,13 +16,13 @@ import CategoryModal from "../../Common/Modal/categoryModal";
 // Images
 
 import Pizza from "../../assets/Images/category/pizza.jpg";
-import Pizza2 from "../../assets/Images/category/pizza2.avif";
+import Pizza2 from "../../assets/Images/category/pizza2.jpg";
 import Pastry from "../../assets/Images/category/pastry.jpg";
-import Brownie from "../../assets/Images/category/brownie.webp";
-import Paneer from "../../assets/Images/category/paneer.avif";
+import Brownie from "../../assets/Images/category/pastry.jpg";
+import Paneer from "../../assets/Images/category/paneer.jpg";
 import Sandwich from "../../assets/Images/category/sandwich.jpg";
 import Juice from "../../assets/Images/category/juice.jpg";
-import IceCream from "../../assets/Images/category/iceCream.webp";
+import IceCream from "../../assets/Images/category/iceCream.jpg";
 import GreenTea from "../../assets/Images/category/greenTea.jpg";
 import Coffee from "../../assets/Images/category/coffee.jpg";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
@@ -34,12 +34,14 @@ import Tab5 from "../../assets/Images/menu/desserts.svg";
 import Tab6 from "../../assets/Images/menu/fastfood.svg";
 import Tab7 from "../../assets/Images/menu/soups.svg";
 import SplitBill from "../../Common/Modal/splitBillModal";
+import PaymentModal from "../../Common/Modal/paymentModal";
 
 const Category = ({ cart }) => {
   console.log("cart: ", cart);
   const [selectedTab, setSelectedTab] = useState("Food 1");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFoodItem, setSelectedFoodItem] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState('');
   //   const [showFoodData, setshowFoodData] = useState([]);
   //   const { register, handleSubmit, reset } = useForm();
   const tabs = [
@@ -210,6 +212,7 @@ const Category = ({ cart }) => {
     dispatch(remove(id?.id));
   };
   const handlePayment = (pay) => {
+    setIsOpen(true)
     dispatch(CheckPaymentStatus(pay));
   };
 
@@ -220,17 +223,17 @@ const Category = ({ cart }) => {
   return (
     <>
       <Navbar />
-      <div className="h-screen border-solid border-8 p-2 mx-3 border-[#544013]">
-        <p className="text-2xl text-[#544013]">Generate Order</p>
+      <div className=" border-solid border-4 px-2 pb-4 mx-3 border-[#544013]">
+        <p className="text-lg text-[#544013]">Generate Order</p>
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-7 border-solid border-2 border-black rounded-2xl bg-[#ede9dd]">
-            <div className="flex">
+            <div className="flex justify-between py-1">
               {/* Search bar */}
-              <div class="text-black flex justify-around items-center m-2">
+              <div class="text-black flex justify-around items-center mx-2">
                 <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
                   <input
                     type="text"
-                    class="ps-5 py-1 w-full bg-[#f6f6e9]"
+                    class="px-2 py-0.5 tracking-wide w-full bg-[#f6f6e9]"
                     placeholder="Search items from menu"
                   />
                   <button class="flex items-center justify-center px-4">
@@ -249,21 +252,20 @@ const Category = ({ cart }) => {
             </div>
             <div className="flex">
               {/* Side Tabs */}
-              <div className="w-1/4 bg-[#ede9dd] rounded-2xl p-4 pt-16">
+              <div className="w-1/4 h-[26rem] overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
                 {tabs.map((tab) => (
                   <button
                     key={tab.name}
-                    className={`block w-full p-2 mb-2 text-left ${
-                      tab.name === selectedTab
-                        ? "bg-[#d79555] border-solid border-2 border-black text-white"
-                        : "bg-white"
-                    }`}
+                    className={`block w-full my-2 shadow-lg py-1 px-2  text-left ${tab.name === selectedTab
+                      ? "bg-[#d79555] border-solid border-2 border-black text-white"
+                      : "bg-white"
+                      }`}
                     onClick={() => setSelectedTab(tab.name)}
                   >
                     <img
                       src={tab.image}
                       alt={tab.name}
-                      className="h-12 w-12 inline-block mr-2"
+                      className="h-10 w-h-10 inline-block mr-2"
                     />
                     {tab.name}
                   </button>
@@ -271,8 +273,7 @@ const Category = ({ cart }) => {
               </div>
 
               {/* Main Content */}
-              <div className=" p-4">
-                <h2 className="text-2xl mb-4">{selectedTab}</h2>
+              <div className=" p-2 h-[26rem] overflow-auto">
                 <div className="grid grid-cols-2 gap-4">
                   {foodItems[selectedTab]?.map((food) => (
                     <button
@@ -283,19 +284,21 @@ const Category = ({ cart }) => {
                       <div className="flex items-center">
                         <img
                           src={food?.image}
-                          className="h-20 w-20 rounded-full me-2"
+                          className="h-16 w-h-16 rounded-full me-2"
                           alt="Loading"
                         />
-                        <div>
-                          <p className="text-[#544013] text-xl">{food?.name}</p>
+                        <div className="mx-1">
+                          <p className="text-[#544013] text-start text-xl">{food?.name}</p>
                           <p className="text-sm font-sans">
                             {food?.description}
                           </p>
-                          <Button
-                            btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-sans px-4 py-1 mt-2"
-                            btn_type="button"
-                            title="Add"
-                          />
+                          <div className="text-end">
+                            <Button
+                              btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-sans px-4 py-1 mt-2"
+                              btn_type="button"
+                              title="Add"
+                            />
+                          </div>
                         </div>
                       </div>
                     </button>
@@ -306,59 +309,60 @@ const Category = ({ cart }) => {
           </div>
           {/* display */}
           <div className="col-span-5 bg-[#ede9dd] border-solid border-2 border-black rounded-2xl">
-            <div className="flex items-center justify-evenly">
+            <div className="flex items-center justify-evenly my-2">
               <DropdownButton options={orderTypes} buttonLabel="Order Type" />
 
               <DropdownButton options={tableOptions} buttonLabel="Table No." />
 
               <p className="text-xl text-[#544013]">Order No. : 123</p>
             </div>
-            <hr className="p-1 bg-black my-2" />
+            <hr className="p-0.5 bg-black my-0.5" />
 
             {/* Table View */}
-            <div class="overflow-x-auto">
-              <table class="w-full text-sm text-center text-[#544013]">
+            <div class="grid grid-cols-1 grid-rows-3" >
+              <div className="row-span-2 h-72 overflow-auto">
+              <table class="w-full row-span-2 text-sm text-center text-[#544013]">
                 <thead class="text-lg text-[#544013] bg-[#ede9dd]">
                   <tr>
-                    <th scope="col" class="px-6 text-lg font-normal">
+                    <th scope="col" class="px-6 text-base font-normal">
                       Item
                     </th>
-                    <th scope="col" class="px-6 text-lg font-normal">
+                    <th scope="col" class="px-6 text-base font-normal">
                       Price
                     </th>
-                    <th scope="col" class="px-6 text-lg font-normal">
+                    <th scope="col" class="px-6 text-base font-normal">
                       Qty.
                     </th>
 
-                    <th scope="col" class="px-6 text-lg font-normal">
+                    <th scope="col" class="px-6 text-base font-normal">
                       Amount
                     </th>
                   </tr>
                 </thead>
                 <tbody className="bg-[#ede9dd]">
                   {selectedFoodItems?.map((items, index) => (
-                    <tr>
+                    <tr className="">
                       <th scope="row" class="py-2 px-6 font-light">
                         {items?.food}
                       </th>
                       <td class="font-light py-2 px-6">{items.price}</td>
                       <td class="flex items-center justify-center font-normal py-2 px-6">
                         <span
-                          className="px-2 rounded-full text-white text-xl cursor-pointer bg-green-600"
+                          className="px-2 rounded-full text-white text-lg cursor-pointer bg-green-600"
                           onClick={() => handleIncrementQuantity(items)}
                         >
                           +
                         </span>
                         <div className="mx-2">{items?.quantity}</div>
                         <span
-                          className="px-2 rounded-full text-white text-xl cursor-pointer bg-red-600"
+                          className="px-2 rounded-full text-white text-base cursor-pointer bg-red-600"
                           onClick={() => handleDecrementQuantity(items)}
                         >
                           -
                         </span>
                         <div className="mx-2">{items?.quantity * 2}</div>
                         <span
-                          className="px-2 text-white rounded-full text-lg bg-red-600 cursor-pointer"
+                          className="px-2 text-white rounded-full text-base bg-red-600 cursor-pointer"
                           onClick={() => handleRemoveFromCart(items)}
                         >
                           x
@@ -369,54 +373,77 @@ const Category = ({ cart }) => {
                   ))}
                 </tbody>
               </table>
-            </div>
-            <div>
-              <ul>
-                <li className="mx-2 bg-[#f6f6e9] w-32 text-[#544013] border-2 border-[#d79555] rounded-lg py-1 px-4">
-                  Total Items: {cart?.totalCount}
-                </li>
-                <li className="mx-3 text-xl text-[#544013]">
-                  Sub Total: ${cart?.totalCount * 2}
-                </li>
-                <div className="flex">
-                  <SplitBill />
-                  <Button
-                    title="Apply Offer"
-                    btn_type="button"
-                    btn_class="mx-3 border-solid border-4 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 uppercase"
-                  />
-                </div>
-                {/* <Link to="/payment" className="mx-3">
-                  <Button
+              </div>
+
+              <div className="row-start-3">
+                <ul>
+                  <li className="mx-2 bg-[#f6f6e9] w-32 text-sm text-[#544013] border-2 border-[#d79555] rounded-lg py-1 px-4">
+                    Total Items: {cart?.totalCount}
+                  </li>
+                  <li className="mx-7 my-0.5 text-base flex justify-between text-[#544013]">
+                    <span>Sub Total:</span>
+                    <span className="mx-7">{cart?.totalCount * 2}</span>
+                  </li>
+                  <div className="flex">
+                    <SplitBill />
+                    <Button
+                      title="Apply Offer"
+                      btn_type="button"
+                      btn_class="mx-3 text-sm tracking-wider border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 uppercase"
+                    />
+                  </div>
+                  {/* <Link to="/payment" className="mx-3"> */}
+                  {/* <Button
                     title="PAYMENT"
                     onClick={() => handlePayment(cart)}
                     btn_type="button"
                     btn_class="border-solid border-4 border-[#544013] rounded-xl my-2 bg-[#f6d8ba] px-3 py-1 uppercase"
+                  /> */}
+                  {/* </Link> */}
+                  <div className=" my-0.5">
+                    <form action="">
+                      <hr className="border-dashed border-1 border-black" />
+                      <div className="flex space-x-4 justify-evenly py-0.5">
+                        {['Cash', 'UPI', 'Card'].map((method) => (
+                          <label key={method} className="flex items-center">
+                            <input
+                              type="checkbox"
+                              value={method}
+                              checked={paymentMethod === method}
+                              onChange={() => setPaymentMethod(method)}
+                              className="mr-2 rounded-full"
+                            />
+                            {method}
+                          </label>
+                        ))}
+                      </div>
+                      <hr className="border-dashed border-1 border-black" />
+                    </form>
+                  </div>
+                </ul>
+                <div className="flex justify-around my-1">
+                  <Button
+                    title="Save & Generate KOT"
+                    btn_type="button"
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm tracking-wider uppercase"
                   />
-                </Link> */}
-              </ul>
-            </div>
-            <div className="flex justify-center gap-4 py-2">
-              <Button
-                title="Save & Generate KOT"
-                btn_type="button"
-                btn_class="border-solid border-4 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 uppercase"
-              />
-              <Button
-                title="Save & Print Bill"
-                btn_type="button"
-                btn_class="border-solid border-4 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 uppercase"
-              />
-              <Button
-                title="Save & Generate Reciept"
-                btn_type="button"
-                btn_class="border-solid border-4 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 uppercase"
-              />
-              <Button
-                title="x"
-                btn_type="button"
-                btn_class="border-4 border-black border-solid rounded-full bg-red-500 text-black px-2"
-              />
+                  <Button
+                    title="Save & Print Bill"
+                    btn_type="button"
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm tracking-wider uppercase"
+                  />
+                  <Button
+                    title="Save & Generate Reciept"
+                    btn_type="button"
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm tracking-wider uppercase"
+                  />
+                  <Button
+                    title="x"
+                    btn_type="button"
+                    btn_class="border-2 border-black border-solid rounded-full bg-red-500 text-black px-3"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -427,6 +454,12 @@ const Category = ({ cart }) => {
           selectedFoodItem={selectedFoodItem}
           onSubmit={onSubmit}
         />
+        {/* <PaymentModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          selectedFoodItem={selectedFoodItem}
+          onSubmit={onSubmit}
+        /> */}
       </div>
       <StatusFooter />
     </>

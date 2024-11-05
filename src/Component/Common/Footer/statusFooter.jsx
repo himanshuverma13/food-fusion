@@ -16,21 +16,21 @@ const StatusFooter = ({ cart }) => {
   return (
     <div className="fixed bottom-0 left-0 right-0 mx-20">
       <footer
-        className="relative bg-[#d79555] text-white py-2 px-6 cursor-pointer rounded-t-3xl"
+        className="relative bg-[#d79555] text-white py-1 px-6 cursor-pointer rounded-t-3xl"
         onMouseEnter={() => setActiveStatus(true)}
         onMouseLeave={() => setActiveStatus(false)}
       >
         <div className="flex justify-between items-center">
-          <span className=" text-lg text-center text-green-600">
+          <span className=" tracking-wider text-center text-green-800">
             Active tables <div>12</div>
           </span>
-          <span className=" text-lg text-center text-red-600">
+          <span className=" tracking-wider text-center text-red-600">
             Available tables <div>20</div>
           </span>
-          <span className=" text-lg text-center text-white">
+          <span className=" tracking-wider text-center text-white">
             Reservations <div>20</div>
           </span>
-          <div className="flex items-center border bg-[#63898c] border-gray-300 rounded-full py-2 px-1">
+          <div className="flex items-center border bg-[#63898c] border-gray-300 rounded-full py-0 px-1">
             {/* Search Icon */}
             <svg
               className="h-5 mx-1 w-5 text-black"
@@ -58,8 +58,8 @@ const StatusFooter = ({ cart }) => {
               viewBox="0 0 22 22"
               className="me-2"
               fill="#fff"
-              width="40"
-              height="40"
+              width="30"
+              height="30"
             >
               <defs>
                 <clipPath clipPathUnits="userSpaceOnUse" id="cp1">
@@ -88,7 +88,7 @@ const StatusFooter = ({ cart }) => {
               </g>
             </svg>
           </div>
-          <img src={footerBot} className="absolute bottom-0 right-0 h-24" alt="loading" />
+          <img src={footerBot} className="absolute bottom-0 right-0 h-20" alt="loading" />
           <div></div>
         </div>
 
