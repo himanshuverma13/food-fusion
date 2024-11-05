@@ -3,7 +3,7 @@ import { Dialog } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import Button from "../Button/button";
 
-const PaymentModal = ({ isOpen, closeModal, }) => {
+const PaymentModal = ({ isOpen, closeModal }) => {
     // const { register, handleSubmit, reset } = useForm();
 
     const handleModalClose = () => {
