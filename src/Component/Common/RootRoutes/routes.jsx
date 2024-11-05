@@ -15,6 +15,7 @@ import Waiter from '../../pages/Waiter/waiter';
 import Menu from '../../pages/menu/menu';
 import Order from '../../pages/order/order';
 import OrderHistory from '../../pages/OrderHistory/orderHistory';
+import EmployeeTable from '../../pages/Employee/employee';
 
 
 
@@ -36,6 +37,7 @@ const RootRoutes = () => {
           <Route path="/menu" element={<Menu />} />
           <Route path="/order" element={<Order />} />
           <Route path="/order-history" element={<OrderHistory />} />
+          <Route path="/employee" element={<EmployeeTable />} />
           
 
         </Routes>
