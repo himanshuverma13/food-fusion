@@ -134,11 +134,11 @@ const Menu = () => {
             {/* Dropdown filter */}
             <DropdownButton options={filter} buttonLabel="Filters" />
           </div>
-          <div className="flex">
+          <div className="flex items-center">
             <NavLink to="/category">
               <img
                 src={NewOrder}
-                className="h-20 me-5"
+                className="h-16 me-5"
                 onClick={() => SetTableOnCategory()}
                 alt="Loading"
               />
@@ -148,10 +148,10 @@ const Menu = () => {
         </div>
 
         {/* Menu Options */}
-        <div className="grid grid-cols-6 gap-3 my-1">
+        <div className="grid grid-cols-6 gap-2 my-1">
           {MenuOptions.map((items, index) => (
             <div className="flex items-center justify-center border-solid border-2 border-[#544013] rounded-xl bg-[#ede9dd] hover:bg-[#ad7945]">
-              <img src={items.image} className="h-12 me-2" alt="Loading" />
+              <img src={items.image} className="h-10 me-2" alt="Loading" />
               <p className="text-xl tracking-wide uppercase">{items.title}</p>
             </div>
           ))}
@@ -161,7 +161,7 @@ const Menu = () => {
         <div className="grid grid-cols-5 gap-5 mt-3">
           {MenuItemsData.map((menu, index) => (
             <div className="bg-white border-solid border-2 border-[#544013] rounded-xl flex items-center p-1">
-              <img src={menu.image} className="h-20 me-2" alt="Loading" />
+              <img src={menu.image} className="h-14 me-2" alt="Loading" />
               <div>
                 <p className="font-sans uppercase text-xl tracking-wide font-semibold">
                   {menu.title}

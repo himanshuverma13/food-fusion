@@ -28,7 +28,7 @@ const MenuButtonData = [
     <>
       <div className=" relative flex justify-end items-center">
         <button
-          className="bg-red-500 hover:bg-red-700 py-1 px-2 font-sans font-semibold rounded flex flex-col justify-center items-center"
+          className="bg-red-500 hover:bg-red-700 py-1 px-2 text-sm font-sans font-semibold rounded flex flex-col justify-center items-center"
           onClick={handleButtonClick}
         >
           <img src={Setting} alt="Loading" />
@@ -73,8 +73,6 @@ const MenuButtonData = [
                     />
                 ))}
                 </div>
-                {/* <h2 className="text-lg font-bold mb-2">Modal Title is here</h2>
-                <p className="text-gray-500">Modal content goes here.</p> */}
               </div>
             </div>
           </div>
