@@ -24,3 +24,7 @@
  *{
   font-family: "Anton";
  }
+
+ body{
+  /* overflow-y: hidden; */
+ }
