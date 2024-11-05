@@ -26,7 +26,7 @@ const Home = () => {
         <Navbar />
         <div className="absolute right-0">
           <NavLink to="/category">
-          <img src={NewOrder} className="h-20 me-7" alt="Loading" />
+          <img src={NewOrder} className="h-16 me-7" alt="Loading" />
             {/* <svg className="me-7" onClick={() => SetTableOnCategory()} version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 67" width="78" height="67">
               <g>
                 <path fill-rule="evenodd" class="s0" d="m46.8 1.4c4.4 2.3 8 6.8 9.3 11.6 4.2 16.3-15.7 28.6-28.1 17.4-4.9-4.5-6.4-8.1-5.8-14.9 0.5-6.2 2.6-9.7 7.8-13.3 3.9-2.6 12.5-3 16.8-0.8zm-23.4 18.8c1.6 7.9 7.8 13 16.1 13 5.6 0 9.9-2.4 13.1-7.2 2.3-3.4 2.6-4.8 2.2-9.8-0.5-6.7-2.5-10.1-7.9-13.1-11.7-6.7-26.2 3.8-23.5 17.1z" />
