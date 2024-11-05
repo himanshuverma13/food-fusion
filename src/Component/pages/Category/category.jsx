@@ -14,6 +14,7 @@ import StatusFooter from "../../Common/Footer/statusFooter";
 import CategoryModal from "../../Common/Modal/categoryModal";
 
 // Images
+
 import Pizza from "../../assets/Images/category/pizza.jpg";
 import Pizza2 from "../../assets/Images/category/pizza2.avif";
 import Pastry from "../../assets/Images/category/pastry.jpg";
