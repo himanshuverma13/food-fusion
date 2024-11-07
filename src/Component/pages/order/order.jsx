@@ -227,15 +227,15 @@ const Order = () => {
                 <tr>
                   <th
                     scope="row"
-                    class="px-6 py-2 border-solid border-4 border-[#d79555] border-y-0 border-s-0"
+                    class="px-6 py-2 font-sans border-solid border-4 border-[#d79555] border-y-0 border-s-0"
                   >
                     {items.serial}
                   </th>
-                  <th class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap border-solid border-4 border-[#d79555] border-y-0 border-s-0">
+                  <th class="px-6 py-2  font-sans font-bold text-gray-900 whitespace-nowrap border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items?.name}
                   </th>
 
-                  <td class="px-6 py-2 border-solid border-4 border-[#d79555] border-y-0 border-s-0">
+                  <td class="px-6 py-2 font-sans font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.note}
                   </td>
                   {/* <td class="px-6 py-4 border-solid border-4 border-[#d79555] border-y-0 border-s-0">{items.quantity}</td> */}
@@ -261,10 +261,10 @@ const Order = () => {
                       x
                     </span>
                   </td>
-                  <td class="px-6 py-2 border-solid border-4 border-[#d79555] border-y-0 border-s-0">
+                  <td class="px-6 py-2 font-sans font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.price}
                   </td>
-                  <td class="px-6 py-2">{items.Amount}</td>
+                  <td class="px-6 py-2 font-sans font-bold">{items.Amount}</td>
                 </tr>
               ))}
             </tbody>

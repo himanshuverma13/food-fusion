@@ -5,9 +5,11 @@ import { SetTable } from "../../Common/Redux/Category/categorySlice";
 import { connect, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Button from "../../Common/Button/button";
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 // Images
-import Setting from "../../assets/Images/sideNavImg/navSetting.svg";
+// import Setting from "../../assets/Images/sideNavImg/navSetting.svg";
 // import Food1 from "../../assets/Images/menu/1.svg";
 import Food1 from "../../assets/Images/menu/dish.svg";
 import Food2 from "../../assets/Images/menu/seafood.svg";
@@ -42,6 +44,10 @@ const Menu = () => {
     { title: "Entrees", image: Food2 },
     { title: "Entrees", image: Food2 },
     { title: "Entrees", image: Food2 },
+    { title: "Appetizers", image: Food3 },
+    { title: "Entrees", image: Food2 },
+
+
   ];
   const MenuItemsData = [
     {
@@ -105,19 +111,56 @@ const Menu = () => {
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
   ];
+  var settings = {
+    arrows: false,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 7, // Show three cards
+    slidesToScroll: 1, // Slide one card at a time
+    rows: 2,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
   return (
     <>
       <Navbar />
       <div className="mx-14">
-        <p className="text-3xl text-[#544013] uppercase">Menu</p>
+        <p className="text-xl text-[#544013] uppercase">Menu</p>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           {/* Search bar */}
-          <div class="text-black flex justify-around my-4">
-          <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9] my-3">
+          <div class="text-black flex justify-around items-center">
+          <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
               <input
                 type="text"
-                class="ps-5 w-full bg-[#f6f6e9]"
+                class="ps-5 py-1 w-full bg-[#f6f6e9]"
                 placeholder="Search items from menu"
               />
               <button class="flex items-center justify-center px-4">
@@ -148,26 +191,34 @@ const Menu = () => {
         </div>
 
         {/* Menu Options */}
-        <div className="grid grid-cols-6 gap-2 my-1">
+        
+
+        <div className="slider-container">
+         <Slider {...settings}>
+      {/* <div className="grid grid-cols-6 gap-2 my-1"> */}
           {MenuOptions.map((items, index) => (
-            <div className="flex items-center justify-center border-solid border-2 border-[#544013] rounded-xl bg-[#ede9dd] hover:bg-[#ad7945]">
-              <img src={items.image} className="h-10 me-2" alt="Loading" />
-              <p className="text-xl tracking-wide uppercase">{items.title}</p>
+            <div key={index}>
+            <div className="flex items-center justify-center ms-2 mt-1 py-1 border-solid border-2 border-[#544013] rounded-xl bg-[#ede9dd] hover:bg-[#ad7945]">
+              <img src={items.image} className="h-8 me-2" alt="Loading" />
+              <p className="text-lg tracking-wide uppercase">{items.title}</p>
+            </div>
             </div>
           ))}
-        </div>
+        {/* </div> */}
+         </Slider>
+    </div>
 
         {/* Menu Items Card */}
-        <div className="grid grid-cols-5 gap-5 mt-3">
+        <div className="grid grid-cols-5 gap-5 mt-1">
           {MenuItemsData.map((menu, index) => (
             <div className="bg-white border-solid border-2 border-[#544013] rounded-xl flex items-center p-1">
-              <img src={menu.image} className="h-14 me-2" alt="Loading" />
+              <img src={menu.image} className="h-12 me-2" alt="Loading" />
               <div>
-                <p className="font-sans uppercase text-xl tracking-wide font-semibold">
+                <p className="font-sans uppercase text-lg tracking-wide font-semibold">
                   {menu.title}
                 </p>
-                <p className="font-sans tracking-wide">{menu.description}</p>
-                <p className="text-green-500 text-xl font-sans mt-2">
+                <p className="font-sans text-sm tracking-wide">{menu.description}</p>
+                <p className="text-green-500 text-lg font-sans mt-2">
                   {menu.price}
                 </p>
               </div>
