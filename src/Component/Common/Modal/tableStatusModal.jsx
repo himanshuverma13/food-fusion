@@ -38,7 +38,7 @@ const ReservationData =[
     },
 ]
   return (
-    <div className="relative top-72 flex justify-end items-center">
+    <div className="relative top-64 flex justify-end items-center">
       <button
         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
         onClick={handleButtonClick}
