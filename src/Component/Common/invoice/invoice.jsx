@@ -113,7 +113,7 @@ const Invoice = ({ cart }) => {
 
 <div className="max-w-sm mx-auto bg-white border border-gray-400 rounded-lg p-6">
       {/* Header */}
-      <div className="text-center mb-4">
+      <div className="text-center ">
         <div className="bg-orange-400 rounded-full w-12 h-12 mx-auto flex items-center justify-center">
           <img
             src="https://via.placeholder.com/30" // Replace with your logo URL
@@ -121,93 +121,100 @@ const Invoice = ({ cart }) => {
             className="w-8 h-8"
           />
         </div>
-        <h2 className="text-lg font-bold">Restaurant's name</h2>
-        <p className="text-sm">Address : 12, something, something</p>
+        <h2 className="text-lg font-bold tracking-wider">Restaurant's name</h2>
+        <p className="text-sm my-2">Address : 12, something, something</p>
       </div>
 
       {/* Invoice & Contact Information */}
-      <div className="mb-4">
+      <div className="">
         <div className="flex justify-between text-sm">
           <p>
-            <span className="font-semibold">Invoice No.:</span> 12343
+            <span className="">Invoice No.:</span> 12343
           </p>
           <p>
-            <span className="font-semibold">Date:</span> 31-10-24
+            <span className="">Date:</span> 31-10-24
           </p>
         </div>
+        <hr className=' my-2 border-black' />
         <div className="text-sm">
-          <p>
-            <span className="font-semibold">Name:</span> Ms. jci3rc
+          <p className=''>
+            <span className="font-semibold tracking-wider">Name:</span> Ms. jci3rc
           </p>
-          <p>
-            <span className="font-semibold">Contact No.:</span> 7869390996
+          <p className=''>
+            <span className="font-semibold tracking-wider">Contact No.:</span> 7869390996
           </p>
         </div>
+        <hr className=' mt-2 border-black' />
+
       </div>
 
       {/* Table */}
-      <table className="w-full text-sm mb-4">
+      <table className="w-full text-sm">
         <thead>
-          <tr className="border-b-2 border-gray-300">
-            <th className="text-left">Item</th>
-            <th className="text-center">Qty.</th>
-            <th className="text-right">Price</th>
-            <th className="text-right">Total</th>
+          <tr className=" border-b-2 border-black">
+            <th className="tracking-wider text-left">Item</th>
+            <th className="tracking-wider text-center">Qty.</th>
+            <th className="tracking-wider text-right">Price</th>
+            <th className="tracking-wider text-right">Total</th>
           </tr>
         </thead>
-        <tbody>
-          <tr className="border-b border-gray-300">
-            <td>Item 1</td>
-            <td className="text-center">2</td>
-            <td className="text-right">120</td>
-            <td className="text-right">240</td>
+        <tbody className=''>
+          <tr className=" border-b border-gray-300">
+            <td className='font-[prompt] font-semibold'>Item 1</td>
+            <td className=" text-base font-semibold  font-[prompt] text-center">2</td>
+            <td className=" text-base font-semibold  font-[prompt] text-right">120</td>
+            <td className=" text-base font-semibold  font-[prompt] text-right">240</td>
           </tr>
-          <tr className="border-b border-gray-300">
-            <td>Item 1</td>
-            <td className="text-center">2</td>
-            <td className="text-right">120</td>
-            <td className="text-right">240</td>
+          <tr className=" border-b border-gray-300">
+            <td className='font-[prompt] font-semibold'>Item 1</td>
+            <td className=" text-base font-semibold  font-[prompt] text-center">2</td>
+            <td className=" text-base font-semibold  font-[prompt] text-right">120</td>
+            <td className=" text-base font-semibold  font-[prompt] text-right">240</td>
           </tr>
-          <tr className="border-b border-gray-300">
-            <td>Item 1</td>
-            <td className="text-center">2</td>
-            <td className="text-right">120</td>
-            <td className="text-right">240</td>
+          <tr className=" border-b border-gray-300">
+            <td className='font-[prompt] font-semibold'>Item 1</td>
+            <td className=" text-base font-semibold  font-[prompt] text-center">2</td>
+            <td className=" text-base font-semibold  font-[prompt] text-right">120</td>
+            <td className=" text-base font-semibold  font-[prompt] text-right">240</td>
           </tr>
-          <tr className="border-b border-gray-300">
-            <td>Item 1</td>
-            <td className="text-center">2</td>
-            <td className="text-right">120</td>
-            <td className="text-right">240</td>
+          <tr className=" border-b border-gray-300">
+            <td className='font-[prompt] font-semibold'>Item 1</td>
+            <td className=" text-base font-semibold  font-[prompt] text-center">2</td>
+            <td className=" text-base font-semibold  font-[prompt] text-right">120</td>
+            <td className=" text-base font-semibold  font-[prompt] text-right">240</td>
           </tr>
         </tbody>
       </table>
 
 
       {/* Totals */}
-      <div className="text-sm mb-4">
-        <p className="flex justify-between">
-          <span className="font-semibold">Total Quantity:</span> <span>8</span>
+      <div className="text-sm my-2">
+        <p className="flex justify-between my-2">
+          <span className=" font-semibold tracking-wider font-[prompt]">Total Quantity:</span> <span>8</span>
         </p>
-        <p className="flex justify-between">
-          <span className="font-semibold">Tax:</span> <span>Rs.40</span>
+        <p className="flex justify-between my-2">
+          <span className=" font-semibold tracking-wider font-[prompt]">Tax:</span> <span>Rs.40</span>
         </p>
-        <p className="flex justify-between font-semibold text-lg">
+        <p className="flex justify-between my-2  tracking-wider font-[prompt] text-lg">
           <span>SUB-TOTAL:</span> <span>Rs. 1000</span>
         </p>
       </div>
+      <hr className=' mt-2 border-black' />
+
 
       {/* Contact Info */}
       <div className="text-center mt-4">
         <p className="text-sm flex justify-center items-center">
+          <span className='bg-green-400 mx-1 p-2 rounded-full text-center'>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 16 16"
-            className="w-4 h-4 text-green-600 mr-2"
+            className="w-4 h-4 text-white "
           >
             <path d="M3.654 1.328a1 1 0 00-.979.199C1.676 2.58.673 3.882.287 5.514c-.242 1.007-.202 2.232.456 3.49.598 1.167 1.455 2.442 2.51 3.497 1.055 1.056 2.33 1.912 3.497 2.51 1.258.658 2.483.698 3.49.456 1.631-.386 2.934-1.39 3.987-3.398a1 1 0 00-.198-.98l-2.408-2.408a1 1 0 00-.644-.287 1 1 0 00-.736.287l-1.08 1.08a1 1 0 01-1.415 0l-2.112-2.113a1 1 0 010-1.414l1.08-1.08a1 1 0 00.287-.736 1 1 0 00-.287-.644L4.633 1.526a1 1 0 00-.979-.199z" />
           </svg>
+          </span>
           Contact No. - 7869390996
         </p>
       </div>

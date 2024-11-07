@@ -7,8 +7,18 @@ const DropdownButton = ({ options, buttonLabel }) => {
     setIsDropdownOpen((prev) => !prev);
   };
 
+  const handleBlur = (e) => {
+    // Close dropdown when clicking outside or when the button loses focus
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setIsDropdownOpen(false);
+    }
+  };
+
   return (
-    <div className="relative inline-block text-left mx-2">
+    <div
+      className="relative inline-block text-left mx-2"
+      onBlur={handleBlur} // Handles when the focus is lost
+    >
       <div>
         <button
           type="button"

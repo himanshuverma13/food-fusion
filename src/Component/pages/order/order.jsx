@@ -13,6 +13,8 @@ import { connect, useDispatch } from "react-redux";
 import Menu from "../../assets/Images/sideNavImg/navMenu.svg";
 import { NavLink } from "react-router-dom";
 import StatusFooter from "../../Common/Footer/statusFooter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleMinus, faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 const Order = () => {
   // useEffect(() => {
   //     console.log("test");
@@ -240,26 +242,14 @@ const Order = () => {
                   </td>
                   {/* <td class="px-6 py-4 border-solid border-4 border-[#d79555] border-y-0 border-s-0">{items.quantity}</td> */}
                   <td class="flex items-center justify-center font-normal py-2 px-6 border-solid border-4 border-[#d79555] border-y-0 border-s-0">
-                    <span
-                      className="px-2 rounded-full text-white text-xl cursor-pointer bg-green-600"
-                      onClick={() => handleIncrementQuantity(items)}
-                    >
-                      +
-                    </span>
+                   
+                    <FontAwesomeIcon className=" rounded-full bg-white text-green-500 text-lg cursor-pointer" onClick={() => handleIncrementQuantity(items)} icon={faCirclePlus} />
                     <div className="mx-2">{items?.quantity}</div>
-                    <span
-                      className="px-2 rounded-full text-white text-xl cursor-pointer bg-red-600"
-                      onClick={() => handleDecrementQuantity(items)}
-                    >
-                      -
-                    </span>
+                    
+                    <FontAwesomeIcon className=" rounded-full text-red-500 text-lg cursor-pointer bg-white" onClick={() => handleDecrementQuantity(items)} icon={faCircleMinus} />
                     <div className="mx-2">{items?.quantity * 2}</div>
-                    <span
-                      className="px-2 text-white rounded-full text-lg bg-red-600 cursor-pointer"
-                      onClick={() => handleRemoveFromCart(items)}
-                    >
-                      x
-                    </span>
+                    
+                    <FontAwesomeIcon className="text-red-700 rounded-full text-xl bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faCircleXmark} />
                   </td>
                   <td class="px-6 py-2 border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.price}

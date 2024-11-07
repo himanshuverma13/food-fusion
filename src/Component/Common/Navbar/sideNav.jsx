@@ -3,7 +3,8 @@ import navHome from '../../assets/Images/sideNavImg/navhome.svg'
 import navMenu from '../../assets/Images/sideNavImg/navMenu.svg'
 import navCart from '../../assets/Images/sideNavImg/navCart.svg'
 import navInvoice from '../../assets/Images/sideNavImg/navInvoice.svg'
-import navGrow from '../../assets/Images/sideNavImg/navGrow.svg'
+import invoice from '../../assets/Images/sideNavImg/Invoice.svg'
+import staff from '../../assets/Images/sideNavImg/Staff management.svg'
 import navSetting from '../../assets/Images/sideNavImg/navSetting.svg'
 import navBack from '../../assets/Images/sideNavImg/navBack.svg'
 import { NavLink } from 'react-router-dom'
@@ -21,7 +22,8 @@ const SideNavbar = () => {
     <img className='m-4 w-7' src={navCart} alt="loading" />
     </NavLink>
     <img className='m-4 w-7' src={navInvoice} alt="loading" />
-    <img className='m-4 w-7' src={navGrow} alt="loading" />
+    <img className='m-4 w-7' src={invoice} alt="loading" />
+    <img className='m-4 w-7' src={staff} alt="loading" />
    </div>
    <div className="row-start-5">
     <ul>
