@@ -35,6 +35,8 @@ import Tab6 from "../../assets/Images/menu/fastfood.svg";
 import Tab7 from "../../assets/Images/menu/soups.svg";
 import SplitBill from "../../Common/Modal/splitBillModal";
 import PaymentModal from "../../Common/Modal/paymentModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleMinus, faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Category = ({ cart }) => {
   console.log("cart: ", cart);
@@ -321,58 +323,48 @@ const Category = ({ cart }) => {
             {/* Table View */}
             <div class="grid grid-cols-1 grid-rows-3" >
               <div className="row-span-2 h-72 overflow-auto">
-              <table class="w-full row-span-2 text-sm text-center text-[#544013]">
-                <thead class="text-lg text-[#544013] bg-[#ede9dd]">
-                  <tr>
-                    <th scope="col" class="px-6 text-base font-normal">
-                      Item
-                    </th>
-                    <th scope="col" class="px-6 text-base font-normal">
-                      Price
-                    </th>
-                    <th scope="col" class="px-6 text-base font-normal">
-                      Qty.
-                    </th>
-
-                    <th scope="col" class="px-6 text-base font-normal">
-                      Amount
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-[#ede9dd]">
-                  {selectedFoodItems?.map((items, index) => (
-                    <tr className="">
-                      <th scope="row" class="py-2 px-6 font-light">
-                        {items?.food}
+                <table class="w-full row-span-2 text-sm text-center text-[#544013]">
+                  <thead class="text-lg text-[#544013] bg-[#ede9dd]">
+                    <tr>
+                      <th scope="col" class="px-6 text-base font-normal">
+                        Item
                       </th>
-                      <td class="font-light py-2 px-6">{items.price}</td>
-                      <td class="flex items-center justify-center font-normal py-2 px-6">
-                        <span
-                          className="px-2 rounded-full text-white text-lg cursor-pointer bg-green-600"
-                          onClick={() => handleIncrementQuantity(items)}
-                        >
-                          +
-                        </span>
-                        <div className="mx-2">{items?.quantity}</div>
-                        <span
-                          className="px-2 rounded-full text-white text-base cursor-pointer bg-red-600"
-                          onClick={() => handleDecrementQuantity(items)}
-                        >
-                          -
-                        </span>
-                        <div className="mx-2">{items?.quantity * 2}</div>
-                        <span
-                          className="px-2 text-white rounded-full text-base bg-red-600 cursor-pointer"
-                          onClick={() => handleRemoveFromCart(items)}
-                        >
-                          x
-                        </span>
-                      </td>
-                      <td class="font-normal py-2 px-6">{items.amount}</td>
+                      <th scope="col" class="px-6 text-base font-normal">
+                        Price
+                      </th>
+                      <th scope="col" class="px-6 text-base font-normal">
+                        Qty.
+                      </th>
+
+                      <th scope="col" class="px-6 text-base font-normal">
+                        Amount
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-[#ede9dd]">
+                    {selectedFoodItems?.map((items, index) => (
+                      <tr className="">
+                        <th scope="row" class="py-2 px-6 font-light">
+                          {items?.food}
+                        </th>
+                        <td class="font-light py-2 px-6">{items.price}</td>
+                        <td class="flex items-center justify-center font-normal py-2 px-6">
+                          <FontAwesomeIcon className=" rounded-full text-red-500 text-lg cursor-pointer bg-white" onClick={() => handleDecrementQuantity(items)} icon={faCircleMinus} />
+                          <div className="mx-2">{items?.quantity}</div>
+                          <FontAwesomeIcon className=" rounded-full bg-white text-green-500 text-lg cursor-pointer" onClick={() => handleIncrementQuantity(items)} icon={faCirclePlus} />
+                          <div className="mx-2">{items?.quantity * 2}</div>
+                          {/* <span
+                            className="px-2 text-white rounded-full text-base bg-red-600 cursor-pointer"
+                            onClick={() => handleRemoveFromCart(items)}
+                          > */}
+                            <FontAwesomeIcon className="text-red-700 rounded-full text-xl bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faCircleXmark} />
+                          {/* </span> */}
+                        </td>
+                        <td class="font-normal py-2 px-6">{items.amount}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
 
               <div className="row-start-3">

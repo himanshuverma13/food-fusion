@@ -10,12 +10,13 @@ import StatusFooter from "../../Common/Footer/statusFooter";
 import { add } from "../../Common/Redux/Category/categorySlice";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
 import { SetTable } from "../../Common/Redux/Category/categorySlice";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 // Images
 import NewOrder from "../../assets/Images/new order.svg";
 const Chef = ({ cart, chef }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAssign = (e) => {
     let payload = { ...e, status: "pending" };
@@ -35,6 +36,9 @@ const Chef = ({ cart, chef }) => {
     let setTableNull = 0;
     dispatch(SetTable(setTableNull));
   };
+  const SendToInvoice = () => {
+    navigate('/order-history')
+  }
   const OrderStatusData = [
     {
       class: "bg-red-500",
@@ -91,7 +95,8 @@ const Chef = ({ cart, chef }) => {
           </div>
         </div>
         {/* Order Status */}
-        <div className="flex justify-end">
+        <div className="flex justify-between">
+            <button className="border-black border-2 p-1 bg-amber-700 tracking-widest text-white" onClick={()=>SendToInvoice()}>ORDER HISTORY</button>
           <div className="grid grid-cols-3 gap-16">
             {OrderStatusData.map((items, index) => (
               <div className="flex items-center justify-end">
@@ -107,42 +112,45 @@ const Chef = ({ cart, chef }) => {
         </div>
         <div className="grid grid-cols-4 gap-4 mt-3">
           {cart.itemsInCart?.map((item) => (
-            <div className="chef-card border-solid rounded-2xl bg-white shadow-xl">
-              <div className="border rounded-full p-3 bg-[#d79555] text-[#544013]">
-                Table No. {item.tableNo}
+            <div className="chef-card grid grid-cols-1 grid-rows-4 border-solid rounded-3xl bg-white shadow-xl">
+              <div className="border rounded-3xl px-4 py-0.5 m-0.5 bg-[#d79555] text-[#544013]">
+                <div className="text-sm tracking-wider">Order No. 007</div>
+                <div className="flex justify-between text-sm tracking-wider">
+                  <span>Time : 10:10 AM</span>
+                  <span>Table No. {item.tableNo}</span>
+                </div>
               </div>
-              <div className="flex items-center justify-between p-3 text-[#544013] tracking-wider font-semibold">
-                <div>
+              <div className="grid row-span-2 grid-cols-4 grid-rows-1 my-2">
+                <div className="flex justify-center ">
                   <img
                     src={item.image}
                     alt="Loading"
                     className="w-16 h-16 rounded-full"
                   />
                 </div>
-                <div className="font-sans">
-                  <div className="text-left text-xl uppercase font-sans">
-                    {item.food}
+                <div className="col-span-3">
+                  <div className="flex justify-between ms-1 me-3 font-sans">
+                    <div className="text-left text-xl truncate w-36 uppercase  tracking-wider">
+                      {item.food}
+                    </div>
+                    Qty - {item.quantity}
                   </div>
-                  Qty - {item.quantity}
+                  <div className="font-[prompt] mx-1"> {item.category}</div>
                 </div>
-                <div className="font-sans"> {item.category}</div>
               </div>
 
-              <hr className="m-1 bg-black" />
-
-              {/* <div>{item.category}</div> */}
-              <div className="flex justify-end">
+              <div className="justify-end border-t-2 flex row-start-4">
                 <Button
                   title="Assign"
                   btn_type="button"
                   onClick={() => handleAssign(item)}
-                  btn_class="rounded-full border-amber-950 px-4 py-1 text-white mx-2 my-1 cursor-pointer duration-300  hover:bg-sky-700 bg-red-500"
+                  btn_class="rounded-full border-amber-950 tracking-wider px-4 text-white mx-2 my-1 cursor-pointer duration-300  hover:bg-sky-700 bg-red-500"
                 />
                 <Button
                   title="Completed"
                   onClick={() => handleComplete(item)}
                   btn_type="button"
-                  btn_class="rounded-full border-amber-950 px-4 py-1 text-black mx-2 my-1 cursor-pointer duration-300 bg-green-500"
+                  btn_class="rounded-full border-amber-950 tracking-wider px-4 text-black mx-2 my-1 cursor-pointer duration-300 bg-green-500"
                 />
               </div>
             </div>

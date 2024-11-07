@@ -43,12 +43,12 @@ const OrderHistory = ({ cart }) => {
         <>
             <>
                 <Navbar />
-                <div className="container  mx-auto px-10 py-5">
-                    <div className="text-2xl font-bold">Chef</div>
+                <div className="container font-[poppins] mx-auto px-10 py-2">
+                    <div className="text-2xl font-bold">Order History</div>
 
                     <div className="flex justify-between">
                         {/* Search bar */}
-                        <div class="text-black flex justify-start m-2">
+                        <div class="text-black flex justify-start m-2 my-3">
                             <div class="overflow-hidden flex border-solid border-2 border-black rounded-3xl bg-[#f6f6e9]">
                                 <input
                                     type="text"
@@ -67,14 +67,16 @@ const OrderHistory = ({ cart }) => {
                                 </button>
                             </div>
                             {/* Dropdown filter */}
+                            <div className="flex items-center">
                             <DropdownButton options={filter} buttonLabel="Filters" />
+                            </div>
                         </div>
                         {/* Category page */}
                         <div>
                             <NavLink to="/category">
                                 <img
                                     src={NewOrder}
-                                    className="h-20 me-5"
+                                    className="h-16 me-5"
                                     onClick={() => SetTableOnCategory()}
                                     alt="Loading"
                                 />
@@ -89,7 +91,7 @@ const OrderHistory = ({ cart }) => {
                                     <div
                                         className={`rounded-full p-2 h-2 w-2 ${items.class}`}
                                     ></div>
-                                    <p className="text-xl text-[#544013] ms-2 uppercase tracking-wider">
+                                    <p className="text-base text-[#544013] ms-2 uppercase tracking-wider">
                                         {items.status}
                                     </p>
                                 </div>
