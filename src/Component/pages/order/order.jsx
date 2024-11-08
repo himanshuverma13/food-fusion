@@ -97,10 +97,14 @@ const Order = () => {
       <Navbar />
       {/* <TableStatusModal/> */}
       <div className="border-solid border-4 border-[#544013] bg-[#f6f6e9] p-2 m-3">
-        <p className="text-xl text-[#544013]">Generate Order</p>
-        <div className="flex justify-between">
-          <DropdownButton options={orderTypes} buttonLabel="Order Type" />
-          <p className="text-xl text-[#544013]">Order No. : 123</p>
+        <div className="flex justify-between my-2">
+          <div>
+            <p className="text-xl text-[#544013]">Generate Order</p>
+          </div>
+          <div className="flex">
+            <DropdownButton options={orderTypes} buttonLabel="Order Type" />
+            <p className="text-xl text-[#544013]">Order No. : 123</p>
+          </div>
         </div>
         {/* user Form start*/}
         <div className="grid grid-cols-2 gap-2">
@@ -266,6 +270,14 @@ const Order = () => {
                       onClick={() => handleRemoveFromCart(items)}
                       icon={faCircleXmark}
                     />
+
+                    <FontAwesomeIcon className=" rounded-full bg-white text-green-500 text-lg cursor-pointer" onClick={() => handleIncrementQuantity(items)} icon={faCirclePlus} />
+                    <div className="mx-2">{items?.quantity}</div>
+
+                    <FontAwesomeIcon className=" rounded-full text-red-500 text-lg cursor-pointer bg-white" onClick={() => handleDecrementQuantity(items)} icon={faCircleMinus} />
+                    <div className="mx-2">{items?.quantity * 2}</div>
+
+                    <FontAwesomeIcon className="text-red-700 rounded-full text-xl bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faCircleXmark} />
                   </td>
                   <td class="px-6 py-2 font-sans font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.price}
