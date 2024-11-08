@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
 import { SetTable } from "../../Common/Redux/Category/categorySlice";
@@ -22,7 +22,10 @@ import Dish from "../../assets/Images/menu/menu-dish.svg";
 import NewOrder from "../../assets/Images/new order.svg";
 import StatusFooter from "../../Common/Footer/statusFooter";
 import MenuSetting from "../../Common/Modal/menuSettingModal";
+import MenuImg from "../../assets/Images/menu/menu-page.svg";
+// import TableStatusModal from "../../Common/Modal/tableStatusModal";
 const Menu = () => {
+  const [activeCategory, setActiveCategory] = useState("");
   const filter = ["Dine-In", "TakeOut", "Delivery", "Pre-Order"];
 
   const dispatch = useDispatch();
@@ -46,71 +49,100 @@ const Menu = () => {
     { title: "Entrees", image: Food2 },
     { title: "Appetizers", image: Food3 },
     { title: "Entrees", image: Food2 },
-
-
   ];
   const MenuItemsData = [
     {
+      category: "Entrees",
       image: Dish,
       title: "Item 1",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
     {
+      category: "Entrees",
       image: Dish,
       title: "Item 1",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
     {
+      category: "Entrees",
       image: Dish,
       title: "Item 1",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
     {
+      category: "Appetizers",
       image: Dish,
-      title: "Item 1",
+      title: "Item 2",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
     {
+      category: "Appetizers",
       image: Dish,
-      title: "Item 1",
+      title: "Item 2",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
     {
+      category: "Appetizers",
       image: Dish,
-      title: "Item 1",
+      title: "Item 2",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
     {
+      category: "Desserts", 
       image: Dish,
-      title: "Item 1",
+      title: "Item 3",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
     {
+      category: "Appetizers",
       image: Dish,
-      title: "Item 1",
+      title: "Item 2",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
     {
+      category: "Desserts", 
       image: Dish,
-      title: "Item 1",
+      title: "Item 3",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
     {
+      category: "Appetizers",
       image: Dish,
-      title: "Item 1",
+      title: "Item 2",
+      price: "Rs 1300",
+      description: "Delicious salad with mixed greens, dressing, and toppings.",
+    },
+    {
+      category: "Beverages",
+      image: Dish,
+      title: "Item 4",
+      price: "Rs 1300",
+      description: "Delicious salad with mixed greens, dressing, and toppings.",
+    },
+    {
+      category: "Caterogies",
+      image: Dish,
+      title: "Item 5",
       price: "Rs 1300",
       description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
   ];
+
+// Filter MenuItemsData based on the active category
+  const filteredMenuItems = activeCategory
+    ? MenuItemsData.filter((item) => item.category === activeCategory)
+    : MenuItemsData;
+
+
   var settings = {
     arrows: false,
     dots: false,
@@ -128,39 +160,43 @@ const Menu = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <>
       <Navbar />
+      {/* <TableStatusModal /> */}
       <div className="mx-14">
-        <p className="text-xl text-[#544013] uppercase">Menu</p>
+        <div className="flex items-center">
+          <p className="text-xl uppercase me-1">Menu</p>
+          <img src={MenuImg} className="h-8" alt="Loading" />
+        </div>
 
         <div className="flex justify-between items-center">
           {/* Search bar */}
           <div class="text-black flex justify-around items-center">
-          <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
+            <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
               <input
                 type="text"
-                class="ps-5 py-1 w-full bg-[#f6f6e9]"
+                class="ps-5 py-1 w-full bg-[#f6f6e9] animate-pulse"
                 placeholder="Search items from menu"
               />
               <button class="flex items-center justify-center px-4">
@@ -186,38 +222,45 @@ const Menu = () => {
                 alt="Loading"
               />
             </NavLink>
-            <MenuSetting/>
+            <MenuSetting />
           </div>
         </div>
 
         {/* Menu Options */}
-        
 
         <div className="slider-container">
-         <Slider {...settings}>
-      {/* <div className="grid grid-cols-6 gap-2 my-1"> */}
-          {MenuOptions.map((items, index) => (
-            <div key={index}>
-            <div className="flex items-center justify-center ms-2 mt-1 py-1 border-solid border-2 border-[#544013] rounded-xl bg-[#ede9dd] hover:bg-[#ad7945]">
-              <img src={items.image} className="h-8 me-2" alt="Loading" />
-              <p className="text-lg tracking-wide uppercase">{items.title}</p>
-            </div>
-            </div>
-          ))}
-        {/* </div> */}
-         </Slider>
-    </div>
+          <Slider {...settings}>
+            {/* <div className="grid grid-cols-6 gap-2 my-1"> */}
+            {MenuOptions.map((items, index) => (
+              <div key={index}>
+                <a
+                  href="#"
+                  onClick={() => setActiveCategory(items.title)}
+                  className="flex items-center justify-center ms-2 mt-1 py-1 border-solid border-2 border-[#544013] rounded-xl bg-[#ede9dd] hover:bg-[#ad7945]"
+                >
+                  <img src={items.image} className="h-8 me-2" alt="Loading" />
+                  <p className="text-lg tracking-wide uppercase">
+                    {items.title}
+                  </p>
+                </a>
+              </div>
+            ))}
+            {/* </div> */}
+          </Slider>
+        </div>
 
         {/* Menu Items Card */}
-        <div className="grid grid-cols-5 gap-5 mt-1">
-          {MenuItemsData.map((menu, index) => (
+        <div className="grid grid-cols-5 gap-3 mt-1">
+        {filteredMenuItems.map((menu, index) => (
             <div className="bg-white border-solid border-2 border-[#544013] rounded-xl flex items-center p-1">
               <img src={menu.image} className="h-12 me-2" alt="Loading" />
               <div>
                 <p className="font-sans uppercase text-lg tracking-wide font-semibold">
                   {menu.title}
                 </p>
-                <p className="font-sans text-sm tracking-wide">{menu.description}</p>
+                <p className="font-sans text-sm tracking-wide">
+                  {menu.description}
+                </p>
                 <p className="text-green-500 text-lg font-sans mt-2">
                   {menu.price}
                 </p>
@@ -226,7 +269,7 @@ const Menu = () => {
           ))}
         </div>
       </div>
-      <StatusFooter/>
+      <StatusFooter />
     </>
   );
 };

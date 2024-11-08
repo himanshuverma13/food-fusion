@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Button from "../Button/button";
 
+// Images
+import Arrow from "../../assets/Images/Arrow.svg";
+import { NavLink } from "react-router-dom";
 function TableStatusModal() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,10 +43,11 @@ const ReservationData =[
   return (
     <div className="relative top-64 flex justify-end items-center">
       <button
-        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-[#544013] hover:bg-red-700 text-white font-bold py-2 px-3 rounded-s-2xl"
         onClick={handleButtonClick}
       >
-        <svg
+        <img src={Arrow} className="h-7" alt="Loading" />
+        {/* <svg
           className="w-4 h-4"
           fill="none"
           stroke="currentColor"
@@ -56,7 +60,7 @@ const ReservationData =[
             strokeWidth={2}
             d="M9 5l7 7-7 7"
           />
-        </svg>
+        </svg> */}
       </button>
       {isOpen && (
         <div className="fixed z-10 top-0 right-0 bottom-0 left-0 bg-gray-500 bg-opacity-75 flex justify-end items-center">
@@ -83,9 +87,13 @@ const ReservationData =[
               <h2 className="text-2xl tracking-wider text-white mb-1">
                 Reservations : 4
               </h2>
-              <p className="text-black text-xl tracking-wider">
+              <Button title="ADD Reservation" btn_class="border-solid border-2 border-[#544013] rounded-xl text-white bg-[#d79555] px-3 py-1 text-sm font-sans font-bold tracking-wider uppercase"/>
+
+           <div>
+           <p className="text-black text-xl tracking-wider">
                 Table Numbers :
               </p>
+           </div>
 
               {ReservationData.map((items, index) => (
              <div className="my-2">
@@ -102,11 +110,13 @@ const ReservationData =[
                 </div>
               </div>
               <div className="flex justify-end gap-4 mb-2">
+                <NavLink to="/order">
                 <Button
                   title="Order"
                   btn_class="rounded-2xl bg-red-400 py-1 px-3 uppercase"
                   btn_type="button"
                 />
+            </NavLink>
                 <Button
                   title="x"
                   btn_class="rounded-2xl bg-red-600 text-white py-1 px-3 uppercase"

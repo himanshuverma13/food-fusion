@@ -10,11 +10,16 @@ import {
 import { connect, useDispatch } from "react-redux";
 
 // Images
-import Menu from "../../assets/Images/sideNavImg/navMenu.svg";
+import Menu from "../../assets/Images/menu/menu-white.png";
 import { NavLink } from "react-router-dom";
 import StatusFooter from "../../Common/Footer/statusFooter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleMinus, faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleMinus,
+  faCirclePlus,
+  faCircleXmark,
+} from "@fortawesome/free-solid-svg-icons";
+// import TableStatusModal from "../../Common/Modal/tableStatusModal";
 const Order = () => {
   // useEffect(() => {
   //     console.log("test");
@@ -90,6 +95,7 @@ const Order = () => {
   return (
     <>
       <Navbar />
+      {/* <TableStatusModal/> */}
       <div className="border-solid border-4 border-[#544013] bg-[#f6f6e9] p-2 m-3">
         <p className="text-xl text-[#544013]">Generate Order</p>
         <div className="flex justify-between">
@@ -151,7 +157,6 @@ const Order = () => {
             />
           </div>
         </div>
-
         {/* user Form End*/}
 
         {/* Search bar */}
@@ -159,7 +164,7 @@ const Order = () => {
           <NavLink to="/category">
             <Button
               title="Menu View"
-              btn_class="bg-[#544013] hover:bg-[#544013] text-white text-lg py-1 px-2 rounded-lg flex justify-between items-center border-2 border-solid border-black"
+              btn_class="bg-[#544013] text-white text-lg py-1 px-2 rounded-lg flex justify-between items-center border-2 border-solid border-black"
               btn_img={Menu}
               btn_type="button"
             />
@@ -242,14 +247,25 @@ const Order = () => {
                   </td>
                   {/* <td class="px-6 py-4 border-solid border-4 border-[#d79555] border-y-0 border-s-0">{items.quantity}</td> */}
                   <td class="flex items-center justify-center font-normal py-2 px-6 border-solid border-4 border-[#d79555] border-y-0 border-s-0">
-                   
-                    <FontAwesomeIcon className=" rounded-full bg-white text-green-500 text-lg cursor-pointer" onClick={() => handleIncrementQuantity(items)} icon={faCirclePlus} />
+                    <FontAwesomeIcon
+                      className=" rounded-full bg-white text-green-500 text-lg cursor-pointer"
+                      onClick={() => handleIncrementQuantity(items)}
+                      icon={faCirclePlus}
+                    />
                     <div className="mx-2">{items?.quantity}</div>
-                    
-                    <FontAwesomeIcon className=" rounded-full text-red-500 text-lg cursor-pointer bg-white" onClick={() => handleDecrementQuantity(items)} icon={faCircleMinus} />
+
+                    <FontAwesomeIcon
+                      className=" rounded-full text-red-500 text-lg cursor-pointer bg-white"
+                      onClick={() => handleDecrementQuantity(items)}
+                      icon={faCircleMinus}
+                    />
                     <div className="mx-2">{items?.quantity * 2}</div>
-                    
-                    <FontAwesomeIcon className="text-red-700 rounded-full text-xl bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faCircleXmark} />
+
+                    <FontAwesomeIcon
+                      className="text-red-700 rounded-full text-xl bg-white cursor-pointer"
+                      onClick={() => handleRemoveFromCart(items)}
+                      icon={faCircleXmark}
+                    />
                   </td>
                   <td class="px-6 py-2 font-sans font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.price}
@@ -261,7 +277,40 @@ const Order = () => {
           </table>
         </div>
       </div>
-      <StatusFooter/>
+      <div className="flex justify-center fixed bottom-12 left-0 right-0 my-2">
+        <NavLink to="/chef">
+        <Button
+          title="Save & Generate KOT"
+          btn_type="button"
+          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm tracking-wider uppercase me-8"
+        />
+        </NavLink>
+        <NavLink>        
+          <Button
+          title="Save & Print Bill"
+          btn_type="button"
+          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm tracking-wider uppercase mx-8"
+        />
+        </NavLink>
+
+        <NavLink>        
+        <Button
+          title="Save & Generate Reciept"
+          btn_type="button"
+          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm tracking-wider uppercase mx-8"
+        />
+        </NavLink>
+
+        <NavLink>        
+        <Button
+          title="Cancel"
+          btn_type="button"
+          btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-white px-3 py-1 ms-8"
+        />
+        </NavLink>
+
+      </div>
+      <StatusFooter />
     </>
   );
 };
