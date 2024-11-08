@@ -61,11 +61,11 @@ const Chef = ({ cart, chef }) => {
 
         <div className="flex justify-between items-center">
           {/* Search bar */}
-          <div class="text-black flex justify-around items-center">
+          <div class="text-black flex justify-around items-center ">
                 <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
                   <input
                     type="text"
-                    class="px-2 py-0.5 tracking-wide w-full bg-[#f6f6e9]"
+                    class="px-3 py-1 tracking-wide w-full bg-[#f6f6e9] animate-pulse"
                     placeholder="Search items from menu"
                   />
                   <button class="flex items-center justify-center px-4">

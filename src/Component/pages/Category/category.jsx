@@ -8,7 +8,7 @@ import {
   remove,
 } from "../../Common/Redux/Category/categorySlice";
 import Button from "../../Common/Button/button";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Navbar from "../../Common/Navbar/navbar";
 import StatusFooter from "../../Common/Footer/statusFooter";
 import CategoryModal from "../../Common/Modal/categoryModal";
@@ -37,6 +37,8 @@ import SplitBill from "../../Common/Modal/splitBillModal";
 import PaymentModal from "../../Common/Modal/paymentModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+// import TableStatusModal from "../../Common/Modal/tableStatusModal";
+import ApplyOffer from "../../Common/Modal/applyOfferModal";
 
 const Category = ({ cart }) => {
   console.log("cart: ", cart);
@@ -225,6 +227,10 @@ const Category = ({ cart }) => {
   return (
     <>
       <Navbar />
+
+      {/* Table Status Modal Button */}
+      {/* <TableStatusModal/> */}
+
       <div className=" border-solid border-4 px-2 pb-4 mx-3 border-[#544013]">
         <p className="text-lg text-[#544013]">Generate Order</p>
         <div className="grid grid-cols-12 gap-4">
@@ -378,11 +384,8 @@ const Category = ({ cart }) => {
                   </li>
                   <div className="flex">
                     <SplitBill />
-                    <Button
-                      title="Apply Offer"
-                      btn_type="button"
-                      btn_class="mx-3 text-sm tracking-wider border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 uppercase"
-                    />
+                    <ApplyOffer/>
+                    
                   </div>
                   {/* <Link to="/payment" className="mx-3"> */}
                   {/* <Button
@@ -414,11 +417,13 @@ const Category = ({ cart }) => {
                   </div>
                 </ul>
                 <div className="flex justify-around my-1">
+                  <NavLink to="/chef">
                   <Button
                     title="Save & Generate KOT"
                     btn_type="button"
                     btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm tracking-wider uppercase"
                   />
+                  </NavLink>
                   <Button
                     title="Save & Print Bill"
                     btn_type="button"

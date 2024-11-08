@@ -24,7 +24,7 @@ const CategoryModal = ({  isOpen, closeModal, selectedFoodItem, onSubmit  }) => 
           onClick={handleModalClose}
         />
         <div
-          className="relative bg-white p-6 rounded shadow-lg z-20"
+          className="relative bg-[#f6f6e9] w-1/3 p-6 rounded shadow-lg z-20"
         >
           <h4 className="text-xl mb-4">
             Customize your {selectedFoodItem?.name}
@@ -69,7 +69,7 @@ const CategoryModal = ({  isOpen, closeModal, selectedFoodItem, onSubmit  }) => 
             </div>
             <Button
              title="Submit"
-              btn_class="bg-blue-500 text-white px-4 py-2 rounded"
+              btn_class="bg-green-600 text-white px-4 py-1 border-solid border-2 border-black rounded-xl"
               btn_type="submit"
             />
           </form>
