@@ -31,9 +31,9 @@
 
 
  .loader {
-  background-image: url(../../food-fusion/src/Component/assets/Video/loader-unscreen.gif);
-  /* width: 100%; */
+  background-image: url(../../food-fusion/src/Component/assets/Video/loader1.gif);
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  /* background-size: cover; */
+  background-size: contain;
  }
