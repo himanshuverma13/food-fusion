@@ -174,7 +174,7 @@ const Category = ({ cart }) => {
   };
 
   const tableOptions = ["1", "2", "3", "4"];
-  const orderTypes = ["Dine-In", "TakeOut", "Delivery", "Pre-Order"];
+  const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
   const filter = ["Dine-In", "TakeOut", "Delivery", "Pre-Order"];
   const dispatch = useDispatch();
 

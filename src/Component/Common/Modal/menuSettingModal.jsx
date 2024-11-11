@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 // images
 import Setting from "../../assets/Images/sideNavImg/navSetting.svg";
+import ModalSetting from "../../assets/Images/menu/setting-white.png";
+
 import Button from "../Button/button";
 const MenuSetting = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +60,7 @@ const MenuButtonData = [
                 </div>
                 <div className="flex items-center justify-center">
                   <img
-                    src={Setting}
+                    src={ModalSetting}
                     className="h-10 w-10 rounded-full me-3"
                     alt="Loading"
                   />

@@ -21,9 +21,15 @@ const SideNavbar = () => {
     <NavLink to="/chef">
     <img className='m-4 w-7' src={navCart} alt="loading" />
     </NavLink>
+    <NavLink to="/payment">
     <img className='m-4 w-7' src={navInvoice} alt="loading" />
+    </NavLink>
+    <NavLink to="/employee">
     <img className='m-4 w-9' src={invoice} alt="loading" />
+    </NavLink>
+    <NavLink>
     <img className='m-4 w-9' src={staff} alt="loading" />
+    </NavLink>
    </div>
    <div className="row-start-5">
     <ul>
