@@ -104,102 +104,102 @@ const OrderHistory = ({ cart }) => {
                             <div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
                                 <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
                                     <div>
-                                        <span className="block font-bold font-[Prompt]">Name of customer</span>
-                                        <span className="block font-[Prompt] font-light">Time : 15 July 2024, 7:23 PM </span>
+                                        <span className="block font-bold ">Name of customer</span>
+                                        <span className="block  font-light">Time : 15 July 2024, 7:23 PM </span>
                                     </div>
                                     <div>
-                                        <span className="font-bold font-[Prompt]">Table assigned : 14</span>
+                                        <span className="font-bold ">Table assigned : 14</span>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                                    <div className=""><span className="block font-[Prompt]">Order ID :-</span><span className="font-[Prompt] font-thin">#1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Order Amount :-</span><span className="font-[Prompt] font-thin">Rs 1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Mob No :-</span><span className="font-[Prompt] font-thin">1234567890</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Payment Method :-</span><span className="font-[Prompt] font-thin">cash</span></div>
+                                    <div className=""><span className="block ">Order ID :-</span><span className=" font-thin">#1234</span></div>
+                                    <div className=""><span className="block ">Order Amount :-</span><span className=" font-thin">Rs 1234</span></div>
+                                    <div className=""><span className="block ">Mob No :-</span><span className=" font-thin">1234567890</span></div>
+                                    <div className=""><span className="block ">Payment Method :-</span><span className=" font-thin">cash</span></div>
                                 </div>
                                 <hr class="m-1 bg-black" />
-                                <div className="m-2 font-[Prompt]">
+                                <div className="m-2 ">
                                     Order Items : 7
                                 </div>
                             </div>
                             <div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
                                 <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
                                     <div>
-                                        <span className="block font-bold font-[Prompt]">Name of customer</span>
-                                        <span className="block font-[Prompt] font-light">Time : 15 July 2024, 7:23 PM </span>
+                                        <span className="block font-bold ">Name of customer</span>
+                                        <span className="block  font-light">Time : 15 July 2024, 7:23 PM </span>
                                     </div>
                                     <div>
-                                        <span className="font-bold font-[Prompt]">Table assigned : 14</span>
+                                        <span className="font-bold ">Table assigned : 14</span>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                                    <div className=""><span className="block font-[Prompt]">Order ID :-</span><span className="font-[Prompt] font-thin">#1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Order Amount :-</span><span className="font-[Prompt] font-thin">Rs 1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Mob No :-</span><span className="font-[Prompt] font-thin">1234567890</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Payment Method :-</span><span className="font-[Prompt] font-thin">cash</span></div>
+                                    <div className=""><span className="block ">Order ID :-</span><span className=" font-thin">#1234</span></div>
+                                    <div className=""><span className="block ">Order Amount :-</span><span className=" font-thin">Rs 1234</span></div>
+                                    <div className=""><span className="block ">Mob No :-</span><span className=" font-thin">1234567890</span></div>
+                                    <div className=""><span className="block ">Payment Method :-</span><span className=" font-thin">cash</span></div>
                                 </div>
                                 <hr class="m-1 bg-black" />
-                                <div className="m-2 font-[Prompt]">
+                                <div className="m-2 ">
                                     Order Items : 7
                                 </div>
                             </div><div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
                                 <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
                                     <div>
-                                        <span className="block font-bold font-[Prompt]">Name of customer</span>
-                                        <span className="block font-[Prompt] font-light">Time : 15 July 2024, 7:23 PM </span>
+                                        <span className="block font-bold ">Name of customer</span>
+                                        <span className="block  font-light">Time : 15 July 2024, 7:23 PM </span>
                                     </div>
                                     <div>
-                                        <span className="font-bold font-[Prompt]">Table assigned : 14</span>
+                                        <span className="font-bold ">Table assigned : 14</span>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                                    <div className=""><span className="block font-[Prompt]">Order ID :-</span><span className="font-[Prompt] font-thin">#1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Order Amount :-</span><span className="font-[Prompt] font-thin">Rs 1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Mob No :-</span><span className="font-[Prompt] font-thin">1234567890</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Payment Method :-</span><span className="font-[Prompt] font-thin">cash</span></div>
+                                    <div className=""><span className="block ">Order ID :-</span><span className=" font-thin">#1234</span></div>
+                                    <div className=""><span className="block ">Order Amount :-</span><span className=" font-thin">Rs 1234</span></div>
+                                    <div className=""><span className="block ">Mob No :-</span><span className=" font-thin">1234567890</span></div>
+                                    <div className=""><span className="block ">Payment Method :-</span><span className=" font-thin">cash</span></div>
                                 </div>
                                 <hr class="m-1 bg-black" />
-                                <div className="m-2 font-[Prompt]">
+                                <div className="m-2 ">
                                     Order Items : 7
                                 </div>
                             </div><div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
                                 <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
                                     <div>
-                                        <span className="block font-bold font-[Prompt]">Name of customer</span>
-                                        <span className="block font-[Prompt] font-light">Time : 15 July 2024, 7:23 PM </span>
+                                        <span className="block font-bold ">Name of customer</span>
+                                        <span className="block  font-light">Time : 15 July 2024, 7:23 PM </span>
                                     </div>
                                     <div>
-                                        <span className="font-bold font-[Prompt]">Table assigned : 14</span>
+                                        <span className="font-bold ">Table assigned : 14</span>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                                    <div className=""><span className="block font-[Prompt]">Order ID :-</span><span className="font-[Prompt] font-thin">#1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Order Amount :-</span><span className="font-[Prompt] font-thin">Rs 1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Mob No :-</span><span className="font-[Prompt] font-thin">1234567890</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Payment Method :-</span><span className="font-[Prompt] font-thin">cash</span></div>
+                                    <div className=""><span className="block ">Order ID :-</span><span className=" font-thin">#1234</span></div>
+                                    <div className=""><span className="block ">Order Amount :-</span><span className=" font-thin">Rs 1234</span></div>
+                                    <div className=""><span className="block ">Mob No :-</span><span className=" font-thin">1234567890</span></div>
+                                    <div className=""><span className="block ">Payment Method :-</span><span className=" font-thin">cash</span></div>
                                 </div>
                                 <hr class="m-1 bg-black" />
-                                <div className="m-2 font-[Prompt]">
+                                <div className="m-2 ">
                                     Order Items : 7
                                 </div>
                             </div><div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
                                 <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
                                     <div>
-                                        <span className="block font-bold font-[Prompt]">Name of customer</span>
-                                        <span className="block font-[Prompt] font-light">Time : 15 July 2024, 7:23 PM </span>
+                                        <span className="block font-bold ">Name of customer</span>
+                                        <span className="block  font-light">Time : 15 July 2024, 7:23 PM </span>
                                     </div>
                                     <div>
-                                        <span className="font-bold font-[Prompt]">Table assigned : 14</span>
+                                        <span className="font-bold ">Table assigned : 14</span>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                                    <div className=""><span className="block font-[Prompt]">Order ID :-</span><span className="font-[Prompt] font-thin">#1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Order Amount :-</span><span className="font-[Prompt] font-thin">Rs 1234</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Mob No :-</span><span className="font-[Prompt] font-thin">1234567890</span></div>
-                                    <div className=""><span className="block font-[Prompt]">Payment Method :-</span><span className="font-[Prompt] font-thin">cash</span></div>
+                                    <div className=""><span className="block ">Order ID :-</span><span className=" font-thin">#1234</span></div>
+                                    <div className=""><span className="block ">Order Amount :-</span><span className=" font-thin">Rs 1234</span></div>
+                                    <div className=""><span className="block ">Mob No :-</span><span className=" font-thin">1234567890</span></div>
+                                    <div className=""><span className="block ">Payment Method :-</span><span className=" font-thin">cash</span></div>
                                 </div>
                                 <hr class="m-1 bg-black" />
-                                <div className="m-2 font-[Prompt]">
+                                <div className="m-2 ">
                                     Order Items : 7
                                 </div>
                             </div>
@@ -207,39 +207,39 @@ const OrderHistory = ({ cart }) => {
                         <div className="col-start-3 flex justify-center">
                             <div className="bg-white border border-black  rounded-3xl shadow-lg p-6 w-80">
                                 {/* Header */}
-                                <h2 className="text-xl font-bold font-[Prompt] mb-2">Details</h2>
+                                <h2 className="text-xl font-bold  mb-2">Details</h2>
 
                                 {/* Customer Info */}
                                 <div className="text-sm  mb-4">
-                                    <p className=""><span className="font-semibold font-[Prompt] text-lg">Name of customer</span></p>
-                                    <p className="font-[Prompt] text-lg">Time : 15 July 2024, 7:23 PM</p>
-                                    <p className="font-[Prompt] text-lg">Order items : 7</p>
+                                    <p className=""><span className="font-semibold  text-lg">Name of customer</span></p>
+                                    <p className=" text-lg">Time : 15 July 2024, 7:23 PM</p>
+                                    <p className=" text-lg">Order items : 7</p>
                                 </div>
 
                                 {/* Order List */}
                                 <div className="mb-4">
                                     <div className="flex justify-between border-b py-2">
-                                        <span className="font-[prompt]">Item 1</span>
-                                        <span className="font-[prompt]">1200</span>
+                                        <span className="">Item 1</span>
+                                        <span className="">1200</span>
                                     </div>
                                     <div className="flex justify-between border-b py-2">
-                                        <span className="font-[prompt]">Item 2</span>
-                                        <span className="font-[prompt]">1200</span>
+                                        <span className="">Item 2</span>
+                                        <span className="">1200</span>
                                     </div>
                                     <div className="flex justify-between border-b py-2">
-                                        <span className="font-[prompt]">Item 3</span>
-                                        <span className="font-[prompt]">1200</span>
+                                        <span className="">Item 3</span>
+                                        <span className="">1200</span>
                                     </div>
                                 </div>
 
                                 {/* Sub-total */}
                                 <div className="flex justify-between text-lg font-bold mb-4">
-                                    <span className="font-[prompt]">Sub-total</span>
-                                    <span className="font-[prompt]">10000</span>
+                                    <span className="">Sub-total</span>
+                                    <span className="">10000</span>
                                 </div>
 
                                 {/* Receipt Button */}
-                                <button className="w-full bg-[#ede9dd] font-[prompt] text-black font-semibold py-2 rounded shadow hover:bg-[#d79555] transition duration-200">
+                                <button className="w-full bg-[#ede9dd]  text-black font-semibold py-2 rounded shadow hover:bg-[#d79555] transition duration-200">
                                     receipt
                                 </button>
                         </div></div>
