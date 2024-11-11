@@ -9,7 +9,7 @@ const Payment = ({cart}) => {
     return(
         <>
         <Navbar/>
-         <ul>
+         {/* <ul>
               <li>
                 Total Items: {cart?.totalCount}
               </li>
@@ -17,7 +17,7 @@ const Payment = ({cart}) => {
                 Total Cost: ${cart?.totalCount * 2}
               </li>
              
-            </ul>
+            </ul> */}
             <Invoice/>
             <StatusFooter/>
         </>

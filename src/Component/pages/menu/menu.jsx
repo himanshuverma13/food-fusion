@@ -26,7 +26,7 @@ import MenuImg from "../../assets/Images/menu/menu-page.svg";
 // import TableStatusModal from "../../Common/Modal/tableStatusModal";
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState("");
-  const filter = ["Dine-In", "TakeOut", "Delivery", "Pre-Order"];
+  const filter = ["Specials", "Frequently Ordered", "Veg",  "Non-Veg", "Cuisines"];
 
   const dispatch = useDispatch();
 
@@ -35,7 +35,7 @@ const Menu = () => {
     dispatch(SetTable(setTableNull));
   };
   const MenuOptions = [
-    { title: "Entrees", image: Food2 },
+    { title: "Entrees ", image: Food2 },
     { title: "Desserts", image: Food1 },
     { title: "Appetizers", image: Food3 },
     { title: "Beverages", image: Food4 },
@@ -133,7 +133,7 @@ const Menu = () => {
       image: Dish,
       title: "Item 5",
       price: "Rs 1300",
-      description: "Delicious salad with mixed greens, dressing, and toppings.",
+      description: "Delicious salad with mixed greens, dressing, and toppings. asdfghertxbcnmxfdrtidfjgkh",
     },
   ];
 
@@ -239,7 +239,7 @@ const Menu = () => {
                   className="flex items-center justify-center ms-2 mt-1 py-1 border-solid border-2 border-[#544013] rounded-xl bg-[#ede9dd] hover:bg-[#ad7945]"
                 >
                   <img src={items.image} className="h-8 me-2" alt="Loading" />
-                  <p className="text-lg tracking-wide uppercase">
+                  <p className="text-lg tracking-wide uppercase truncate">
                     {items.title}
                   </p>
                 </a>
