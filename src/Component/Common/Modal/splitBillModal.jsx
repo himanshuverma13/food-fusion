@@ -110,12 +110,12 @@ const SplitBill = () => {
                       type="checkbox"
                       class="border-gray-300 rounded h-5 w-5"
                     />
-                    <p className="font-[prompt]">Generate Bill For Each</p>
+                    <p className="">Generate Bill For Each</p>
                   </div>
 
                   <Button
                     title="Continue"
-                    btn_class="rounded-2xl bg-[#63898c] py-1 px-4 text-xl font-normal font-[prompt]"
+                    btn_class="rounded-2xl bg-[#63898c] py-1 px-4 text-xl font-normal "
                     onClick={handleModalClose}
                   />
                 </div>

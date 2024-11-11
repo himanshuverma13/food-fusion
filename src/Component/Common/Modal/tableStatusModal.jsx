@@ -14,34 +14,34 @@ function TableStatusModal() {
   const handleModalClose = () => {
     setIsOpen(false);
   };
-const ReservationData =[
+  const ReservationData = [
     {
-        tableNo : 1,
-        date:"20-11-2024",
-        time: "5 p.m.",
-        people: 4,
+      tableNo: 1,
+      date: "20-11-2024",
+      time: "5 p.m.",
+      people: 4,
     },
     {
-        tableNo : 3,
-        date:"20-11-2024",
-        time: "5 p.m.",
-        people: 4,
+      tableNo: 3,
+      date: "20-11-2024",
+      time: "5 p.m.",
+      people: 4,
     },
     {
-        tableNo : 5,
-        date:"20-11-2024",
-        time: "5 p.m.",
-        people: 4,
+      tableNo: 5,
+      date: "20-11-2024",
+      time: "5 p.m.",
+      people: 4,
     },
     {
-        tableNo : 5,
-        date:"20-11-2024",
-        time: "5 p.m.",
-        people: 4,
+      tableNo: 5,
+      date: "20-11-2024",
+      time: "5 p.m.",
+      people: 4,
     },
-]
+  ]
   return (
-    <div className="relative top-64 flex justify-end items-center">
+    <div className="absolute right-0 top-1/2 flex justify-end items-center">
       <button
         className="bg-[#544013] hover:bg-red-700 text-white font-bold py-2 px-3 rounded-s-2xl"
         onClick={handleButtonClick}
@@ -66,7 +66,10 @@ const ReservationData =[
         <div className="fixed z-10 top-0 right-0 bottom-0 left-0 bg-gray-500 bg-opacity-75 flex justify-end items-center">
           <div className="bg-[#2320208f] rounded-lg shadow-lg overflow-auto p-4 w-96 h-2/3 mx-3">
             <div className="">
-              <div className="flex justify-end">
+              <div className="flex justify-between items-center">
+              <h2 className="text-2xl tracking-wider text-white mb-1">
+                Reservations : 4
+              </h2>
                 <svg
                   className="w-4 h-4 cursor-pointer"
                   onClick={handleModalClose}
@@ -83,50 +86,48 @@ const ReservationData =[
                   />
                 </svg>
               </div>
+            <div className="">
+              <Button title="Add Reservation" btn_class="border-solid border-2 border-[#544013] rounded-xl text-white bg-[#d79555] px-1 py-1 text-sm  font-bold tracking-wider uppercase" />
+            </div>
 
-              <h2 className="text-2xl tracking-wider text-white mb-1">
-                Reservations : 4
-              </h2>
-              <Button title="ADD Reservation" btn_class="border-solid border-2 border-[#544013] rounded-xl text-white bg-[#d79555] px-3 py-1 text-sm font-sans font-bold tracking-wider uppercase"/>
-
-           <div>
-           <p className="text-black text-xl tracking-wider">
-                Table Numbers :
-              </p>
-           </div>
+              <div>
+                <p className="text-black font-bold text-xl tracking-wider">
+                  Table Numbers :
+                </p>
+              </div>
 
               {ReservationData.map((items, index) => (
-             <div className="my-2">
-             <div className="flex items-center">
-                <div className="p-1 rounded-full border-2 border-solid border-black me-5">
-                  <div className="px-4 py-2 rounded-full border-2 border-solid border-black">
-                    {items.tableNo}
+                <div className="my-2">
+                  <div className="flex items-center">
+                    <div className="p-1 rounded-full border-2 border-solid border-black me-5">
+                      <div className="px-4 py-2 rounded-full border-2 border-solid border-black">
+                        {items.tableNo}
+                      </div>
+                    </div>
+                    <div className="text-white">
+                      <p className="">Date : {items.date}</p>
+                      <p className="">Time : {items.time}</p>
+                      <p className="">No. of People - {items.people}</p>
+                    </div>
                   </div>
+                  <div className="flex justify-end gap-4 mb-2">
+                    <NavLink to="/order">
+                      <Button
+                        title="Order"
+                        btn_class="rounded-2xl bg-[#63898c] text-white py-1 px-3 uppercase"
+                        btn_type="button"
+                      />
+                    </NavLink>
+                    <Button
+                      title="x"
+                      btn_class="rounded-2xl bg-red-600 text-white py-1 px-3 uppercase"
+                      btn_type="button"
+                    />
+                  </div>
+                  <hr />
+
                 </div>
-                <div className="text-white">
-                  <p className="font-sans">Date : {items.date}</p>
-                  <p className="font-sans">Time : {items.time}</p>
-                  <p className="font-sans">No. of People - {items.people}</p>
-                </div>
-              </div>
-              <div className="flex justify-end gap-4 mb-2">
-                <NavLink to="/order">
-                <Button
-                  title="Order"
-                  btn_class="rounded-2xl bg-red-400 py-1 px-3 uppercase"
-                  btn_type="button"
-                />
-            </NavLink>
-                <Button
-                  title="x"
-                  btn_class="rounded-2xl bg-red-600 text-white py-1 px-3 uppercase"
-                  btn_type="button"
-                />
-              </div>
-              <hr />
-              
-             </div>
-            ))}
+              ))}
 
             </div>
           </div>

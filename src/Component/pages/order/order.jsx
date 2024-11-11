@@ -19,15 +19,9 @@ import {
   faCirclePlus,
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
-// import TableStatusModal from "../../Common/Modal/tableStatusModal";
+import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
 const Order = () => {
-  // useEffect(() => {
-  //     console.log("test");
 
-  //     return() => {
-  //       console.log("test2");
-  //     }
-  // }, []);
 
   const orderTypes = ["Dine-In", "TakeOut", "Delivery", "Pre-Order"];
   const OrderTable = [
@@ -173,12 +167,13 @@ const Order = () => {
               btn_type="button"
             />
           </NavLink>
-          <div class="overflow-hidden flex justify-between border-solid border-2 w-5/12 border-black rounded-3xl bg-[#f6f6e9] my-3">
-            <input
+          <div class=" flex justify-between border-solid border-2 w-5/12 border-black rounded-3xl bg-[#f6f6e9] my-3">
+            {/* <input
               type="text"
               class="ps-5 py-1 w-full bg-[#f6f6e9]"
               placeholder="Search items from menu"
-            />
+            /> */}
+            <AutoSuggestSearch/>
             <button class="flex items-center justify-center px-4">
               <svg
                 class="h-4 w-4 text-grey-dark"
@@ -200,35 +195,35 @@ const Order = () => {
               <tr className="border-solid border-4 border-[#d79555] border-x-0">
                 <th
                   scope="col"
-                  class="px-6 py-3 border-b-0 border-s-0 border-solid border-4 border-[#d79555] font-sans"
+                  class="px-6 py-3 border-b-0 border-s-0 border-solid border-4 border-[#d79555] "
                 >
                   S. No.
                 </th>
                 <th
                   scope="col"
-                  class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 font-sans"
+                  class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
                 >
                   Items Name
                 </th>
                 <th
                   scope="col"
-                  class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 font-sans"
+                  class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
                 >
                   Note/Add-Ons
                 </th>
                 <th
                   scope="col"
-                  class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 font-sans"
+                  class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
                 >
                   Qty.
                 </th>
                 <th
                   scope="col"
-                  class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 font-sans"
+                  class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
                 >
                   Price
                 </th>
-                <th scope="col" class="px-6 py-3 font-sans">
+                <th scope="col" class="px-6 py-3 ">
                   Amount
                 </th>
               </tr>
@@ -238,39 +233,19 @@ const Order = () => {
                 <tr>
                   <th
                     scope="row"
-                    class="px-6 py-2 font-sans border-solid border-4 border-[#d79555] border-y-0 border-s-0"
+                    class="px-6 py-2  border-solid border-4 border-[#d79555] border-y-0 border-s-0"
                   >
                     {items.serial}
                   </th>
-                  <th class="px-6 py-2  font-sans font-bold text-gray-900 whitespace-nowrap border-solid border-4 border-[#d79555] border-y-0 border-s-0">
+                  <th class="px-6 py-2   font-bold text-gray-900 whitespace-nowrap border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items?.name}
                   </th>
 
-                  <td class="px-6 py-2 font-sans font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
+                  <td class="px-6 py-2  font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.note}
                   </td>
                   {/* <td class="px-6 py-4 border-solid border-4 border-[#d79555] border-y-0 border-s-0">{items.quantity}</td> */}
                   <td class="flex items-center justify-center font-normal py-2 px-6 border-solid border-4 border-[#d79555] border-y-0 border-s-0">
-                    <FontAwesomeIcon
-                      className=" rounded-full bg-white text-green-500 text-lg cursor-pointer"
-                      onClick={() => handleIncrementQuantity(items)}
-                      icon={faCirclePlus}
-                    />
-                    <div className="mx-2">{items?.quantity}</div>
-
-                    <FontAwesomeIcon
-                      className=" rounded-full text-red-500 text-lg cursor-pointer bg-white"
-                      onClick={() => handleDecrementQuantity(items)}
-                      icon={faCircleMinus}
-                    />
-                    <div className="mx-2">{items?.quantity * 2}</div>
-
-                    <FontAwesomeIcon
-                      className="text-red-700 rounded-full text-xl bg-white cursor-pointer"
-                      onClick={() => handleRemoveFromCart(items)}
-                      icon={faCircleXmark}
-                    />
-
                     <FontAwesomeIcon className=" rounded-full bg-white text-green-500 text-lg cursor-pointer" onClick={() => handleIncrementQuantity(items)} icon={faCirclePlus} />
                     <div className="mx-2">{items?.quantity}</div>
 
@@ -279,17 +254,17 @@ const Order = () => {
 
                     <FontAwesomeIcon className="text-red-700 rounded-full text-xl bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faCircleXmark} />
                   </td>
-                  <td class="px-6 py-2 font-sans font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
+                  <td class="px-6 py-2  font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.price}
                   </td>
-                  <td class="px-6 py-2 font-sans font-bold">{items.Amount}</td>
+                  <td class="px-6 py-2  font-bold">{items.Amount}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </div>
-      <div className="flex justify-center fixed bottom-12 left-0 right-0 my-2">
+      <div className="flex justify-center fixed bottom-12 left-0 right-0 my-3">
         <NavLink to="/chef">
         <Button
           title="Save & Generate KOT"
@@ -317,7 +292,7 @@ const Order = () => {
         <Button
           title="Cancel"
           btn_type="button"
-          btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-white px-3 py-1 ms-8"
+          btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-sm text-white px-3 py-1 ms-8"
         />
         </NavLink>
 
