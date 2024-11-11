@@ -129,13 +129,13 @@ const Chef = ({ cart, chef }) => {
                   />
                 </div>
                 <div className="col-span-3">
-                  <div className="flex justify-between ms-1 me-3 font-sans">
+                  <div className="flex justify-between ms-1 me-3 ">
                     <div className="text-left text-xl truncate w-36 uppercase  tracking-wider">
                       {item.food}
                     </div>
                     Qty - {item.quantity}
                   </div>
-                  <div className="font-[prompt] mx-1"> {item.category}</div>
+                  <div className=" mx-1"> {item.category}</div>
                 </div>
               </div>
 

@@ -160,28 +160,28 @@ const Invoice = ({ cart }) => {
         </thead>
         <tbody className=''>
           <tr className=" border-b border-gray-300">
-            <td className='font-[prompt] font-semibold'>Item 1</td>
-            <td className=" text-base font-semibold  font-[prompt] text-center">2</td>
-            <td className=" text-base font-semibold  font-[prompt] text-right">120</td>
-            <td className=" text-base font-semibold  font-[prompt] text-right">240</td>
+            <td className=' font-semibold'>Item 1</td>
+            <td className=" text-base font-semibold   text-center">2</td>
+            <td className=" text-base font-semibold   text-right">120</td>
+            <td className=" text-base font-semibold   text-right">240</td>
           </tr>
           <tr className=" border-b border-gray-300">
-            <td className='font-[prompt] font-semibold'>Item 1</td>
-            <td className=" text-base font-semibold  font-[prompt] text-center">2</td>
-            <td className=" text-base font-semibold  font-[prompt] text-right">120</td>
-            <td className=" text-base font-semibold  font-[prompt] text-right">240</td>
+            <td className=' font-semibold'>Item 1</td>
+            <td className=" text-base font-semibold   text-center">2</td>
+            <td className=" text-base font-semibold   text-right">120</td>
+            <td className=" text-base font-semibold   text-right">240</td>
           </tr>
           <tr className=" border-b border-gray-300">
-            <td className='font-[prompt] font-semibold'>Item 1</td>
-            <td className=" text-base font-semibold  font-[prompt] text-center">2</td>
-            <td className=" text-base font-semibold  font-[prompt] text-right">120</td>
-            <td className=" text-base font-semibold  font-[prompt] text-right">240</td>
+            <td className=' font-semibold'>Item 1</td>
+            <td className=" text-base font-semibold   text-center">2</td>
+            <td className=" text-base font-semibold   text-right">120</td>
+            <td className=" text-base font-semibold   text-right">240</td>
           </tr>
           <tr className=" border-b border-gray-300">
-            <td className='font-[prompt] font-semibold'>Item 1</td>
-            <td className=" text-base font-semibold  font-[prompt] text-center">2</td>
-            <td className=" text-base font-semibold  font-[prompt] text-right">120</td>
-            <td className=" text-base font-semibold  font-[prompt] text-right">240</td>
+            <td className=' font-semibold'>Item 1</td>
+            <td className=" text-base font-semibold   text-center">2</td>
+            <td className=" text-base font-semibold   text-right">120</td>
+            <td className=" text-base font-semibold   text-right">240</td>
           </tr>
         </tbody>
       </table>
@@ -190,12 +190,12 @@ const Invoice = ({ cart }) => {
       {/* Totals */}
       <div className="text-sm my-2">
         <p className="flex justify-between my-2">
-          <span className=" font-semibold tracking-wider font-[prompt]">Total Quantity:</span> <span>8</span>
+          <span className=" font-semibold tracking-wider ">Total Quantity:</span> <span>8</span>
         </p>
         <p className="flex justify-between my-2">
-          <span className=" font-semibold tracking-wider font-[prompt]">Tax:</span> <span>Rs.40</span>
+          <span className=" font-semibold tracking-wider ">Tax:</span> <span>Rs.40</span>
         </p>
-        <p className="flex justify-between my-2  tracking-wider font-[prompt] text-lg">
+        <p className="flex justify-between my-2  tracking-wider  text-lg">
           <span>SUB-TOTAL:</span> <span>Rs. 1000</span>
         </p>
       </div>

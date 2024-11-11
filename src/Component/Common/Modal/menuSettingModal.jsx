@@ -30,7 +30,7 @@ const MenuButtonData = [
     <>
       <div className=" relative flex justify-end items-center">
         <button
-          className="bg-red-500 hover:bg-red-700 py-1 px-2 text-sm font-sans font-semibold rounded flex flex-col justify-center items-center"
+          className="bg-red-500 hover:bg-red-700 py-1 px-2 text-sm  font-semibold rounded flex flex-col justify-center items-center"
           onClick={handleButtonClick}
         >
           <img src={Setting} alt="Loading" />
@@ -64,7 +64,7 @@ const MenuButtonData = [
                     className="h-10 w-10 rounded-full me-3"
                     alt="Loading"
                   />
-                  <p className="text-xl font-sans text-white">Menu settings</p>
+                  <p className="text-xl  text-white">Menu settings</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mt-3">
                     {MenuButtonData.map((item, index) => (

@@ -69,7 +69,7 @@ const ApplyOffer = () => {
 
                   <Button
                     title="Continue"
-                    btn_class="rounded-2xl bg-[#63898c] py-1 px-4 text-xl font-normal mt-3 font-[prompt]"
+                    btn_class="rounded-2xl bg-[#63898c] py-1 px-4 text-xl font-normal mt-3 "
                     onClick={handleModalClose}
                   />
               </div>

@@ -16,20 +16,18 @@
   }
 
   @font-face {
-    font-family: 'Anton';
-    src: url('../src/Component/assets/Font/Anton-Regular.ttf') format('truetype');
-    /* Add other formats if needed */
+    font-family: 'Poppins';
+    src: url('../src/Component/assets/Font/Poppins-Regular.ttf') format('truetype');
   }
   
  *{
-  font-family: "Anton";
+  font-family: "Poppins";
  }
 
  body{
   /* overflow-y: hidden; */
  }
-
-
+ 
  .loader {
   background-image: url(../../food-fusion/src/Component/assets/Video/loader1.gif);
   width: 100%;

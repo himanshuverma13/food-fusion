@@ -255,13 +255,13 @@ const Menu = () => {
             <div className="bg-white border-solid border-2 border-[#544013] rounded-xl flex items-center p-1">
               <img src={menu.image} className="h-12 me-2" alt="Loading" />
               <div>
-                <p className="font-sans uppercase text-lg tracking-wide font-semibold">
+                <p className=" uppercase text-lg tracking-wide font-semibold">
                   {menu.title}
                 </p>
-                <p className="font-sans text-sm tracking-wide truncate">
+                <p className=" text-sm tracking-wide">
                   {menu.description}
                 </p>
-                <p className="text-green-500 text-lg font-sans mt-2">
+                <p className="text-green-500 text-lg  mt-2">
                   {menu.price}
                 </p>
               </div>

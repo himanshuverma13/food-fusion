@@ -37,7 +37,7 @@ import SplitBill from "../../Common/Modal/splitBillModal";
 import PaymentModal from "../../Common/Modal/paymentModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-// import TableStatusModal from "../../Common/Modal/tableStatusModal";
+import TableStatusModal from "../../Common/Modal/tableStatusModal";
 import ApplyOffer from "../../Common/Modal/applyOfferModal";
 
 const Category = ({ cart }) => {
@@ -229,7 +229,7 @@ const Category = ({ cart }) => {
       <Navbar />
 
       {/* Table Status Modal Button */}
-      {/* <TableStatusModal/> */}
+      <TableStatusModal/>
 
       <div className=" border-solid border-4 px-2 pb-4 mx-3 border-[#544013]">
         <p className="text-lg text-[#544013]">Generate Order</p>
@@ -297,12 +297,12 @@ const Category = ({ cart }) => {
                         />
                         <div className="mx-1">
                           <p className="text-[#544013] text-start text-xl">{food?.name}</p>
-                          <p className="text-sm font-sans">
+                          <p className="text-sm ">
                             {food?.description}
                           </p>
                           <div className="text-end">
                             <Button
-                              btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-sans px-4 py-1 mt-2"
+                              btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase  px-4 py-1 mt-2"
                               btn_type="button"
                               title="Add"
                             />
@@ -421,18 +421,18 @@ const Category = ({ cart }) => {
                   <Button
                     title="Save & Generate KOT"
                     btn_type="button"
-                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm tracking-wider uppercase"
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm uppercase"
                   />
                   </NavLink>
                   <Button
                     title="Save & Print Bill"
                     btn_type="button"
-                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm tracking-wider uppercase"
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm uppercase"
                   />
                   <Button
                     title="Save & Generate Reciept"
                     btn_type="button"
-                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm tracking-wider uppercase"
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm uppercase"
                   />
                   <Button
                     title="x"
