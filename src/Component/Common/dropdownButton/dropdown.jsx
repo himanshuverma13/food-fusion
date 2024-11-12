@@ -22,7 +22,7 @@ const DropdownButton = ({ options, buttonLabel }) => {
       <div>
         <button
           type="button"
-          className="inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-[#ede9dd] px-5 py-1 tracking-wider text-[#544013] shadow-sm ring-1 ring-inset ring-[#cd3f14] hover:bg-[#f6d8ba]"
+          className="inline-flex w-full justify-center items-center font-bold gap-x-1.5 rounded-md bg-[#ede9dd] px-5 py-1 tracking-wider text-[#544013] shadow-sm ring-1 ring-inset ring-[#cd3f14] hover:bg-[#f6d8ba]"
           aria-expanded={isDropdownOpen}
           aria-haspopup="true"
           onClick={toggleDropdown}

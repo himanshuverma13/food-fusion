@@ -21,13 +21,13 @@ const StatusFooter = ({ cart }) => {
         onMouseLeave={() => setActiveStatus(false)}
       >
         <div className="flex justify-between items-center">
-          <span className=" tracking-wider text-center text-green-800">
+          <span className=" tracking-wider font-bold text-center text-white">
             Active tables <div>12</div>
           </span>
-          <span className=" tracking-wider text-center text-red-600">
+          <span className=" tracking-wider font-bold text-center text-white">
             Available tables <div>20</div>
           </span>
-          <span className=" tracking-wider text-center text-white">
+          <span className=" tracking-wider font-bold text-center text-white">
             Reservations <div>20</div>
           </span>
           <div className="flex items-center border bg-[#63898c] border-gray-300 rounded-full py-0 px-1">

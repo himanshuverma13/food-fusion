@@ -71,7 +71,7 @@ const Table = ({ cart }) => {
         <div className="flex justify-center items-center">
           <div className="circle-container grid grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-7 w-3/4 ">
             {TableData.map((items, index) => (
-              <div>
+              <div className="cursor-pointer">
                 <svg   viewBox="-7 0 27 10">
                   <defs >
                     <circle  id="circle" cx="5" cy="5" r="4" strokeWidth="1.5" fill="transparent" />
@@ -85,7 +85,7 @@ const Table = ({ cart }) => {
                   <circle onClick={() => GetTableNo(items)} cx="5" cy="5" r="3" stroke="black" strokeWidth="0.2" fill="transparent" />
                   <circle onClick={() => GetTableNo(items)} cx="5" cy="5" r="2.5" stroke="black" strokeWidth="0.1" fill="transparent" />
 
-                  <text onClick={() => GetTableNo(items)} x="5" y="6" textAnchor="middle" fontSize="2" fill="black">{items.table_Number}</text>
+                  <text onClick={() => GetTableNo(items)} x="5" y="5.8" textAnchor="middle" fontSize="2" className="font-bold" fill="black">{items.table_Number}</text>
                 </svg>
               </div>
             ))}

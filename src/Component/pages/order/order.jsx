@@ -23,7 +23,7 @@ import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSear
 const Order = () => {
 
 
-  const orderTypes = ["Dine-In", "TakeOut", "Delivery", "Pre-Order"];
+  const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
   const OrderTable = [
     {
       serial: 1,
@@ -93,11 +93,11 @@ const Order = () => {
       <div className="border-solid border-4 border-[#544013] bg-[#f6f6e9] p-2 m-3">
         <div className="flex justify-between my-2">
           <div>
-            <p className="text-xl text-[#544013]">Generate Order</p>
+            <p className="text-xl font-bold text-[#544013]">Generate Order</p>
           </div>
           <div className="flex">
             <DropdownButton options={orderTypes} buttonLabel="Order Type" />
-            <p className="text-xl text-[#544013]">Order No. : 123</p>
+            <p className="text-xl font-bold text-[#544013]">Order No. : 123</p>
           </div>
         </div>
         {/* user Form start*/}
@@ -105,7 +105,7 @@ const Order = () => {
           <div class="group flex items-center">
             <label
               for="name"
-              class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+              class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
             >
               Costumer Name :
             </label>
@@ -118,7 +118,7 @@ const Order = () => {
           <div class="group flex items-center">
             <label
               for="phone_number"
-              class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+              class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
             >
               Phone Number :
             </label>
@@ -131,7 +131,7 @@ const Order = () => {
           <div class="group flex items-center">
             <label
               for="email"
-              class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+              class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
             >
               E-mail Address :
             </label>
@@ -144,7 +144,7 @@ const Order = () => {
           <div class="group flex items-center">
             <label
               for="table_Number"
-              class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+              class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
             >
               Table No. :
             </label>
@@ -168,11 +168,7 @@ const Order = () => {
             />
           </NavLink>
           <div class=" flex justify-between border-solid border-2 w-5/12 border-black rounded-3xl bg-[#f6f6e9] my-3">
-            {/* <input
-              type="text"
-              class="ps-5 py-1 w-full bg-[#f6f6e9]"
-              placeholder="Search items from menu"
-            /> */}
+      
             <AutoSuggestSearch/>
             <button class="flex items-center justify-center px-4">
               <svg
@@ -224,6 +220,7 @@ const Order = () => {
                   Price
                 </th>
                 <th scope="col" class="px-6 py-3 ">
+             
                   Amount
                 </th>
               </tr>
@@ -269,14 +266,14 @@ const Order = () => {
         <Button
           title="Save & Generate KOT"
           btn_type="button"
-          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm tracking-wider uppercase me-8"
+          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase me-8"
         />
         </NavLink>
         <NavLink>        
           <Button
           title="Save & Print Bill"
           btn_type="button"
-          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm tracking-wider uppercase mx-8"
+          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
         />
         </NavLink>
 
@@ -284,16 +281,16 @@ const Order = () => {
         <Button
           title="Save & Generate Reciept"
           btn_type="button"
-          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm tracking-wider uppercase mx-8"
+          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
         />
         </NavLink>
 
         <NavLink>        
-        <Button
+        {/* <Button
           title="Cancel"
           btn_type="button"
-          btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-sm text-white px-3 py-1 ms-8"
-        />
+          btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-sm text-white font-bold px-3 py-1 ms-8"
+        /> */}
         </NavLink>
 
       </div>

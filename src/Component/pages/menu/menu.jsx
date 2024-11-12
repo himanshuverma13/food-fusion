@@ -9,7 +9,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // Images
-// import Setting from "../../assets/Images/sideNavImg/navSetting.svg";
 // import Food1 from "../../assets/Images/menu/1.svg";
 import Food1 from "../../assets/Images/menu/dish.svg";
 import Food2 from "../../assets/Images/menu/seafood.svg";
@@ -133,7 +132,7 @@ const Menu = () => {
       image: Dish,
       title: "Item 5",
       price: "Rs 1300",
-      description: "Delicious salad with mixed greens, dressing, and toppings. asdfghertxbcnmxfdrtidfjgkh",
+      description: "Delicious salad with mixed greens, dressing, and toppings.",
     },
   ];
 
@@ -186,7 +185,7 @@ const Menu = () => {
       {/* <TableStatusModal /> */}
       <div className="mx-14">
         <div className="flex items-center">
-          <p className="text-xl uppercase me-1">Menu</p>
+          <p className="text-xl font-bold uppercase me-1">Menu</p>
           <img src={MenuImg} className="h-8" alt="Loading" />
         </div>
 
@@ -239,7 +238,7 @@ const Menu = () => {
                   className="flex items-center justify-center ms-2 mt-1 py-1 border-solid border-2 border-[#544013] rounded-xl bg-[#ede9dd] hover:bg-[#ad7945]"
                 >
                   <img src={items.image} className="h-8 me-2" alt="Loading" />
-                  <p className="text-lg tracking-wide uppercase truncate">
+                  <p className="text-lg font-bold tracking-wide uppercase truncate">
                     {items.title}
                   </p>
                 </a>
@@ -255,13 +254,13 @@ const Menu = () => {
             <div className="bg-white border-solid border-2 border-[#544013] rounded-xl flex items-center p-1">
               <img src={menu.image} className="h-12 me-2" alt="Loading" />
               <div>
-                <p className=" uppercase text-lg tracking-wide font-semibold">
+                <p className="font-sans uppercase text-lg tracking-wide font-semibold">
                   {menu.title}
                 </p>
-                <p className=" text-sm tracking-wide">
+                <p className="font-sans text-sm tracking-wide">
                   {menu.description}
                 </p>
-                <p className="text-green-500 text-lg  mt-2">
+                <p className="text-green-500 text-lg font-sans mt-2">
                   {menu.price}
                 </p>
               </div>
