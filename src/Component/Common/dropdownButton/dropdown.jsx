@@ -1,14 +1,22 @@
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
 const DropdownButton = ({ options, buttonLabel }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selected, setSelected] = useState(buttonLabel);
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
+    // Function to handle selecting an option
+    const handleSelect = (person) => {
+      setSelected(person); // Update the selected person
+      setIsDropdownOpen(false);
+    };
+
   const handleBlur = (e) => {
-    // Close dropdown when clicking outside or when the button loses focus
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setIsDropdownOpen(false);
     }
@@ -16,54 +24,38 @@ const DropdownButton = ({ options, buttonLabel }) => {
 
   return (
     <div
-      className="relative inline-block text-left mx-2"
-      onBlur={handleBlur} // Handles when the focus is lost
+      className="relative inline-block mx-2"
+      tabIndex={0} // Make the div focusable
+      onBlur={handleBlur} // Handle blur to detect when the dropdown loses focus
     >
-      <div>
-        <button
-          type="button"
-          className="inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-[#ede9dd] px-5 py-1 tracking-wider text-[#544013] shadow-sm ring-1 ring-inset ring-[#cd3f14] hover:bg-[#f6d8ba]"
-          aria-expanded={isDropdownOpen}
-          aria-haspopup="true"
-          onClick={toggleDropdown}
-        >
-          {buttonLabel}
-          <svg
-            className="-mr-1 h-5 w-5 text-[#544013]"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
+      <div
+        onClick={toggleDropdown}
+        className="relative tracking-wider cursor-pointer rounded-md w-full truncate py-1.5 pl-5 pr-8 text-left text-gray-900 shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm ring-[#cd3f14] hover:bg-[#f6d8ba]"
+      >
+        <span className="flex items-center">
+          <span className="block tracking-wider">{selected}</span>
+        </span>
+        <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+          <FontAwesomeIcon className='text-xs' icon={faChevronDown} />
+        </span>
       </div>
       {isDropdownOpen && (
         <div
-          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-[#f6f6e9] shadow-lg ring-1 ring-black ring-opacity-5"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="menu-button"
-          tabIndex="-1"
+          className="absolute z-10 mt-1 w-full rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+          // tabIndex={-1} // To allow this dropdown to be focusable for blur event
         >
-          <div className="py-1" role="none">
-            {options.map((option, index) => (
-              <a
-                key={index}
-                href="#"
-                className="block px-4 py-2 text-sm text-gray-700"
-                role="menuitem"
-                tabIndex="-1"
-                id={`menu-item-${index}`}
-              >
-                {option}
-              </a>
-            ))}
-          </div>
+          {options?.map((person, index) => (
+            <div
+              key={index}
+              className="cursor-pointer select-none py-2 px-3 w-full text-black"
+              tabIndex={0} // Make each option focusable
+              onClick={() => handleSelect(person)}
+            >
+              <div className="flex items-center w-full">
+                <span className="block text-black">{person}</span>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>
