@@ -4,7 +4,6 @@ import PaymentModal from "../Modal/paymentModal";
 import footerBot from "../../assets/Images/skill-bot.svg"
 
 const StatusFooter = ({ cart }) => {
-  console.log("cart: ", cart);
   const [ActiveStatus, setActiveStatus] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const openModal = (item) => {

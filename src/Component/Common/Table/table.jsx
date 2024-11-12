@@ -67,7 +67,7 @@ const Table = ({ cart }) => {
 
   return (
     <>
-      <div className="container px-3">
+      <div className=" px-3">
         <div className="flex justify-center items-center">
           <div className="circle-container grid grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-7 w-3/4 ">
             {TableData.map((items, index) => (
