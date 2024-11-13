@@ -30,7 +30,7 @@ const DropdownButton = ({ options, buttonLabel }) => {
     >
       <div
         onClick={toggleDropdown}
-        className="relative tracking-wider cursor-pointer rounded-md w-full truncate py-1.5 pl-5 pr-8 text-left text-gray-900 shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm ring-[#cd3f14] hover:bg-[#f6d8ba]"
+        className="relative tracking-wider cursor-pointer rounded-md w-full truncate py-1.5 pl-6 pr-9 text-left text-gray-900 shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm ring-[#cd3f14] hover:bg-[#f6d8ba]"
       >
         <span className="flex items-center">
           <span className="block tracking-wider">{selected}</span>
@@ -47,7 +47,7 @@ const DropdownButton = ({ options, buttonLabel }) => {
           {options?.map((person, index) => (
             <div
               key={index}
-              className="cursor-pointer select-none py-2 px-3 w-full text-black"
+              className="cursor-pointer select-none py-2 px-2 w-full text-black"
               tabIndex={0} // Make each option focusable
               onClick={() => handleSelect(person)}
             >
