@@ -9,7 +9,6 @@ function App() {
       <Provider store={store}>
         <div className="background-image">
           <RootRoutes/>
-          {/* <AutoSuggestSearch/> */}
         </div>
       </Provider>
     </>

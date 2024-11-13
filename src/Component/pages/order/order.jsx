@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
 import Button from "../../Common/Button/button";
@@ -18,10 +18,14 @@ import {
   faCircleMinus,
   faCirclePlus,
   faCircleXmark,
+  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
-const Order = () => {
+import CategoryModal from "../../Common/Modal/categoryModal";
+const Order = ({cart}) => {
+  console.log('cart: ', cart);
 
+  const [isOpen, setIsOpen] = useState(false);
 
   const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
   const OrderTable = [
@@ -86,6 +90,16 @@ const Order = () => {
   const handleRemoveFromCart = (id) => {
     dispatch(remove(id?.id));
   };
+
+  //  serchbar modal functionality
+
+  const openModal = (food) => {
+    // setSelectedFoodItem(food);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => setIsOpen(false); 
+
   return (
     <>
       <Navbar />
@@ -168,8 +182,8 @@ const Order = () => {
             />
           </NavLink>
           <div class=" flex justify-between border-solid border-2 w-5/12 border-black rounded-3xl bg-[#f6f6e9] my-3">
-      
-            <AutoSuggestSearch/>
+
+            <AutoSuggestSearch />
             <button class="flex items-center justify-center px-4">
               <svg
                 class="h-4 w-4 text-grey-dark"
@@ -182,10 +196,17 @@ const Order = () => {
             </button>
           </div>
         </div>
+        {/* Auto Searchbar Modal */}
+        <CategoryModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          // selectedFoodItem={selectedFoodItem}
+          // onSubmit={onSubmit}
+        />
 
         {/* Table View */}
         {/* <h2 class="mt-6 text-2xl text-red-600">Simple Table</h2> */}
-        <div class="h-60 overflow-auto">
+        <div class="h-60 bg-[#ede9dd] overflow-auto">
           <table class="w-full text-sm text-center text-[#544013] border-solid border-4 border-[#d79555] border-x-0 border-b-0">
             <thead class="text-lg text-[#544013] uppercase bg-[#ede9dd]">
               <tr className="border-solid border-4 border-[#d79555] border-x-0">
@@ -226,20 +247,22 @@ const Order = () => {
               </tr>
             </thead>
             <tbody className="bg-[#ede9dd] overflow-auto">
-              {OrderTable?.map((items, index) => (
-                <tr>
+              { cart?.itemsInCart?.map((items, index) => (
+                <tr key={index}>
                   <th
                     scope="row"
                     class="px-6 py-2  border-solid border-4 border-[#d79555] border-y-0 border-s-0"
                   >
-                    {items.serial}
+                    {++index}
                   </th>
                   <th class="px-6 py-2   font-bold text-gray-900 whitespace-nowrap border-solid border-4 border-[#d79555] border-y-0 border-s-0">
-                    {items?.name}
+                    {items?.food}
                   </th>
 
                   <td class="px-6 py-2  font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
-                    {items.note}
+                    {items?.category?.map((category) =>
+                      category
+                    )}
                   </td>
                   {/* <td class="px-6 py-4 border-solid border-4 border-[#d79555] border-y-0 border-s-0">{items.quantity}</td> */}
                   <td class="flex items-center justify-center font-normal py-2 px-6 border-solid border-4 border-[#d79555] border-y-0 border-s-0">
@@ -247,14 +270,13 @@ const Order = () => {
                     <div className="mx-2">{items?.quantity}</div>
 
                     <FontAwesomeIcon className=" rounded-full text-red-500 text-lg cursor-pointer bg-white" onClick={() => handleDecrementQuantity(items)} icon={faCircleMinus} />
-                    <div className="mx-2">{items?.quantity * 2}</div>
 
-                    <FontAwesomeIcon className="text-red-700 rounded-full text-xl bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faCircleXmark} />
+                    <FontAwesomeIcon className="text-red-700 rounded-full ms-3 text-base bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faTrashCan} />
                   </td>
                   <td class="px-6 py-2  font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.price}
                   </td>
-                  <td class="px-6 py-2  font-bold">{items.Amount}</td>
+                  <td class="px-6 py-2  font-bold">{items?.quantity * 2}</td>
                 </tr>
               ))}
             </tbody>
@@ -268,8 +290,9 @@ const Order = () => {
           btn_type="button"
           btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase me-8"
         />
+         
         </NavLink>
-        <NavLink>        
+        <NavLink>
           <Button
           title="Save & Print Bill"
           btn_type="button"
@@ -299,4 +322,8 @@ const Order = () => {
   );
 };
 
-export default Order;
+const mapStateToProps = (state) => ({
+  cart: state.cart,
+});
+
+export default connect(mapStateToProps, {})(Order);

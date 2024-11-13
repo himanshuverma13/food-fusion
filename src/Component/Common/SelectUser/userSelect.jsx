@@ -12,7 +12,7 @@ const UserSelect = () => {
     const  navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false);
     const [selectedUser, setselectedUser] = useState();
-    const openModal = (food) => {
+    const openModal = () => {
         setIsOpen(true);
     };
 

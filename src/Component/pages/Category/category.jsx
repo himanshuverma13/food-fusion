@@ -36,7 +36,7 @@ import Tab7 from "../../assets/Images/menu/soups.svg";
 import SplitBill from "../../Common/Modal/splitBillModal";
 import PaymentModal from "../../Common/Modal/paymentModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleMinus, faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCircleMinus, faCirclePlus, faCircleXmark, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import TableStatusModal from "../../Common/Modal/tableStatusModal";
 import ApplyOffer from "../../Common/Modal/applyOfferModal";
 
@@ -256,7 +256,7 @@ const Category = ({ cart }) => {
                   </button>
                 </div>
               </div>
-              <DropdownButton options={filter} buttonLabel="Filters" />
+              <DropdownButton options={filter} className="w-20" buttonLabel="Filters" />
             </div>
             <div className="flex">
               {/* Side Tabs */}
@@ -358,12 +358,11 @@ const Category = ({ cart }) => {
                           <FontAwesomeIcon className=" rounded-full text-red-500 text-lg cursor-pointer bg-white" onClick={() => handleDecrementQuantity(items)} icon={faCircleMinus} />
                           <div className="mx-2">{items?.quantity}</div>
                           <FontAwesomeIcon className=" rounded-full bg-white text-green-500 text-lg cursor-pointer" onClick={() => handleIncrementQuantity(items)} icon={faCirclePlus} />
-                          <div className="mx-2">{items?.quantity * 2}</div>
                           {/* <span
                             className="px-2 text-white rounded-full text-base bg-red-600 cursor-pointer"
                             onClick={() => handleRemoveFromCart(items)}
                           > */}
-                            <FontAwesomeIcon className="text-red-700 rounded-full text-xl bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faCircleXmark} />
+                            <FontAwesomeIcon className="text-red-700 rounded-full text-base ms-3 bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faTrashCan} />
                           {/* </span> */}
                         </td>
                         <td class="font-normal py-2 px-6">{items.amount}</td>

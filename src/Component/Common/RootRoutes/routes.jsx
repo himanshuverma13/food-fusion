@@ -17,6 +17,7 @@ import Order from '../../pages/order/order';
 import OrderHistory from '../../pages/OrderHistory/orderHistory';
 import EmployeeTable from '../../pages/Employee/employee';
 import Loader from '../../Common/Loader/loader';
+import Dashboard from '../../pages/Admin/dashboard';
 
 
 const RootRoutes = () => {
@@ -49,6 +50,8 @@ const RootRoutes = () => {
           <Route path="/order-history" element={<OrderHistory />} />
           <Route path="/employee" element={<EmployeeTable />} />
           <Route path="*" element={<Home />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          
         </Routes>
       </Router>
     </>
