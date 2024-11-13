@@ -27,16 +27,16 @@ const OrderHistory = ({ cart }) => {
     };
     const OrderStatusData = [
         {
-            class: "bg-red-500",
+            class: "bg-green-500",
             status: "PickUp",
         },
         {
-            class: "bg-orange-400",
+            class: "bg-red-500",
             status: "Delivery",
         },
         {
-            class: "bg-green-400",
-            status: "Dine-In",
+            class: "bg-orange-400",
+            status: "Dine-In",  
         },
     ];
     return (
@@ -91,7 +91,7 @@ const OrderHistory = ({ cart }) => {
                                     <div
                                         className={`rounded-full p-2 h-2 w-2 ${items.class}`}
                                     ></div>
-                                    <p className="text-base text-[#544013] ms-2 uppercase tracking-wider">
+                                    <p className="text-base font-bold text-[#544013] ms-2 uppercase tracking-wider">
                                         {items.status}
                                     </p>
                                 </div>

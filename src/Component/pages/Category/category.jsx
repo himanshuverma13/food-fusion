@@ -117,7 +117,7 @@ const Category = ({ cart }) => {
         description: "Add some description of dish",
         items: [" half ", " full ", " quater "],
       },
-      {
+      { 
         id: 13,
         name: "brownie",
         image: Brownie,
@@ -232,7 +232,7 @@ const Category = ({ cart }) => {
       <TableStatusModal/>
 
       <div className=" border-solid border-4 px-2 pb-4 mx-3 border-[#544013]">
-        <p className="text-lg text-[#544013]">Generate Order</p>
+        <p className="text-xl font-bold text-[#544013]">Generate Order</p>
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-7 border-solid border-2 border-black rounded-2xl bg-[#ede9dd]">
             <div className="flex justify-between py-1">
@@ -260,7 +260,7 @@ const Category = ({ cart }) => {
             </div>
             <div className="flex">
               {/* Side Tabs */}
-              <div className="w-1/4 h-[26rem] overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
+              <div className="w-1/4 h-[26rem] font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
                 {tabs.map((tab) => (
                   <button
                     key={tab.name}
@@ -296,13 +296,13 @@ const Category = ({ cart }) => {
                           alt="Loading"
                         />
                         <div className="mx-1">
-                          <p className="text-[#544013] text-start text-xl">{food?.name}</p>
+                          <p className="text-[#544013] text-start font-bold text-xl">{food?.name}</p>
                           <p className="text-sm ">
                             {food?.description}
                           </p>
                           <div className="text-end">
-                            <Button
-                              btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase  px-4 py-1 mt-2"
+                            <Button 
+                              btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-bold px-4 py-1 mt-2"
                               btn_type="button"
                               title="Add"
                             />
@@ -322,7 +322,7 @@ const Category = ({ cart }) => {
 
               <DropdownButton options={tableOptions} buttonLabel="Table No." />
 
-              <p className="text-xl text-[#544013]">Order No. : 123</p>
+              <p className="text-xl text-[#544013] font-bold">Order No. : 123</p>
             </div>
             <hr className="p-0.5 bg-black my-0.5" />
 
@@ -332,17 +332,17 @@ const Category = ({ cart }) => {
                 <table class="w-full row-span-2 text-sm text-center text-[#544013]">
                   <thead class="text-lg text-[#544013] bg-[#ede9dd]">
                     <tr>
-                      <th scope="col" class="px-6 text-base font-normal">
+                      <th scope="col" class="px-6 text-base font-bold">
                         Item
                       </th>
-                      <th scope="col" class="px-6 text-base font-normal">
+                      <th scope="col" class="px-6 text-base font-bold">
                         Price
                       </th>
-                      <th scope="col" class="px-6 text-base font-normal">
+                      <th scope="col" class="px-6 text-base font-bold">
                         Qty.
                       </th>
 
-                      <th scope="col" class="px-6 text-base font-normal">
+                      <th scope="col" class="px-6 text-base font-bold">
                         Amount
                       </th>
                     </tr>
@@ -374,10 +374,10 @@ const Category = ({ cart }) => {
 
               <div className="row-start-3">
                 <ul>
-                  <li className="mx-2 bg-[#f6f6e9] w-32 text-sm text-[#544013] border-2 border-[#d79555] rounded-lg py-1 px-4">
+                  <li className="mx-2 bg-[#f6f6e9] w-32 text-sm font-bold text-[#544013] border-2 border-[#d79555] rounded-lg py-1 px-4">
                     Total Items: {cart?.totalCount}
                   </li>
-                  <li className="mx-7 my-0.5 text-base flex justify-between text-[#544013]">
+                  <li className="mx-7 my-0.5 text-base font-bold flex justify-between text-[#544013]">
                     <span>Sub Total:</span>
                     <span className="mx-7">{cart?.totalCount * 2}</span>
                   </li>
@@ -399,7 +399,7 @@ const Category = ({ cart }) => {
                       <hr className="border-dashed border-1 border-black" />
                       <div className="flex space-x-4 justify-evenly py-0.5">
                         {['Cash', 'UPI', 'Card'].map((method) => (
-                          <label key={method} className="flex items-center">
+                          <label key={method} className="flex items-center font-bold">
                             <input
                               type="checkbox"
                               value={method}
@@ -420,24 +420,24 @@ const Category = ({ cart }) => {
                   <Button
                     title="Save & Generate KOT"
                     btn_type="button"
-                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm uppercase"
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
                   />
                   </NavLink>
                   <Button
                     title="Save & Print Bill"
                     btn_type="button"
-                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm uppercase"
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
                   />
                   <Button
                     title="Save & Generate Reciept"
                     btn_type="button"
-                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm uppercase"
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
                   />
-                  <Button
+                  {/* <Button
                     title="x"
                     btn_type="button"
                     btn_class="border-2 border-black border-solid rounded-full bg-red-500 text-black px-3"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

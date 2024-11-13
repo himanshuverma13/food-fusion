@@ -27,7 +27,7 @@ const Order = ({cart}) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const orderTypes = ["Dine-In", "TakeOut", "Delivery", "Pre-Order"];
+  const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
   const OrderTable = [
     {
       serial: 1,
@@ -107,11 +107,11 @@ const Order = ({cart}) => {
       <div className="border-solid border-4 border-[#544013] bg-[#f6f6e9] p-2 m-3">
         <div className="flex justify-between my-2">
           <div>
-            <p className="text-xl text-[#544013]">Generate Order</p>
+            <p className="text-xl font-bold text-[#544013]">Generate Order</p>
           </div>
           <div className="flex">
             <DropdownButton options={orderTypes} buttonLabel="Order Type" />
-            <p className="text-xl text-[#544013]">Order No. : 123</p>
+            <p className="text-xl font-bold text-[#544013]">Order No. : 123</p>
           </div>
         </div>
         {/* user Form start*/}
@@ -119,7 +119,7 @@ const Order = ({cart}) => {
           <div class="group flex items-center">
             <label
               for="name"
-              class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+              class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
             >
               Costumer Name :
             </label>
@@ -132,7 +132,7 @@ const Order = ({cart}) => {
           <div class="group flex items-center">
             <label
               for="phone_number"
-              class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+              class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
             >
               Phone Number :
             </label>
@@ -145,7 +145,7 @@ const Order = ({cart}) => {
           <div class="group flex items-center">
             <label
               for="email"
-              class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+              class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
             >
               E-mail Address :
             </label>
@@ -158,7 +158,7 @@ const Order = ({cart}) => {
           <div class="group flex items-center">
             <label
               for="table_Number"
-              class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+              class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
             >
               Table No. :
             </label>
@@ -182,6 +182,7 @@ const Order = ({cart}) => {
             />
           </NavLink>
           <div class=" flex justify-between border-solid border-2 w-5/12 border-black rounded-3xl bg-[#f6f6e9] my-3">
+
             <AutoSuggestSearch />
             <button class="flex items-center justify-center px-4">
               <svg
@@ -240,6 +241,7 @@ const Order = ({cart}) => {
                   Price
                 </th>
                 <th scope="col" class="px-6 py-3 ">
+             
                   Amount
                 </th>
               </tr>
@@ -283,34 +285,35 @@ const Order = ({cart}) => {
       </div>
       <div className="flex justify-center fixed bottom-12 left-0 right-0 my-3">
         <NavLink to="/chef">
-          <Button
-            title="Save & Generate KOT"
-            btn_type="button"
-            btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm tracking-wider uppercase me-8"
-          />
+        <Button
+          title="Save & Generate KOT"
+          btn_type="button"
+          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase me-8"
+        />
+         
         </NavLink>
         <NavLink>
           <Button
-            title="Save & Print Bill"
-            btn_type="button"
-            btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm tracking-wider uppercase mx-8"
-          />
-        </NavLink>
-
-        <NavLink>
-          <Button
-            title="Save & Generate Reciept"
-            btn_type="button"
-            btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm tracking-wider uppercase mx-8"
-          />
+          title="Save & Print Bill"
+          btn_type="button"
+          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
+        />
         </NavLink>
 
-        <NavLink>
-          <Button
-            title="Cancel"
-            btn_type="button"
-            btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-sm text-white px-3 py-1 ms-8"
-          />
+        <NavLink>        
+        <Button
+          title="Save & Generate Reciept"
+          btn_type="button"
+          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
+        />
+        </NavLink>
+
+        <NavLink>        
+        {/* <Button
+          title="Cancel"
+          btn_type="button"
+          btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-sm text-white font-bold px-3 py-1 ms-8"
+        /> */}
         </NavLink>
 
       </div>

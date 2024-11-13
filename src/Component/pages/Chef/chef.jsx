@@ -29,7 +29,7 @@ const Chef = ({ cart, chef }) => {
     dispatch(CompleteChefOrder(payload));
     dispatch(add(payload));
   };
-  const filter = ["Dine-In", "TakeOut", "Delivery", "Pre-Order"];
+  const filter = ["Dine-In","Delivery", "Pick-Up"];
   // const dispatch = useDispatch();
 
   const SetTableOnCategory = () => {
@@ -41,15 +41,15 @@ const Chef = ({ cart, chef }) => {
   }
   const OrderStatusData = [
     {
-      class: "bg-red-500",
+      class: "bg-green-500",
       status: "PickUp",
     },
     {
-      class: "bg-orange-400",
+      class: "bg-red-500",      
       status: "Delivery",
     },
     {
-      class: "bg-green-400",
+      class: "bg-orange-400",
       status: "Dine-In",
     },
   ];
@@ -57,8 +57,6 @@ const Chef = ({ cart, chef }) => {
     <>
       <Navbar />
       <div className="px-10">
-        {/* <div className="text-2xl font-bold">Chef</div> */}
-
         <div className="flex justify-between items-center">
           {/* Search bar */}
           <div class="text-black flex justify-around items-center ">
@@ -66,7 +64,7 @@ const Chef = ({ cart, chef }) => {
                   <input
                     type="text"
                     class="px-3 py-1 tracking-wide w-full bg-[#f6f6e9] animate-pulse"
-                    placeholder="Search items from menu"
+                    placeholder="Search "
                   />
                   <button class="flex items-center justify-center px-4">
                     <svg
@@ -96,14 +94,14 @@ const Chef = ({ cart, chef }) => {
         </div>
         {/* Order Status */}
         <div className="flex justify-between">
-            <button className="border-black border-2 p-1 bg-amber-700 tracking-widest text-white" onClick={()=>SendToInvoice()}>ORDER HISTORY</button>
+            <button className="border-black border-2 p-1 font-semibold bg-[#bd8954] tracking-widest text-black" onClick={()=>SendToInvoice()}>ORDER HISTORY</button>
           <div className="grid grid-cols-3 gap-16">
             {OrderStatusData.map((items, index) => (
               <div className="flex items-center justify-end">
                 <div
                   className={`rounded-full p-2 h-2 w-2 ${items.class}`}
                 ></div>
-                <p className="text-lg text-[#544013] ms-2 uppercase tracking-wider">
+                <p className="text-lg font-bold text-[#544013] ms-2 uppercase tracking-wider">
                   {items.status}
                 </p>
               </div>
@@ -114,8 +112,8 @@ const Chef = ({ cart, chef }) => {
           {cart.itemsInCart?.map((item) => (
             <div className="chef-card grid grid-cols-1 grid-rows-4 border-solid rounded-3xl bg-white shadow-xl">
               <div className="border rounded-3xl px-4 py-0.5 m-0.5 bg-[#d79555] text-[#544013]">
-                <div className="text-sm tracking-wider">Order No. 007</div>
-                <div className="flex justify-between text-sm tracking-wider">
+                <div className="text-sm tracking-wider font-semibold">Order No. 007</div>
+                <div className="flex justify-between text-sm tracking-wider font-semibold">
                   <span>Time : 10:10 AM</span>
                   <span>Table No. {item.tableNo}</span>
                 </div>
@@ -144,13 +142,13 @@ const Chef = ({ cart, chef }) => {
                   title="Assign"
                   btn_type="button"
                   onClick={() => handleAssign(item)}
-                  btn_class="rounded-full border-amber-950 tracking-wider px-4 text-white mx-2 my-1 cursor-pointer duration-300  hover:bg-sky-700 bg-red-500"
+                  btn_class="rounded-full border-amber-950 tracking-wider px-4 font-semibold text-white mx-2 my-1 cursor-pointer duration-300  hover:bg-sky-700 bg-red-500"
                 />
                 <Button
                   title="Completed"
                   onClick={() => handleComplete(item)}
                   btn_type="button"
-                  btn_class="rounded-full border-amber-950 tracking-wider px-4 text-black mx-2 my-1 cursor-pointer duration-300 bg-green-500"
+                  btn_class="rounded-full border-amber-950 tracking-wider font-semibold px-4 text-white mx-2 my-1 cursor-pointer duration-300 bg-green-500"
                 />
               </div>
             </div>

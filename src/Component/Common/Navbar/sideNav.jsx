@@ -33,8 +33,8 @@ const SideNavbar = () => {
    </div>
    <div className="row-start-5">
     <ul>
-        <li className='text-center my-2'><img className=' w-6 mx-auto' src={navSetting} alt="loading" /><span className='text-[#cd3f14]'>settings</span></li>
-        <li className='text-center my-2'><img className=' w-6 mx-auto' src={navBack} alt="loading" /><span className='text-[#cd3f14]'>sign out</span></li>
+        <li className='text-center my-2'><img className=' w-6 mx-auto' src={navSetting} alt="loading" /><span className='text-[#cd3f14] text-sm font-bold'>settings</span></li>
+        <li className='text-center my-2'><img className=' w-6 mx-auto' src={navBack} alt="loading" /><span className='text-[#cd3f14] text-sm font-bold'>sign out</span></li>
     </ul>
    </div>
    </>

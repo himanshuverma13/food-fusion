@@ -64,7 +64,7 @@ function TableStatusModal() {
       </button>
       {isOpen && (
         <div className="fixed z-10 top-0 right-0 bottom-0 left-0 bg-gray-500 bg-opacity-75 flex justify-end items-center">
-          <div className="bg-[#2320208f] rounded-lg shadow-lg overflow-auto p-4 w-96 h-2/3 mx-3">
+          <div className="bg-[#2e2c2c8f] rounded-lg shadow-lg overflow-auto p-4 w-96 h-2/3 mx-3">
             <div className="">
               <div className="flex justify-between items-center">
               <h2 className="text-2xl tracking-wider text-white mb-1">
