@@ -5,12 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import SideNavbar from './sideNav';
 
 const Navbar = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  let navigate = useNavigate()
+  const [sidebarOpen, setSidebarOpen] = useState(true); // Default to open sidebar
+  let navigate = useNavigate();
 
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+    setSidebarOpen(!sidebarOpen); // Toggle sidebar visibility
   };
 
   return (
