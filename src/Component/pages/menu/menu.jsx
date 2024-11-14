@@ -10,13 +10,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // Images
 // import Food1 from "../../assets/Images/menu/1.svg";
-import Food1 from "../../assets/Images/menu/dish.svg";
-import Food2 from "../../assets/Images/menu/seafood.svg";
-import Food3 from "../../assets/Images/menu/Appetizers.svg";
-import Food4 from "../../assets/Images/menu/beverages.svg";
-import Food5 from "../../assets/Images/menu/desserts.svg";
-import Food6 from "../../assets/Images/menu/fastfood.svg";
-import Food7 from "../../assets/Images/menu/soups.svg";
+import Snacks from "../../assets/Images/menu/snacks.svg";
+import Desserts from "../../assets/Images/menu/desserts.svg";
+import Appetizers from "../../assets/Images/menu/appetizers.svg";
+import Beverages from "../../assets/Images/menu/beverages.svg";
+import Rice from "../../assets/Images/menu/rice-and-biryani.svg";
+import Breads from "../../assets/Images/menu/breads.svg";
+import Veg from "../../assets/Images/menu/veg.svg";
+import NonVeg from "../../assets/Images/menu/non-veg.svg";
+import Rajasthani from "../../assets/Images/menu/rajasthani.svg";
+import SouthIndian from "../../assets/Images/menu/South indian.svg";
+// import IndoChinese from "../../assets/Images/menu/indo-chinese.svg";
 import Dish from "../../assets/Images/menu/menu-dish.svg";
 import NewOrder from "../../assets/Images/new order.svg";
 import StatusFooter from "../../Common/Footer/statusFooter";
@@ -34,20 +38,20 @@ const Menu = () => {
     dispatch(SetTable(setTableNull));
   };
   const MenuOptions = [
-    { title: "Entrees ", image: Food2 },
-    { title: "Desserts", image: Food1 },
-    { title: "Appetizers", image: Food3 },
-    { title: "Beverages", image: Food4 },
-    { title: "Beverages", image: Food4 },
-    { title: "Caterogies", image: Food5 },
-    { title: "Entrees", image: Food5 },
-    { title: "Entrees", image: Food6 },
-    { title: "Entrees", image: Food7 },
-    { title: "Entrees", image: Food2 },
-    { title: "Entrees", image: Food2 },
-    { title: "Entrees", image: Food2 },
-    { title: "Appetizers", image: Food3 },
-    { title: "Entrees", image: Food2 },
+    { title: "Snacks", image: Snacks },
+    { title: "Desserts", image: Desserts   },
+    { title: "Appetizers", image: Appetizers },
+    { title: "Beverages", image: Beverages },
+    { title: "Breads", image: Breads },
+    { title: "Rice & Biryani", image: Rice },
+    { title: "Vegetarian", image: Veg },
+    { title: "Non-vegetarian", image: NonVeg },
+    { title: "Snacks", image: Snacks },
+    { title: "South Indian", image: SouthIndian },
+    { title: "Rajasthani", image: Rajasthani },
+    { title: "Indo-Chinese Fusion", image: Appetizers },
+    { title: "Appetizers", image: Appetizers },
+    { title: "Desserts", image: Desserts },
   ];
   const MenuItemsData = [
     {
