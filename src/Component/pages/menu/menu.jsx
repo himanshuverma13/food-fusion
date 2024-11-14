@@ -12,7 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 // import Food1 from "../../assets/Images/menu/1.svg";
 import Food1 from "../../assets/Images/menu/dish.svg";
 import Food2 from "../../assets/Images/menu/seafood.svg";
-import Food3 from "../../assets/Images/menu/appetizers.svg";
+import Food3 from "../../assets/Images/menu/Appetizers.svg";
 import Food4 from "../../assets/Images/menu/beverages.svg";
 import Food5 from "../../assets/Images/menu/desserts.svg";
 import Food6 from "../../assets/Images/menu/fastfood.svg";

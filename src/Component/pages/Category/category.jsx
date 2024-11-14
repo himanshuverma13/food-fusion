@@ -12,166 +12,478 @@ import { Link, NavLink } from "react-router-dom";
 import Navbar from "../../Common/Navbar/navbar";
 import StatusFooter from "../../Common/Footer/statusFooter";
 import CategoryModal from "../../Common/Modal/categoryModal";
+// import MenuItemsJson from '../../assets/Json/menuItems'
 
 // Images
 
-import Pizza from "../../assets/Images/category/pizza.jpg";
-import Pizza2 from "../../assets/Images/category/pizza2.jpg";
-import Pastry from "../../assets/Images/category/pastry.jpg";
-import Brownie from "../../assets/Images/category/pastry.jpg";
-import Paneer from "../../assets/Images/category/paneer.jpg";
-import Sandwich from "../../assets/Images/category/sandwich.jpg";
-import Juice from "../../assets/Images/category/juice.jpg";
-import IceCream from "../../assets/Images/category/iceCream.jpg";
-import GreenTea from "../../assets/Images/category/greenTea.jpg";
-import Coffee from "../../assets/Images/category/coffee.jpg";
+import Appetizers from '../../assets/Images/menu/Appetizers.svg' 
+import Vegetarian from '../../assets/Images/menu/veg.svg' 
+import Non_Vegetarian from '../../assets/Images/menu/non-veg.svg' 
+import Breads from '../../assets/Images/menu/breads.svg' 
+import Rice from '../../assets/Images/menu/rice and biyani.svg' 
+import Desserts from '../../assets/Images/menu/desserts.svg' 
+import Snacks from '../../assets/Images/menu/snacks.svg' 
+import Beverages from '../../assets/Images/menu/beverages.svg' 
+import South_Indian from '../../assets/Images/menu/South indian.svg' 
+import Rajasthani from '../../assets/Images/menu/rajasthani.svg' 
+// import IndoChinese from '../../assets/Images/menu/indoChinese.svg' 
+
 import DropdownButton from "../../Common/dropdownButton/dropdown";
-import Tab1 from "../../assets/Images/menu/1.svg";
-import Tab2 from "../../assets/Images/menu/seafood.svg";
-import Tab3 from "../../assets/Images/menu/appetizers.svg";
-import Tab4 from "../../assets/Images/menu/beverages.svg";
-import Tab5 from "../../assets/Images/menu/desserts.svg";
-import Tab6 from "../../assets/Images/menu/fastfood.svg";
-import Tab7 from "../../assets/Images/menu/soups.svg";
+
 import SplitBill from "../../Common/Modal/splitBillModal";
-import PaymentModal from "../../Common/Modal/paymentModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus, faCircleXmark, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import TableStatusModal from "../../Common/Modal/tableStatusModal";
 import ApplyOffer from "../../Common/Modal/applyOfferModal";
 
+let MenuItemsJson = [
+  {
+    "id":11,
+    "category": "Appetizers",
+    "image":Appetizers,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Samosa",
+        "description": "Crispy pastry filled with spiced potatoes, peas, and herbs.",
+        "price": 80
+      },
+      {
+        "id": 2,
+        "name": "Paneer Tikka",
+        "description": "Marinated cottage cheese cubes grilled to perfection with herbs.",
+        "price": 250
+      },
+      {
+        "id": 3,
+        "name": "Chicken Seekh Kebab",
+        "description": "Spiced minced chicken skewers cooked in a tandoor.",
+        "price": 300
+      },
+      {
+        "id": 4,
+        "name": "Aloo Tikki Chaat",
+        "description": "Potato patties topped with yogurt, tamarind, and mint chutney.",
+        "price": 150
+      },
+      {
+        "id": 5,
+        "name": "Lamb Galouti Kebab",
+        "description": "Melt-in-your-mouth minced lamb kebabs with a rich blend of spices.",
+        "price": 400
+      },
+      {
+        "id": 6,
+        "name": "Avocado Papdi Chaat",
+        "description": "Crispy wafers topped with mashed avocado, spiced yogurt, and chutneys—a modern twist on traditional chaat.",
+        "price": 180
+      },
+      {
+        "id": 7,
+        "name": "Chicken 65",
+        "description": "Spicy and tangy fried chicken with South Indian spices, curry leaves, and yogurt.",
+        "price": 220
+      },
+      {
+        "id": 8,
+        "name": "Kurkuri Bhindi",
+        "description": "Crispy, spiced okra fries for a crunchy and flavorful bite.",
+        "price": 130
+      }
+    ]
+  },
+  {
+    "id":12,
+    "category": "Veg",
+    "image":Vegetarian,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Paneer Butter Masala",
+        "description": "Cottage cheese in a rich, creamy tomato sauce with butter.",
+        "price": 300
+      },
+      {
+        "id": 2,
+        "name": "Chole Bhature",
+        "description": "Spiced chickpeas served with fluffy fried bread.",
+        "price": 220
+      },
+      {
+        "id": 3,
+        "name": "Baingan Bharta",
+        "description": "Roasted and mashed eggplant with onions, tomatoes, and spices.",
+        "price": 200
+      },
+      {
+        "id": 4,
+        "name": "Palak Paneer",
+        "description": "Spinach and paneer cubes cooked with creamy spices.",
+        "price": 280
+      },
+      {
+        "id": 5,
+        "name": "Stuffed Bell Peppers",
+        "description": "Bell peppers filled with spiced potatoes, peas, and cottage cheese, baked to perfection.",
+        "price": 260
+      },
+      {
+        "id": 6,
+        "name": "Jackfruit Curry",
+        "description": "Tender jackfruit cooked in a robust, spicy coconut gravy.",
+        "price": 300
+      }
+    ]
+  },
+  {
+    "id":13,
+    "category": "Non-Veg",
+    "image":Non_Vegetarian,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Chicken Tikka Masala",
+        "description": "Grilled chicken in a creamy, spiced tomato sauce.",
+        "price": 350
+      },
+      {
+        "id": 2,
+        "name": "Lamb Rogan Josh",
+        "description": "Aromatic slow-cooked lamb curry with Kashmiri spices.",
+        "price": 400
+      },
+      {
+        "id": 3,
+        "name": "Goan Fish Curry",
+        "description": "Fresh fish cooked in a tangy, spicy coconut curry from Goa.",
+        "price": 370
+      },
+      {
+        "id": 4,
+        "name": "Butter Chicken",
+        "description": "Tender chicken in a rich, buttery, tomato-based gravy.",
+        "price": 330
+      },
+      {
+        "id": 5,
+        "name": "Chicken Chettinad",
+        "description": "Fiery South Indian chicken curry made with freshly ground spices.",
+        "price": 340
+      },
+      {
+        "id": 6,
+        "name": "Mutton Vindaloo",
+        "description": "A spicy, tangy mutton curry with vinegar, inspired by Portuguese cuisine in Goa.",
+        "price": 380
+      },
+      {
+        "id": 7,
+        "name": "Prawn Moilee",
+        "description": "Lightly spiced, creamy coconut-based prawn curry from Kerala.",
+        "price": 400
+      }
+    ]
+  },
+  {
+    "id":14,
+    "category": "Breads",
+    "image":Breads,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Garlic Naan",
+        "description": "Soft, pillowy naan bread brushed with garlic butter.",
+        "price": 80
+      },
+      {
+        "id": 2,
+        "name": "Roti",
+        "description": "Whole wheat flatbread, perfect for curries.",
+        "price": 40
+      },
+      {
+        "id": 3,
+        "name": "Stuffed Paratha",
+        "description": "Flatbread stuffed with spiced potatoes, paneer, or spinach.",
+        "price": 100
+      },
+      {
+        "id": 4,
+        "name": "Lachha Paratha",
+        "description": "Layered and flaky whole wheat bread.",
+        "price": 70
+      },
+      {
+        "id": 5,
+        "name": "Cheese Naan",
+        "description": "Soft naan filled with gooey, melted cheese.",
+        "price": 110
+      },
+      {
+        "id": 6,
+        "name": "Chili Cheese Kulcha",
+        "description": "Soft bread stuffed with cheese and green chili for an extra kick.",
+        "price": 120
+      }
+    ]
+  },
+  {
+    "id":15,
+    "category": "Rice & Biryanis",
+    "image":Rice,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Vegetable Biryani",
+        "description": "Basmati rice with vegetables, spices, and herbs, served with raita.",
+        "price": 200
+      },
+      {
+        "id": 2,
+        "name": "Chicken Biryani",
+        "description": "Aromatic basmati rice cooked with marinated chicken and spices.",
+        "price": 280
+      },
+      {
+        "id": 3,
+        "name": "Lamb Biryani",
+        "description": "Fragrant rice with tender lamb pieces and delicate spices.",
+        "price": 350
+      },
+      {
+        "id": 4,
+        "name": "Mushroom Pulao",
+        "description": "Fragrant rice cooked with mushrooms and mild spices.",
+        "price": 180
+      },
+      {
+        "id": 5,
+        "name": "Jeera Rice",
+        "description": "Basmati rice tempered with cumin seeds.",
+        "price": 100
+      }
+    ]
+  },
+  {
+    "id":16,
+    "category": "Desserts",
+    "image":Desserts,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Gulab Jamun",
+        "description": "Milk-based dumplings soaked in saffron and cardamom-flavored syrup.",
+        "price": 100
+      },
+      {
+        "id": 2,
+        "name": "Ras Malai",
+        "description": "Soft cheese patties soaked in sweet, thickened milk.",
+        "price": 120
+      },
+      {
+        "id": 3,
+        "name": "Mango Kulfi",
+        "description": "Traditional Indian ice cream with fresh mango flavor.",
+        "price": 130
+      },
+      {
+        "id": 4,
+        "name": "Chocolate Samosa",
+        "description": "Crispy pastry filled with melted chocolate—a modern twist!",
+        "price": 120
+      },
+      {
+        "id": 5,
+        "name": "Jalebi with Rabri",
+        "description": "Crispy, syrup-soaked coils served with thickened, sweetened milk.",
+        "price": 150
+      },
+      {
+        "id": 6,
+        "name": "Coconut Ladoo",
+        "description": "Sweet coconut balls with condensed milk.",
+        "price": 90
+      }
+    ]
+  },
+  {
+    "id":17,
+    "category": "Snacks",
+    "image":Snacks,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Bhel Puri",
+        "description": "Puffed rice, sev, vegetables, and tamarind sauce for a crunchy, tangy snack.",
+        "price": 120
+      },
+      {
+        "id": 2,
+        "name": "Pav Bhaji",
+        "description": "Spicy mashed vegetable curry served with buttered bread rolls.",
+        "price": 150
+      },
+      {
+        "id": 3,
+        "name": "Dahi Puri",
+        "description": "Crisp puris filled with yogurt, chutneys, and sev.",
+        "price": 130
+      },
+      {
+        "id": 4,
+        "name": "Masala Fries",
+        "description": "French fries with an Indian spice twist.",
+        "price": 110
+      },
+      {
+        "id": 5,
+        "name": "Paneer Kathi Roll",
+        "description": "Wrap filled with spiced paneer, onions, and chutneys.",
+        "price": 180
+      },
+      {
+        "id": 6,
+        "name": "Chicken Frankie",
+        "description": "Grilled chicken wrapped in a soft roti with spicy chutney.",
+        "price": 200
+      }
+    ]
+  },
+  {
+    "id":18,
+    "category": "Beverages",
+    "image":Beverages,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Masala Chai",
+        "description": "Spiced Indian tea with milk.",
+        "price": 60
+      },
+      {
+        "id": 2,
+        "name": "Mango Lassi",
+        "description": "Creamy, refreshing mango yogurt drink.",
+        "price": 120
+      },
+      {
+        "id": 3,
+        "name": "Sweet Lassi",
+        "description": "Cool, sweetened yogurt drink.",
+        "price": 100
+      },
+      {
+        "id": 4,
+        "name": "Nimbu Pani",
+        "description": "Indian-style lemonade with spices and mint.",
+        "price": 80
+      },
+      {
+        "id": 5,
+        "name": "Rose Milk",
+        "description": "Refreshing milk flavored with rose syrup.",
+        "price": 100
+      },
+      {
+        "id": 6,
+        "name": "Coconut Water",
+        "description": "Fresh and natural coconut water.",
+        "price": 90
+      }
+    ]
+  },
+  {
+    "id":19,
+    "category": "South Indian",
+    "image":South_Indian,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Masala Dosa",
+        "description": "Rice crepe filled with spiced potato, served with coconut chutney and sambar.",
+        "price": 180
+      },
+      {
+        "id": 2,
+        "name": "Idli-Sambar",
+        "description": "Steamed rice cakes served with sambar and chutneys.",
+        "price": 120
+      },
+      {
+        "id": 3,
+        "name": "Chicken Chettinad",
+        "description": "Fiery chicken curry with ground spices, native to Tamil Nadu.",
+        "price": 340
+      }
+    ]
+  },
+  {
+    "id":20,
+    "category": "Rajasthani",
+    "image":Rajasthani,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Dal Baati Churma",
+        "description": "Baked wheat balls served with lentil curry and sweet churma.",
+        "price": 300
+      },
+      {
+        "id": 2,
+        "name": "Gatte ki Sabzi",
+        "description": "Gram flour dumplings in a spiced yogurt curry.",
+        "price": 200
+      },
+      {
+        "id": 3,
+        "name": "Ker Sangri",
+        "description": "Rajasthani desert beans and berries cooked with spices.",
+        "price": 250
+      }
+    ]
+  },
+  {
+    "id":21,
+    "category": "Indo-Chinese Fusion",
+    "image": Beverages,
+    "subcategories": [
+      {
+        "id": 1,
+        "name": "Chili Paneer",
+        "description": "Indian-style cottage cheese stir-fried with bell peppers, onions, and a spicy sauce.",
+        "price": 220
+      },
+      {
+        "id": 2,
+        "name": "Hakka Noodles",
+        "description": "Stir-fried noodles with vegetables, soy sauce, and Indian spices.",
+        "price": 200
+      },
+      {
+        "id": 3,
+        "name": "Manchurian",
+        "description": "Deep-fried vegetable balls in a tangy, spicy sauce.",
+        "price": 220
+      }
+    ]
+  }
+
+]
+
 const Category = ({ cart }) => {
-  console.log("cart: ", cart);
-  const [selectedTab, setSelectedTab] = useState("Food 1");
+  const [selectedTab, setSelectedTab] = useState([MenuItemsJson[0]]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFoodItem, setSelectedFoodItem] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState('');
   //   const [showFoodData, setshowFoodData] = useState([]);
   //   const { register, handleSubmit, reset } = useForm();
-  const tabs = [
-    { name: "Food 1", image: Tab1 },
-    { name: "Food 2", image: Tab2 },
-    { name: "Food 3", image: Tab3 },
-    { name: "Food 4", image: Tab4 },
-    { name: "Food 5", image: Tab5 },
-    { name: "Food 6", image: Tab6 },
-    { name: "Food 7", image: Tab7 },
-  ];
-  const foodItems = {
-    "Food 1": [
-      {
-        id: 1,
-        name: "pizza",
-        image: Pizza,
-        description: "Add some description of dish",
-        items: [" Small ", " Large ", " Extra-Large "],
-      },
-      {
-        id: 2,
-        name: "salad",
-        image: Pizza2,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater "],
-      },
-      {
-        id: 3,
-        name: "sushi",
-        image: Pizza,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater ", "medium"],
-      },
-      // {
-      //   id: 4,
-      //   name: "pizza",
-      //   image: Pizza,
-      //   description: "Add some description of dish",
-      //   items: [" Small ", " Large ", " Extra-Large "],
-      // },
-      // {
-      //   id: 5,
-      //   name: "salad",
-      //   image: Pizza2,
-      //   description: "Add some description of dish",
-      //   items: [" half ", " full ", " quater "],
-      // },
-      // {
-      //   id: 6,
-      //   name: "sushi",
-      //   image: Pizza,
-      //   description: "Add some description of dish",
-      //   items: [" half ", " full ", " quater ", "medium"],
-      // },
-    ],
-    "Food 2": [
-      {
-        id: 11,
-        name: "ice cream",
-        image: IceCream,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater "],
-      },
-      {
-        id: 12,
-        name: "cake",
-        image: Pastry,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater "],
-      },
-      { 
-        id: 13,
-        name: "brownie",
-        image: Brownie,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater ", "medium"],
-      },
-    ],
-    "Food 3": [
-      {
-        id: 21,
-        name: "nomal paneer",
-        image: Paneer,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater "],
-      },
-      {
-        id: 22,
-        name: "sada paneer",
-        image: Sandwich,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater "],
-      },
-      {
-        id: 23,
-        name: "simple paneer",
-        image: Paneer,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater ", "medium"],
-      },
-    ],
-    "Food 4": [
-      {
-        id: 31,
-        name: "ice tea",
-        image: Juice,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater "],
-      },
-      {
-        id: 32,
-        name: "green tea",
-        image: GreenTea,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater "],
-      },
-      {
-        id: 33,
-        name: "coffee",
-        image: Coffee,
-        description: "Add some description of dish",
-        items: [" half ", " full ", " quater ", "medium"],
-      },
-    ],
-  };
+
+  // MenuItemsJson
+  // console.log('MenuItemsJson: ', MenuItemsJson.categories);
+
+
+
 
   const tableOptions = ["1", "2", "3", "4"];
   const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
@@ -224,6 +536,19 @@ const Category = ({ cart }) => {
     (item) => item.tableNo === cart.TableNo
   );
 
+  const SetValue = (value) =>{
+ let a = MenuItemsJson?.categories?.filter((item)=>{
+   return item.id === value
+  }
+)
+console.log('a:', a);
+const filteredItems = MenuItemsJson?.categories?.filter(item => item.id === value);
+console.log('filteredItems: ', filteredItems[0].subcategories);
+
+  }
+
+
+
   return (
     <>
       <Navbar />
@@ -261,21 +586,21 @@ const Category = ({ cart }) => {
             <div className="flex">
               {/* Side Tabs */}
               <div className="w-1/4 h-[26rem] font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
-                {tabs.map((tab) => (
+                {MenuItemsJson.map((tab) => (
                   <button
                     key={tab.name}
-                    className={`block w-full my-2 shadow-lg py-1 px-2  text-left ${tab.name === selectedTab
+                    className={`block text-left w-full my-2 shadow-lg py-1 px-2 ${tab.category === selectedTab
                       ? "bg-[#d79555] border-solid border-2 border-black text-white"
                       : "bg-white"
                       }`}
-                    onClick={() => setSelectedTab(tab.name)}
+                    onClick={() =>setSelectedTab( MenuItemsJson?.filter(item => item.id === tab?.id))}
                   >
                     <img
                       src={tab.image}
                       alt={tab.name}
                       className="h-10 w-h-10 inline-block mr-2"
                     />
-                    {tab.name}
+                    {tab.category}
                   </button>
                 ))}
               </div>
@@ -283,26 +608,27 @@ const Category = ({ cart }) => {
               {/* Main Content */}
               <div className=" p-2 h-[26rem] overflow-auto">
                 <div className="grid grid-cols-2 gap-4">
-                  {foodItems[selectedTab]?.map((food) => (
+                  {selectedTab[0]?.subcategories?.map((food) =>
+                    (
                     <button
                       key={food?.id}
                       className="p-2 bg-white border rounded-2xl shadow-2xl"
                       onClick={() => openModal(food)}
                     >
-                      <div className="flex items-center">
+                      <div className="flex items-center justify-around">
                         <img
-                          src={food?.image}
-                          className="h-16 w-h-16 rounded-full me-2"
+                          src={Appetizers}
+                          className="h-16 w-h-16 rounded-full "
                           alt="Loading"
                         />
-                        <div className="mx-1">
-                          <p className="text-[#544013] text-start font-bold text-xl">{food?.name}</p>
-                          <p className="text-sm ">
-                            {food?.description}
+                        <div className="mx-1 w-full">
+                          <p className="text-[#544013] text-center font-bold text-lg">{food?.name}</p>
+                          <div className="flex justify-between items-center my-3">
+                          <p className="text-lg font-bold mx-7 text-red-800">
+                            ₹ {food?.price}/-
                           </p>
-                          <div className="text-end">
                             <Button 
-                              btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-bold px-4 py-1 mt-2"
+                              btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-bold px-4 py-1 "
                               btn_type="button"
                               title="Add"
                             />
@@ -310,7 +636,8 @@ const Category = ({ cart }) => {
                         </div>
                       </div>
                     </button>
-                  ))}
+                  )
+                  )}
                 </div>
               </div>
             </div>
