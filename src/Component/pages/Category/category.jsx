@@ -472,6 +472,7 @@ let MenuItemsJson = [
 ]
 
 const Category = ({ cart }) => {
+  console.log('cart: ', cart);
   const [selectedTab, setSelectedTab] = useState([MenuItemsJson[0]]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFoodItem, setSelectedFoodItem] = useState(null);
@@ -502,12 +503,12 @@ const Category = ({ cart }) => {
     let payload = {
       id: selectedFoodItem?.id,
       food: selectedFoodItem?.name,
-      image: selectedFoodItem?.image,
+      // image: selectedFoodItem?.image,
       category: category,
       tableNo: cart?.TableNo,
       status: "open",
       quantity: 1,
-      price: 1,
+      price: selectedFoodItem?.price,
       amount: 1,
     };
     console.log("Payload:", payload);
@@ -516,8 +517,8 @@ const Category = ({ cart }) => {
     closeModal();
   };
 
-  const handleIncrementQuantity = (id) => {
-    dispatch(increment(id?.id));
+  const handleIncrementQuantity = (item) => {
+    dispatch(increment(item));
   };
 
   const handleDecrementQuantity = (id) => {
@@ -692,7 +693,7 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
                             <FontAwesomeIcon className="text-red-700 rounded-full text-base ms-3 bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faTrashCan} />
                           {/* </span> */}
                         </td>
-                        <td class="font-normal py-2 px-6">{items.amount}</td>
+                        <td class="font-normal py-2 px-6">{items?.price * items?.quantity}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -701,12 +702,12 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
 
               <div className="row-start-3">
                 <ul>
-                  <li className="mx-2 bg-[#f6f6e9] w-32 text-sm font-bold text-[#544013] border-2 border-[#d79555] rounded-lg py-1 px-4">
+                  <li className="mx-2 bg-[#f6f6e9] w-32 text-sm font-bold text-[#544013] border-2 border-[#d79555] rounded-lg py-1 text-center">
                     Total Items: {cart?.totalCount}
                   </li>
                   <li className="mx-7 my-0.5 text-base font-bold flex justify-between text-[#544013]">
                     <span>Sub Total:</span>
-                    <span className="mx-7">{cart?.totalCount * 2}</span>
+                    <span className="mx-7">{cart?.totalCost }</span>
                   </li>
                   <div className="flex">
                     <SplitBill />

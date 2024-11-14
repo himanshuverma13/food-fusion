@@ -8,15 +8,18 @@ export const addToCart = (state, action) => {
         if (checkID) {
             checkTableNo.quantity += 1;
             state.totalCount += 1;
+            state.totalCost += action.payload.price
         }
         else {
             state.itemsInCart.push({ ...action.payload, quantity: 1, status: action.payload.status });
             state.totalCount += 1;
+            state.totalCost += action.payload.price
         }
     }
     else {
         state.itemsInCart.push({ ...action.payload, quantity: 1, status: action.payload.status });
         state.totalCount += 1;
+        state.totalCost += action.payload.price
     }
 };
 
@@ -30,11 +33,12 @@ export const removeFromCart = (state, action) => {
 };
 
 export const incrementQuantity = (state, action) => {
-    const item = state.itemsInCart.find((item) => item.id === action.payload);
+    console.log('action.payload: ', action.payload);
+    const item = state.itemsInCart.find((item) => item.id === action?.payload?.id);
     if (item) {
         item.quantity += 1;
         state.totalCount += 1;
-        state.totalCost += item.price;
+        state.totalCost += item?.price;
     }
 };
 
@@ -57,6 +61,12 @@ export const GetTableNo = (state, action) => {
 };
 
 export const SetTableNo = (state, action) => {
+    // let updateTableNo = localStorage.getItem('tableNo');
+    // console.log('updateTableNo: ', updateTableNo);
+    // let setTableNo = [...updateTableNo]
+    // setTableNo.push(action.payload)
+    // localStorage.setItem('tableNo', setTableNo);
+    // console.log('setTableNo: ', setTableNo);
     state.TableNo = 0;
 };
 

@@ -22,7 +22,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
 import CategoryModal from "../../Common/Modal/categoryModal";
-const Order = ({cart}) => {
+const Order = ({ cart }) => {
   console.log('cart: ', cart);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -79,8 +79,9 @@ const Order = ({cart}) => {
     },
   ];
   const dispatch = useDispatch();
-  const handleIncrementQuantity = (id) => {
-    dispatch(increment(id?.id));
+  const handleIncrementQuantity = (item) => {
+    console.log('id: ', item);
+    dispatch(increment(item));
   };
 
   const handleDecrementQuantity = (id) => {
@@ -98,7 +99,13 @@ const Order = ({cart}) => {
     setIsOpen(true);
   };
 
-  const closeModal = () => setIsOpen(false); 
+  const closeModal = () => setIsOpen(false);
+
+
+  // to show filter food items
+  const filterFoodItems = cart?.itemsInCart?.filter((filterItems) =>
+    filterItems?.tableNo == cart?.TableNo
+  )
 
   return (
     <>
@@ -200,8 +207,8 @@ const Order = ({cart}) => {
         <CategoryModal
           isOpen={isOpen}
           closeModal={closeModal}
-          // selectedFoodItem={selectedFoodItem}
-          // onSubmit={onSubmit}
+        // selectedFoodItem={selectedFoodItem}
+        // onSubmit={onSubmit}
         />
 
         {/* Table View */}
@@ -241,13 +248,13 @@ const Order = ({cart}) => {
                   Price
                 </th>
                 <th scope="col" class="px-6 py-3 ">
-             
+
                   Amount
                 </th>
               </tr>
             </thead>
             <tbody className="bg-[#ede9dd] overflow-auto">
-              { cart?.itemsInCart?.map((items, index) => (
+              {filterFoodItems?.map((items, index) => (
                 <tr key={index}>
                   <th
                     scope="row"
@@ -276,7 +283,7 @@ const Order = ({cart}) => {
                   <td class="px-6 py-2  font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.price}
                   </td>
-                  <td class="px-6 py-2  font-bold">{items?.quantity * 2}</td>
+                  <td class="px-6 py-2  font-bold">{items?.price * items?.quantity}</td>
                 </tr>
               ))}
             </tbody>
@@ -285,31 +292,31 @@ const Order = ({cart}) => {
       </div>
       <div className="flex justify-center fixed bottom-12 left-0 right-0 my-3">
         <NavLink to="/chef">
-        <Button
-          title="Save & Generate KOT"
-          btn_type="button"
-          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase me-8"
-        />
-         
+          <Button
+            title="Save & Generate KOT"
+            btn_type="button"
+            btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase me-8"
+          />
+
         </NavLink>
         <NavLink>
           <Button
-          title="Save & Print Bill"
-          btn_type="button"
-          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
-        />
+            title="Save & Print Bill"
+            btn_type="button"
+            btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
+          />
         </NavLink>
 
-        <NavLink>        
-        <Button
-          title="Save & Generate Reciept"
-          btn_type="button"
-          btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
-        />
+        <NavLink>
+          <Button
+            title="Save & Generate Reciept"
+            btn_type="button"
+            btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
+          />
         </NavLink>
 
-        <NavLink>        
-        {/* <Button
+        <NavLink>
+          {/* <Button
           title="Cancel"
           btn_type="button"
           btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-sm text-white font-bold px-3 py-1 ms-8"
