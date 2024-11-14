@@ -9,7 +9,6 @@ import Category from '../../pages/Category/category';
 import Payment from '../../pages/Payment/payment';
 import Home from '../../pages/Home/home';
 import Chef from '../../pages/Chef/chef';
-import Registration from '../Auth/registration';
 import Login from '../Auth/login';
 import Waiter from '../../pages/Waiter/waiter';
 import Menu from '../../pages/menu/menu';
@@ -18,6 +17,7 @@ import OrderHistory from '../../pages/OrderHistory/orderHistory';
 import EmployeeTable from '../../pages/Employee/employee';
 import Loader from '../../Common/Loader/loader';
 import Dashboard from '../../pages/Admin/dashboard';
+import AdminRemoveUser from '../Auth/adminRemoveUser';
 
 
 const RootRoutes = () => {
@@ -42,7 +42,6 @@ const RootRoutes = () => {
           <Route path="/category" element={<Category />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/chef" element={<Chef />} />
-          <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/waiter" element={<Waiter />} />
           <Route path="/menu" element={<Menu />} />
@@ -50,7 +49,10 @@ const RootRoutes = () => {
           <Route path="/order-history" element={<OrderHistory />} />
           <Route path="/employee" element={<EmployeeTable />} />
           <Route path="*" element={<Home />} />
+
+          {/* Admin Routes */}
           <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/remove" element={<AdminRemoveUser />} />
           
         </Routes>
       </Router>
