@@ -18,6 +18,7 @@ import EmployeeTable from '../../pages/Employee/employee';
 import Loader from '../../Common/Loader/loader';
 import Dashboard from '../../pages/Admin/dashboard';
 import AdminRemoveUser from '../Auth/adminRemoveUser';
+import Registration from '../Auth/registration';
 
 
 const RootRoutes = () => {
@@ -53,6 +54,7 @@ const RootRoutes = () => {
           {/* Admin Routes */}
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/remove" element={<AdminRemoveUser />} />
+          <Route path="/admin/register" element={<Registration />} />
           
         </Routes>
       </Router>

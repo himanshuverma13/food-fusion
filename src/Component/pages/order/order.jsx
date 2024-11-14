@@ -292,7 +292,7 @@ const Order = ({cart}) => {
         />
          
         </NavLink>
-        <NavLink>
+        <NavLink to="/payment">
           <Button
           title="Save & Print Bill"
           btn_type="button"

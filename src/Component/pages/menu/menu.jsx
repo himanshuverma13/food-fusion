@@ -21,7 +21,7 @@ import NonVeg from "../../assets/Images/menu/non-veg.svg";
 import Rajasthani from "../../assets/Images/menu/rajasthani.svg";
 import SouthIndian from "../../assets/Images/menu/South indian.svg";
 // import IndoChinese from "../../assets/Images/menu/indo-chinese.svg";
-import Dish from "../../assets/Images/menu/menu-dish.svg";
+import Dish from "../../assets/Images/menu/menu-dish.svg";  
 import NewOrder from "../../assets/Images/new order.svg";
 import StatusFooter from "../../Common/Footer/statusFooter";
 import MenuSetting from "../../Common/Modal/menuSettingModal";
