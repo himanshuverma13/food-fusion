@@ -5,7 +5,7 @@ export const initialState = {
   itemsInCart: [],
   totalCount: 0,
   totalCost: 0,
-  TableNo: 0,
+  TableNo: '',
   status:''
 };
 const cartSlice = createSlice({

@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import foodItems from '../../assets/Json/foodCategory'
+import foodItems from '../../assets/Json/menuItems.json'
 import CategoryModal from '../Modal/categoryModal';
 import { connect, useDispatch } from 'react-redux';
 import { add } from '../Redux/Category/categorySlice';
 
 
-const AutoSuggestSearch = ({cart}) => {
-    console.log('cart: ', cart);
+const AutoSuggestSearch = ({ cart }) => {
     const dispatch = useDispatch();
     const [query, setQuery] = useState('');
     const [filteredOptions, setFilteredOptions] = useState();
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedFoodItem, setSelectedFoodItem] = useState(null);
+    const [selectedFoodItem, setSelectedFoodItem] = useState({});
 
     const options = []
     foodItems.map((item) => {
-        return options?.push(item?.name)
+        item?.subcategories?.map((foodName)=>
+            options?.push(foodName)
+        )
     })
 
     // Function to filter options based on input query
@@ -23,10 +24,10 @@ const AutoSuggestSearch = ({cart}) => {
         const value = e.target.value;
         setQuery(value);
         if (value.length > 0) {
-            const filtered = options.filter((option) =>
-                option?.toLowerCase().includes(value.toLowerCase())
+            const filtered = options?.filter((option) =>
+             option?.name?.toLowerCase()?.includes(value?.toLowerCase())
             );
-         setFilteredOptions(filtered);
+            setFilteredOptions(filtered);
         } else {
             setFilteredOptions();
         }
@@ -35,12 +36,9 @@ const AutoSuggestSearch = ({cart}) => {
     // Function to handle clicking on an option
     const handleOptionClick = (option) => {
         console.log('option: ', option);
-        let filterValue = foodItems.filter((item)=> {
-            return  item.name == option;
-            })
-            console.log('filterValue: ', filterValue[0]);
         setIsOpen(true)
-        setSelectedFoodItem(filterValue[0])
+        setSelectedFoodItem(option)
+        console.log('SelectedFoodItem: ', selectedFoodItem);
         setQuery(''); // Reset search bar
         setFilteredOptions(); // Hide suggestions
     };
@@ -49,23 +47,24 @@ const AutoSuggestSearch = ({cart}) => {
     const closeModal = () => setIsOpen(false);
 
     const onSubmit = (data) => {
+        console.log('data: ', data);
         let category = Object.values(data).filter((value) => value);
         let payload = {
-          id: selectedFoodItem?.id,
-          food: selectedFoodItem?.name,
-          image: selectedFoodItem?.image,
-          category: category,
-          tableNo: cart?.TableNo,
-          status: "open",
-          quantity: 1,
-          price: 1,
-          amount: 1,
+            id: selectedFoodItem?.id,
+            food: selectedFoodItem?.name,
+            // image: selectedFoodItem?.image,
+            category: category,
+            tableNo: cart?.TableNo,
+            status: "open",
+            quantity: 1,
+            price: selectedFoodItem?.price,
+            amount: 1,
         };
         console.log("Payload:", payload);
         // setshowFoodData(selectedFoodItem);
         dispatch(add(payload));
         closeModal();
-      };
+    };
 
 
     return (
@@ -83,14 +82,14 @@ const AutoSuggestSearch = ({cart}) => {
 
                     {/* Suggestions dropdown */}
                     {filteredOptions?.length > 0 && (
-                        <ul className="absolute left-0 w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                        <ul className="absolute left-0 w-full h-80 overflow-y-scroll mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
                             {filteredOptions.map((option, index) => (
                                 <li
                                     key={index}
                                     onClick={() => handleOptionClick(option)}
                                     className="px-4 py-2 cursor-pointer hover:bg-blue-100"
                                 >
-                                    {option}
+                                    {option?.name}
                                 </li>
                             ))}
                         </ul>
@@ -103,8 +102,8 @@ const AutoSuggestSearch = ({cart}) => {
             <CategoryModal
                 isOpen={isOpen}
                 closeModal={closeModal}
-            selectedFoodItem={selectedFoodItem}
-            onSubmit={onSubmit}
+                selectedFoodItem={selectedFoodItem}
+                onSubmit={onSubmit}
             />
         </>
     );
@@ -112,7 +111,6 @@ const AutoSuggestSearch = ({cart}) => {
 
 const mapStateToProps = (state) => ({
     cart: state.cart,
-  });
-  
-  export default connect(mapStateToProps, {})(AutoSuggestSearch);
-  
+});
+
+export default connect(mapStateToProps, {})(AutoSuggestSearch);

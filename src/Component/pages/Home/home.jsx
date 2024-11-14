@@ -18,15 +18,13 @@ const Home = () => {
     dispatch(SetTable(setTableNull))
   }
 
-
-
   return (
     <>
       <div className="home-section">
         <Navbar />
         <div className="absolute right-0">
           <NavLink to="/category">
-            <img src={NewOrder} className="h-16 me-7" alt="Loading" />
+            <img src={NewOrder}  className="h-16 me-7" alt="Loading" />
           </NavLink>
         </div>
         <TableStatusModal />

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Button from "../Button/button";
 
 const CategoryModal = ({  isOpen, closeModal, selectedFoodItem, onSubmit  }) => {
+  console.log('selectedFoodItem: ', selectedFoodItem);
   const { register, handleSubmit, reset } = useForm();
 
   const handleModalClose = () => {
@@ -30,7 +31,7 @@ const CategoryModal = ({  isOpen, closeModal, selectedFoodItem, onSubmit  }) => 
             Customize your {selectedFoodItem?.name}
           </h4>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label className="block mb-2">
                 <input
                   type="checkbox"
@@ -58,7 +59,6 @@ const CategoryModal = ({  isOpen, closeModal, selectedFoodItem, onSubmit  }) => 
                 />
                 {selectedFoodItem?.items[2]}
               </label>
-              {/* Add additional checkboxes as needed */}
               <hr className="my-3 border-gray-700"/>
               <label className="block mb-2">
                 Comment
@@ -66,7 +66,7 @@ const CategoryModal = ({  isOpen, closeModal, selectedFoodItem, onSubmit  }) => 
                 <textarea className="resize rounded-md border w-full" rows={3} name="" id=""
                 {...register("comment")}
                 />
-            </div>
+            </div> */}
             <Button
              title="Submit"
               btn_class="bg-green-600 text-white px-4 py-1 border-solid border-2 border-black rounded-xl"
