@@ -18,16 +18,16 @@ const Registration = () => {
   return (
     <>
         
-      <div>
       <Navbar />
-        <div className="flex items-center ms-3">
-          <img src={User} className="h-10" alt="Loading" />
-          <p className="font-bold text-xl ms-2">Add New User</p>
+      <div className="flex flex-col items-center justify-center">
+        <div className="pb-4 w-4/5 border-solid border-2 border-[#544013] shadow-[#544013] rounded-2xl bg-[#ede9dd] shadow-xl">
+        <div className="flex items-center justify-center bg-[#cd3f14] py-4 border-solid border-2 border-[#544013] rounded-t-2xl">
+          <img src={User} className="h-12 rounded-full bg-[#72591c] p-2" alt="Loading" />
+          <p className="font-bold text-xl ms-2 tracking-wider">Add New User</p>
         </div>
-        <div className="border-solid border-4 px-2 pb-4 mx-3 border-[#544013] bg-[#ede9dd] py-5">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="grid grid-cols-2 grid-rows-5 gap-4"
+            className="grid grid-cols-2 grid-rows-5 gap-4 px-3 py-4"
           >
             <div>
               <label htmlFor="option" className="text-lg font-bold">
@@ -153,7 +153,7 @@ const Registration = () => {
                 Date Of Joining
               </label>
               <input
-                type="join_date"
+                type="date"
                 id="join_date"
                 // placeholder="Enter Your join_date "
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
@@ -262,7 +262,7 @@ const Registration = () => {
             <div>
               <button
                 type="submit"
-                className="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white"
+                className="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
               >
                 Add User
               </button>

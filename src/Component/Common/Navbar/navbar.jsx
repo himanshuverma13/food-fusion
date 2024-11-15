@@ -36,7 +36,7 @@ const Navbar = () => {
           </button>
         </div>
         {/* Add your sidebar content here */}
-        {/* <SideNavbar /> */}
+        <SideNavbar />
       </div>
     </nav>
   );
