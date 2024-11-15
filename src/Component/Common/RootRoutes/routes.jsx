@@ -19,6 +19,8 @@ import Loader from '../../Common/Loader/loader';
 import Dashboard from '../../pages/Admin/dashboard';
 import AdminRemoveUser from '../Auth/adminRemoveUser';
 import Registration from '../Auth/registration';
+import Inventory from '../../pages/Admin/inventory';
+import AdminUserTable from '../Auth/adminUserTable';
 
 
 const RootRoutes = () => {
@@ -55,6 +57,8 @@ const RootRoutes = () => {
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/remove" element={<AdminRemoveUser />} />
           <Route path="/admin/register" element={<Registration />} />
+          <Route path="/admin/inventory" element={<Inventory />} />
+          <Route path="/admin/userTable" element={<AdminUserTable />} />
           
         </Routes>
       </Router>
