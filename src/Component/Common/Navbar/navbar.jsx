@@ -22,7 +22,7 @@ const Navbar = ({SideNavFunctionality}) => {
 
         </button>
         <div onClick={() => navigate('/home')} className="ml-4 cursor-pointer flex items-center justify-center">
-          <img className='w-1/5 me-2' src={logoBgNo} alt="Loading" />
+          <img className='w-1/5 mx-2' src={logoBgNo} alt="Loading" />
 
           <span className="food-fusion text-3xl text-[#cd3f14]">FOOD-SKILL</span>
         </div>

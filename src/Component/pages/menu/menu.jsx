@@ -609,6 +609,12 @@ const Menu = () => {
     }
   };
 
+   // Side Nav Functionality
+   const [moveSideNav, setmoveSideNav] = useState(true)
+   const SideNavFunctionality = () => {
+     setmoveSideNav(!moveSideNav)
+   }
+
   // Function to handle clicking on an option
   // const handleOptionClick = (option) => {
   //   console.log("option: ", option);
@@ -621,9 +627,9 @@ const Menu = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar SideNavFunctionality={SideNavFunctionality} />
       {/* <TableStatusModal /> */}
-      <div className="mx-14">
+      <div className={`px-5 ${moveSideNav ? "ms-16" : "ms-0"}`}>
         <div className="flex items-center">
           <p className="text-xl font-bold uppercase me-1">Menu</p>
           <img src={MenuImg} className="h-8" alt="Loading" />
