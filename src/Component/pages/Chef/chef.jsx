@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import { connect, useDispatch } from "react-redux";
 import Button from "../../Common/Button/button";
@@ -39,6 +39,12 @@ const Chef = ({ cart, chef }) => {
   const SendToInvoice = () => {
     navigate('/order-history')
   }
+
+  // Side Nav Functionality
+  const [moveSideNav, setmoveSideNav] = useState(true)
+  const SideNavFunctionality = () => {
+    setmoveSideNav(!moveSideNav)
+  }
   const OrderStatusData = [
     {
       class: "bg-green-500",
@@ -55,11 +61,11 @@ const Chef = ({ cart, chef }) => {
   ];
   return (
     <>
-      <Navbar />
-      <div className="px-10">
+      <Navbar SideNavFunctionality={SideNavFunctionality} />
+      <div className={`px-5 ${moveSideNav ? "ms-16" : "ms-0"}`}>
         <div className="flex justify-between items-center">
           {/* Search bar */}
-          <div class="text-black flex justify-around items-center ">
+          <div class="text-black flex justify-around items-center">
                 <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
                   <input
                     type="text"

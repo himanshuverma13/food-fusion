@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../../Common/Navbar/navbar'
 import dashboard from '../../assets/Images/sideNavImg/Dashboard.svg'
 
 const Dashboard = () => {
+   // Side Nav Functionality
+   const [moveSideNav, setmoveSideNav] = useState(true);
+   const SideNavFunctionality = () => {
+     setmoveSideNav(!moveSideNav);
+   };
   return (
     <>
-      <Navbar />
-      <div className='ms-9 flex items-end'>
+      <Navbar SideNavFunctionality={SideNavFunctionality} />
+      <div className={moveSideNav ? "ms-16" : "ms-0"}>
+      <div className="ms-9 flex items-end">
         <img className='w-14' src={dashboard} alt="" />
         <h3 className='mb-1 mx-2 font-extrabold tracking-wider'>DASHBOARD</h3>
       </div>
@@ -90,6 +96,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   )

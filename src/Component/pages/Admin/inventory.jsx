@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import Button from "../../Common/Button/button";
 
@@ -51,12 +51,18 @@ const Inventory = () => {
     },
   ];
 
+ // Side Nav Functionality
+ const [moveSideNav, setmoveSideNav] = useState(true);
+ const SideNavFunctionality = () => {
+   setmoveSideNav(!moveSideNav);
+ };
+
   return (
     <>
-      <Navbar />
-      <div>
+      <Navbar SideNavFunctionality={SideNavFunctionality} />
+      <div className={moveSideNav ? "ms-16" : "ms-0"}>
         {/* Search bar */}
-        <div class="text-black flex justify-between items-center ms-20 me-3">
+        <div class="text-black flex justify-between items-center ms-5 me-3">
           <div class="overflow-hidden flex justify-between border-solid border-2 w-96 border-black rounded-3xl bg-[#f6f6e9]">
             <input
               type="text"
@@ -82,7 +88,7 @@ const Inventory = () => {
         </div>
 
         {/* Inventory table */}
-        <div class="overflow-x-auto me-2 ms-20 py-5">
+        <div class="overflow-x-auto me-2 ms-5 py-5">
           <table class="w-full text-sm text-left border border-slate-500">
             <thead class="text-xs text-white uppercase bg-[#d79555]">
               <tr>

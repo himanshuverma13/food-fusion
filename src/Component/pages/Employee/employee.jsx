@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Navbar from '../../Common/Navbar/navbar';
 
 const EmployeeTable = () => {
@@ -53,10 +53,16 @@ const EmployeeTable = () => {
     },
   ];
 
+  // Side Nav Functionality
+  const [moveSideNav, setmoveSideNav] = useState(true);
+  const SideNavFunctionality = () => {
+    setmoveSideNav(!moveSideNav);
+  };
+
   return (
     <>
-    <Navbar/>
-    <div className="container mx-auto p-4 ">
+    <Navbar SideNavFunctionality={SideNavFunctionality}/>
+    <div className={`mx-auto p-4 ${moveSideNav ? "ms-16" : "ms-0"}`}>
       <table className="w-full bg-white border  border-gray-300">
         <thead>
           <tr className="bg-gray-200 text-left">

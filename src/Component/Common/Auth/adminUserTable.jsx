@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -46,12 +46,19 @@ const AdminUserTable = () => {
       salary: 20000,
     },
   ];
+
+   // Side Nav Functionality
+   const [moveSideNav, setmoveSideNav] = useState(true);
+   const SideNavFunctionality = () => {
+     setmoveSideNav(!moveSideNav);
+   };
+
   return (
     <>
-    <Navbar/>
-      <div>
+    <Navbar SideNavFunctionality={SideNavFunctionality}/>
+      <div className={moveSideNav ? "ms-16" : "ms-0"}>
         {/* Inventory table */}
-        <div class="overflow-x-auto me-2 ms-20 py-5">
+        <div class="overflow-x-auto me-2 m-5 py-5">
           <table class="w-full text-sm text-left border border-slate-500">
             <thead class="text-xs text-white uppercase bg-[#d79555]">
               <tr>
