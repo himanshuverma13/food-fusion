@@ -107,11 +107,20 @@ const Order = ({ cart }) => {
     filterItems?.tableNo == cart?.TableNo
   )
 
+    // Side Nav Functionality
+
+    const [moveSideNav, setmoveSideNav] = useState(true)
+    const SideNavFunctionality = () => {
+      setmoveSideNav(!moveSideNav)
+    }
+  
+
+
   return (
     <>
-      <Navbar />
+      <Navbar SideNavFunctionality={SideNavFunctionality}/>
       {/* <TableStatusModal/> */}
-      <div className="border-solid border-4 border-[#544013] bg-[#f6f6e9] p-2 m-3">
+      <div className={`border-solid border-4 border-[#544013] bg-[#f6f6e9] p-2 m-3 transition-all duration-100 ${moveSideNav ? "ms-16" : "ms-0"}`}>
         <div className="flex justify-between my-2">
           <div>
             <p className="text-xl font-bold text-[#544013]">Generate Order</p>
