@@ -17,11 +17,13 @@ const Home = () => {
     let setTableNull = 0
     dispatch(SetTable(setTableNull))
   }
+  const SideNavFunctionality = () => {
+  }
 
   return (
     <>
       <div className="home-section">
-        <Navbar />
+      <Navbar SideNavFunctionality={SideNavFunctionality} />
         <div className="absolute right-0">
           <NavLink to="/category">
             <img src={NewOrder}  className="h-16 me-7" alt="Loading" />
