@@ -12,7 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 // import Food1 from "../../assets/Images/menu/1.svg";
 import Snacks from "../../assets/Images/menu/snacks.svg";
 import Desserts from "../../assets/Images/menu/desserts.svg";
-import Appetizers from "../../assets/Images/menu/appetizers.svg";
+import Appetizers from "../../assets/Images/menu/Appetizers.svg";
 import Beverages from "../../assets/Images/menu/beverages.svg";
 import Rice from "../../assets/Images/menu/rice-and-biryani.svg";
 import Breads from "../../assets/Images/menu/breads.svg";

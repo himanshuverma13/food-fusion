@@ -16,7 +16,7 @@ import CategoryModal from "../../Common/Modal/categoryModal";
 
 // Images
 
-import Appetizers from "../../assets/Images/menu/appetizers.svg";
+import Appetizers from "../../assets/Images/menu/Appetizers.svg";
 import Vegetarian from "../../assets/Images/menu/veg.svg";
 import Non_Vegetarian from "../../assets/Images/menu/non-veg.svg";
 import Breads from "../../assets/Images/menu/breads.svg";
