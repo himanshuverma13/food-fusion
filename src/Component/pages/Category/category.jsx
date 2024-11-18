@@ -16,7 +16,7 @@ import CategoryModal from "../../Common/Modal/categoryModal";
 
 // Images
 
-import Appetizers from "../../assets/Images/menu/appetizers.svg";
+import Appetizers from "../../assets/Images/menu/Appetizers.svg";
 import Vegetarian from "../../assets/Images/menu/veg.svg";
 import Non_Vegetarian from "../../assets/Images/menu/non-veg.svg";
 import Breads from "../../assets/Images/menu/breads.svg";
@@ -43,10 +43,10 @@ import ApplyOffer from "../../Common/Modal/applyOfferModal";
 
 let MenuItemsJson = [
   {
-    id: 11,
-    category: "Appetizers",
-    image: Appetizers,
-    subcategories: [
+    "id": 11,
+    "category": "Appetizers",
+    "image": Appetizers,
+    "subcategories": [
       {
         id: 1,
         name: "Samosa",
@@ -105,10 +105,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 12,
-    category: "Veg",
-    image: Vegetarian,
-    subcategories: [
+    "id": 12,
+    "category": "Veg",
+    "image": Vegetarian,
+    "subcategories": [
       {
         id: 1,
         name: "Paneer Butter Masala",
@@ -152,10 +152,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 13,
-    category: "Non-Veg",
-    image: Non_Vegetarian,
-    subcategories: [
+    "id": 13,
+    "category": "Non-Veg",
+    "image": Non_Vegetarian,
+    "subcategories": [
       {
         id: 1,
         name: "Chicken Tikka Masala",
@@ -205,10 +205,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 14,
-    category: "Breads",
-    image: Breads,
-    subcategories: [
+    "id": 14,
+    "category": "Breads",
+    "image": Breads,
+    "subcategories": [
       {
         id: 1,
         name: "Garlic Naan",
@@ -250,10 +250,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 15,
-    category: "Rice & Biryani",
-    image: Rice,
-    subcategories: [
+    "id": 15,
+    "category": "Rice & Biryanis",
+    "image": Rice,
+    "subcategories": [
       {
         id: 1,
         name: "Vegetable Biryani",
@@ -290,10 +290,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 16,
-    category: "Desserts",
-    image: Desserts,
-    subcategories: [
+    "id": 16,
+    "category": "Desserts",
+    "image": Desserts,
+    "subcategories": [
       {
         id: 1,
         name: "Gulab Jamun",
@@ -336,10 +336,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 17,
-    category: "Snacks",
-    image: Snacks,
-    subcategories: [
+    "id": 17,
+    "category": "Snacks",
+    "image": Snacks,
+    "subcategories": [
       {
         id: 1,
         name: "Bhel Puri",
@@ -382,10 +382,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 18,
-    category: "Beverages",
-    image: Beverages,
-    subcategories: [
+    "id": 18,
+    "category": "Beverages",
+    "image": Beverages,
+    "subcategories": [
       {
         id: 1,
         name: "Masala Chai",
@@ -425,10 +425,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 19,
-    category: "South Indian",
-    image: South_Indian,
-    subcategories: [
+    "id": 19,
+    "category": "South Indian",
+    "image": South_Indian,
+    "subcategories": [
       {
         id: 1,
         name: "Masala Dosa",
@@ -452,10 +452,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 20,
-    category: "Rajasthani",
-    image: Rajasthani,
-    subcategories: [
+    "id": 20,
+    "category": "Rajasthani",
+    "image": Rajasthani,
+    "subcategories": [
       {
         id: 1,
         name: "Dal Baati Churma",
@@ -478,10 +478,10 @@ let MenuItemsJson = [
     ],
   },
   {
-    id: 21,
-    category: "Indo-Chinese Fusion",
-    image: Beverages,
-    subcategories: [
+    "id": 21,
+    "category": "Indo-Chinese Fusion",
+    "image": Beverages,
+    "subcategories": [
       {
         id: 1,
         name: "Chili Paneer",
@@ -571,20 +571,29 @@ const Category = ({ cart }) => {
 
   const SetValue = (value) => {
     let a = MenuItemsJson?.categories?.filter((item) => {
-      return item.id === value;
-    });
-    console.log("a:", a);
-    const filteredItems = MenuItemsJson?.categories?.filter(
-      (item) => item.id === value
-    );
-    console.log("filteredItems: ", filteredItems[0].subcategories);
-  };
+      return item.id === value
+    }
+    )
+    console.log('a:', a);
+    const filteredItems = MenuItemsJson?.categories?.filter(item => item.id === value);
+    console.log('filteredItems: ', filteredItems[0].subcategories);
+
+  }
+
+  // Set Payment Method
+  const SelectPayMode = (Mode) => {
+    setPaymentMethod(Mode)
+    console.log('Mode: ', Mode);
+
+  }
+
 
   return (
     <>
       <Navbar />
 
       {/* Table Status Modal Button */}
+      <TableStatusModal />
       <TableStatusModal />
 
       <div className=" border-solid border-4 px-2 pb-4 mx-3 border-[#544013]">
@@ -625,16 +634,11 @@ const Category = ({ cart }) => {
                 {MenuItemsJson.map((tab) => (
                   <button
                     key={tab.name}
-                    className={`block text-left text-base truncate w-full my-2 shadow-lg py-1 px-2 ${
-                      tab.category === selectedTab
-                        ? "bg-[#d79555] border-solid border-2 border-black text-white"
-                        : "bg-white"
-                    }`}
-                    onClick={() =>
-                      setSelectedTab(
-                        MenuItemsJson?.filter((item) => item.id === tab?.id)
-                      )
-                    }
+                    className={`block text-left w-full my-2 shadow-lg py-1 px-2 ${tab.category === selectedTab
+                      ? "bg-[#d79555] border-solid border-2 border-black text-white"
+                      : "bg-white"
+                      }`}
+                    onClick={() => setSelectedTab(MenuItemsJson?.filter(item => item.id === tab?.id))}
                   >
                     <img
                       src={tab.image}
@@ -649,7 +653,8 @@ const Category = ({ cart }) => {
               {/* Main Content */}
               <div className=" p-2 h-[26rem] overflow-auto">
                 <div className="grid grid-cols-2 gap-4">
-                  {selectedTab[0]?.subcategories?.map((food) => (
+                  {selectedTab[0]?.subcategories?.map((food) =>
+                  (
                     <button
                       key={food?.id}
                       className="p-2 bg-white border rounded-2xl shadow-2xl"
@@ -661,17 +666,14 @@ const Category = ({ cart }) => {
                           className="h-16 w-h-16 rounded-full "
                           alt="Loading"
                         />
-                        <div className="ms-2 w-full text-start">
-                          <p className="text-[#544013] font-bold text-lg">
-                            {food?.name}
-                          </p>
-                          {/* <div className="flex justify-between items-center my-3"> */}
-                          <p className="text-base font-bold text-red-800">
-                            ₹ {food?.price}/-
-                          </p>
-                          <div className="text-end">
+                        <div className="mx-1 w-full">
+                          <p className="text-[#544013] text-center font-bold text-lg">{food?.name}</p>
+                          <div className="flex justify-between items-center my-3">
+                            <p className="text-lg font-bold mx-7 text-red-800">
+                              ₹ {food?.price}/-
+                            </p>
                             <Button
-                              btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-bold px-4 py-1"
+                              btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-bold px-4 py-1 "
                               btn_type="button"
                               title="Add"
                             />
@@ -742,11 +744,7 @@ const Category = ({ cart }) => {
                             className="px-2 text-white rounded-full text-base bg-red-600 cursor-pointer"
                             onClick={() => handleRemoveFromCart(items)}
                           > */}
-                          <FontAwesomeIcon
-                            className="text-red-700 rounded-full text-base ms-3 bg-white cursor-pointer"
-                            onClick={() => handleRemoveFromCart(items)}
-                            icon={faTrashCan}
-                          />
+                          <FontAwesomeIcon className="text-red-700 rounded-full text-base ms-3 bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faTrashCan} />
                           {/* </span> */}
                         </td>
                         <td class="font-normal py-2 px-6">{items?.price * items?.quantity}</td>
@@ -763,11 +761,12 @@ const Category = ({ cart }) => {
                   </li>
                   <li className="mx-7 my-0.5 text-base font-bold flex justify-between text-[#544013]">
                     <span>Sub Total:</span>
-                    <span className="mx-7">{cart?.totalCost }</span>
+                    <span className="mx-7">{cart?.totalCost}</span>
                   </li>
                   <div className="flex">
                     <SplitBill />
                     <ApplyOffer />
+
                   </div>
                   {/* <Link to="/payment" className="mx-3"> */}
                   {/* <Button
@@ -790,7 +789,7 @@ const Category = ({ cart }) => {
                               type="checkbox"
                               value={method}
                               checked={paymentMethod === method}
-                              onChange={() => setPaymentMethod(method)}
+                              onClick={() => SelectPayMode(method)}
                               className="mr-2 rounded-full"
                             />
                             {method}

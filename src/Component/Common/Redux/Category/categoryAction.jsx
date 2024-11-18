@@ -76,3 +76,9 @@ export const PaymentStatus = (state, action) => {
 
 };
 
+// Payment Mode
+
+export const PaymentMode = (state, action) => {
+    console.log('PaymentMode: ', action.payload);
+    // state.paymentMode = action.payload;
+};
