@@ -626,6 +626,7 @@ const Category = ({ cart }) => {
                 className="w-20"
                 buttonLabel="Filters"
               />
+              
             </div>
             <div className="flex">
               {/* Side Tabs */}
