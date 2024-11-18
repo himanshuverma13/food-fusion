@@ -16,16 +16,16 @@ import CategoryModal from "../../Common/Modal/categoryModal";
 
 // Images
 
-import Appetizers from '../../assets/Images/menu/Appetizers.svg' 
-import Vegetarian from '../../assets/Images/menu/veg.svg' 
-import Non_Vegetarian from '../../assets/Images/menu/non-veg.svg' 
-import Breads from '../../assets/Images/menu/breads.svg' 
-import Rice from '../../assets/Images/menu/rice and biyani.svg' 
-import Desserts from '../../assets/Images/menu/desserts.svg' 
-import Snacks from '../../assets/Images/menu/snacks.svg' 
-import Beverages from '../../assets/Images/menu/beverages.svg' 
-import South_Indian from '../../assets/Images/menu/South indian.svg' 
-import Rajasthani from '../../assets/Images/menu/rajasthani.svg' 
+import Appetizers from '../../assets/Images/menu/Appetizers.svg'
+import Vegetarian from '../../assets/Images/menu/veg.svg'
+import Non_Vegetarian from '../../assets/Images/menu/non-veg.svg'
+import Breads from '../../assets/Images/menu/breads.svg'
+import Rice from '../../assets/Images/menu/rice and biyani.svg'
+import Desserts from '../../assets/Images/menu/desserts.svg'
+import Snacks from '../../assets/Images/menu/snacks.svg'
+import Beverages from '../../assets/Images/menu/beverages.svg'
+import South_Indian from '../../assets/Images/menu/South indian.svg'
+import Rajasthani from '../../assets/Images/menu/rajasthani.svg'
 // import IndoChinese from '../../assets/Images/menu/indoChinese.svg' 
 
 import DropdownButton from "../../Common/dropdownButton/dropdown";
@@ -38,9 +38,9 @@ import ApplyOffer from "../../Common/Modal/applyOfferModal";
 
 let MenuItemsJson = [
   {
-    "id":11,
+    "id": 11,
     "category": "Appetizers",
-    "image":Appetizers,
+    "image": Appetizers,
     "subcategories": [
       {
         "id": 1,
@@ -93,9 +93,9 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":12,
+    "id": 12,
     "category": "Veg",
-    "image":Vegetarian,
+    "image": Vegetarian,
     "subcategories": [
       {
         "id": 1,
@@ -136,9 +136,9 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":13,
+    "id": 13,
     "category": "Non-Veg",
-    "image":Non_Vegetarian,
+    "image": Non_Vegetarian,
     "subcategories": [
       {
         "id": 1,
@@ -185,9 +185,9 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":14,
+    "id": 14,
     "category": "Breads",
-    "image":Breads,
+    "image": Breads,
     "subcategories": [
       {
         "id": 1,
@@ -228,9 +228,9 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":15,
+    "id": 15,
     "category": "Rice & Biryanis",
-    "image":Rice,
+    "image": Rice,
     "subcategories": [
       {
         "id": 1,
@@ -265,9 +265,9 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":16,
+    "id": 16,
     "category": "Desserts",
-    "image":Desserts,
+    "image": Desserts,
     "subcategories": [
       {
         "id": 1,
@@ -308,9 +308,9 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":17,
+    "id": 17,
     "category": "Snacks",
-    "image":Snacks,
+    "image": Snacks,
     "subcategories": [
       {
         "id": 1,
@@ -351,9 +351,9 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":18,
+    "id": 18,
     "category": "Beverages",
-    "image":Beverages,
+    "image": Beverages,
     "subcategories": [
       {
         "id": 1,
@@ -394,9 +394,9 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":19,
+    "id": 19,
     "category": "South Indian",
-    "image":South_Indian,
+    "image": South_Indian,
     "subcategories": [
       {
         "id": 1,
@@ -419,9 +419,9 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":20,
+    "id": 20,
     "category": "Rajasthani",
-    "image":Rajasthani,
+    "image": Rajasthani,
     "subcategories": [
       {
         "id": 1,
@@ -444,7 +444,7 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id":21,
+    "id": 21,
     "category": "Indo-Chinese Fusion",
     "image": Beverages,
     "subcategories": [
@@ -537,17 +537,23 @@ const Category = ({ cart }) => {
     (item) => item.tableNo === cart.TableNo
   );
 
-  const SetValue = (value) =>{
- let a = MenuItemsJson?.categories?.filter((item)=>{
-   return item.id === value
-  }
-)
-console.log('a:', a);
-const filteredItems = MenuItemsJson?.categories?.filter(item => item.id === value);
-console.log('filteredItems: ', filteredItems[0].subcategories);
+  const SetValue = (value) => {
+    let a = MenuItemsJson?.categories?.filter((item) => {
+      return item.id === value
+    }
+    )
+    console.log('a:', a);
+    const filteredItems = MenuItemsJson?.categories?.filter(item => item.id === value);
+    console.log('filteredItems: ', filteredItems[0].subcategories);
 
   }
 
+  // Set Payment Method
+  const SelectPayMode = (Mode) => {
+    setPaymentMethod(Mode)
+    console.log('Mode: ', Mode);
+
+  }
 
 
   return (
@@ -555,7 +561,7 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
       <Navbar />
 
       {/* Table Status Modal Button */}
-      <TableStatusModal/>
+      <TableStatusModal />
 
       <div className=" border-solid border-4 px-2 pb-4 mx-3 border-[#544013]">
         <p className="text-xl font-bold text-[#544013]">Generate Order</p>
@@ -594,7 +600,7 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
                       ? "bg-[#d79555] border-solid border-2 border-black text-white"
                       : "bg-white"
                       }`}
-                    onClick={() =>setSelectedTab( MenuItemsJson?.filter(item => item.id === tab?.id))}
+                    onClick={() => setSelectedTab(MenuItemsJson?.filter(item => item.id === tab?.id))}
                   >
                     <img
                       src={tab.image}
@@ -610,7 +616,7 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
               <div className=" p-2 h-[26rem] overflow-auto">
                 <div className="grid grid-cols-2 gap-4">
                   {selectedTab[0]?.subcategories?.map((food) =>
-                    (
+                  (
                     <button
                       key={food?.id}
                       className="p-2 bg-white border rounded-2xl shadow-2xl"
@@ -625,10 +631,10 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
                         <div className="mx-1 w-full">
                           <p className="text-[#544013] text-center font-bold text-lg">{food?.name}</p>
                           <div className="flex justify-between items-center my-3">
-                          <p className="text-lg font-bold mx-7 text-red-800">
-                            ₹ {food?.price}/-
-                          </p>
-                            <Button 
+                            <p className="text-lg font-bold mx-7 text-red-800">
+                              ₹ {food?.price}/-
+                            </p>
+                            <Button
                               btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-bold px-4 py-1 "
                               btn_type="button"
                               title="Add"
@@ -690,7 +696,7 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
                             className="px-2 text-white rounded-full text-base bg-red-600 cursor-pointer"
                             onClick={() => handleRemoveFromCart(items)}
                           > */}
-                            <FontAwesomeIcon className="text-red-700 rounded-full text-base ms-3 bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faTrashCan} />
+                          <FontAwesomeIcon className="text-red-700 rounded-full text-base ms-3 bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faTrashCan} />
                           {/* </span> */}
                         </td>
                         <td class="font-normal py-2 px-6">{items?.price * items?.quantity}</td>
@@ -707,12 +713,12 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
                   </li>
                   <li className="mx-7 my-0.5 text-base font-bold flex justify-between text-[#544013]">
                     <span>Sub Total:</span>
-                    <span className="mx-7">{cart?.totalCost }</span>
+                    <span className="mx-7">{cart?.totalCost}</span>
                   </li>
                   <div className="flex">
                     <SplitBill />
-                    <ApplyOffer/>
-                    
+                    <ApplyOffer />
+
                   </div>
                   {/* <Link to="/payment" className="mx-3"> */}
                   {/* <Button
@@ -732,7 +738,7 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
                               type="checkbox"
                               value={method}
                               checked={paymentMethod === method}
-                              onChange={() => setPaymentMethod(method)}
+                              onClick={() => SelectPayMode(method)}
                               className="mr-2 rounded-full"
                             />
                             {method}
@@ -745,11 +751,11 @@ console.log('filteredItems: ', filteredItems[0].subcategories);
                 </ul>
                 <div className="flex justify-around my-1">
                   <NavLink to="/chef">
-                  <Button
-                    title="Save & Generate KOT"
-                    btn_type="button"
-                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
-                  />
+                    <Button
+                      title="Save & Generate KOT"
+                      btn_type="button"
+                      btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
+                    />
                   </NavLink>
                   <Button
                     title="Save & Print Bill"
