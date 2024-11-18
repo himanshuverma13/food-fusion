@@ -4,13 +4,15 @@ import billing from '../../assets/Images/cashier-svg.svg'
 import { useNavigate } from 'react-router-dom';
 import SideNavbar from './sideNav';
 
-const Navbar = () => {
+const Navbar = ({SideNavFunctionality}) => {
   const [sidebarOpen, setSidebarOpen] = useState(true); // Default to open sidebar
   let navigate = useNavigate();
 
   const toggleSidebar = () => {
+    SideNavFunctionality()
     setSidebarOpen(!sidebarOpen); // Toggle sidebar visibility
   };
+
 
   return (
     <nav className="p-2 flex justify-between items-center">
