@@ -20,13 +20,16 @@ const SideNavbar = () => {
     { path: '/chef', icon: navCart, alt: 'Chef' },
     { path: '/payment', icon: navInvoice, alt: 'Payment' },
     { path: '/employee', icon: invoice, alt: 'Employee' },
-    { path: '/inventory', icon: staff, alt: 'Inventory' },
   ];
 
   const adminNavItems = [
     { path: '/admin/dashboard', icon: dashboard, alt: 'dashboard' },
-    { path: '/admin/register', icon: add, alt: 'add' },
-    { path: '/admin/remove', icon: remove, alt: 'remove' },
+    // { path: '/admin/register', icon: add, alt: 'add' },
+    // { path: '/admin/remove', icon: remove, alt: 'remove' },
+    { path: '/admin/register', icon: invoice, alt: 'Employee' },
+    { path: '/admin/inventory', icon: staff, alt: 'Inventory' },
+
+
   ];
 
   // check URL for Sidebar
@@ -37,7 +40,7 @@ const SideNavbar = () => {
     <>
       <div className='row-start-2 mt-20'>
 
-        {URL?.pathname !== "/admin/dashboard" && URL?.pathname !== "/admin/register" ? (
+        {URL?.pathname !== "/admin/dashboard" && URL?.pathname !== "/admin/register" && URL?.pathname !== "/admin/remove" && URL?.pathname !== "/admin/inventory" ? (
           <>
             {basicNavItems?.map((item, index) => (
               <NavLink to={item.path} key={index}>
