@@ -51,10 +51,10 @@ import ApplyOffer from "../../Common/Modal/applyOfferModal";
 
 let MenuItemsJson = [
   {
-    "id": 11,
-    "category": "Appetizers",
-    "image": Appetizers,
-    "subcategories": [
+    id: 11,
+    category: "Appetizers",
+    image: Appetizers,
+    subcategories: [
       {
         "id": 1,
         "name": "Samosa",
@@ -162,10 +162,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 12,
-    "category": "Veg",
-    "image": Vegetarian,
-    "subcategories": [
+    id: 12,
+    category: "Veg",
+    image: Vegetarian,
+    subcategories: [
       {
         "id": 1,
         "name": "Paneer Butter Masala",
@@ -247,10 +247,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 13,
-    "category": "Non-Veg",
-    "image": Non_Vegetarian,
-    "subcategories": [
+    id: 13,
+    category: "Non-Veg",
+    image: Non_Vegetarian,
+    subcategories: [
       {
         "id": 1,
         "name": "Chicken Tikka Masala",
@@ -345,10 +345,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 14,
-    "category": "Breads",
-    "image": Breads,
-    "subcategories": [
+    id: 14,
+    category: "Breads",
+    image: Breads,
+    subcategories: [
       {
         "id": 1,
         "name": "Garlic Naan",
@@ -421,10 +421,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 15,
-    "category": "Rice & Biryanis",
-    "image": Rice,
-    "subcategories": [
+    id: 15,
+    category: "Rice & Biryanis",
+    image: Rice,
+    subcategories: [
       {
         "id": 1,
         "name": "Vegetable Biryani",
@@ -490,10 +490,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 16,
-    "category": "Desserts",
-    "image": Desserts,
-    "subcategories": [
+    id: 16,
+    category: "Desserts",
+    image: Desserts,
+    subcategories: [
       {
         "id": 1,
         "name": "Gulab Jamun",
@@ -567,10 +567,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 17,
-    "category": "Snacks",
-    "image": Snacks,
-    "subcategories": [
+    id: 17,
+    category: "Snacks",
+    image: Snacks,
+    subcategories: [
       {
         "id": 1,
         "name": "Bhel Puri",
@@ -647,10 +647,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 18,
-    "category": "Beverages",
-    "image": Beverages,
-    "subcategories": [
+    id: 18,
+    category: "Beverages",
+    image: Beverages,
+    subcategories: [
       {
         "id": 1,
         "name": "Masala Chai",
@@ -725,10 +725,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 19,
-    "category": "South Indian",
-    "image": South_Indian,
-    "subcategories": [
+    id: 19,
+    category: "South Indian",
+    image: South_Indian,
+    subcategories: [
       {
         "id": 1,
         "name": "Masala Dosa",
@@ -759,10 +759,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 20,
-    "category": "Rajasthani",
-    "image": Rajasthani,
-    "subcategories": [
+    id: 20,
+    category: "Rajasthani",
+    image: Rajasthani,
+    subcategories: [
       {
         "id": 1,
         "name": "Dal Baati Churma",
@@ -787,10 +787,10 @@ let MenuItemsJson = [
     ]
   },
   {
-    "id": 21,
-    "category": "Indo-Chinese Fusion",
-    "image": Beverages,
-    "subcategories": [
+    id: 21,
+    category: "Indo-Chinese Fusion",
+    image: Beverages,
+    subcategories: [
       {
         "id": 1,
         "name": "Chili Paneer",
@@ -817,10 +817,16 @@ let MenuItemsJson = [
 ];
 
 const Category = ({ cart }) => {
+  console.log("cart: ", cart);
+  const [filteredOptions, setFilteredOptions] = useState(
+    MenuItemsJson[0]?.subcategories
+  );
+  console.log("filteredOptions: ", filteredOptions);
   const [selectedTab, setSelectedTab] = useState([MenuItemsJson[0]]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFoodItem, setSelectedFoodItem] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [query, setQuery] = useState("");
   //   const [showFoodData, setshowFoodData] = useState([]);
   //   const { register, handleSubmit, reset } = useForm();
 
@@ -881,22 +887,44 @@ const Category = ({ cart }) => {
 
   const SetValue = (value) => {
     let a = MenuItemsJson?.categories?.filter((item) => {
-      return item.id === value
-    }
-    )
-    console.log('a:', a);
-    const filteredItems = MenuItemsJson?.categories?.filter(item => item.id === value);
-    console.log('filteredItems: ', filteredItems[0].subcategories);
-
-  }
+      return item.id === value;
+    });
+    console.log("a:", a);
+    const filteredItems = MenuItemsJson?.categories?.filter(
+      (item) => item.id === value
+    );
+    console.log("filteredItems: ", filteredItems[0].subcategories);
+  };
 
   // Set Payment Method
   const SelectPayMode = (Mode) => {
-    setPaymentMethod(Mode)
-    console.log('Mode: ', Mode);
+    setPaymentMethod(Mode);
+    console.log("Mode: ", Mode);
+  };
 
-  }
+  const options = [];
+  MenuItemsJson.map((item) => {
+    item?.subcategories?.map((foodName) => options?.push(foodName));
+  });
 
+  // Function to filter options based on input query
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    if (value.length > 0) {
+      const filtered = options?.filter((option) =>
+        option?.name?.toLowerCase()?.includes(value?.toLowerCase())
+      );
+      setFilteredOptions(filtered);
+      console.log("filtered: ", filtered);
+    } else {
+      setFilteredOptions(MenuItemsJson[0]?.subcategories);
+      console.log(
+        "MenuItemsJson[0]?.subcategories[0]: ",
+        MenuItemsJson[0]?.subcategories
+      );
+    }
+  };
   // Side Nav Functionality
 
   const [moveSideNav, setmoveSideNav] = useState(true)
@@ -926,6 +954,8 @@ const Category = ({ cart }) => {
                     type="text"
                     class="px-2 py-0.5 tracking-wide w-full bg-[#f6f6e9]"
                     placeholder="Search items from menu"
+                    value={query}
+                    onChange={handleSearch}
                   />
                   <button class="flex items-center justify-center px-4">
                     <svg
@@ -944,19 +974,29 @@ const Category = ({ cart }) => {
                 className="w-20"
                 buttonLabel="Filters"
               />
-              
             </div>
             <div className="flex">
               {/* Side Tabs */}
-              <div className="w-1/4 h-[26rem] font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
+              <div className="w-1/4 h-[26rem] cursor-pointer font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
                 {MenuItemsJson.map((tab) => (
-                  <button
+                  <a
+                    onClick={() => {
+                      let filter = MenuItemsJson?.filter(
+                        (item) => item.id === tab?.id
+                      );
+                      console.log(
+                        "filter[0]?.subcategories: ",
+                        filter[0]?.subcategories
+                      );
+
+                      return setFilteredOptions(filter[0]?.subcategories);
+                    }}
                     key={tab.name}
-                    className={`block  text-left w-full my-2 truncate shadow-lg py-1 px-2 ${tab.category === selectedTab
-                      ? "bg-[#d79555] border-solid border-2 border-black text-white"
-                      : "bg-white"
-                      }`}
-                    onClick={() => setSelectedTab(MenuItemsJson?.filter(item => item.id === tab?.id))}
+                    className={`block text-left w-full my-2 shadow-lg py-1 px-2 ${
+                      tab.category === selectedTab
+                        ? "bg-[#d79555] border-solid border-2 border-black text-white"
+                        : "bg-white"
+                    }`}
                   >
                     <img
                       src={tab.image}
@@ -964,20 +1004,15 @@ const Category = ({ cart }) => {
                       className="h-10 w-h-10 inline-block mr-2"
                     />
                     {tab.category}
-                  </button>
+                  </a>
                 ))}
               </div>
 
               {/* Main Content */}
               <div className=" p-2 h-[26rem] overflow-auto">
                 <div className="grid grid-cols-2 gap-4">
-                  {selectedTab[0]?.subcategories?.map((food) =>
-                  (
-                    <button
-                      key={food?.id}
-                      className="p-2 bg-white border rounded-2xl shadow-2xl"
-                      onClick={() => openModal(food)}
-                    >
+                  {filteredOptions?.map((food) => (
+                    <div className="p-2 bg-white border rounded-2xl shadow-2xl">
                       <div className="flex items-center justify-around">
                         <img
                           src={check}
@@ -985,21 +1020,25 @@ const Category = ({ cart }) => {
                           alt="Loading"
                         />
                         <div className="mx-1 w-full">
-                          <p className="text-[#544013] text-center font-bold text-lg">{food?.name}</p>
+                          <p className="text-[#544013] text-center font-bold text-lg">
+                            {food?.name}
+                          </p>
                           <div className="flex justify-between items-center my-3">
                             <p className="text-lg font-bold mx-7 text-red-800">
                               ₹ {food?.price}/-
                             </p>
                             <Button
+                              key={food?.id}
                               btn_class="border-solid border-2 border-black rounded-2xl bg-[#cd3f14] text-white uppercase font-bold px-4 py-1 "
                               btn_type="button"
                               title="Add"
+                              onClick={() => openModal(food)}
                             />
                           </div>
                         </div>
                         {/* </div> */}
                       </div>
-                    </button>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -1062,10 +1101,16 @@ const Category = ({ cart }) => {
                             className="px-2 text-white rounded-full text-base bg-red-600 cursor-pointer"
                             onClick={() => handleRemoveFromCart(items)}
                           > */}
-                          <FontAwesomeIcon className="text-red-700 rounded-full text-base ms-3 bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faTrashCan} />
+                          <FontAwesomeIcon
+                            className="text-red-700 rounded-full text-base ms-3 bg-white cursor-pointer"
+                            onClick={() => handleRemoveFromCart(items)}
+                            icon={faTrashCan}
+                          />
                           {/* </span> */}
                         </td>
-                        <td class="font-normal py-2 px-6">{items?.price * items?.quantity}</td>
+                        <td class="font-normal py-2 px-6">
+                          {items?.price * items?.quantity}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -1084,7 +1129,6 @@ const Category = ({ cart }) => {
                   <div className="flex">
                     <SplitBill />
                     <ApplyOffer />
-
                   </div>
                   {/* <Link to="/payment" className="mx-3"> */}
                   {/* <Button
@@ -1126,13 +1170,13 @@ const Category = ({ cart }) => {
                       btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
                     />
                   </NavLink>
-                 <NavLink to="/payment">
-                 <Button
-                    title="Save & Print Bill"
-                    btn_type="button"
-                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
-                  />
-                 </NavLink>
+                  <NavLink to="/payment">
+                    <Button
+                      title="Save & Print Bill"
+                      btn_type="button"
+                      btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
+                    />
+                  </NavLink>
                   {/* <Button
                     title="Save & Generate Reciept"
                     btn_type="button"

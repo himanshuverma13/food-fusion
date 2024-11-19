@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 // Images
@@ -15,11 +15,16 @@ const Registration = () => {
     console.log(data);
   };
 
+    // Side Nav Functionality
+    const [moveSideNav, setmoveSideNav] = useState(true);
+    const SideNavFunctionality = () => {
+      setmoveSideNav(!moveSideNav);
+    };
+
   return (
-    <>
-        
-      <Navbar />
-      <div className="flex flex-col items-center justify-center">
+    <> 
+      <Navbar SideNavFunctionality={SideNavFunctionality}/>
+      <div className={`flex flex-col items-center justify-center ${moveSideNav ? "ms-16" : "ms-0"}`}>
         <div className="pb-4 w-4/5 border-solid border-2 border-[#544013] shadow-[#544013] rounded-2xl bg-[#ede9dd] shadow-xl">
         <div className="flex items-center justify-center bg-[#cd3f14] py-4 border-solid border-2 border-[#544013] rounded-t-2xl">
           <img src={User} className="h-12 rounded-full bg-[#72591c] p-2" alt="Loading" />
