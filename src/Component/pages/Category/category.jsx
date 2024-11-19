@@ -992,7 +992,7 @@ const Category = ({ cart }) => {
                       return setFilteredOptions(filter[0]?.subcategories);
                     }}
                     key={tab.name}
-                    className={`block text-left w-full my-2 shadow-lg py-1 px-2 ${
+                    className={`block text-left truncate w-full my-2 shadow-lg py-1 px-2 ${
                       tab.category === selectedTab
                         ? "bg-[#d79555] border-solid border-2 border-black text-white"
                         : "bg-white"
