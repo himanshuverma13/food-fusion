@@ -2,9 +2,9 @@ import React from "react";
 import { Dialog } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import Button from "../Button/button";
+import { json } from "react-router-dom";
 
 const CategoryModal = ({  isOpen, closeModal, selectedFoodItem, onSubmit  }) => {
-  console.log('selectedFoodItem: ', selectedFoodItem);
   const { register, handleSubmit, reset } = useForm();
 
   const handleModalClose = () => {
@@ -25,51 +25,33 @@ const CategoryModal = ({  isOpen, closeModal, selectedFoodItem, onSubmit  }) => 
           onClick={handleModalClose}
         />
         <div
-          className="relative bg-[#f6f6e9] w-1/3 p-6 rounded shadow-lg z-20"
+          className="relative bg-[#f6f6e9] w-1/2 px-4 py-6 rounded shadow-lg z-20"
         >
           <h4 className="text-xl mb-4">
             Customize your {selectedFoodItem?.name}
           </h4>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            {/* <div className="mb-4">
-              <label className="block mb-2">
+          <form className="" onSubmit={handleSubmit(onSubmit)}>
+            <div className="grid grid-cols-2 grid-rows-2 gap-0">
+            {selectedFoodItem?.add_ons?.map((option)=>
+              <div className="flex items-center my-2">
                 <input
                   type="checkbox"
-                  id={selectedFoodItem?.items[0]}
-                  value={selectedFoodItem?.items[0]}
-                  {...register(selectedFoodItem?.items[0])}
+                  className="mx-1"
+                  id={option?.option}
+                  value={option?.option}
+                  {...register(option?.option)}
                 />
-                {selectedFoodItem?.items[0]}
-              </label>
-              <label className="block mb-2">
-                <input
-                  type="checkbox"
-                  id={selectedFoodItem?.items[1]}
-                  value={selectedFoodItem?.items[1]}
-                  {...register(selectedFoodItem?.items[1])}
-                />
-                {selectedFoodItem?.items[1]}
-              </label>
-              <label className="block mb-2">
-                <input
-                  type="checkbox"
-                  id={selectedFoodItem?.items[2]}
-                  value={selectedFoodItem?.items[2]}
-                  {...register(selectedFoodItem?.items[2])}
-                />
-                {selectedFoodItem?.items[2]}
-              </label>
-              <hr className="my-3 border-gray-700"/>
-              <label className="block mb-2">
-                Comment
-              </label>
-                <textarea className="resize rounded-md border w-full" rows={3} name="" id=""
-                {...register("comment")}
-                />
-            </div> */}
+                <span>{option?.option} </span>
+                <span className={`mx-1 text-red-500 font-semibold ${option?.price > 0 ? "inline" : "hidden" }`}>  (₹ {option?.price})</span>
+                
+              </div>
+            )}
+            </div>
+       
+              <hr className="w-full border border-black " />
             <Button
              title="Submit"
-              btn_class="bg-green-600 text-white px-4 py-1 border-solid border-2 border-black rounded-xl"
+              btn_class="bg-green-600 text-white px-4 py-1 mt-5 border-solid border-2 border-black rounded-xl"
               btn_type="submit"
             />
           </form>

@@ -15,7 +15,6 @@ import CategoryModal from "../../Common/Modal/categoryModal";
 // import MenuItemsJson from '../../assets/Json/menuItems'
 
 // Images
-
 import Appetizers from "../../assets/Images/menu/Appetizers.svg";
 import check from '../../assets/Images/category/foodItems/Coconut water - CW08.svg'
 import Vegetarian from "../../assets/Images/menu/veg.svg";
@@ -28,6 +27,14 @@ import Beverages from "../../assets/Images/menu/beverages.svg";
 import South_Indian from "../../assets/Images/menu/South indian.svg";
 import Rajasthani from "../../assets/Images/menu/rajasthani.svg";
 // import IndoChinese from '../../assets/Images/menu/indoChinese.svg'
+
+// food items images
+
+
+
+
+
+
 
 import DropdownButton from "../../Common/dropdownButton/dropdown";
 
@@ -53,7 +60,7 @@ let MenuItemsJson = [
         "name": "Samosa",
         "description": "Crispy pastry filled with spiced potatoes, peas, and herbs.",
         "price": 80,
-        "foodImg": "Samosa",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra tamarind chutney", "price": 10},
           {"option": "Mint chutney", "price": 10},
@@ -68,7 +75,7 @@ let MenuItemsJson = [
         "name": "Paneer Tikka",
         "description": "Marinated cottage cheese cubes grilled to perfection with herbs.",
         "price": 250,
-        "foodImg": "Paneer",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra paneer skewer", "price": 50},
           {"option": "Mint chutney", "price": 10},
@@ -81,7 +88,7 @@ let MenuItemsJson = [
         "name": "Chicken Seekh Kebab",
         "description": "Spiced minced chicken skewers cooked in a tandoor.",
         "price": 300,
-        "foodImg": "Chicken",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra kebab skewer", "price": 60},
           {"option": "Garlic sauce", "price": 15},
@@ -94,7 +101,7 @@ let MenuItemsJson = [
         "name": "Aloo Tikki Chaat",
         "description": "Potato patties topped with yogurt, tamarind, and mint chutney.",
         "price": 150,
-        "foodImg": "Aloo",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra yogurt", "price": 10},
           {"option": "Sev", "price": 10},
@@ -107,7 +114,7 @@ let MenuItemsJson = [
         "name": "Lamb Galouti Kebab",
         "description": "Melt-in-your-mouth minced lamb kebabs with a rich blend of spices.",
         "price": 400,
-        "foodImg": "Lamb",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra kebab", "price": 70},
           {"option": "Naan bread", "price": 20},
@@ -120,7 +127,7 @@ let MenuItemsJson = [
         "name": "Avocado Papdi Chaat",
         "description": "Crispy wafers topped with mashed avocado, spiced yogurt, and chutneys—a modern twist on traditional chaat.",
         "price": 180,
-        "foodImg": "Avocado",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra avocado", "price": 30},
           {"option": "Sev", "price": 10},
@@ -132,7 +139,7 @@ let MenuItemsJson = [
         "name": "Chicken 65",
         "description": "Spicy and tangy fried chicken with South Indian spices, curry leaves, and yogurt.",
         "price": 220,
-        "foodImg": "Chicken",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra curry leaves", "price": 10},
           {"option": "Yogurt dip", "price": 15},
@@ -144,7 +151,7 @@ let MenuItemsJson = [
         "name": "Kurkuri Bhindi",
         "description": "Crispy, spiced okra fries for a crunchy and flavorful bite.",
         "price": 130,
-        "foodImg": "Kurkuri",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra crispy bhindi", "price": 20},
           {"option": "Tangy yogurt dip", "price": 15},
@@ -164,7 +171,7 @@ let MenuItemsJson = [
         "name": "Paneer Butter Masala",
         "description": "Cottage cheese in a rich, creamy tomato sauce with butter.",
         "price": 300,
-        "foodImg": "Paneer",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra paneer", "price": 50},
           {"option": "Extra cream", "price": 15},
@@ -177,7 +184,7 @@ let MenuItemsJson = [
         "name": "Chole Bhature",
         "description": "Spiced chickpeas served with fluffy fried bread.",
         "price": 220,
-        "foodImg": "Chole",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra bhatura", "price": 30},
           {"option": "Raita", "price": 20},
@@ -190,7 +197,7 @@ let MenuItemsJson = [
         "name": "Baingan Bharta",
         "description": "Roasted and mashed eggplant with onions, tomatoes, and spices.",
         "price": 200,
-        "foodImg": "Baingan",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra baingan", "price": 40},
           {"option": "Garlic naan", "price": 20},
@@ -203,7 +210,7 @@ let MenuItemsJson = [
         "name": "Palak Paneer",
         "description": "Spinach and paneer cubes cooked with creamy spices.",
         "price": 280,
-        "foodImg": "Palak",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra paneer", "price": 50},
           {"option": "Cream", "price": 15},
@@ -216,7 +223,7 @@ let MenuItemsJson = [
         "name": "Stuffed Bell Peppers",
         "description": "Bell peppers filled with spiced potatoes, peas, and cottage cheese, baked to perfection.",
         "price": 260,
-        "foodImg": "Stuffed",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra filling", "price": 30},
           {"option": "Cheese topping", "price": 20},
@@ -229,7 +236,7 @@ let MenuItemsJson = [
         "name": "Jackfruit Curry",
         "description": "Tender jackfruit cooked in a robust, spicy coconut gravy.",
         "price": 300,
-        "foodImg": "Jackfruit",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra jackfruit", "price": 50},
           {"option": "Coconut milk", "price": 20},
@@ -249,7 +256,7 @@ let MenuItemsJson = [
         "name": "Chicken Tikka Masala",
         "description": "Grilled chicken in a creamy, spiced tomato sauce.",
         "price": 350,
-        "foodImg": "Chicken",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra chicken", "price": 60},
           {"option": "Extra cream", "price": 15},
@@ -262,7 +269,7 @@ let MenuItemsJson = [
         "name": "Lamb Rogan Josh",
         "description": "Aromatic slow-cooked lamb curry with Kashmiri spices.",
         "price": 400,
-        "foodImg": "Lamb",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra lamb", "price": 70},
           {"option": "Raita", "price": 20},
@@ -275,7 +282,7 @@ let MenuItemsJson = [
         "name": "Goan Fish Curry",
         "description": "Fresh fish cooked in a tangy, spicy coconut curry from Goa.",
         "price": 370,
-        "foodImg": "Goan",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra fish", "price": 60},
           {"option": "Coconut milk", "price": 20},
@@ -288,7 +295,7 @@ let MenuItemsJson = [
         "name": "Butter Chicken",
         "description": "Tender chicken in a rich, buttery, tomato-based gravy.",
         "price": 330,
-        "foodImg": "Butter",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra chicken", "price": 60},
           {"option": "Extra butter", "price": 15},
@@ -301,7 +308,7 @@ let MenuItemsJson = [
         "name": "Chicken Chettinad",
         "description": "Fiery South Indian chicken curry made with freshly ground spices.",
         "price": 340,
-        "foodImg": "Chicken",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra chicken", "price": 60},
           {"option": "Coconut milk", "price": 20},
@@ -314,7 +321,7 @@ let MenuItemsJson = [
         "name": "Mutton Vindaloo",
         "description": "A spicy, tangy mutton curry with vinegar, inspired by Portuguese cuisine in Goa.",
         "price": 380,
-        "foodImg": "Mutton",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra mutton", "price": 70},
           {"option": "Coconut milk", "price": 20},
@@ -327,7 +334,7 @@ let MenuItemsJson = [
         "name": "Prawn Moilee",
         "description": "Lightly spiced, creamy coconut-based prawn curry from Kerala.",
         "price": 400,
-        "foodImg": "Prawn",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra prawns", "price": 80},
           {"option": "Coconut milk", "price": 20},
@@ -347,7 +354,7 @@ let MenuItemsJson = [
         "name": "Garlic Naan",
         "description": "Soft, pillowy naan bread brushed with garlic butter.",
         "price": 80,
-        "foodImg": "Garlic",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra garlic topping", "price": 10},
           {"option": "Butter", "price": 10},
@@ -359,7 +366,7 @@ let MenuItemsJson = [
         "name": "Roti",
         "description": "Whole wheat flatbread, perfect for curries.",
         "price": 40,
-        "foodImg": "Roti",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Butter", "price": 10},
           {"option": "Tawa or tandoor cooked", "price": 0}
@@ -370,7 +377,7 @@ let MenuItemsJson = [
         "name": "Stuffed Paratha",
         "description": "Flatbread stuffed with spiced potatoes, paneer, or spinach.",
         "price": 100,
-        "foodImg": "Stuffed",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra stuffing", "price": 20},
           {"option": "Butter", "price": 10},
@@ -382,7 +389,7 @@ let MenuItemsJson = [
         "name": "Lachha Paratha",
         "description": "Layered and flaky whole wheat bread.",
         "price": 70,
-        "foodImg": "Lachha",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra butter", "price": 10},
           {"option": "Whole wheat or refined flour", "price": 0}
@@ -393,7 +400,7 @@ let MenuItemsJson = [
         "name": "Cheese Naan",
         "description": "Soft naan filled with gooey, melted cheese.",
         "price": 110,
-        "foodImg": "Cheese",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra cheese", "price": 30},
           {"option": "Regular or chili cheese", "price": 0}
@@ -404,7 +411,7 @@ let MenuItemsJson = [
         "name": "Chili Cheese Kulcha",
         "description": "Soft bread stuffed with cheese and green chili for an extra kick.",
         "price": 120,
-        "foodImg": "Chili",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra cheese", "price": 30},
           {"option": "Extra chili", "price": 10},
@@ -423,7 +430,7 @@ let MenuItemsJson = [
         "name": "Vegetable Biryani",
         "description": "Basmati rice with vegetables, spices, and herbs, served with raita.",
         "price": 200,
-        "foodImg": "Vegetable",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra vegetables", "price": 30},
           {"option": "Raita", "price": 20},
@@ -436,7 +443,7 @@ let MenuItemsJson = [
         "name": "Chicken Biryani",
         "description": "Aromatic basmati rice cooked with marinated chicken and spices.",
         "price": 280,
-        "foodImg": "Chicken",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra chicken", "price": 60},
           {"option": "Boiled egg", "price": 20},
@@ -449,7 +456,7 @@ let MenuItemsJson = [
         "name": "Lamb Biryani",
         "description": "Fragrant rice with tender lamb pieces and delicate spices.",
         "price": 350,
-        "foodImg": "Lamb",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra lamb", "price": 70},
           {"option": "Raita", "price": 20},
@@ -462,7 +469,7 @@ let MenuItemsJson = [
         "name": "Mushroom Pulao",
         "description": "Fragrant rice cooked with mushrooms and mild spices.",
         "price": 180,
-        "foodImg": "Mushroom",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra mushrooms", "price": 30},
           {"option": "Extra ghee", "price": 15},
@@ -474,7 +481,7 @@ let MenuItemsJson = [
         "name": "Jeera Rice",
         "description": "Basmati rice tempered with cumin seeds.",
         "price": 100,
-        "foodImg": "Jeera",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra ghee", "price": 10},
           {"option": "Basmati or regular rice", "price": 0}
@@ -492,7 +499,7 @@ let MenuItemsJson = [
         "name": "Gulab Jamun",
         "description": "Milk-based dumplings soaked in saffron and cardamom-flavored syrup.",
         "price": 100,
-        "foodImg": "Gulab",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra gulab jamun", "price": 40},
           {"option": "Ice cream scoop", "price": 20},
@@ -504,7 +511,7 @@ let MenuItemsJson = [
         "name": "Ras Malai",
         "description": "Soft cheese patties soaked in sweet, thickened milk.",
         "price": 120,
-        "foodImg": "Ras",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra ras malai piece", "price": 50},
           {"option": "Nuts", "price": 15},
@@ -516,7 +523,7 @@ let MenuItemsJson = [
         "name": "Mango Kulfi",
         "description": "Traditional Indian ice cream with fresh mango flavor.",
         "price": 130,
-        "foodImg": "Mango",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra kulfi", "price": 40},
           {"option": "Nuts", "price": 10},
@@ -528,7 +535,7 @@ let MenuItemsJson = [
         "name": "Chocolate Samosa",
         "description": "Crispy pastry filled with melted chocolate—a modern twist!",
         "price": 120,
-        "foodImg": "Chocolate",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra chocolate drizzle", "price": 20},
           {"option": "Served warm or cold", "price": 0}
@@ -539,7 +546,7 @@ let MenuItemsJson = [
         "name": "Jalebi with Rabri",
         "description": "Crispy, syrup-soaked coils served with thickened, sweetened milk.",
         "price": 150,
-        "foodImg": "Jalebi",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra jalebi", "price": 30},
           {"option": "Extra rabri", "price": 20},
@@ -551,7 +558,7 @@ let MenuItemsJson = [
         "name": "Coconut Ladoo",
         "description": "Sweet coconut balls with condensed milk.",
         "price": 90,
-        "foodImg": "Coconut",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra ladoo", "price": 20},
           {"option": "Roasted coconut garnish", "price": 0}
@@ -569,7 +576,7 @@ let MenuItemsJson = [
         "name": "Bhel Puri",
         "description": "Puffed rice, sev, vegetables, and tamarind sauce for a crunchy, tangy snack.",
         "price": 120,
-        "foodImg": "Bhel",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra sev", "price": 10},
           {"option": "Extra chutneys", "price": 10},
@@ -581,7 +588,7 @@ let MenuItemsJson = [
         "name": "Pav Bhaji",
         "description": "Spicy mashed vegetable curry served with buttered bread rolls.",
         "price": 150,
-        "foodImg": "Pav",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra pav", "price": 20},
           {"option": "Extra butter", "price": 10},
@@ -593,7 +600,7 @@ let MenuItemsJson = [
         "name": "Dahi Puri",
         "description": "Crisp puris filled with yogurt, chutneys, and sev.",
         "price": 130,
-        "foodImg": "Dahi",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra yogurt", "price": 10},
           {"option": "Extra sev", "price": 10},
@@ -605,7 +612,7 @@ let MenuItemsJson = [
         "name": "Masala Fries",
         "description": "French fries with an Indian spice twist.",
         "price": 110,
-        "foodImg": "Masala",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra fries", "price": 20},
           {"option": "Cheese", "price": 20},
@@ -617,7 +624,8 @@ let MenuItemsJson = [
         "name": "Paneer Kathi Roll",
         "description": "Wrap filled with spiced paneer, onions, and chutneys.",
         "price": 180,
-        "foodImg": "Paneer",
+        "foodImg": Rajasthani
+        ,
         "add_ons": [
           {"option": "Extra paneer", "price": 40},
           {"option": "Extra chutney", "price": 10},
@@ -629,7 +637,7 @@ let MenuItemsJson = [
         "name": "Chicken Frankie",
         "description": "Grilled chicken wrapped in a soft roti with spicy chutney.",
         "price": 200,
-        "foodImg": "Chicken",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra chicken", "price": 50},
           {"option": "Extra chutney", "price": 10},
@@ -648,7 +656,7 @@ let MenuItemsJson = [
         "name": "Masala Chai",
         "description": "Spiced Indian tea with milk.",
         "price": 60,
-        "foodImg": "Masala",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra milk", "price": 10},
           {"option": "Ginger", "price": 5},
@@ -660,7 +668,7 @@ let MenuItemsJson = [
         "name": "Mango Lassi",
         "description": "Creamy, refreshing mango yogurt drink.",
         "price": 120,
-        "foodImg": "Mango",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra mango pulp", "price": 20},
           {"option": "Nuts", "price": 15},
@@ -672,7 +680,7 @@ let MenuItemsJson = [
         "name": "Sweet Lassi",
         "description": "Cool, sweetened yogurt drink.",
         "price": 100,
-        "foodImg": "Sweet",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra yogurt", "price": 10},
           {"option": "Nuts", "price": 15},
@@ -684,7 +692,7 @@ let MenuItemsJson = [
         "name": "Nimbu Pani",
         "description": "Indian-style lemonade with spices and mint.",
         "price": 80,
-        "foodImg": "Nimbu",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra lemon", "price": 5},
           {"option": "Mint", "price": 5},
@@ -696,7 +704,7 @@ let MenuItemsJson = [
         "name": "Rose Milk",
         "description": "Refreshing milk flavored with rose syrup.",
         "price": 100,
-        "foodImg": "Rose",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra rose syrup", "price": 10},
           {"option": "Nuts", "price": 15},
@@ -708,7 +716,7 @@ let MenuItemsJson = [
         "name": "Coconut Water",
         "description": "Fresh and natural coconut water.",
         "price": 90,
-        "foodImg": "Coconut",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra coconut pulp", "price": 15},
           {"option": "Chilled or room temperature", "price": 0}
@@ -724,12 +732,14 @@ let MenuItemsJson = [
       {
         "id": 1,
         "name": "Masala Dosa",
+        "foodImg":Rajasthani,
         "description": "Rice crepe filled with spiced potato, served with coconut chutney and sambar.",
         "price": 180
       },
       {
         "id": 2,
         "name": "Idli-Sambar",
+        "foodImg":Rajasthani,
         "description": "Steamed rice cakes served with sambar and chutneys.",
         "price": 120
       },
@@ -738,7 +748,7 @@ let MenuItemsJson = [
         "name": "Chicken Chettinad",
         "description": "Fiery chicken curry with ground spices, native to Tamil Nadu.",
         "price": 340,
-        "foodImg": "Chicken",
+        "foodImg": Rajasthani,
         "add_ons": [
           {"option": "Extra chicken", "price": 60},
           {"option": "Coconut milk", "price": 20},
@@ -756,18 +766,21 @@ let MenuItemsJson = [
       {
         "id": 1,
         "name": "Dal Baati Churma",
+        "foodImg":Rajasthani,
         "description": "Baked wheat balls served with lentil curry and sweet churma.",
         "price": 300
       },
       {
         "id": 2,
         "name": "Gatte ki Sabzi",
+        "foodImg":Rajasthani,
         "description": "Gram flour dumplings in a spiced yogurt curry.",
         "price": 200
       },
       {
         "id": 3,
         "name": "Ker Sangri",
+        "foodImg":Rajasthani,
         "description": "Rajasthani desert beans and berries cooked with spices.",
         "price": 250
       }
@@ -781,18 +794,21 @@ let MenuItemsJson = [
       {
         "id": 1,
         "name": "Chili Paneer",
+        "foodImg":Rajasthani,
         "description": "Indian-style cottage cheese stir-fried with bell peppers, onions, and a spicy sauce.",
         "price": 220
       },
       {
         "id": 2,
         "name": "Hakka Noodles",
+        "foodImg":Rajasthani,
         "description": "Stir-fried noodles with vegetables, soy sauce, and Indian spices.",
         "price": 200
       },
       {
         "id": 3,
         "name": "Manchurian",
+        "foodImg":Rajasthani,
         "description": "Deep-fried vegetable balls in a tangy, spicy sauce.",
         "price": 220
       }
@@ -830,22 +846,23 @@ const Category = ({ cart }) => {
   const closeModal = () => setIsOpen(false);
 
   const onSubmit = (data) => {
-    let category = Object.values(data).filter((value) => value);
-    let payload = {
-      id: selectedFoodItem?.id,
-      food: selectedFoodItem?.name,
-      // image: selectedFoodItem?.image,
-      category: category,
-      tableNo: cart?.TableNo,
-      status: "open",
-      quantity: 1,
-      price: selectedFoodItem?.price,
-      amount: 1,
-    };
-    console.log("Payload:", payload);
+    console.log('data: ', data);
+    // let category = Object.values(data).filter((value) => value);
+    // let payload = {
+    //   id: selectedFoodItem?.id,
+    //   food: selectedFoodItem?.name,
+    //   // image: selectedFoodItem?.image,
+    //   category: category,
+    //   tableNo: cart?.TableNo,
+    //   status: "open",
+    //   quantity: 1,
+    //   price: selectedFoodItem?.price,
+    //   amount: 1,
+    // };
+    // console.log("Payload:", payload);
     // setshowFoodData(selectedFoodItem);
-    dispatch(add(payload));
-    closeModal();
+    // dispatch(add(payload));
+    // closeModal();
   };
 
   const handleIncrementQuantity = (item) => {
