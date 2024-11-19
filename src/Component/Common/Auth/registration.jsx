@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 // Images
 import User from "../../assets/Images/admin/Add user.svg";
 import Navbar from "../Navbar/navbar";
+import Button from "../Button/button";
+import { NavLink } from "react-router-dom";
 const Registration = () => {
   const {
     register,
@@ -15,21 +17,49 @@ const Registration = () => {
     console.log(data);
   };
 
-    // Side Nav Functionality
-    const [moveSideNav, setmoveSideNav] = useState(true);
-    const SideNavFunctionality = () => {
-      setmoveSideNav(!moveSideNav);
-    };
+  // Side Nav Functionality
+  const [moveSideNav, setmoveSideNav] = useState(true);
+  const SideNavFunctionality = () => {
+    setmoveSideNav(!moveSideNav);
+  };
 
   return (
-    <> 
-      <Navbar SideNavFunctionality={SideNavFunctionality}/>
-      <div className={`flex flex-col items-center justify-center ${moveSideNav ? "ms-16" : "ms-0"}`}>
+    <>
+      <Navbar SideNavFunctionality={SideNavFunctionality} />
+      <div className="ms-20">
+        <div className="text-2xl font-bold uppercase mb-2">Manage Users</div>
+        <NavLink to="/admin/remove">
+          <Button
+            title="Remove User"
+            btn_type="button"
+            btn_class="border-black border-2 p-1 me-4 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
+          />
+        </NavLink>
+        <NavLink to="/admin/userTable">
+          <Button
+            title="User Table"
+            btn_type="button"
+            btn_class="border-black border-2 p-1 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
+          />
+        </NavLink>
+      </div>
+
+      <div
+        className={`flex flex-col items-center justify-center mt-4 ${
+          moveSideNav ? "ms-16" : "ms-0"
+        }`}
+      >
         <div className="pb-4 w-4/5 border-solid border-2 border-[#544013] shadow-[#544013] rounded-2xl bg-[#ede9dd] shadow-xl">
-        <div className="flex items-center justify-center bg-[#cd3f14] py-4 border-solid border-2 border-[#544013] rounded-t-2xl">
-          <img src={User} className="h-12 rounded-full bg-[#72591c] p-2" alt="Loading" />
-          <p className="font-bold text-xl ms-2 tracking-wider">Add New User</p>
-        </div>
+          <div className="flex items-center justify-center bg-[#cd3f14] py-4 border-solid border-2 border-[#544013] rounded-t-2xl">
+            <img
+              src={User}
+              className="h-12 rounded-full bg-[#72591c] p-2"
+              alt="Loading"
+            />
+            <p className="font-bold text-xl ms-2 tracking-wider">
+              Add New User
+            </p>
+          </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="grid grid-cols-2 grid-rows-5 gap-4 px-3 py-4"
@@ -129,7 +159,9 @@ const Registration = () => {
                 })}
               />
               {errors.alternate_number && (
-                <span className="text-red-600">{errors.alternate_number.message}</span>
+                <span className="text-red-600">
+                  {errors.alternate_number.message}
+                </span>
               )}
             </div>
             <div className="">
@@ -176,7 +208,7 @@ const Registration = () => {
             </div>
             <div>
               <label for="address" class="font-bold text-lg">
-             Address{" "}
+                Address{" "}
               </label>
               <input
                 type="text"
@@ -184,17 +216,15 @@ const Registration = () => {
                 placeholder="Enter your Address"
                 class="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
                 {...register("address", {
-                    required: "Address is required",
-                    minLength: {
-                      // value: 8,
-                      // message: "date must be at least 8 characters long",
-                    },
-                  })}
+                  required: "Address is required",
+                  minLength: {
+                    // value: 8,
+                    // message: "date must be at least 8 characters long",
+                  },
+                })}
               />
               {errors.address && (
-                <span className="text-red-600">
-                  {errors.address.message}
-                </span>
+                <span className="text-red-600">{errors.address.message}</span>
               )}
             </div>
             <div>
@@ -231,17 +261,16 @@ const Registration = () => {
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
                 {...register("passcode", {
                   required: "passcode is required",
-                //   minLength: {
-                //     value: 2,
-                //     message: "Name must be at least 2 characters long",
-                //   },
+                  //   minLength: {
+                  //     value: 2,
+                  //     message: "Name must be at least 2 characters long",
+                  //   },
                 })}
               />
               {errors.passcode && (
                 <span className="text-red-600">{errors.passcode.message}</span>
               )}
             </div>
-
             <div className="">
               <label htmlFor="re_passcode" className="font-bold text-lg">
                 Re-Enter Passcode{" "}
@@ -253,17 +282,18 @@ const Registration = () => {
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
                 {...register("re_passcode", {
                   required: "Passcode is required",
-                //   minLength: {
-                //     value: 2,
-                //     message: "Name must be at least 2 characters long",
-                //   }, 
+                  //   minLength: {
+                  //     value: 2,
+                  //     message: "Name must be at least 2 characters long",
+                  //   },
                 })}
               />
               {errors.re_passcode && (
-                <span className="text-red-600">{errors.re_passcode.message}</span>
+                <span className="text-red-600">
+                  {errors.re_passcode.message}
+                </span>
               )}
             </div>
-
             <div>
               <button
                 type="submit"

@@ -51,16 +51,17 @@ const Inventory = () => {
     },
   ];
 
- // Side Nav Functionality
- const [moveSideNav, setmoveSideNav] = useState(true);
- const SideNavFunctionality = () => {
-   setmoveSideNav(!moveSideNav);
- };
+  // Side Nav Functionality
+  const [moveSideNav, setmoveSideNav] = useState(true);
+  const SideNavFunctionality = () => {
+    setmoveSideNav(!moveSideNav);
+  };
 
   return (
     <>
       <Navbar SideNavFunctionality={SideNavFunctionality} />
       <div className={moveSideNav ? "ms-16" : "ms-0"}>
+        <div className="text-2xl font-bold ms-2 uppercase">Inventory</div>
         {/* Search bar */}
         <div class="text-black flex justify-between items-center ms-5 me-3">
           <div class="overflow-hidden flex justify-between border-solid border-2 w-96 border-black rounded-3xl bg-[#f6f6e9]">
@@ -80,11 +81,11 @@ const Inventory = () => {
               </svg>
             </button>
           </div>
-          <Button 
-                title="Add New Item"
-                btn_class="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
-                btn_type="button"
-                />
+          <Button
+            title="Add New Item"
+            btn_class="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
+            btn_type="button"
+          />
         </div>
 
         {/* Inventory table */}
@@ -92,28 +93,52 @@ const Inventory = () => {
           <table class="w-full text-sm text-left border border-slate-500">
             <thead class="text-xs text-white uppercase bg-[#d79555]">
               <tr>
-              <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-wider border border-slate-500"
+                >
                   S. No.
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-wider border border-slate-500"
+                >
                   Item Name
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-wider border border-slate-500"
+                >
                   Supplier
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-wider border border-slate-500"
+                >
                   Quantity with Unit
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-wider border border-slate-500"
+                >
                   Cost per Unit
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-wider border border-slate-500"
+                >
                   Total Cost
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
-                  Last Restock On
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-widest border border-slate-500"
+                >
+                  Last-Restock On
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-wider border border-slate-500"
+                >
                   Status
                 </th>
               </tr>
@@ -121,15 +146,13 @@ const Inventory = () => {
             <tbody class="bg-[#ede9dd]">
               {InventoryTableData?.map((items, index) => (
                 <tr key={index}>
-                     <th
+                  <th
                     scope="row"
                     class="px-6 py-4 border border-slate-500 font-medium whitespace-nowrap"
                   >
                     {++index}
                   </th>
-                  <th
-                    class="px-6 py-4 border border-slate-500 font-medium whitespace-nowrap"
-                  >
+                  <th class="px-6 py-4 border border-slate-500 font-medium whitespace-nowrap">
                     {items.name}
                   </th>
                   <td class="px-6 py-4 border border-slate-500">
