@@ -17,15 +17,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleMinus,
   faCirclePlus,
-  faCircleXmark,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
 import CategoryModal from "../../Common/Modal/categoryModal";
 const Order = ({ cart }) => {
-  console.log('cart: ', cart);
-
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedFoodItem, setSelectedFoodItem] = useState(null);
 
   const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
   const OrderTable = [
@@ -80,7 +78,6 @@ const Order = ({ cart }) => {
   ];
   const dispatch = useDispatch();
   const handleIncrementQuantity = (item) => {
-    console.log('id: ', item);
     dispatch(increment(item));
   };
 
@@ -101,26 +98,33 @@ const Order = ({ cart }) => {
 
   const closeModal = () => setIsOpen(false);
 
-
   // to show filter food items
-  const filterFoodItems = cart?.itemsInCart?.filter((filterItems) =>
-    filterItems?.tableNo == cart?.TableNo
-  )
+  const filterFoodItems = cart?.itemsInCart?.filter(
+    (filterItems) => filterItems?.tableNo == cart?.TableNo
+  );
 
-    // Side Nav Functionality
+  // Side Nav Functionality
 
-    const [moveSideNav, setmoveSideNav] = useState(true)
-    const SideNavFunctionality = () => {
-      setmoveSideNav(!moveSideNav)
-    }
-  
+  const [moveSideNav, setmoveSideNav] = useState(true);
+  const SideNavFunctionality = () => {
+    setmoveSideNav(!moveSideNav);
+  };
 
+// onsubmit 
+const onSubmit = (data) => {
+  console.log('data: ', data);
+
+}
 
   return (
     <>
-      <Navbar SideNavFunctionality={SideNavFunctionality}/>
+      <Navbar SideNavFunctionality={SideNavFunctionality} />
       {/* <TableStatusModal/> */}
-      <div className={`border-solid border-4 border-[#544013] bg-[#f6f6e9] p-2 m-3 transition-all duration-100 ${moveSideNav ? "ms-16" : "ms-0"}`}>
+      <div
+        className={`border-solid border-4 border-[#544013] bg-[#f6f6e9] p-2 m-3 transition-all duration-100 ${
+          moveSideNav ? "ms-16" : "ms-0"
+        }`}
+      >
         <div className="flex justify-between my-2">
           <div>
             <p className="text-xl font-bold text-[#544013]">Generate Order</p>
@@ -181,6 +185,7 @@ const Order = ({ cart }) => {
             <input
               id="table_Number"
               type="number"
+              value={cart?.TableNo}
               class="py-1 w-5/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
             />
           </div>
@@ -198,7 +203,6 @@ const Order = ({ cart }) => {
             />
           </NavLink>
           <div class=" flex justify-between border-solid border-2 w-5/12 border-black rounded-3xl bg-[#f6f6e9] my-3">
-
             <AutoSuggestSearch />
             <button class="flex items-center justify-center px-4">
               <svg
@@ -216,8 +220,8 @@ const Order = ({ cart }) => {
         <CategoryModal
           isOpen={isOpen}
           closeModal={closeModal}
-        // selectedFoodItem={selectedFoodItem}
-        // onSubmit={onSubmit}
+          selectedFoodItem={selectedFoodItem}
+          onSubmit={onSubmit}
         />
 
         {/* Table View */}
@@ -257,7 +261,6 @@ const Order = ({ cart }) => {
                   Price
                 </th>
                 <th scope="col" class="px-6 py-3 ">
-
                   Amount
                 </th>
               </tr>
@@ -276,23 +279,35 @@ const Order = ({ cart }) => {
                   </th>
 
                   <td class="px-6 py-2  font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
-                    {items?.category?.map((category) =>
-                      category
-                    )}
+                    {items?.category?.map((category) => category)}
                   </td>
                   {/* <td class="px-6 py-4 border-solid border-4 border-[#d79555] border-y-0 border-s-0">{items.quantity}</td> */}
                   <td class="flex items-center justify-center font-normal py-2 px-6 border-solid border-4 border-[#d79555] border-y-0 border-s-0">
-                    <FontAwesomeIcon className=" rounded-full bg-white text-green-500 text-lg cursor-pointer" onClick={() => handleIncrementQuantity(items)} icon={faCirclePlus} />
+                    <FontAwesomeIcon
+                      className=" rounded-full bg-white text-green-500 text-lg cursor-pointer"
+                      onClick={() => handleIncrementQuantity(items)}
+                      icon={faCirclePlus}
+                    />
                     <div className="mx-2">{items?.quantity}</div>
 
-                    <FontAwesomeIcon className=" rounded-full text-red-500 text-lg cursor-pointer bg-white" onClick={() => handleDecrementQuantity(items)} icon={faCircleMinus} />
+                    <FontAwesomeIcon
+                      className=" rounded-full text-red-500 text-lg cursor-pointer bg-white"
+                      onClick={() => handleDecrementQuantity(items)}
+                      icon={faCircleMinus}
+                    />
 
-                    <FontAwesomeIcon className="text-red-700 rounded-full ms-3 text-base bg-white cursor-pointer" onClick={() => handleRemoveFromCart(items)} icon={faTrashCan} />
+                    <FontAwesomeIcon
+                      className="text-red-700 rounded-full ms-3 text-base bg-white cursor-pointer"
+                      onClick={() => handleRemoveFromCart(items)}
+                      icon={faTrashCan}
+                    />
                   </td>
                   <td class="px-6 py-2  font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                     {items.price}
                   </td>
-                  <td class="px-6 py-2  font-bold">{items?.price * items?.quantity}</td>
+                  <td class="px-6 py-2  font-bold">
+                    {items?.price * items?.quantity}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -306,7 +321,6 @@ const Order = ({ cart }) => {
             btn_type="button"
             btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase me-8"
           />
-
         </NavLink>
         <NavLink to="/payment">
           <Button
@@ -331,7 +345,6 @@ const Order = ({ cart }) => {
           btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-sm text-white font-bold px-3 py-1 ms-8"
         /> */}
         </NavLink>
-
       </div>
       <StatusFooter />
     </>

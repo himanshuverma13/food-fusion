@@ -48,6 +48,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import TableStatusModal from "../../Common/Modal/tableStatusModal";
 import ApplyOffer from "../../Common/Modal/applyOfferModal";
+import { useForm } from "react-hook-form";
 
 let MenuItemsJson = [
   {
@@ -821,17 +822,12 @@ const Category = ({ cart }) => {
   const [filteredOptions, setFilteredOptions] = useState(
     MenuItemsJson[0]?.subcategories
   );
-  console.log("filteredOptions: ", filteredOptions);
   const [selectedTab, setSelectedTab] = useState([MenuItemsJson[0]]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFoodItem, setSelectedFoodItem] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
   const [query, setQuery] = useState("");
-  //   const [showFoodData, setshowFoodData] = useState([]);
-  //   const { register, handleSubmit, reset } = useForm();
 
-  // MenuItemsJson
-  // console.log('MenuItemsJson: ', MenuItemsJson.categories);
 
   const tableOptions = ["1", "2", "3", "4"];
   const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
@@ -843,26 +839,41 @@ const Category = ({ cart }) => {
     setIsOpen(true);
   };
 
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => {
+    reset()
+    setIsOpen(false)
+  };
 
+  
+  const {reset}=useForm()
+ 
   const onSubmit = (data) => {
-    console.log('data: ', data);
-    // let category = Object.values(data).filter((value) => value);
-    // let payload = {
-    //   id: selectedFoodItem?.id,
-    //   food: selectedFoodItem?.name,
-    //   // image: selectedFoodItem?.image,
-    //   category: category,
-    //   tableNo: cart?.TableNo,
-    //   status: "open",
-    //   quantity: 1,
-    //   price: selectedFoodItem?.price,
-    //   amount: 1,
-    // };
-    // console.log("Payload:", payload);
-    // setshowFoodData(selectedFoodItem);
-    // dispatch(add(payload));
-    // closeModal();
+    let price = [];
+    let category = []
+     Object.entries(data).reduce((acc, [key, value]) => {
+      if (value !== false)  {
+        acc[key] = value;
+        price.push(Number(acc[key] = value));
+        console.log('price: ', price);
+        category.push(acc[key] = key);
+        console.log('category: ', category);
+      }
+      return acc;
+    }, {});
+    let payload = {
+      id: selectedFoodItem?.id,
+      food: selectedFoodItem?.name,
+      // image: selectedFoodItem?.image,
+      category: category,
+      tableNo: cart?.TableNo,
+      status: "open",
+      quantity: 1,
+      price: price.reduce((a, b) => a + b, selectedFoodItem?.price),
+      amount: 1,
+    };
+    console.log("Payload:", payload);
+    dispatch(add(payload));
+    closeModal();
   };
 
   const handleIncrementQuantity = (item) => {
