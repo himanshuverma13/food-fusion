@@ -2,12 +2,13 @@ import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCirclePlus,
   faEye,
   faPen,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../Navbar/navbar";
+import Button from "../Button/button";
+import { NavLink } from "react-router-dom";
 const AdminUserTable = () => {
   const AdminUserTableData = [
     {
@@ -47,40 +48,78 @@ const AdminUserTable = () => {
     },
   ];
 
-   // Side Nav Functionality
-   const [moveSideNav, setmoveSideNav] = useState(true);
-   const SideNavFunctionality = () => {
-     setmoveSideNav(!moveSideNav);
-   };
+  // Side Nav Functionality
+  const [moveSideNav, setmoveSideNav] = useState(true);
+  const SideNavFunctionality = () => {
+    setmoveSideNav(!moveSideNav);
+  };
 
   return (
     <>
-    <Navbar SideNavFunctionality={SideNavFunctionality}/>
+      <Navbar SideNavFunctionality={SideNavFunctionality} />
+      <div className="ms-20">
+        <div className="text-2xl font-bold uppercase mb-2">Manage Users</div>
+        <NavLink to="/admin/register">
+          <Button
+            title="Add New User"
+            btn_type="button"
+            btn_class="border-black border-2 p-1 me-4 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
+          />
+        </NavLink>
+        <NavLink to="/admin/remove">
+          <Button
+            title="Remove User"
+            btn_type="button"
+            btn_class="border-black border-2 p-1 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
+          />
+        </NavLink>
+      </div>
       <div className={moveSideNav ? "ms-16" : "ms-0"}>
         {/* Inventory table */}
-        <div class="overflow-x-auto me-2 m-5 py-5">
+        <div class="overflow-x-auto me-2 m-5 pb -5">
           <table class="w-full text-sm text-left border border-slate-500">
             <thead class="text-xs text-white uppercase bg-[#d79555]">
               <tr>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-widest border border-slate-500"
+                >
                   S. No.
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-widest border border-slate-500"
+                >
                   Name
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-widest border border-slate-500"
+                >
                   Role
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-widest border border-slate-500"
+                >
                   Phone Number
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-widest border border-slate-500"
+                >
                   Joining Date
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-widest border border-slate-500"
+                >
                   Salary
                 </th>
-                <th scope="col" class="px-6 py-3 border border-slate-500">
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-widest border border-slate-500"
+                >
                   Action
                 </th>
               </tr>
@@ -114,10 +153,12 @@ const AdminUserTable = () => {
                       className="text-blue-500 text-xl cursor-pointer"
                       icon={faEye}
                     />
-                    <FontAwesomeIcon
-                      className="text-green-500 text-xl cursor-pointer"
-                      icon={faPen}
-                    />
+                    <NavLink to="/admin/register">
+                      <FontAwesomeIcon
+                        className="text-green-500 text-xl cursor-pointer"
+                        icon={faPen}
+                      />
+                    </NavLink>
                     <FontAwesomeIcon
                       className="text-red-500 text-xl  cursor-pointer"
                       icon={faTrash}

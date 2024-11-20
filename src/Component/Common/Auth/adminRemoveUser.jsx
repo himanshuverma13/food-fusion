@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "../Navbar/navbar";
 import remove from "../../assets/Images/sideNavImg/remove-user.svg";
+import Button from "../Button/button";
+import { NavLink } from "react-router-dom";
 
 const AdminRemoveUser = () => {
   const {
@@ -28,19 +30,44 @@ const AdminRemoveUser = () => {
     setFormData(null); // Clear formData after cancel
   };
 
-   // Side Nav Functionality
-   const [moveSideNav, setmoveSideNav] = useState(true);
-   const SideNavFunctionality = () => {
-     setmoveSideNav(!moveSideNav);
-   };
+  // Side Nav Functionality
+  const [moveSideNav, setmoveSideNav] = useState(true);
+  const SideNavFunctionality = () => {
+    setmoveSideNav(!moveSideNav);
+  };
 
   return (
     <>
-      <Navbar SideNavFunctionality={SideNavFunctionality}/>
-      <div className={`flex flex-col items-center justify-center ${moveSideNav ? "ms-16" : "ms-0"}`}>
+      <Navbar SideNavFunctionality={SideNavFunctionality} />
+      <div className="ms-20">
+        <div className="text-2xl font-bold uppercase mb-4">Manage Users</div>
+        <NavLink to="/admin/register">
+          <Button
+            title="ADD NEW USER"
+            btn_type="button"
+            btn_class="border-black border-2 p-1 me-4 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
+          />
+        </NavLink>
+        <NavLink to="/admin/userTable">
+          <Button
+            title="User Table"
+            btn_type="button"
+            btn_class="border-black border-2 p-1 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
+          />
+        </NavLink>
+      </div>
+      <div
+        className={`flex flex-col items-center justify-center mt-4 ${
+          moveSideNav ? "ms-16" : "ms-0"
+        }`}
+      >
         <div className="pb-4 w-4/5 border-solid border-2 border-[#544013] shadow-[#544013] rounded-2xl bg-[#ede9dd] shadow-xl">
           <div className="flex items-center justify-center bg-[#cd3f14] py-4 border-solid border-2 border-[#544013] rounded-t-2xl">
-            <img className="h-12 rounded-full bg-[#72591c] p-2" src={remove} alt="Loading" />
+            <img
+              className="h-12 rounded-full bg-[#72591c] p-2"
+              src={remove}
+              alt="Loading"
+            />
             <h3 className="font-bold text-xl ms-2 tracking-wider">
               REMOVE USER
             </h3>
@@ -70,9 +97,7 @@ const AdminRemoveUser = () => {
               </div>
 
               <div className="mb-4">
-                <label className="text-lg font-bold">
-                  Select User:
-                </label>
+                <label className="text-lg font-bold">Select User:</label>
                 <input
                   {...register("selector2", { required: true })}
                   className="appearance-none w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
@@ -94,7 +119,7 @@ const AdminRemoveUser = () => {
                   type="submit"
                   className="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
                 >
-                Remove User
+                  Remove User
                 </button>
               </div>
             </form>

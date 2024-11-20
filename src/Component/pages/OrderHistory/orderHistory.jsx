@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import { connect, useDispatch } from "react-redux";
-import Button from "../../Common/Button/button";
-import {
-  AsignChefFoodOrder,
-  CompleteChefOrder,
-} from "../../Common/Redux/Chef/chefSlice";
+// import Button from "../../Common/Button/button";
+// import {
+//   AsignChefFoodOrder,
+//   CompleteChefOrder,
+// } from "../../Common/Redux/Chef/chefSlice";
 import StatusFooter from "../../Common/Footer/statusFooter";
-import { add } from "../../Common/Redux/Category/categorySlice";
+// import { add } from "../../Common/Redux/Category/categorySlice";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
 import { SetTable } from "../../Common/Redux/Category/categorySlice";
 import { NavLink } from "react-router-dom";
@@ -37,6 +37,45 @@ const OrderHistory = ({ cart }) => {
     {
       class: "bg-orange-400",
       status: "Dine-In",
+    },
+  ];
+  const OrderHistoryData = [
+    {
+      costumer_Name: "Costumer Name",
+      table_No: 2,
+      order_Id: 123,
+      order_Amount: 250,
+      mobile_No: 1234567856,
+      payment_Method: "Cash",
+      order_Item: 7,
+    },
+
+    {
+      costumer_Name: "Costumer Name",
+      table_No: 2,
+      order_Id: 123,
+      order_Amount: 250,
+      mobile_No: 1234567856,
+      payment_Method: "Cash",
+      order_Item: 7,
+    },
+    {
+      costumer_Name: "Costumer Name",
+      table_No: 2,
+      order_Id: 123,
+      order_Amount: 250,
+      mobile_No: 1234567856,
+      payment_Method: "Cash",
+      order_Item: 7,
+    },
+    {
+      costumer_Name: "Costumer Name",
+      table_No: 2,
+      order_Id: 123,
+      order_Amount: 250,
+      mobile_No: 1234567856,
+      payment_Method: "Cash",
+      order_Item: 7,
     },
   ];
   // Side Nav Functionality
@@ -110,171 +149,48 @@ const OrderHistory = ({ cart }) => {
           {/* order history details content */}
           <div className="grid  grid-cols-3 grid-rows-1 gap-4">
             <div className="col-span-2 overflow-auto h-96">
-              <div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
-                <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
-                  <div>
-                    <span className="block font-bold ">Name of customer</span>
-                    <span className="block  font-light">
-                      Time : 15 July 2024, 7:23 PM{" "}
-                    </span>
+              {OrderHistoryData?.map((items, index) => (
+                <div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
+                  <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
+                    <div>
+                      <span className="block font-bold ">
+                        {items.costumer_Name}
+                      </span>
+                      <span className="block  font-light">
+                        Time : {new Date().toLocaleDateString()},{" "}
+                        {new Date().toLocaleTimeString()}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="font-bold ">
+                        Table assigned : {items.table_No}
+                      </span>
+                    </div>
                   </div>
+                  <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
+                    <div className="">
+                      <span className="block ">Order ID :-</span>
+                      <span className=" font-thin">{items.order_Id}</span>
+                    </div>
+                    <div className="">
+                      <span className="block ">Order Amount :-</span>
+                      <span className=" font-thin">{items.order_Amount}</span>
+                    </div>
+                    <div className="">
+                      <span className="block ">Mob No :-</span>
+                      <span className=" font-thin">{items.mobile_No}</span>
+                    </div>
+                    <div className="">
+                      <span className="block ">Payment Method :-</span>
+                      <span className=" font-thin">{items.payment_Method}</span>
+                    </div>
+                  </div>
+                  <hr class="m-1 bg-black" />
                   <div>
-                    <span className="font-bold ">Table assigned : 14</span>
+                    <div className="m-2 ">Order Items : {items.order_Item}</div>
                   </div>
                 </div>
-                <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                  <div className="">
-                    <span className="block ">Order ID :-</span>
-                    <span className=" font-thin">#1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Order Amount :-</span>
-                    <span className=" font-thin">Rs 1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Mob No :-</span>
-                    <span className=" font-thin">1234567890</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Payment Method :-</span>
-                    <span className=" font-thin">cash</span>
-                  </div>
-                </div>
-                <hr class="m-1 bg-black" />
-                <div className="m-2 ">Order Items : 7</div>
-              </div>
-              <div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
-                <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
-                  <div>
-                    <span className="block font-bold ">Name of customer</span>
-                    <span className="block  font-light">
-                      Time : 15 July 2024, 7:23 PM{" "}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="font-bold ">Table assigned : 14</span>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                  <div className="">
-                    <span className="block ">Order ID :-</span>
-                    <span className=" font-thin">#1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Order Amount :-</span>
-                    <span className=" font-thin">Rs 1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Mob No :-</span>
-                    <span className=" font-thin">1234567890</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Payment Method :-</span>
-                    <span className=" font-thin">cash</span>
-                  </div>
-                </div>
-                <hr class="m-1 bg-black" />
-                <div className="m-2 ">Order Items : 7</div>
-              </div>
-              <div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
-                <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
-                  <div>
-                    <span className="block font-bold ">Name of customer</span>
-                    <span className="block  font-light">
-                      Time : 15 July 2024, 7:23 PM{" "}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="font-bold ">Table assigned : 14</span>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                  <div className="">
-                    <span className="block ">Order ID :-</span>
-                    <span className=" font-thin">#1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Order Amount :-</span>
-                    <span className=" font-thin">Rs 1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Mob No :-</span>
-                    <span className=" font-thin">1234567890</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Payment Method :-</span>
-                    <span className=" font-thin">cash</span>
-                  </div>
-                </div>
-                <hr class="m-1 bg-black" />
-                <div className="m-2 ">Order Items : 7</div>
-              </div>
-              <div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
-                <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
-                  <div>
-                    <span className="block font-bold ">Name of customer</span>
-                    <span className="block  font-light">
-                      Time : 15 July 2024, 7:23 PM{" "}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="font-bold ">Table assigned : 14</span>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                  <div className="">
-                    <span className="block ">Order ID :-</span>
-                    <span className=" font-thin">#1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Order Amount :-</span>
-                    <span className=" font-thin">Rs 1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Mob No :-</span>
-                    <span className=" font-thin">1234567890</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Payment Method :-</span>
-                    <span className=" font-thin">cash</span>
-                  </div>
-                </div>
-                <hr class="m-1 bg-black" />
-                <div className="m-2 ">Order Items : 7</div>
-              </div>
-              <div class="chef-card border-solid m-2 rounded-xl p-1 bg-white shadow-xl">
-                <div class="border flex justify-between items-center rounded-xl p-3 bg-[#d79555]">
-                  <div>
-                    <span className="block font-bold ">Name of customer</span>
-                    <span className="block  font-light">
-                      Time : 15 July 2024, 7:23 PM{" "}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="font-bold ">Table assigned : 14</span>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between p-3 tracking-wider font-semibold">
-                  <div className="">
-                    <span className="block ">Order ID :-</span>
-                    <span className=" font-thin">#1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Order Amount :-</span>
-                    <span className=" font-thin">Rs 1234</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Mob No :-</span>
-                    <span className=" font-thin">1234567890</span>
-                  </div>
-                  <div className="">
-                    <span className="block ">Payment Method :-</span>
-                    <span className=" font-thin">cash</span>
-                  </div>
-                </div>
-                <hr class="m-1 bg-black" />
-                <div className="m-2 ">Order Items : 7</div>
-              </div>
+              ))}
             </div>
             <div className="col-start-3 flex justify-center">
               <div className="bg-white border border-black  rounded-3xl shadow-lg p-6 w-80">
