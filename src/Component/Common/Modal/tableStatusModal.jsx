@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import Button from "../Button/button";
+import TableReservationModal from "./reservationModal";
 
 // Images
 import Arrow from "../../assets/Images/Arrow.svg";
 import { NavLink } from "react-router-dom";
 function TableStatusModal() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsOpen(false);
-  };
   const ReservationData = [
     {
       tableNo: 1,
@@ -39,7 +31,17 @@ function TableStatusModal() {
       time: "5 p.m.",
       people: 4,
     },
-  ]
+  ];
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="absolute right-0 top-1/2 flex justify-end items-center">
       <button
@@ -47,29 +49,15 @@ function TableStatusModal() {
         onClick={handleButtonClick}
       >
         <img src={Arrow} className="h-7" alt="Loading" />
-        {/* <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
-        </svg> */}
       </button>
       {isOpen && (
         <div className="fixed z-10 top-0 right-0 bottom-0 left-0 bg-gray-500 bg-opacity-75 flex justify-end items-center">
           <div className="bg-[#2e2c2c8f] rounded-lg shadow-lg overflow-auto p-4 w-96 h-2/3 mx-3">
             <div className="">
               <div className="flex justify-between items-center">
-              <h2 className="text-2xl tracking-wider text-white mb-1">
-                Reservations : 4
-              </h2>
+                <h2 className="text-2xl tracking-wider text-white mb-1">
+                  Reservations : 4
+                </h2>
                 <svg
                   className="w-4 h-4 cursor-pointer"
                   onClick={handleModalClose}
@@ -86,9 +74,9 @@ function TableStatusModal() {
                   />
                 </svg>
               </div>
-            <div className="">
-              <Button title="Add Reservation" btn_class="border-solid border-2 border-[#544013] rounded-xl text-white bg-[#d79555] px-1 py-1 text-sm  font-bold tracking-wider uppercase" />
-            </div>
+              <div className="">
+                <TableReservationModal  />
+              </div>
 
               <div>
                 <p className="text-black font-bold text-xl tracking-wider">
@@ -96,11 +84,11 @@ function TableStatusModal() {
                 </p>
               </div>
 
-              {ReservationData.map((items, index) => (
+              {ReservationData?.map((items, index) => (
                 <div className="my-2">
                   <div className="flex items-center">
-                    <div className="p-1 rounded-full border-2 border-solid border-black me-5">
-                      <div className="px-4 py-2 rounded-full border-2 border-solid border-black">
+                    <div className="p-1 rounded-full border-2 border-solid border-white me-5">
+                      <div className="px-4 py-2 rounded-full border-2 border-solid text-white border-white">
                         {items.tableNo}
                       </div>
                     </div>
@@ -125,10 +113,8 @@ function TableStatusModal() {
                     />
                   </div>
                   <hr />
-
                 </div>
               ))}
-
             </div>
           </div>
         </div>
