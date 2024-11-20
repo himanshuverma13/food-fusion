@@ -48,7 +48,7 @@ const AdminRemoveUser = () => {
             btn_class="border-black border-2 p-1 me-4 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
           />
         </NavLink>
-        <NavLink to="/admin/userTable">
+        <NavLink to="/admin/usertable">
           <Button
             title="User Table"
             btn_type="button"

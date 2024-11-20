@@ -40,7 +40,7 @@ const SideNavbar = () => {
         URL?.pathname !== "/admin/register" &&
         URL?.pathname !== "/admin/remove" &&
         URL?.pathname !== "/admin/inventory" &&
-        URL?.pathname !== "/admin/userTable" ? (
+        URL?.pathname !== "/admin/usertable" ? (
           <>
             {basicNavItems?.map((item, index) => (
               <NavLink to={item.path} key={index}>
