@@ -48,7 +48,7 @@ const Registration = () => {
             btn_class="border-black border-2 py-1 px-3 me-4 font-semibold bg-[#bd8954] text-sm tracking-widest text-black uppercase"
           />
         </NavLink>
-        <NavLink to="/admin/userTable">
+        <NavLink to="/admin/usertable">
           <Button
             title="User Table"
             btn_type="button"
@@ -119,7 +119,7 @@ const Registration = () => {
                 id="name"
                 placeholder="Enter Your Full Name"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("name", {
+                {...register("fullname", {
                   required: "Name is required",
                   minLength: {
                     value: 2,
@@ -140,7 +140,7 @@ const Registration = () => {
                 id="mobile_number"
                 placeholder="Enter Your Mobile Number"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("mobile_number", {
+                {...register("mobileNum", {
                   required: "Number is required",
                   minLength: {
                     // value: 2,
@@ -163,7 +163,7 @@ const Registration = () => {
                 id="alternate_number"
                 placeholder="Enter Your Alternate Mobile Number"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("alternate_number", {
+                {...register("altNum", {
                   required: "Alternate Number is required",
                   minLength: {
                     // value: 2,
@@ -209,7 +209,7 @@ const Registration = () => {
                 id="join_date"
                 // placeholder="Enter Your join_date "
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("join_date", {
+                {...register("joining", {
                   required: "join_date is required",
                   minLength: {
                     // value: 8,
@@ -306,16 +306,16 @@ const Registration = () => {
               )}
             </div>
             <div>
-              <label htmlFor="passcode" className="font-bold text-base">
+              <label htmlFor="password" className="font-bold text-base">
                 Password{" "}
               </label>
               <input
                 type="text"
-                id="passcode"
+                id="password"
                 placeholder="Enter Your Passcode"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("passcode", {
-                  required: "passcode is required",
+                {...register("password", {
+                  required: "password is required",
                   //   minLength: {
                   //     value: 2,
                   //     message: "Name must be at least 2 characters long",
@@ -335,8 +335,8 @@ const Registration = () => {
                 id="re_passcode"
                 placeholder="Re-Enter Passcode"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("re_passcode", {
-                  required: "Passcode is required",
+                {...register("confirmpassword", {
+                  required: "Confirm Password is required",
                   //   minLength: {
                   //     value: 2,
                   //     message: "Name must be at least 2 characters long",
