@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCirclePlus,
   faEye,
   faPen,
   faTrash,
@@ -154,10 +153,12 @@ const AdminUserTable = () => {
                       className="text-blue-500 text-xl cursor-pointer"
                       icon={faEye}
                     />
-                    <FontAwesomeIcon
-                      className="text-green-500 text-xl cursor-pointer"
-                      icon={faPen}
-                    />
+                    <NavLink to="/admin/register">
+                      <FontAwesomeIcon
+                        className="text-green-500 text-xl cursor-pointer"
+                        icon={faPen}
+                      />
+                    </NavLink>
                     <FontAwesomeIcon
                       className="text-red-500 text-xl  cursor-pointer"
                       icon={faTrash}

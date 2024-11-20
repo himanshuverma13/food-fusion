@@ -14,7 +14,20 @@ const Registration = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    let Payload = {
+      fullname: data?.fullname,
+      email: data?.email,
+      password: data?.password,
+      confirmpassword: data?.confirmpassword,
+      mobileNum: data?.mobileNum,
+      altNum: data?.altNum,
+      address: data?.address,
+      role: data?.role,
+      joining: data?.joining,
+      salary: data?.salary,
+      age: data?.age,
+    };
+    console.log("Payload", Payload);
   };
 
   // Side Nav Functionality
@@ -32,14 +45,14 @@ const Registration = () => {
           <Button
             title="Remove User"
             btn_type="button"
-            btn_class="border-black border-2 p-1 me-4 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
+            btn_class="border-black border-2 py-1 px-3 me-4 font-semibold bg-[#bd8954] text-sm tracking-widest text-black uppercase"
           />
         </NavLink>
         <NavLink to="/admin/userTable">
           <Button
             title="User Table"
             btn_type="button"
-            btn_class="border-black border-2 p-1 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
+            btn_class="border-black border-2 py-1 px-2 font-semibold bg-[#bd8954] text-sm tracking-widest text-black uppercase"
           />
         </NavLink>
       </div>
@@ -49,11 +62,11 @@ const Registration = () => {
           moveSideNav ? "ms-16" : "ms-0"
         }`}
       >
-        <div className="pb-4 w-4/5 border-solid border-2 border-[#544013] shadow-[#544013] rounded-2xl bg-[#ede9dd] shadow-xl">
-          <div className="flex items-center justify-center bg-[#cd3f14] py-4 border-solid border-2 border-[#544013] rounded-t-2xl">
+        <div className=" w-4/5 border-solid border-2 border-[#544013] shadow-[#544013] rounded-2xl bg-[#ede9dd] shadow-xl">
+          <div className="flex items-center justify-center bg-[#cd3f14] py-2 border-solid border-2 border-[#544013] rounded-t-2xl">
             <img
               src={User}
-              className="h-12 rounded-full bg-[#72591c] p-2"
+              className="h-10 rounded-full bg-[#72591c] p-2"
               alt="Loading"
             />
             <p className="font-bold text-xl ms-2 tracking-wider">
@@ -62,10 +75,10 @@ const Registration = () => {
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="grid grid-cols-2 grid-rows-5 gap-4 px-3 py-4"
+            className="grid grid-cols-3 grid-rows-5 gap-4 px-3 py-2"
           >
             <div>
-              <label htmlFor="option" className="text-lg font-bold">
+              <label htmlFor="option" className="text-base font-bold">
                 Select Category
               </label>
               <div className="relative">
@@ -98,7 +111,7 @@ const Registration = () => {
               </div>
             </div>
             <div className="">
-              <label htmlFor="name" className="font-bold text-lg">
+              <label htmlFor="name" className="font-bold text-base">
                 Full Name{" "}
               </label>
               <input
@@ -119,7 +132,7 @@ const Registration = () => {
               )}
             </div>
             <div className="">
-              <label htmlFor="mobile_number" className="font-bold text-lg">
+              <label htmlFor="mobile_number" className="font-bold text-base">
                 Mobile Number{" "}
               </label>
               <input
@@ -142,7 +155,7 @@ const Registration = () => {
               )}
             </div>
             <div className="">
-              <label htmlFor="alternate_number" className="font-bold text-lg">
+              <label htmlFor="alternate_number" className="font-bold text-base">
                 Alternate Mobile Number{" "}
               </label>
               <input
@@ -164,71 +177,8 @@ const Registration = () => {
                 </span>
               )}
             </div>
-            <div className="">
-              <label htmlFor="email" className="font-bold text-lg">
-                E-mail Address{" "}
-              </label>
-              <input
-                type="email"
-                id="email"
-                placeholder="Enter Your E-mail"
-                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("email", {
-                  required: "Email is required",
-                  minLength: {
-                    // value: 2,
-                    // message: "Number must be at least 10 characters",
-                  },
-                })}
-              />
-              {errors.email && (
-                <span className="text-red-600">{errors.email.message}</span>
-              )}
-            </div>
             <div>
-              <label htmlFor="join_date" className="font-bold text-lg">
-                Date Of Joining
-              </label>
-              <input
-                type="date"
-                id="join_date"
-                // placeholder="Enter Your join_date "
-                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("join_date", {
-                  required: "join_date is required",
-                  minLength: {
-                    // value: 8,
-                    // message: "date must be at least 8 characters long",
-                  },
-                })}
-              />
-              {errors.join_date && (
-                <span className="text-red-600">{errors.join_date.message}</span>
-              )}
-            </div>
-            <div>
-              <label for="address" class="font-bold text-lg">
-                Address{" "}
-              </label>
-              <input
-                type="text"
-                id="address"
-                placeholder="Enter your Address"
-                class="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("address", {
-                  required: "Address is required",
-                  minLength: {
-                    // value: 8,
-                    // message: "date must be at least 8 characters long",
-                  },
-                })}
-              />
-              {errors.address && (
-                <span className="text-red-600">{errors.address.message}</span>
-              )}
-            </div>
-            <div>
-              <label htmlFor="birth_date" className="font-bold text-lg">
+              <label htmlFor="birth_date" className="font-bold text-base">
                 Date Of Birth
               </label>
               <input
@@ -251,8 +201,113 @@ const Registration = () => {
               )}
             </div>
             <div>
-              <label htmlFor="passcode" className="font-bold text-lg">
-                Create Passcode{" "}
+              <label htmlFor="join_date" className="font-bold text-base">
+                Date Of Joining
+              </label>
+              <input
+                type="date"
+                id="join_date"
+                // placeholder="Enter Your join_date "
+                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
+                {...register("join_date", {
+                  required: "join_date is required",
+                  minLength: {
+                    // value: 8,
+                    // message: "date must be at least 8 characters long",
+                  },
+                })}
+              />
+              {errors.join_date && (
+                <span className="text-red-600">{errors.join_date.message}</span>
+              )}
+            </div>
+            <div>
+              <label htmlFor="age" className="font-bold text-base">
+                Age
+              </label>
+              <input
+                type="number"
+                id="age"
+                placeholder="Enter Your Age"
+                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
+                {...register("age", {
+                  required: "Age is required",
+                  minLength: {
+                    // value: 8,
+                    // message: "date must be at least 8 characters long",
+                  },
+                })}
+              />
+              {errors.age && (
+                <span className="text-red-600">{errors.age.message}</span>
+              )}
+            </div>
+            <div>
+              <label htmlFor="salary" className="font-bold text-base">
+                Salary
+              </label>
+              <input
+                type="number"
+                id="salary"
+                placeholder="Enter Your Salary"
+                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
+                {...register("salary", {
+                  required: "Salary is required",
+                  minLength: {
+                    // value: 8,
+                    // message: "date must be at least 8 characters long",
+                  },
+                })}
+              />
+              {errors.salary && (
+                <span className="text-red-600">{errors.salary.message}</span>
+              )}
+            </div>
+            <div className="">
+              <label htmlFor="email" className="font-bold text-base">
+                E-mail Address{" "}
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter Your E-mail"
+                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
+                {...register("email", {
+                  required: "Email is required",
+                  minLength: {
+                    // value: 2,
+                    // message: "Number must be at least 10 characters",
+                  },
+                })}
+              />
+              {errors.email && (
+                <span className="text-red-600">{errors.email.message}</span>
+              )}
+            </div>
+            <div>
+              <label for="address" class="font-bold text-base">
+                Address{" "}
+              </label>
+              <input
+                type="text"
+                id="address"
+                placeholder="Enter your Address"
+                class="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
+                {...register("address", {
+                  required: "Address is required",
+                  minLength: {
+                    // value: 8,
+                    // message: "date must be at least 8 characters long",
+                  },
+                })}
+              />
+              {errors.address && (
+                <span className="text-red-600">{errors.address.message}</span>
+              )}
+            </div>
+            <div>
+              <label htmlFor="passcode" className="font-bold text-base">
+                Password{" "}
               </label>
               <input
                 type="text"
@@ -272,8 +327,8 @@ const Registration = () => {
               )}
             </div>
             <div className="">
-              <label htmlFor="re_passcode" className="font-bold text-lg">
-                Re-Enter Passcode{" "}
+              <label htmlFor="re_passcode" className="font-bold text-base">
+                Confirm Password{" "}
               </label>
               <input
                 type="text"
