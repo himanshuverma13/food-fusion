@@ -9,12 +9,14 @@ const AdminRemoveUser = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState(null);
 
   const onSubmit = (data) => {
+    reset();
     setFormData(data);
     setIsModalOpen(true);
   };
@@ -86,8 +88,10 @@ const AdminRemoveUser = () => {
                   className="appearance-none w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
                 >
                   <option value="">Select an option</option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
+                  <option value="Cashier">Cashier</option>
+                  <option value="Chef">Chef</option>
+                  <option value="Captain">Captain</option>
+                  <option value="Waiter Staff">Waiter Staff</option>
                 </select>
                 {errors.selector1 && (
                   <span className="text-red-500 text-xs">
@@ -104,8 +108,10 @@ const AdminRemoveUser = () => {
                   list="options"
                 />
                 <datalist id="options">
-                  <option value="optionA">Option A</option>
-                  <option value="optionB">Option B</option>
+                  <option value="Cashier">Cashier</option>
+                  <option value="Chef">Chef</option>
+                  <option value="Captain">Captain</option>
+                  <option value="Waiter Staff">Waiter Staff</option>
                 </datalist>
                 {errors.selector2 && (
                   <span className="text-red-500 text-xs">
@@ -165,7 +171,7 @@ const AdminRemoveUser = () => {
                       </button>
                       <button
                         onClick={handleCancel}
-                        className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                        className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                       >
                         Cancel
                       </button>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import navHome from "../../assets/Images/sideNavImg/navhome.svg";
 import navMenu from "../../assets/Images/sideNavImg/navMenu.svg";
 import navCart from "../../assets/Images/sideNavImg/navCart.svg";
@@ -11,6 +11,8 @@ import add from "../../assets/Images/sideNavImg/Add-user.svg";
 import remove from "../../assets/Images/sideNavImg/remove-user.svg";
 import dashboard from "../../assets/Images/sideNavImg/Dashboard.svg";
 import { NavLink, useLocation } from "react-router-dom";
+import Button from "../Button/button";
+import SignOutModal from "../Modal/signOutModal";
 
 const SideNavbar = () => {
   // Main navigation items
@@ -74,8 +76,9 @@ const SideNavbar = () => {
             <span className="text-[#cd3f14] text-sm font-bold">settings</span>
           </li>
           <li className="text-center my-2">
-            <img className=" w-6 mx-auto" src={navBack} alt="loading" />
-            <span className="text-[#cd3f14] text-sm font-bold">sign out</span>
+            {/* <img className=" w-6 mx-auto" src={navBack} alt="loading" />
+            <span className="text-[#cd3f14] text-sm font-bold">sign out</span> */}
+            <SignOutModal />
           </li>
         </ul>
       </div>
