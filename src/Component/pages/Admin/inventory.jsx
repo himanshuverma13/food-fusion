@@ -14,7 +14,7 @@ const Inventory = () => {
       status: "active",
     },
     {
-      name: "Tomato",
+      name: "Potato",
       supplier: "dsxcfvgbhnj",
       quantity: 5,
       cost: 150,
@@ -23,7 +23,7 @@ const Inventory = () => {
       status: "active",
     },
     {
-      name: "Tomato",
+      name: "Carrot",
       supplier: "dsxcfvgbhnj",
       quantity: 5,
       cost: 150,
@@ -32,7 +32,7 @@ const Inventory = () => {
       status: "active",
     },
     {
-      name: "Tomato",
+      name: "Radish",
       supplier: "dsxcfvgbhnj",
       quantity: 5,
       cost: 150,
@@ -41,7 +41,7 @@ const Inventory = () => {
       status: "active",
     },
     {
-      name: "Tomato",
+      name: "Onion",
       supplier: "dsxcfvgbhnj",
       quantity: 5,
       cost: 150,
@@ -50,6 +50,19 @@ const Inventory = () => {
       status: "active",
     },
   ];
+
+  const [filterInvtry, setfilterInvtry] = useState(InventoryTableData)
+  // search bar functionality
+  const SearchFilter = (e) => {
+    const value = e.target.value;
+    if (value?.length > 0) {
+      const filterValue = InventoryTableData?.filter((items) => {
+        return items?.name?.toLowerCase()?.includes(value?.toLowerCase());
+      });
+      return setfilterInvtry(filterValue)
+    }
+    setfilterInvtry(InventoryTableData)
+  };
 
   // Side Nav Functionality
   const [moveSideNav, setmoveSideNav] = useState(true);
@@ -67,6 +80,7 @@ const Inventory = () => {
           <div class="overflow-hidden flex justify-between border-solid border-2 w-96 border-black rounded-3xl bg-[#f6f6e9]">
             <input
               type="text"
+              onChange={SearchFilter}
               class="px-2 py-0.5 tracking-wide w-full bg-[#f6f6e9]"
               placeholder="Search item"
             />
@@ -144,7 +158,7 @@ const Inventory = () => {
               </tr>
             </thead>
             <tbody class="bg-[#ede9dd]">
-              {InventoryTableData?.map((items, index) => (
+              {filterInvtry?.map((items, index) => (
                 <tr key={index}>
                   <th
                     scope="row"
