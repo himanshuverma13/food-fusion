@@ -7,6 +7,7 @@ import staff from '../../assets/Images/staff-svg.svg'
 import captain from '../../assets/Images/captain-svg.svg'
 import UserSelectModal from '../Modal/userSelectModal'
 import { useNavigate } from 'react-router-dom'
+import { LoginAPI } from '../APIs/api'
 const UserSelect = () => {
 
     const navigate = useNavigate()
@@ -17,8 +18,10 @@ const UserSelect = () => {
     };
 
     const closeModal = () => setIsOpen(false);
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data);
+        let response = await LoginAPI(data)
+        console.log('response: ', response);
         closeModal();
         navigate(selectedUser?.path)
 

@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import Button from "../Button/button";
 import { useForm } from "react-hook-form";
 
-const CategoryModal = ({
-  isOpen,
-  closeModal,
-  selectedFoodItem,
-  onSubmit,
-}) => {
+const CategoryModal = ({ isOpen, closeModal, selectedFoodItem, onSubmit }) => {
   const { register, handleSubmit, reset } = useForm();
-  
+
   const handleModalClose = () => {
     closeModal();
   };
+
+  const [comment, setcomment] = useState()
+
+  const GetValue = (e) => {
+   setcomment(e?.target?.value)
+  };
+
+
 
   return (
     <>
@@ -56,8 +59,20 @@ const CategoryModal = ({
                 </div>
               ))}
             </div>
+                <hr className="w-full my-2 border border-black " />
+              {/* <div className="w-full">
+                <label className="block mb-2 font-bold" htmlFor="note">
+                  Note :
+                </label>
+                <textarea
+                  onChange={(e)=>GetValue(e)}
+                  {...register(comment)}
+                  id="note"
+                  placeholder="Additional Details..."
+                  className="w-full px-3 py-2 border border-black rounded-lg"
+                />
+              </div> */}
 
-            <hr className="w-full border border-black " />
             <Button
               btn_type="submit"
               title="Submit"

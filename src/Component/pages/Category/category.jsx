@@ -848,18 +848,20 @@ const Category = ({ cart }) => {
   const {reset}=useForm()
  
   const onSubmit = (data) => {
+    console.log('data: ', data);
     let price = [];
     let category = []
      Object.entries(data).reduce((acc, [key, value]) => {
       if (value !== false)  {
         acc[key] = value;
         price.push(Number(acc[key] = value));
-        console.log('price: ', price);
         category.push(acc[key] = key);
-        console.log('category: ', category);
       }
       return acc;
     }, {});
+
+    // create onsubmit functionality on categorymodal component to handle comment or note feature 
+
     let payload = {
       id: selectedFoodItem?.id,
       food: selectedFoodItem?.name,
@@ -871,7 +873,6 @@ const Category = ({ cart }) => {
       price: price.reduce((a, b) => a + b, selectedFoodItem?.price),
       amount: 1,
     };
-    console.log("Payload:", payload);
     dispatch(add(payload));
     closeModal();
   };

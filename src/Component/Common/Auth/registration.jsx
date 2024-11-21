@@ -6,6 +6,7 @@ import User from "../../assets/Images/admin/Add user.svg";
 import Navbar from "../Navbar/navbar";
 import Button from "../Button/button";
 import { NavLink } from "react-router-dom";
+import { RegistrationAPI } from "../APIs/api";
 const Registration = () => {
   const {
     register,
@@ -13,21 +14,24 @@ const Registration = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     let Payload = {
-      fullname: data?.fullname,
+      fullname: data?.name,
       email: data?.email,
-      password: data?.password,
-      confirmpassword: data?.confirmpassword,
-      mobileNum: data?.mobileNum,
-      altNum: data?.altNum,
+      password: data?.passcode,
+      confirmpassword: data?.re_passcode,
+      mobileNum: data?.mobile_number,
+      altNum: data?.alternate_number,
       address: data?.address,
-      role: data?.role,
-      joining: data?.joining,
+      role: data?.option,
+      joining: data?.join_date,
       salary: data?.salary,
       age: data?.age,
+      dob: data?.birth_date,
     };
-    console.log("Payload", Payload);
+
+    let response = await RegistrationAPI(Payload);
+    console.log("response: ", response);
   };
 
   // Side Nav Functionality
@@ -90,10 +94,10 @@ const Registration = () => {
                   })}
                 >
                   <option value="">Please choose&hellip;</option>
-                  <option value="1">Cashier</option>
-                  <option value="2">Waiter Staff</option>
-                  <option value="3">Chef</option>
-                  <option value="3">Captain</option>
+                  <option value="Cashier">Cashier</option>
+                  <option value="Waiter Staff">Waiter Staff</option>
+                  <option value="Chef">Chef</option>
+                  <option value="Captain">Captain</option>
                 </select>
 
                 <div class="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
