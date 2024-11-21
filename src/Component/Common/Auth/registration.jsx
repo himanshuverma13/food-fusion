@@ -11,9 +11,12 @@ const Registration = () => {
   const {
     register,
     handleSubmit,
+    reset,
+    watch,
     formState: { errors },
   } = useForm();
 
+  const password = watch("passcode");
   const onSubmit = async (data) => {
     let Payload = {
       fullname: data?.name,
@@ -29,7 +32,7 @@ const Registration = () => {
       age: data?.age,
       dob: data?.birth_date,
     };
-
+    reset();
     let response = await RegistrationAPI(Payload);
     console.log("response: ", response);
   };
@@ -123,7 +126,7 @@ const Registration = () => {
                 id="name"
                 placeholder="Enter Your Full Name"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("fullname", {
+                {...register("name", {
                   required: "Name is required",
                   minLength: {
                     value: 2,
@@ -144,8 +147,8 @@ const Registration = () => {
                 id="mobile_number"
                 placeholder="Enter Your Mobile Number"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("mobileNum", {
-                  required: "Number is required",
+                {...register("mobile_number", {
+                  required: "mobile_number is required",
                   minLength: {
                     // value: 2,
                     // message: "Number must be at least 10 characters",
@@ -167,7 +170,7 @@ const Registration = () => {
                 id="alternate_number"
                 placeholder="Enter Your Alternate Mobile Number"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("altNum", {
+                {...register("alternate_number", {
                   required: "Alternate Number is required",
                   minLength: {
                     // value: 2,
@@ -213,7 +216,7 @@ const Registration = () => {
                 id="join_date"
                 // placeholder="Enter Your join_date "
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("joining", {
+                {...register("join_date", {
                   required: "join_date is required",
                   minLength: {
                     // value: 8,
@@ -310,42 +313,49 @@ const Registration = () => {
               )}
             </div>
             <div>
-              <label htmlFor="password" className="font-bold text-base">
-                Password{" "}
+              <label for="passcode" className="font-bold text-base">
+                Password
               </label>
               <input
-                type="text"
-                id="password"
-                placeholder="Enter Your Passcode"
-                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("password", {
-                  required: "password is required",
-                  //   minLength: {
-                  //     value: 2,
-                  //     message: "Name must be at least 2 characters long",
-                  //   },
+                {...register("passcode", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 8 characters long",
+                  },
+                  pattern: {
+                    value: /^(?=.*[A-Z])(?=.*[@#$%^&*(),.?":{}|<>]).+$/,
+                    message:
+                      "Password must contain at least one uppercase letter and one special character.",
+                  },
                 })}
+                type="password"
+                className={`w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg   ${
+                  errors.passcode ? "is-invalid" : ""
+                }`}
+                name="passcode"
+                placeholder="Enter your password"
               />
               {errors.passcode && (
                 <span className="text-red-600">{errors.passcode.message}</span>
               )}
             </div>
-            <div className="">
-              <label htmlFor="re_passcode" className="font-bold text-base">
-                Confirm Password{" "}
+            <div>
+              <label className="font-bold text-base" for="re_passcode">
+                Confirm Password
               </label>
               <input
-                type="text"
-                id="re_passcode"
-                placeholder="Re-Enter Passcode"
-                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                {...register("confirmpassword", {
-                  required: "Confirm Password is required",
-                  //   minLength: {
-                  //     value: 2,
-                  //     message: "Name must be at least 2 characters long",
-                  //   },
+                {...register("re_passcode", {
+                  required: "Password confirmation is required",
+                  validate: (value) =>
+                    value === password || "Passwords do not match",
                 })}
+                type="password"
+                name="re_passcode"
+                className={`w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg   ${
+                  errors.re_passcode ? "is-invalid" : ""
+                }`}
+                placeholder="Enter your Confirm Password"
               />
               {errors.re_passcode && (
                 <span className="text-red-600">
