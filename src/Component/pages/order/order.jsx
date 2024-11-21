@@ -265,9 +265,8 @@ const Order = ({ cart }) => {
                     </th>
 
                     <td class="px-6 py-2  font-bold border-solid border-4 border-[#d79555] border-y-0 border-s-0">
-                      {items?.category?.map((category) => category)}
+                      {`${items?.category?.map((category) => category)} , `}
                     </td>
-                    {/* <td class="px-6 py-4 border-solid border-4 border-[#d79555] border-y-0 border-s-0">{items.quantity}</td> */}
                     <td class="flex items-center justify-center font-normal py-2 px-6 border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                       <FontAwesomeIcon
                         className=" rounded-full bg-white text-green-500 text-lg cursor-pointer"
