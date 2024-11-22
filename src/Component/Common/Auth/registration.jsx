@@ -7,7 +7,9 @@ import Navbar from "../Navbar/navbar";
 import Button from "../Button/button";
 import { NavLink } from "react-router-dom";
 import { RegistrationAPI } from "../APIs/api";
+import Loader from "../buttonLoader/buttonLoader";
 const Registration = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
@@ -33,9 +35,15 @@ const Registration = () => {
       dob: data?.birth_date,
     };
     reset();
+    setIsSubmitting(true);
     let response = await RegistrationAPI(Payload);
     console.log("response: ", response);
   };
+  
+  // Hide loader after 3 seconds
+  setTimeout(() => {
+    setIsSubmitting(false);
+  }, 3000);
 
   // Side Nav Functionality
   const [moveSideNav, setmoveSideNav] = useState(true);
@@ -367,8 +375,10 @@ const Registration = () => {
               <button
                 type="submit"
                 className="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
+                // disabled={isSubmitting}
               >
-                Add User
+                <span className={isSubmitting ? "hidden" : ""}>Add User</span>
+                <Loader isVisible={isSubmitting} />
               </button>
             </div>{" "}
           </form>
