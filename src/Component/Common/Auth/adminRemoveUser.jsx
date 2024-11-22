@@ -4,8 +4,11 @@ import Navbar from "../Navbar/navbar";
 import remove from "../../assets/Images/sideNavImg/remove-user.svg";
 import Button from "../Button/button";
 import { NavLink } from "react-router-dom";
+import Loader from "../buttonLoader/buttonLoader";
 
 const AdminRemoveUser = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -18,6 +21,7 @@ const AdminRemoveUser = () => {
   const onSubmit = (data) => {
     reset();
     setFormData(data);
+    setIsSubmitting(true);
     setIsModalOpen(true);
   };
 
@@ -31,6 +35,11 @@ const AdminRemoveUser = () => {
     setIsModalOpen(false);
     setFormData(null); // Clear formData after cancel
   };
+
+    // Hide loader after 3 seconds
+  setTimeout(() => {
+    setIsSubmitting(false);
+  }, 3000);
 
   // Side Nav Functionality
   const [moveSideNav, setmoveSideNav] = useState(true);
@@ -125,7 +134,8 @@ const AdminRemoveUser = () => {
                   type="submit"
                   className="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
                 >
-                  Remove User
+                   <span className={isSubmitting ? "hidden" : ""}>Remove User</span>
+                   <Loader isVisible={isSubmitting} />
                 </button>
               </div>
             </form>

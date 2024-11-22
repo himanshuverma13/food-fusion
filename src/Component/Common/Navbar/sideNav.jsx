@@ -7,14 +7,15 @@ import invoice from "../../assets/Images/sideNavImg/Invoice.svg";
 import staff from "../../assets/Images/sideNavImg/inventory.svg";
 import navSetting from "../../assets/Images/sideNavImg/navSetting.svg";
 import navBack from "../../assets/Images/sideNavImg/navBack.svg";
-import add from "../../assets/Images/sideNavImg/Add-user.svg";
-import remove from "../../assets/Images/sideNavImg/remove-user.svg";
+// import add from "../../assets/Images/sideNavImg/Add-user.svg";
+// import remove from "../../assets/Images/sideNavImg/remove-user.svg";
 import dashboard from "../../assets/Images/sideNavImg/Dashboard.svg";
 import { NavLink, useLocation } from "react-router-dom";
-import Button from "../Button/button";
+// import Button from "../Button/button";
 import SignOutModal from "../Modal/signOutModal";
 
 const SideNavbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   // Main navigation items
   const basicNavItems = [
     { path: "/home", icon: navHome, alt: "Home" },
@@ -31,6 +32,13 @@ const SideNavbar = () => {
     { path: "/admin/register", icon: invoice, alt: "Employee" },
     { path: "/admin/inventory", icon: staff, alt: "Inventory" },
   ];
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false)  
+  };
 
   // check URL for Sidebar
   let URL = useLocation();
@@ -76,12 +84,18 @@ const SideNavbar = () => {
             <span className="text-[#cd3f14] text-sm font-bold">settings</span>
           </li>
           <li className="text-center my-2">
-            {/* <img className=" w-6 mx-auto" src={navBack} alt="loading" />
-            <span className="text-[#cd3f14] text-sm font-bold">sign out</span> */}
-            <SignOutModal />
+            <button onClick={() => openModal()}>
+              <img className=" w-6 mx-auto" src={navBack} alt="loading" />
+              <span className="text-[#cd3f14] text-sm font-bold">sign out</span>
+            </button>
           </li>
         </ul>
+        {/* <SignOutModal /> */}
       </div>
+      <SignOutModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+      />
     </>
   );
 };
