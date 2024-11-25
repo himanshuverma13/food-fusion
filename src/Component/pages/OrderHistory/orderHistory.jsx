@@ -6,6 +6,8 @@ import { connect, useDispatch } from "react-redux";
 //   AsignChefFoodOrder,
 //   CompleteChefOrder,
 // } from "../../Common/Redux/Chef/chefSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import StatusFooter from "../../Common/Footer/statusFooter";
 // import { add } from "../../Common/Redux/Category/categorySlice";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
@@ -186,8 +188,12 @@ const OrderHistory = ({ cart }) => {
                     </div>
                   </div>
                   <hr class="m-1 bg-black" />
-                  <div>
+                  <div className="flex items-center justify-between">
                     <div className="m-2 ">Order Items : {items.order_Item}</div>
+                    <FontAwesomeIcon
+                      className="text-xl cursor-pointer me-5"
+                      icon={faArrowRight}
+                    />
                   </div>
                 </div>
               ))}

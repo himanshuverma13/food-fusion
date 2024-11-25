@@ -7,13 +7,18 @@ import Navbar from "../Navbar/navbar";
 import Button from "../Button/button";
 import { NavLink } from "react-router-dom";
 import { RegistrationAPI } from "../APIs/api";
+import Loader from "../buttonLoader/buttonLoader";
 const Registration = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
+    watch,
     formState: { errors },
   } = useForm();
 
+  const password = watch("passcode");
   const onSubmit = async (data) => {
     let Payload = {
       fullname: data?.name,
@@ -29,10 +34,16 @@ const Registration = () => {
       age: data?.age,
       dob: data?.birth_date,
     };
-
+    reset();
+    setIsSubmitting(true);
     let response = await RegistrationAPI(Payload);
     console.log("response: ", response);
   };
+  
+  // Hide loader after 3 seconds
+  setTimeout(() => {
+    setIsSubmitting(false);
+  }, 3000);
 
   // Side Nav Functionality
   const [moveSideNav, setmoveSideNav] = useState(true);
@@ -52,7 +63,7 @@ const Registration = () => {
             btn_class="border-black border-2 py-1 px-3 me-4 font-semibold bg-[#bd8954] text-sm tracking-widest text-black uppercase"
           />
         </NavLink>
-        <NavLink to="/admin/userTable">
+        <NavLink to="/admin/usertable">
           <Button
             title="User Table"
             btn_type="button"
@@ -145,7 +156,7 @@ const Registration = () => {
                 placeholder="Enter Your Mobile Number"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
                 {...register("mobile_number", {
-                  required: "Number is required",
+                  required: "mobile_number is required",
                   minLength: {
                     // value: 2,
                     // message: "Number must be at least 10 characters",
@@ -310,42 +321,49 @@ const Registration = () => {
               )}
             </div>
             <div>
-              <label htmlFor="passcode" className="font-bold text-base">
-                Password{" "}
+              <label for="passcode" className="font-bold text-base">
+                Password
               </label>
               <input
-                type="text"
-                id="passcode"
-                placeholder="Enter Your Passcode"
-                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
                 {...register("passcode", {
-                  required: "passcode is required",
-                  //   minLength: {
-                  //     value: 2,
-                  //     message: "Name must be at least 2 characters long",
-                  //   },
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 8 characters long",
+                  },
+                  pattern: {
+                    value: /^(?=.*[A-Z])(?=.*[@#$%^&*(),.?":{}|<>]).+$/,
+                    message:
+                      "Password must contain at least one uppercase letter and one special character.",
+                  },
                 })}
+                type="password"
+                className={`w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg   ${
+                  errors.passcode ? "is-invalid" : ""
+                }`}
+                name="passcode"
+                placeholder="Enter your password"
               />
               {errors.passcode && (
                 <span className="text-red-600">{errors.passcode.message}</span>
               )}
             </div>
-            <div className="">
-              <label htmlFor="re_passcode" className="font-bold text-base">
-                Confirm Password{" "}
+            <div>
+              <label className="font-bold text-base" for="re_passcode">
+                Confirm Password
               </label>
               <input
-                type="text"
-                id="re_passcode"
-                placeholder="Re-Enter Passcode"
-                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
                 {...register("re_passcode", {
-                  required: "Passcode is required",
-                  //   minLength: {
-                  //     value: 2,
-                  //     message: "Name must be at least 2 characters long",
-                  //   },
+                  required: "Password confirmation is required",
+                  validate: (value) =>
+                    value === password || "Passwords do not match",
                 })}
+                type="password"
+                name="re_passcode"
+                className={`w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg   ${
+                  errors.re_passcode ? "is-invalid" : ""
+                }`}
+                placeholder="Enter your Confirm Password"
               />
               {errors.re_passcode && (
                 <span className="text-red-600">
@@ -357,8 +375,10 @@ const Registration = () => {
               <button
                 type="submit"
                 className="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
+                // disabled={isSubmitting}
               >
-                Add User
+                <span className={isSubmitting ? "hidden" : ""}>Add User</span>
+                <Loader isVisible={isSubmitting} />
               </button>
             </div>{" "}
           </form>

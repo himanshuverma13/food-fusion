@@ -58,7 +58,7 @@ const RootRoutes = () => {
           <Route path="/admin/remove" element={<AdminRemoveUser />} />
           <Route path="/admin/register" element={<Registration />} />
           <Route path="/admin/inventory" element={<Inventory />} />
-          <Route path="/admin/userTable" element={<AdminUserTable />} />
+          <Route path="/admin/usertable" element={<AdminUserTable />} />
           
         </Routes>
       </Router>

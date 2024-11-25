@@ -3,6 +3,20 @@ import Navbar from "../../Common/Navbar/navbar";
 import Button from "../../Common/Button/button";
 
 const Inventory = () => {
+  const InventoryCardData = [
+    {
+      name: "Total Items : 26",
+    },
+    {
+      name: "Critical : 6",
+    },
+    {
+      name: "Surplus : 6",
+    },
+    // {
+    //   name: "Total Items : 20",
+    // },
+  ];
   const InventoryTableData = [
     {
       name: "Tomato",
@@ -51,7 +65,7 @@ const Inventory = () => {
     },
   ];
 
-  const [filterInvtry, setfilterInvtry] = useState(InventoryTableData)
+  const [filterInvtry, setfilterInvtry] = useState(InventoryTableData);
   // search bar functionality
   const SearchFilter = (e) => {
     const value = e.target.value;
@@ -59,9 +73,9 @@ const Inventory = () => {
       const filterValue = InventoryTableData?.filter((items) => {
         return items?.name?.toLowerCase()?.includes(value?.toLowerCase());
       });
-      return setfilterInvtry(filterValue)
+      return setfilterInvtry(filterValue);
     }
-    setfilterInvtry(InventoryTableData)
+    setfilterInvtry(InventoryTableData);
   };
 
   // Side Nav Functionality
@@ -95,7 +109,16 @@ const Inventory = () => {
                 <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
               </svg>
             </button>
-          </div>
+          </div> 
+
+          <div className="grid grid-cols-4 gap-4">
+          {InventoryCardData.map((items, index) => (
+            <div className="text-center text-xl font-bold py-2 mb-3">
+              {items.name}
+            </div>
+          ))}
+        </div>
+
           <Button
             title="Add New Item"
             btn_class="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
