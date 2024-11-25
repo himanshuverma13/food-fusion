@@ -102,7 +102,7 @@ const OrderHistory = ({ cart }) => {
               <div class="overflow-hidden flex border-solid border-2 border-black rounded-3xl bg-[#f6f6e9]">
                 <input
                   type="text"
-                  class="px-3 w-full bg-[#f6f6e9]"
+                  class="px-3 w-full bg-[#f6f6e9] focus-visible:outline-0"
                   placeholder="Search"
                 />
                 <button class="flex items-center justify-center px-4">

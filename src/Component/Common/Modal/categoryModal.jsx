@@ -43,8 +43,8 @@ const CategoryModal = ({ isOpen, closeModal, selectedFoodItem, onSubmit }) => {
                       type="checkbox"
                       className="mx-1"
                       id={option?.option}
-                      value={option?.price}
-                      {...register(option?.option)}
+                      value={option.option}
+                      {...register(option.option)}
                     />
                     <span>{option?.option} </span>
                     <span
@@ -66,7 +66,8 @@ const CategoryModal = ({ isOpen, closeModal, selectedFoodItem, onSubmit }) => {
                 </label>
                 <textarea
                   onChange={(e)=>GetValue(e)}
-                  {...register(comment)}
+                  {...register("comment")}
+                  value={comment}
                   id="note"
                   placeholder="Additional Details..."
                   className="w-full px-3 py-2 border border-black rounded-lg"

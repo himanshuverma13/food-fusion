@@ -69,7 +69,7 @@ const Chef = ({ cart, chef }) => {
             <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
               <input
                 type="text"
-                class="px-3 py-1 tracking-wide w-full bg-[#f6f6e9] animate-pulse"
+                class="px-3 py-1 tracking-wide w-full bg-[#f6f6e9] focus-visible:outline-0"
                 placeholder="Search "
               />
               <button class="flex items-center justify-center px-4">

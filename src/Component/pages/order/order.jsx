@@ -22,6 +22,7 @@ import {
 import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
 import CategoryModal from "../../Common/Modal/categoryModal";
 import { useForm } from "react-hook-form";
+import { CustomerOrderRegisterAPI } from "../../Common/APIs/api";
 const Order = ({ cart }) => {
   const [isOpen, setIsOpen] = useState(false);
   // const [selectedFoodItem, setSelectedFoodItem] = useState(null);
@@ -35,7 +36,13 @@ const Order = ({ cart }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    let payload = {
+      coustmer_name : data?.name,
+      coustmer_mobile_no : data?.phone_number,
+      coustmer_email : data?.email
+    }
+    let response = CustomerOrderRegisterAPI(payload)
+    console.log('response: ', response);
   };
 
   const dispatch = useDispatch();
@@ -164,6 +171,7 @@ const Order = ({ cart }) => {
               <input
                 id="table_Number"
                 type="number"
+                value={cart?.TableNo}
                 class="py-1 w-5/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
                 {...register("table_Number", {
                   required: "Table Number is required",

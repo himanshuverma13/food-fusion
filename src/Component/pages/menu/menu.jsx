@@ -641,7 +641,7 @@ const Menu = () => {
             <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
               <input
                 type="text"
-                class="ps-5 py-1 w-full bg-[#f6f6e9] animate-pulse"
+                class="ps-5 py-1 w-full bg-[#f6f6e9] focus-visible:outline-0"
                 placeholder="Search items from menu"
                 value={query}
                 onChange={handleSearch}
