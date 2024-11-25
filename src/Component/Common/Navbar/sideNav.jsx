@@ -53,7 +53,7 @@ const SideNavbar = () => {
         URL?.pathname !== "/admin/usertable" ? (
           <>
             {basicNavItems?.map((item, index) => (
-              <NavLink to={item.path} key={index}>
+              <NavLink  className={`${URL?.pathname == item.path ?"flex my-0.5 w-full bg-red-500":""}`} to={item.path} key={index}>
                 <img
                   className={`m-4 ${
                     item.alt === "Employee" || item.alt === "Inventory"

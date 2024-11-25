@@ -18,10 +18,14 @@ const UserSelect = () => {
     };
 
     const closeModal = () => setIsOpen(false);
+
     const onSubmit = async (data) => {
-        console.log(data);
-        let response = await LoginAPI(data)
-        console.log('response: ', response);
+        let payload = {
+            code:data?.selecteuser,
+          }
+        let response = await LoginAPI(payload)
+        console.log('response: ', response.data);
+        localStorage.setItem('userAuth', JSON.stringify(response?.data))
         closeModal();
         navigate(selectedUser?.path)
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import {
   add,
@@ -42,6 +42,7 @@ import {
 import TableStatusModal from "../../Common/Modal/tableStatusModal";
 import ApplyOffer from "../../Common/Modal/applyOfferModal";
 import { useForm } from "react-hook-form";
+import { FoodMenuAPI } from "../../Common/APIs/api";
 
 let MenuItemsJson = [
   {
@@ -65,6 +66,7 @@ let MenuItemsJson = [
           { option: "Cheese filling", price: 20 },
         ],
       },
+
       {
         id: 2,
         name: "Paneer Tikka",
@@ -841,7 +843,18 @@ let MenuItemsJson = [
 ];
 
 const Category = ({ cart }) => {
-  console.log("cart: ", cart);
+
+  const fetchMenu = async ()=>{
+    let menu = await FoodMenuAPI()
+    console.log('menu: ', menu);
+
+  }
+
+useEffect(() => {
+  fetchMenu()
+}, [])
+
+
   const [filteredOptions, setFilteredOptions] = useState(
     MenuItemsJson[0]?.subcategories
   );
@@ -862,24 +875,25 @@ const Category = ({ cart }) => {
   };
 
   const closeModal = () => {
-    reset();
-    setIsOpen(false);
+    setIsOpen(false)
   };
 
-  const { reset } = useForm();
-
+  
+  const {reset}=useForm()
+ 
   const onSubmit = (data) => {
-    console.log("data: ", data);
-    let price = [];
-    let category = [];
-    Object.entries(data).reduce((acc, [key, value]) => {
-      if (value !== false) {
-        acc[key] = value;
-        price.push(Number((acc[key] = value)));
-        category.push((acc[key] = key));
-      }
-      return acc;
-    }, {});
+    console.log('data: ', data);
+   let val =  handelOptions(data)
+    // let price = [];
+    // let category = []
+    //  Object.entries(data).reduce((acc, [key, value]) => {
+    //   if (value !== false)  {
+    //     acc[key] = value;
+    //     price.push({"pirce":Number(acc[key] = value)});
+    //     category.push({"option":acc[key] = key});
+    //   }
+    //   return acc;
+    // }, {});
 
     // create onsubmit functionality on categorymodal component to handle comment or note feature
 
@@ -887,11 +901,11 @@ const Category = ({ cart }) => {
       id: selectedFoodItem?.id,
       food: selectedFoodItem?.name,
       // image: selectedFoodItem?.image,
-      category: category,
+      // category: category,
       tableNo: cart?.TableNo,
       status: "open",
       quantity: 1,
-      price: price.reduce((a, b) => a + b, selectedFoodItem?.price),
+      // price: price.reduce((a, b) => a + b, selectedFoodItem?.price),
       amount: 1,
     };
     dispatch(add(payload));
@@ -987,7 +1001,7 @@ const Category = ({ cart }) => {
                 <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
                   <input
                     type="text"
-                    class="px-2 py-0.5 tracking-wide w-full bg-[#f6f6e9]"
+                    class="px-2 py-0.5 tracking-wide w-full bg-[#f6f6e9] focus-visible:outline-0"
                     placeholder="Search items from menu"
                     value={query}
                     onChange={handleSearch}
