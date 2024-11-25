@@ -92,7 +92,7 @@ const StatusFooter = ({ cart }) => {
         </div>
 
         {/* Dropdown Content */}
-        <div
+        {/* <div
           className={`${
             ActiveStatus ? "block" : "hidden"
           } absolute left-0 bottom-full w-full bg-gray-700 text-white py-2 shadow-lg`}
@@ -109,7 +109,7 @@ const StatusFooter = ({ cart }) => {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </footer>
       <PaymentModal
         isOpen={isOpen}

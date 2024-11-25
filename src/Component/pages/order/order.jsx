@@ -220,8 +220,8 @@ const Order = ({ cart }) => {
 
           {/* Table View */}
           {/* <h2 class="mt-6 text-2xl text-red-600">Simple Table</h2> */}
-          <div class="h-60 bg-[#ede9dd] overflow-auto">
-            <table class="w-full text-sm text-center text-[#544013] border-solid border-4 border-[#d79555] border-x-0 border-b-0">
+          <div class="h-[50vh] bg-[#ede9dd] overflow-auto">
+            <table class="w-full text-sm text-center text -[#544013] border-solid border-4 border-[#d79555] border-x-0 border-b-0">
               <thead class="text-lg text-[#544013] uppercase bg-[#ede9dd]">
                 <tr className="border-solid border-4 border-[#d79555] border-x-0">
                   <th
@@ -264,11 +264,11 @@ const Order = ({ cart }) => {
                   <tr key={index}>
                     <th
                       scope="row"
-                      class="px-6 py-2  border-solid border-4 border-[#d79555] border-y-0 border-s-0"
+                      class="px-6 py-2 border-solid border-4 border-[#d79555] border-y-0 border-s-0"
                     >
                       {++index}
                     </th>
-                    <th class="px-6 py-2   font-bold text-gray-900 whitespace-nowrap border-solid border-4 border-[#d79555] border-y-0 border-s-0">
+                    <th class="px-6 py-2 font-bold text-gray-900 whitespace-nowrap border-solid border-4 border-[#d79555] border-y-0 border-s-0">
                       {items?.food}
                     </th>
 

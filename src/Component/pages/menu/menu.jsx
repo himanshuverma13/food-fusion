@@ -609,11 +609,11 @@ const Menu = () => {
     }
   };
 
-   // Side Nav Functionality
-   const [moveSideNav, setmoveSideNav] = useState(true)
-   const SideNavFunctionality = () => {
-     setmoveSideNav(!moveSideNav)
-   }
+  // Side Nav Functionality
+  const [moveSideNav, setmoveSideNav] = useState(true);
+  const SideNavFunctionality = () => {
+    setmoveSideNav(!moveSideNav);
+  };
 
   // Function to handle clicking on an option
   // const handleOptionClick = (option) => {
@@ -684,11 +684,12 @@ const Menu = () => {
               <div key={tab.name}>
                 <a
                   href="#"
-                  onClick={() =>{
-                    let filter = MenuItemsJson?.filter((item) => item.id === tab?.id)
-                    setFilteredOptions(filter[0]?.subcategories)}
-     
-                  }
+                  onClick={() => {
+                    let filter = MenuItemsJson?.filter(
+                      (item) => item.id === tab?.id
+                    );
+                    setFilteredOptions(filter[0]?.subcategories);
+                  }}
                   className={`flex items-center justify-center ms-2 mt-1 py-1 border-solid border-2 border-[#544013] rounded-xl ${
                     tab.category === selectedTab
                       ? "bg-[#d79555] text-white"
