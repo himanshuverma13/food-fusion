@@ -37,7 +37,7 @@ const SideNavbar = () => {
   };
 
   const closeModal = () => {
-    setIsOpen(false)  
+    setIsOpen(false);
   };
 
   // check URL for Sidebar
@@ -92,10 +92,7 @@ const SideNavbar = () => {
         </ul>
         {/* <SignOutModal /> */}
       </div>
-      <SignOutModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-      />
+      <SignOutModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );
 };

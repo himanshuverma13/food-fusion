@@ -8,7 +8,7 @@ import {
   remove,
 } from "../../Common/Redux/Category/categorySlice";
 import Button from "../../Common/Button/button";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Navbar from "../../Common/Navbar/navbar";
 import StatusFooter from "../../Common/Footer/statusFooter";
 import CategoryModal from "../../Common/Modal/categoryModal";
@@ -37,7 +37,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleMinus,
   faCirclePlus,
-  faCircleXmark,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import TableStatusModal from "../../Common/Modal/tableStatusModal";
@@ -980,7 +979,7 @@ const Category = ({ cart }) => {
         }  `}
       >
         <p className="text-xl font-bold text-[#544013]">Generate Order</p>
-        <div className="grid grid-cols-12 gap-4">
+        <div className="grid grid-cols-12  gap-4">
           <div className="col-span-7 border-solid border-2 border-black rounded-2xl bg-[#ede9dd]">
             <div className="flex justify-between py-1">
               {/* Search bar */}
@@ -1013,7 +1012,7 @@ const Category = ({ cart }) => {
             </div>
             <div className="flex">
               {/* Side Tabs */}
-              <div className="w-1/4 h-[26rem] cursor-pointer font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
+              <div className="w-1/4 h-[60vh] cursor-pointer font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
                 {MenuItemsJson.map((tab) => (
                   <a
                     onClick={() => {
@@ -1045,7 +1044,7 @@ const Category = ({ cart }) => {
               </div>
 
               {/* Main Content */}
-              <div className=" p-2 h-[26rem] overflow-auto">
+              <div className="p-2 h-[60vh] overflow-auto">
                 <div className="grid grid-cols-2 gap-4">
                   {filteredOptions?.map((food) => (
                     <div className="p-2 bg-white border rounded-2xl shadow-2xl">
@@ -1096,7 +1095,7 @@ const Category = ({ cart }) => {
 
             {/* Table View */}
             <div class="grid grid-cols-1 grid-rows-3">
-              <div className="row-span-2 h-72 overflow-auto">
+              <div className="row-span-2 h-[40vh] overflow-auto">
                 <table class="w-full row-span-2 text-sm text-center text-[#544013]">
                   <thead class="text-lg text-[#544013] bg-[#ede9dd]">
                     <tr>
@@ -1199,7 +1198,7 @@ const Category = ({ cart }) => {
                     </form>
                   </div>
                 </ul>
-                <div className="flex justify-around my-1">
+                <div className="flex justify-around items-end my-1">
                   <NavLink to="/chef">
                     <Button
                       title="Save & Generate KOT"
