@@ -892,8 +892,8 @@ const AutoSuggestSearch = ({ cart }) => {
           <input
             type="text"
             value={query}
-            onChange={handleSearch}
-            placeholder="Search for a fruit..."
+            onChange={handleSearch} 
+            placeholder="Search items from menu"
             className="w-full px-4 py-2 bg-transparent border-0  rounded-lg shadow-sm focus:outline-none "
           />
 

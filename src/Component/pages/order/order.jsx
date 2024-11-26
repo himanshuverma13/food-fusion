@@ -95,7 +95,7 @@ const Order = ({ cart }) => {
             </div>
             <div className="flex">
               <DropdownButton options={orderTypes} buttonLabel="Order Type" />
-              <p className="text-xl font-bold text-[#544013]">
+              <p className="text-xl font-semibold text-[#544013]">
                 Order No. : 123
               </p>
             </div>
@@ -105,7 +105,7 @@ const Order = ({ cart }) => {
             <div class="group flex items-center">
               <label
                 for="name"
-                class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
                 Costumer Name :
               </label>
@@ -124,7 +124,7 @@ const Order = ({ cart }) => {
             <div class="group flex items-center">
               <label
                 for="phone_number"
-                class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
                 Phone Number :
               </label>
@@ -145,7 +145,7 @@ const Order = ({ cart }) => {
             <div class="group flex items-center">
               <label
                 for="email"
-                class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
                 E-mail Address :
               </label>
@@ -164,7 +164,7 @@ const Order = ({ cart }) => {
             <div class="group flex items-center">
               <label
                 for="table_Number"
-                class="pb-1 text-lg font-bold text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
                 Table No. :
               </label>
@@ -226,35 +226,35 @@ const Order = ({ cart }) => {
                 <tr className="border-solid border-4 border-[#d79555] border-x-0">
                   <th
                     scope="col"
-                    class="px-6 py-3 border-b-0 border-s-0 border-solid border-4 border-[#d79555] "
+                    class="px-6 py-3 tracking-wider border-b-0 border-s-0 border-solid border-4 border-[#d79555] "
                   >
                     S. No.
                   </th>
                   <th
                     scope="col"
-                    class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
+                    class="px-6 py-3 tracking-wider border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
                   >
                     Items Name
                   </th>
                   <th
                     scope="col"
-                    class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
+                    class="px-6 py-3 tracking-wider border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
                   >
                     Note/Add-Ons
                   </th>
                   <th
                     scope="col"
-                    class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
+                    class="px-6 py-3 tracking-wider border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
                   >
                     Qty.
                   </th>
                   <th
                     scope="col"
-                    class="px-6 py-3 border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
+                    class="px-6 py-3 tracking-wider border-solid border-4 border-[#d79555] border-y-0 border-s-0 "
                   >
                     Price
                   </th>
-                  <th scope="col" class="px-6 py-3 ">
+                  <th scope="col" class="px-6 py-3 tracking-wider">
                     Amount
                   </th>
                 </tr>

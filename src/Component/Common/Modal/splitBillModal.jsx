@@ -20,11 +20,10 @@ const SplitBill = () => {
           onClick={handleButtonClick}
         >
           Split Bill
-
         </button>
         {isOpen && (
           <div className="fixed z-10 top-0 right-0 bottom-0 left-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
-            <div className="bg-[#f6f6e9] border-2 border-black rounded-lg shadow-lg p-4 w-2/1 h-2/2 mx-3">
+            <div className="bg-[#f6f6e9] border-2 border-black rounded-lg shadow-lg p-4 w-1/3 h-2/2 mx-3">
               <div className="">
                 <div className="flex justify-end">
                   <svg
@@ -75,7 +74,7 @@ const SplitBill = () => {
                         class="py-2 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
                       />
                     </div>
-                    <div class="group flex items-center my-2">
+                    {/* <div class="group flex items-center my-2">
                       <label
                         for="number"
                         class="pb-1 text-xl font-light text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
@@ -88,7 +87,7 @@ const SplitBill = () => {
                         placeholder=""
                         class="py-2 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
                       />
-                    </div>
+                    </div> */}
                   </div>
                   <div class="group flex items-center my-2">
                     <label
@@ -104,21 +103,21 @@ const SplitBill = () => {
                     />
                   </div>
                 </form>
-                <div className="flex">
-                  <div class="flex items-center space-x-3 me-3 rounded-2xl bg-[#63898c] py-1 px-3 text-xl font-normal">
-                    <input
-                      type="checkbox"
-                      class="border-gray-300 rounded h-5 w-5"
-                    />
-                    <p className="">Generate Bill For Each</p>
-                  </div>
-
-                  <Button
-                    title="Continue"
-                    btn_class="rounded-2xl bg-[#63898c] py-1 px-4 text-xl font-normal "
-                    onClick={handleModalClose}
+                {/* <div className="flex"> */}
+                <div class="flex items-center space-x-3 me-3 mb-2  rounded-2xl py-1 px-3 text-xl font-normal">
+                  <input
+                    type="checkbox"
+                    class="border-gray-300 rounded h-5 w-5"
                   />
+                  <p className="">Generate Bill For Each</p>
                 </div>
+
+                <Button
+                  title="Continue"
+                  btn_class="rounded-2xl bg-[#63898c] py-1 px-4 text-xl font-normal "
+                  onClick={handleModalClose}
+                />
+                {/* </div> */}
               </div>
             </div>
           </div>
