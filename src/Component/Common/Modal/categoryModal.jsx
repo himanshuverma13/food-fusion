@@ -43,7 +43,7 @@ const CategoryModal = ({ isOpen, closeModal, selectedFoodItem, onSubmit }) => {
                       type="checkbox"
                       className="mx-1"
                       id={option?.option}
-                      value={option.option}
+                      value={option.price}
                       {...register(option.option)}
                     />
                     <span>{option?.option} </span>
