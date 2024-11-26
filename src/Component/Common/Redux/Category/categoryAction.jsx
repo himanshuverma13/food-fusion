@@ -1,6 +1,6 @@
 
 export const addToCart = (state, action) => {
-    console.log('state, action: ', state, action.payload.status);
+    console.log('state, action: ', state);
     // const itemInCart = state.itemsInCart.find((item) => item.id === action.payload.id ||item.tableNo === action.payload.tableNo    );
     const checkTableNo = state.itemsInCart.find((item) => item.tableNo === action.payload.tableNo);
     if (checkTableNo) {

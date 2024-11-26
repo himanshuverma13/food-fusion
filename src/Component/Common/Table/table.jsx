@@ -2,10 +2,12 @@ import React, { useEffect } from "react";
 import { TableNo } from "../../Common/Redux/Category/categorySlice";
 import { connect, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { GetTableAPI } from "../APIs/api";
 
 const Table = ({ cart }) => {
   let navigate = useNavigate()
   const dispatch = useDispatch();
+
   const TableData = [
     {
       table_Number: 1,
@@ -57,10 +59,24 @@ const Table = ({ cart }) => {
     },
 
   ];
+
+
+
+  useEffect(() => {
+    const fetch = async(data) =>{
+      let tableData =  await GetTableAPI()
+      console.log('tableData: ', tableData);
+    }
+    fetch()
+    // console.log('tableData: ', tableData);
+    // tableData.push(tableData)
+  }, [])
+  
+
+
   const GetTableNo = (no) => {
     dispatch(TableNo(no?.table_Number));
     navigate('/order')
-
   }
 
 

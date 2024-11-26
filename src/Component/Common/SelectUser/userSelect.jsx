@@ -25,9 +25,14 @@ const UserSelect = () => {
           }
         let response = await LoginAPI(payload)
         // console.log('response: ', response?.data);
-        localStorage.setItem('userAuth', JSON.stringify(response?.data))
-        closeModal();
-        navigate(selectedUser?.path)
+        if(response?.data){
+            localStorage.setItem('userAuth', JSON.stringify(response?.data))
+            closeModal();
+          return  navigate(selectedUser?.path)
+        }
+        localStorage.setItem('userAuth', JSON.stringify([]))
+          navigate(selectedUser?.path)
+
 
     }
 
