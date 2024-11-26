@@ -45,7 +45,7 @@ const SideNavbar = () => {
 
   return (
     <>
-      <div className="row-start-2 mt-20">
+      <div className="row-start-2 mt-20 flex flex-col justify-start items-center">
         {URL?.pathname !== "/admin/dashboard" &&
         URL?.pathname !== "/admin/register" &&
         URL?.pathname !== "/admin/remove" &&
@@ -53,7 +53,13 @@ const SideNavbar = () => {
         URL?.pathname !== "/admin/usertable" ? (
           <>
             {basicNavItems?.map((item, index) => (
-              <NavLink  className={`${URL?.pathname == item.path ?"flex my-0.5 w-full bg-red-500":""}`} to={item.path} key={index}>
+              <NavLink
+                className={`${
+                  URL?.pathname == item.path ? "flex w-full bg-red-500" : ""
+                }`}
+                to={item.path}
+                key={index}
+              >
                 <img
                   className={`m-4 ${
                     item.alt === "Employee" || item.alt === "Inventory"
@@ -69,7 +75,13 @@ const SideNavbar = () => {
         ) : (
           <>
             {adminNavItems?.map((item, index) => (
-              <NavLink to={item.path} key={index}>
+              <NavLink
+                className={`${
+                  URL?.pathname == item.path ? "flex w-full bg-red-500" : ""
+                }`}
+                to={item.path}
+                key={index}
+              >
                 <img className="m-4 w-8" src={item.icon} alt={item.alt} />
               </NavLink>
             ))}

@@ -4,7 +4,7 @@ import DropdownButton from "../../Common/dropdownButton/dropdown";
 import { SetTable } from "../../Common/Redux/Category/categorySlice";
 import { connect, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import Button from "../../Common/Button/button";
+// import Button from "../../Common/Button/button";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -21,10 +21,9 @@ import NonVeg from "../../assets/Images/menu/non-veg.svg";
 import Rajasthani from "../../assets/Images/menu/rajasthani.svg";
 import SouthIndian from "../../assets/Images/menu/South indian.svg";
 // import IndoChinese from "../../assets/Images/menu/indo-chinese.svg";
-import Dish from "../../assets/Images/menu/menu-dish.svg";
 import NewOrder from "../../assets/Images/new order.svg";
 import StatusFooter from "../../Common/Footer/statusFooter";
-import MenuSetting from "../../Common/Modal/menuSettingModal";
+// import MenuSetting from "../../Common/Modal/menuSettingModal";
 import MenuImg from "../../assets/Images/menu/menu-page.svg";
 // import TableStatusModal from "../../Common/Modal/tableStatusModal";
 
@@ -671,7 +670,7 @@ const Menu = () => {
                 alt="Loading"
               />
             </NavLink>
-            <MenuSetting />
+            {/* <MenuSetting /> */}
           </div>
         </div>
 

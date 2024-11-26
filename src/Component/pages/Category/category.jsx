@@ -1027,7 +1027,7 @@ const Category = ({ cart }) => {
                 <div class="overflow-hidden flex justify-between border-solid border-2 w-full border-black rounded-3xl bg-[#f6f6e9]">
                   <input
                     type="text"
-                    class="px-2 py-0.5 tracking-wide w-full bg-[#f6f6e9] focus-visible:outline-0"
+                    class="px-2 py-0.5 truncate tracking-wide w-full bg-[#f6f6e9] focus-visible:outline-0"
                     placeholder="Search items from menu"
                     value={query}
                     onChange={handleSearch}
@@ -1096,9 +1096,11 @@ const Category = ({ cart }) => {
                           alt="Loading"
                         />
                         <div className="mx-3 w-full">
+                          <div>
                           <p className="text-[#544013] text-start font-bold text-base">
                             {food?.name}
                           </p>
+                          </div>
                           <div className="flex justify-between items-center my-3">
                             <p className="text-base font-bold text-red-800">
                               ₹ {food?.price}/-
@@ -1125,7 +1127,7 @@ const Category = ({ cart }) => {
             <div className="flex items-center justify-evenly my-2">
               <DropdownButton options={orderTypes} buttonLabel="Order Type" />
 
-              <DropdownButton options={tableOptions} buttonLabel="Table No." />
+              <DropdownButton options={tableOptions}  buttonLabel="Table No." />
 
               <p className="text-xl text-[#544013] font-bold">
                 Order No. : 123

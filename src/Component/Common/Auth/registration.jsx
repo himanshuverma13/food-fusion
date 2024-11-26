@@ -60,14 +60,14 @@ const Registration = () => {
           <Button
             title="Remove User"
             btn_type="button"
-            btn_class="border-black border-2 py-1 px-3 me-4 font-semibold bg-[#bd8954] text-sm tracking-widest text-black uppercase"
+            btn_class="border-black border-2 py-1 px-3 me-4 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
           />
         </NavLink>
         <NavLink to="/admin/usertable">
           <Button
             title="User Table"
             btn_type="button"
-            btn_class="border-black border-2 py-1 px-2 font-semibold bg-[#bd8954] text-sm tracking-widest text-black uppercase"
+            btn_class="border-black border-2 py-1 px-2 font-semibold bg-[#bd8954] tracking-widest text-black uppercase"
           />
         </NavLink>
       </div>

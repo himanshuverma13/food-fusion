@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Button from "../Button/button";
 
 const Invoice = ({ cart }) => {
   console.log("cart: ", cart);
@@ -81,7 +82,7 @@ const Invoice = ({ cart }) => {
             ))}
           </tbody>
         </table>
-
+            
         {/* Totals */}
         <div className="text-sm my-2">
           <p className="flex justify-between my-2">
@@ -119,6 +120,11 @@ const Invoice = ({ cart }) => {
           </p>
         </div>
       </div>
+      <Button
+        title="Print Bill"
+        btn_type="button"
+        btn_class="mt-2 border-black border-2 p-1 font-semibold bg-[#bd8954] tracking-widest text-black"
+      />
     </div>
   );
 };

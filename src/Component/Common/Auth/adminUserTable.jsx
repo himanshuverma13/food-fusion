@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEye,
+  // faEye,
   faPen,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +16,7 @@ const AdminUserTable = () => {
       role: "Chasier",
       phone_Number: 1789641234,
       Joining_Date: 123,
+      passcode: 12345,
       salary: 20000,
     },
     {
@@ -23,6 +24,7 @@ const AdminUserTable = () => {
       role: "Chef",
       phone_Number: 1789641234,
       Joining_Date: 123,
+      passcode: 12345,
       salary: 20000,
     },
     {
@@ -30,6 +32,7 @@ const AdminUserTable = () => {
       role: "Waiter",
       phone_Number: 1789641234,
       Joining_Date: 123,
+      passcode: 12345,
       salary: 20000,
     },
     {
@@ -37,6 +40,7 @@ const AdminUserTable = () => {
       role: "Chasier",
       phone_Number: 1789641234,
       Joining_Date: 123,
+      passcode: 12345,
       salary: 20000,
     },
     {
@@ -44,6 +48,7 @@ const AdminUserTable = () => {
       role: "Chasier",
       phone_Number: 1789641234,
       Joining_Date: 123,
+      passcode: 12345,
       salary: 20000,
     },
   ];
@@ -114,6 +119,12 @@ const AdminUserTable = () => {
                   scope="col"
                   class="px-6 py-3 tracking-widest border border-slate-500"
                 >
+                  Passcode
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 tracking-widest border border-slate-500"
+                >
                   Salary
                 </th>
                 <th
@@ -146,13 +157,16 @@ const AdminUserTable = () => {
                     {items.Joining_Date}
                   </td>
                   <td class="px-6 py-4 border border-slate-500">
+                    {items.passcode}
+                  </td>
+                  <td class="px-6 py-4 border border-slate-500">
                     {items.salary}
                   </td>
                   <td class="px-6 py-4 border border-slate-500 flex items-center justify-between">
-                    <FontAwesomeIcon
+                    {/* <FontAwesomeIcon
                       className="text-blue-500 text-xl cursor-pointer"
                       icon={faEye}
-                    />
+                    /> */}
                     <NavLink to="/admin/register">
                       <FontAwesomeIcon
                         className="text-green-500 text-xl cursor-pointer"

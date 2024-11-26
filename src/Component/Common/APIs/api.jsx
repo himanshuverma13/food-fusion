@@ -16,7 +16,6 @@ export const RegistrationAPI = async (Payload) => {
 
 export const LoginAPI = async (Payload) => {
   try {
-  
     const response = await axios.post(`${URL}/login`, Payload);
     console.log("Payload: ", response);
     return response;
@@ -42,7 +41,7 @@ export const CustomerOrderRegisterAPI = async (Payload) => {
 
 export const FoodMenuAPI = async () => {
   try {
-    const response = await axios.get(`${URL}/customer/allmenu`,{
+    const response = await axios.get(`${URL}/customer/allmenu`, {
       headers: {
         Authorization: `Bearer ${Token?.accessToken}`,
         session:`${Token?.session}`,

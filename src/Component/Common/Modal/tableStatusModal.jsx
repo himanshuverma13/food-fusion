@@ -9,24 +9,28 @@ function TableStatusModal() {
   const ReservationData = [
     {
       tableNo: 1,
+      name: "xyz",
       date: "20-11-2024",
       time: "5 p.m.",
       people: 4,
     },
     {
       tableNo: 3,
+      name: "xyz",
       date: "20-11-2024",
       time: "5 p.m.",
       people: 4,
     },
     {
       tableNo: 5,
+      name: "xyz",
       date: "20-11-2024",
       time: "5 p.m.",
       people: 4,
     },
     {
       tableNo: 5,
+      name: "xyz",
       date: "20-11-2024",
       time: "5 p.m.",
       people: 4,
@@ -75,7 +79,7 @@ function TableStatusModal() {
                 </svg>
               </div>
               <div className="">
-                <TableReservationModal  />
+                <TableReservationModal />
               </div>
 
               <div>
@@ -93,9 +97,10 @@ function TableStatusModal() {
                       </div>
                     </div>
                     <div className="text-white">
-                      <p className="">Date : {items.date}</p>
-                      <p className="">Time : {items.time}</p>
-                      <p className="">No. of People - {items.people}</p>
+                      <p className="text-sm">Name : {items.name}</p>
+                      <p className="text-sm">Date : {items.date}</p>
+                      <p className="text-sm">Time : {items.time}</p>
+                      <p className="text-sm">No. of People - {items.people}</p>
                     </div>
                   </div>
                   <div className="flex justify-end gap-4 mb-2">
