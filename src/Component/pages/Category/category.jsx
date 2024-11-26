@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
+import { Dialog } from "@headlessui/react";
+// import Button from "../Button/button";
 import {
   add,
   CheckPaymentStatus,
@@ -843,9 +845,15 @@ let MenuItemsJson = [
 ];
 
 const Category = ({ cart }) => {
+  // console.log('cart: ', cart);
+  // const [MenuItemsJson, setMenuItemsJson] = useState([]);
+
+  const { register, handleSubmit, reset, setValue } = useForm();
+
   const fetchMenu = async () => {
-    let menu = await FoodMenuAPI();
-    console.log("menu: ", menu);
+    // let menu = await FoodMenuAPI()
+    // console.log('menu: ', menu?.data?.data);
+    // setMenuItemsJson(menu?.data?.data)
   };
 
   useEffect(() => {
@@ -872,24 +880,37 @@ const Category = ({ cart }) => {
   };
 
   const closeModal = () => {
+    setValue("comment",'')
+    reset()
     setIsOpen(false);
   };
 
-  const { reset } = useForm();
+  const handleModalClose = () => {
+    // setTimeout(() => {
+      reset()
+      setValue("comment",'')
+    // }, 3000)
+    closeModal();
+  };
+
+
+
 
   const onSubmit = (data) => {
+    let comment = data.comment;
+    delete data.comment;
     console.log("data: ", data);
     //  let val =  handelOptions(data)
-    // let price = [];
-    // let category = []
-    //  Object.entries(data).reduce((acc, [key, value]) => {
-    //   if (value !== false)  {
-    //     acc[key] = value;
-    //     price.push({"pirce":Number(acc[key] = value)});
-    //     category.push({"option":acc[key] = key});
-    //   }
-    //   return acc;
-    // }, {});
+    let price = [];
+    let category = [];
+    Object.entries(data).reduce((acc, [key, value]) => {
+      if (value !== false) {
+        acc[key] = value;
+        price.push(Number((acc[key] = value)));
+        category.push((acc[key] = key));
+      }
+      return acc;
+    }, {});
 
     // create onsubmit functionality on categorymodal component to handle comment or note feature
 
@@ -897,14 +918,23 @@ const Category = ({ cart }) => {
       id: selectedFoodItem?.id,
       food: selectedFoodItem?.name,
       // image: selectedFoodItem?.image,
-      // category: category,
+      category: category,
+      comment,
       tableNo: cart?.TableNo,
       status: "open",
       quantity: 1,
-      // price: price.reduce((a, b) => a + b, selectedFoodItem?.price),
+      price: price.reduce((a, b) => a + b, Number(selectedFoodItem?.price)),
       amount: 1,
     };
+    console.log("payload:---------- ", payload);
+    price = [];
+    category = [];
     dispatch(add(payload));
+    comment = ''
+    setValue("comment",'')
+    setSelectedFoodItem(null)
+    reset()
+
     closeModal();
   };
 
@@ -1241,12 +1271,80 @@ const Category = ({ cart }) => {
           </div>
         </div>
         {/* Modal */}
-        <CategoryModal
+        {/* <CategoryModal
           isOpen={isOpen}
           closeModal={closeModal}
           selectedFoodItem={selectedFoodItem}
           onSubmit={onSubmit}
-        />
+        /> */}
+
+        <Dialog
+          open={isOpen}
+          onClose={handleModalClose}
+          className="fixed inset-0 z-10 flex items-center justify-center"
+        >
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50"
+            aria-hidden="true"
+            onClick={handleModalClose}
+          />
+          <div className="relative bg-[#f6f6e9] w-1/2 px-4 py-6 rounded shadow-lg z-20">
+            <h4 className="text-xl mb-4">
+              Customize your {selectedFoodItem?.name}
+            </h4>
+            <form className="" onSubmit={handleSubmit(onSubmit)}>
+              <div className="grid grid-cols-2 grid-rows-2 gap-0">
+                {selectedFoodItem?.add_ons?.map((item) => (
+                  <div className="flex items-center my-2">
+                    <label htmlFor={item?.option}>
+                      <input
+                        type="checkbox"
+                        className="mx-1"
+                        id={item?.option}
+                        value={item.price}
+                        {...register(item.option)}
+                      />
+                      <span>{item?.option} </span>
+                      <span
+                        className={`mx-1 text-red-500 font-semibold ${
+                          item?.price > 0 ? "inline" : "hidden"
+                        }`}
+                      >
+                        {" "}
+                        (₹ {item?.price})
+                      </span>
+                    </label>
+                  </div>
+                ))}
+              </div>
+              <hr className="w-full my-2 border border-black " />
+              <div className="w-full">
+                <label className="block mb-2 font-bold" htmlFor="note">
+                  Note :
+                </label>
+                <textarea
+                  // onChange={(e)=>GetValue(e)}
+                  {...register("comment")}
+                  // value={comment}
+                  id="note"
+                  placeholder="Additional Details..."
+                  className="w-full px-3 py-2 border border-black rounded-lg"
+                />
+              </div>
+
+              <Button
+                btn_type="submit"
+                // onClick={() =>
+                //   setTimeout(() => {
+                //     reset();
+                //   }, 3000)
+                // }
+                title="Submit"
+                btn_class="bg-green-600 text-white px-4 py-1 mt-5 border-solid border-2 border-black rounded-xl"
+              />
+            </form>
+          </div>
+        </Dialog>
         {/* <PaymentModal
           isOpen={isOpen}
           closeModal={closeModal}

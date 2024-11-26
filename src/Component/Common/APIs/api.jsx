@@ -1,6 +1,8 @@
 import axios from "axios";
+import axiosInstance from "../../../Interceptor/axiosInterceptor";
 const URL = `${process.env.REACT_APP_API}/cashier`;
-const Token = ""
+const Token = JSON.parse(localStorage.getItem("userAuth")) 
+// console.log('Token: ', Token.accessToken);
 
 export const RegistrationAPI = async (Payload) => {
   try {
@@ -26,13 +28,9 @@ export const LoginAPI = async (Payload) => {
 
 export const CustomerOrderRegisterAPI = async (Payload) => {
   try {
-    const response = await axios.post(`${URL}/customer/register`, Payload, {
-      headers: {
-        Authorization: `Bearer ${Token?.accessToken}`,
-        sessionId: `${Token?.sessionId}`,
-      },
-    });
-    console.log("Payload: ", response);
+    const response = await axiosInstance.post(`/customer/register`, Payload,
+      
+    );
     return response;
   } catch (error) {
     console.log("error: ", error);
@@ -46,8 +44,7 @@ export const FoodMenuAPI = async () => {
     const response = await axios.get(`${URL}/customer/allmenu`, {
       headers: {
         Authorization: `Bearer ${Token?.accessToken}`,
-        sessionId: `${Token?.sessionId}`,
-        "ngrok-skip-browser-warning": "69420",
+        session:`${Token?.session}`,
       },
     });
     console.log("Payload: ", response.data);
@@ -56,3 +53,18 @@ export const FoodMenuAPI = async () => {
     console.log("error: ", error);
   }
 };
+
+
+//  Get Table APIs
+export const GetTableAPI = async () => {
+  try {
+    console.log('axiosInstance: ', axiosInstance);
+    const response = await axiosInstance.get(`/restaurant/getTable`);
+    console.log("Payload: ", response.data);
+    return response;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
+
