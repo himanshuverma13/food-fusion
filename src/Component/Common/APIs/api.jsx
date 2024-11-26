@@ -1,6 +1,7 @@
 import axios from "axios";
 const URL = `${process.env.REACT_APP_API}/cashier`;
-const Token = JSON.parse(localStorage.getItem('userAuth'));
+// const Token = JSON.parse(localStorage.getItem('userAuth'));
+const Token = "JSON.parse(localStorage.getItem('userAuth'));"
 
 export const RegistrationAPI = async (Payload) => {
   try {

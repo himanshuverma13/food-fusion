@@ -884,17 +884,17 @@ useEffect(() => {
  
   const onSubmit = (data) => {
     console.log('data: ', data);
-   let val =  handelOptions(data)
-    // let price = [];
-    // let category = []
-    //  Object.entries(data).reduce((acc, [key, value]) => {
-    //   if (value !== false)  {
-    //     acc[key] = value;
-    //     price.push({"pirce":Number(acc[key] = value)});
-    //     category.push({"option":acc[key] = key});
-    //   }
-    //   return acc;
-    // }, {});
+  //  let val =  handelOptions(data)
+    let price = [];
+    let category = []
+     Object.entries(data).reduce((acc, [key, value]) => {
+      if (value !== false)  {
+        acc[key] = value;
+        price.push(Number(acc[key] = value));
+        category.push(acc[key] = key);
+      }
+      return acc;
+    }, {});
 
     // create onsubmit functionality on categorymodal component to handle comment or note feature
 
@@ -902,11 +902,11 @@ useEffect(() => {
       id: selectedFoodItem?.id,
       food: selectedFoodItem?.name,
       // image: selectedFoodItem?.image,
-      // category: category,
+      category: category,
       tableNo: cart?.TableNo,
       status: "open",
       quantity: 1,
-      // price: price.reduce((a, b) => a + b, selectedFoodItem?.price),
+      price: price.reduce((a, b) => a + b, selectedFoodItem?.price),
       amount: 1,
     };
     dispatch(add(payload));
