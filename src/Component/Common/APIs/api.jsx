@@ -35,22 +35,24 @@ export const CustomerOrderRegisterAPI = async (Payload) => {
   }
 };
 
-//  Category Page all menu
+  //  Category Page all menu
 
-export const FoodMenuAPI = async () => {
-  try {
-    const response = await axios.get(`${URL}/customer/allmenu`, {
-      headers: {
-        Authorization: `Bearer ${Token?.accessToken}`,
-        session: `${Token?.session}`,
-      },
-    });
-    console.log("Payload: ", response.data);
-    return response;
-  } catch (error) {
-    console.log("error: ", error);
-  }
-};
+  export const FoodMenuAPI = async () => {
+    try {
+      const response = await axios.get(`${URL}/customer/allmenu`, {
+        headers: {
+          Authorization: `Bearer ${Token?.accessToken}`,
+          session:`${Token?.session}`,
+          "ngrok-skip-browser-warning": "69420",
+        },
+      });
+      console.log("Payload: ", response.data);
+      return response;
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
 
 //  Get Table APIs
 export const GetTableAPI = async () => {
