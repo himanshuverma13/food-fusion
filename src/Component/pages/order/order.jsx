@@ -23,6 +23,9 @@ import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSear
 import CategoryModal from "../../Common/Modal/categoryModal";
 import { useForm } from "react-hook-form";
 import { CustomerOrderRegisterAPI } from "../../Common/APIs/api";
+import axios from "axios";
+const Token = JSON.parse(localStorage.getItem("userAuth"));
+const URL = `${process.env.REACT_APP_API}/cashier`;
 const Order = ({ cart }) => {
   const [isOpen, setIsOpen] = useState(false);
   // const [selectedFoodItem, setSelectedFoodItem] = useState(null);
@@ -35,14 +38,41 @@ const Order = ({ cart }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    let payload = {
-      coustmer_name : data?.name,
-      coustmer_mobile_no : data?.phone_number,
-      coustmer_email : data?.email
+  const onSubmit = async(data) => {
+
+    try {
+  let payload = {
+      customer_name : data?.name,
+      customer_mobile_no : data?.phone_number,
+      customer_email : data?.email,
+      customer_table:cart?.TableNo,
     }
-    let response = CustomerOrderRegisterAPI(payload)
-    console.log('response: ', response);
+
+      const response = await axios.post(`${URL}/customer/register`,payload, {
+        headers: {
+          Authorization: `Bearer ${Token?.accessToken}`,
+          session: `${Token?.session}`,
+          "ngrok-skip-browser-warning": "69420",
+        },
+      });
+      console.log('response?.data: ', response?.data);
+      
+let statusData = JSON.parse(localStorage.getItem('orderStatus')) || [];
+let updatedData = [...statusData,  response?.data ];
+console.log('updatedData: ', updatedData);
+localStorage.setItem('orderStatus', JSON.stringify(updatedData));
+      
+      return response?.data;
+    } catch (error) {
+      console.log("error: ", error);
+    }
+    // let payload = {
+    //   coustmer_name : data?.name,
+    //   coustmer_mobile_no : data?.phone_number,
+    //   coustmer_email : data?.email
+    // }
+    // let response = CustomerOrderRegisterAPI(payload)
+    // console.log('response: ', response);
   };
 
   const dispatch = useDispatch();
@@ -324,11 +354,12 @@ const Order = ({ cart }) => {
           </NavLink>
 
           {/* <NavLink> */}
-          <Button
+          {/* <Button
             title="Save"
             btn_type="submit"
             btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
-          />
+          /> */}
+          <button className="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8" type="submit">save</button>
           {/* </NavLink> */}
 
           <NavLink>
