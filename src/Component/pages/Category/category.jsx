@@ -1074,7 +1074,7 @@ const Category = ({ cart }) => {
                 {MenuItemsJson?.map((tab) => (
                   <a
                   onClick={() => {
-                      setFilteredOptions(tab?.subcategories);
+                      // setFilteredOptions(tab?.subcategories);
                       // handleTabClick(tab)
                     }}
                     key={tab?.name}

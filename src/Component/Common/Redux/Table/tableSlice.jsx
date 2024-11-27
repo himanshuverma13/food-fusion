@@ -1,6 +1,6 @@
 // cartReducer.js
 import { createSlice } from '@reduxjs/toolkit';
-import { CreateTable,GetTable } from './tableAction';
+import { CreateTable, GetTable } from './tableAction';
 export const initialState = {
   tableDetails: [],
 };
