@@ -3,8 +3,9 @@ import { TableNo } from "../../Common/Redux/Category/categorySlice";
 import { connect, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { GetTableAPI } from "../APIs/api";
+import { createTable, getTable } from "../Redux/Table/tableSlice";
 
-const Table = ({ cart }) => {
+const Table = ({ cart,table }) => {
   let navigate = useNavigate()
   const dispatch = useDispatch();
 
@@ -63,6 +64,8 @@ const Table = ({ cart }) => {
 
 
   useEffect(() => {
+    dispatch(createTable(TableData));
+    
     const fetch = async(data) =>{
       let tableData =  await GetTableAPI()
       console.log('tableData: ', tableData);
@@ -86,7 +89,7 @@ const Table = ({ cart }) => {
       <div className=" px-3">
         <div className="flex justify-center items-center">
           <div className="circle-container grid grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-7 w-3/4 ">
-            {TableData.map((items, index) => (
+            {TableData?.map((items, index) => (
               <div className="cursor-pointer">
                 <svg   viewBox="-7 0 27 10">
                   <defs >
@@ -115,6 +118,7 @@ const Table = ({ cart }) => {
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
+  table: state.table,
 });
 
 export default connect(mapStateToProps, {})(Table);
