@@ -861,10 +861,12 @@ const Category = ({ cart }) => {
     fetchMenu();
   }, []);
 
-  const [filteredOptions, setFilteredOptions] = useState(
-    MenuItemsJson[0]?.subcategories
-  );
-  const [selectedTab, setSelectedTab] = useState([MenuItemsJson[0]]);
+  const [filteredOptions, setFilteredOptions] = useState([]);
+  const [selectedTab, setSelectedTab] = useState([]); 
+  // const handleTabClick = (tab) => {
+  //   setSelectedTab(tab);  // Set the selected tab
+  //   setFilteredOptions(tab?.subcategories);  // Update filtered options based on subcategories
+  // };  
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFoodItem, setSelectedFoodItem] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -992,7 +994,7 @@ const Category = ({ cart }) => {
   };
 
   const options = [];
-  MenuItemsJson.map((item) => {
+  MenuItemsJson?.map((item) => {
     item?.subcategories?.map((foodName) => options?.push(foodName));
   });
 
@@ -1069,14 +1071,15 @@ const Category = ({ cart }) => {
             <div className="flex">
               {/* Side Tabs */}
               <div className="w-1/4 h-[60vh] cursor-pointer font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
-                {MenuItemsJson.map((tab) => (
+                {MenuItemsJson?.map((tab) => (
                   <a
                   onClick={() => {
                       setFilteredOptions(tab?.subcategories);
+                      // handleTabClick(tab)
                     }}
-                    key={tab.name}
+                    key={tab?.name}
                     className={`block text-left text-sm truncate w-full my-2 shadow-lg py-1 px-2 ${
-                      tab.category === selectedTab
+                      tab === selectedTab
                         ? "bg-[#d79555] border-solid border-2 border-black text-white"
                         : "bg-white"
                     }`}
