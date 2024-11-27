@@ -881,15 +881,15 @@ const Category = ({ cart }) => {
   };
 
   const closeModal = () => {
-    setValue("comment", "");
-    reset();
+    setValue("comment",'')
+    reset()
     setIsOpen(false);
   };
 
   const handleModalClose = () => {
     // setTimeout(() => {
-    reset();
-    setValue("comment", "");
+      reset()
+      setValue("comment",'')
     // }, 3000)
     closeModal();
   };
@@ -938,14 +938,17 @@ const Category = ({ cart }) => {
 
   const handleIncrementQuantity = (item) => {
     dispatch(increment(item));
+    showSubTotal();
   };
 
   const handleDecrementQuantity = (id) => {
     dispatch(decrement(id?.id));
+    showSubTotal();
   };
 
   const handleRemoveFromCart = (id) => {
     dispatch(remove(id?.id));
+    showSubTotal();
   };
   const handlePayment = (pay) => {
     setIsOpen(true);
@@ -956,11 +959,26 @@ const Category = ({ cart }) => {
     (item) => item.tableNo === cart.TableNo
   );
 
+  const [subTotal, setsubTotal] = useState();
+
+  const showSubTotal = () => {
+    let array = [];
+    selectedFoodItems?.map((foodItem) => {
+      let evaluate = foodItem?.quantity * foodItem?.price;
+      array.push(evaluate);
+    });
+    let value = (array || [0]).reduce((acc, x) => acc + Number(x || 0), 0);
+    setsubTotal(value);
+  };
+
+  useEffect(() => {
+    showSubTotal();
+  }, [selectedFoodItems]);
+
   const SetValue = (value) => {
     let a = MenuItemsJson?.categories?.filter((item) => {
       return item.id === value;
     });
-    console.log("a:", a);
     const filteredItems = MenuItemsJson?.categories?.filter(
       (item) => item.id === value
     );
@@ -1192,7 +1210,7 @@ const Category = ({ cart }) => {
                   </li>
                   <li className="mx-7 my-0.5 text-base font-bold flex justify-between text-[#544013]">
                     <span>Sub Total:</span>
-                    <span className="mx-7">{cart?.totalCost}</span>
+                    <span className="mx-7">{subTotal}</span>
                   </li>
                   <div className="flex">
                     <SplitBill />
