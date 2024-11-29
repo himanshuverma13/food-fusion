@@ -35,29 +35,66 @@ export const CustomerOrderRegisterAPI = async (Payload) => {
   }
 };
 
-  //  Category Page all menu
+//  Category Page all menu
 
-  export const FoodMenuAPI = async () => {
-    try {
-      const response = await axios.get(`${URL}/customer/allmenu`, {
-        headers: {
-          Authorization: `Bearer ${Token?.accessToken}`,
-          session:`${Token?.session}`,
-          "ngrok-skip-browser-warning": "69420",
-        },
-      });
-      console.log("Payload: ", response.data);
-      return response;
-    } catch (error) {
-      console.log("error: ", error);
-    }
-  };
-
+export const FoodMenuAPI = async () => {
+  try {
+    const response = await axios.get(`${URL}/customer/allmenu`, {
+      headers: {
+        Authorization: `Bearer ${Token?.accessToken}`,
+        session: `${Token?.session}`,
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    console.log("Payload: ", response.data);
+    return response;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
 
 //  Get Table APIs
 export const GetTableAPI = async () => {
   try {
     const response = await axios.get(`${URL}/restaurant/getTable`, {
+      headers: {
+        Authorization: `Bearer ${Token?.accessToken}`,
+        session: `${Token?.session}`,
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    return response?.data;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
+// Table Status for Reserve , order Delived and ready for payment
+
+export const CheckTableStatus = async (payload) => {
+  try {
+    const response = await axios.post(`${URL}/customer/register`, payload, {
+      headers: {
+        Authorization: `Bearer ${Token?.accessToken}`,
+        session: `${Token?.session}`,
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    let statusData = JSON.parse(localStorage.getItem("orderStatus")) || [];
+    let updatedData = [...statusData, response?.data];
+    localStorage.setItem("orderStatus", JSON.stringify(updatedData));
+    return response?.data;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
+
+//  Send order details to backend
+
+export const SendOrderDetailstoAPI = async () => {
+  try {
+    const response = await axios.post(`${URL}/restaurant/create/order`, {
       headers: {
         Authorization: `Bearer ${Token?.accessToken}`,
         session: `${Token?.session}`,
