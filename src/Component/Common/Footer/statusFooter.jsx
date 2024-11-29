@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import PaymentModal from "../Modal/paymentModal";
-import footerBot from "../../assets/Images/skill-bot.svg"
+import footerBot from "../../assets/Images/skill-bot.svg";
+import ChatBot from "../ChatBot/chatbot";
 
 const StatusFooter = ({ cart }) => {
   const [ActiveStatus, setActiveStatus] = useState(false);
@@ -19,7 +20,7 @@ const StatusFooter = ({ cart }) => {
         onMouseEnter={() => setActiveStatus(true)}
         onMouseLeave={() => setActiveStatus(false)}
       >
-        <div className="flex justify-between items-center">
+        <div className="flex justify-around items-center">
           <span className="tracking-wider font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
             Active tables <div>12</div>
           </span>
@@ -87,8 +88,10 @@ const StatusFooter = ({ cart }) => {
               </g>
             </svg>
           </div>
-          <img src={footerBot} className="absolute bottom-0 right-0 h-20" alt="loading" />
-          <div></div>
+          <div className="absolute bottom-0 right-0">
+            <ChatBot />
+          </div>
+          {/* <img src={footerBot} className="absolute bottom-0 right-0 h-20" alt="loading" /> */}
         </div>
 
         {/* Dropdown Content */}
