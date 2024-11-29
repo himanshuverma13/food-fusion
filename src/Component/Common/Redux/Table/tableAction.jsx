@@ -5,7 +5,12 @@ export const CreateTable = (state,action) =>{
 }
 
 export const GetTable = (state,action) =>{
-    // console.log('state,payload: ', state,action);
+
+    
+}
+
+export const GetTableDetails = (state,action) =>{
+    state.OrderTable?.push(action?.payload)
 }
 
 
