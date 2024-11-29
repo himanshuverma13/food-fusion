@@ -44,10 +44,10 @@ import {
 import TableStatusModal from "../../Common/Modal/tableStatusModal";
 import ApplyOffer from "../../Common/Modal/applyOfferModal";
 import { useForm } from "react-hook-form";
-import { FoodMenuAPI } from "../../Common/APIs/api";
+  import { FoodMenuAPI, SendOrderDetailstoAPI } from "../../Common/APIs/api";
 
-const Category = ({ cart, payment }) => {
-  // console.log('cart: ', cart);
+const Category = ({ cart,TableDetails,customerStatus, payment }) => {
+  // console.log('cart: ', customerStatus);
   const [MenuItemsJson, setMenuItemsJson] = useState([]);
 
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -59,6 +59,7 @@ const Category = ({ cart, payment }) => {
     setFilteredOptions(menu?.data?.data[0].subcategories);
   };
 
+  let customerDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
   useEffect(() => {
     fetchMenu();
   }, []);
@@ -113,6 +114,17 @@ const Category = ({ cart, payment }) => {
       }
       return acc;
     }, {});
+
+    // filter funtionality to get customer information
+
+    useEffect(() => {
+
+    }, [])
+    
+
+    let customer = customerDetails?.data?.find((c) => c?.customer_table === cart?.TableNo);
+    console.log('customer: ', customer);
+
 
     // create onsubmit functionality on categorymodal component to handle comment or note feature
 
@@ -223,6 +235,26 @@ const Category = ({ cart, payment }) => {
   const [moveSideNav, setmoveSideNav] = useState(true);
   const SideNavFunctionality = () => {
     setmoveSideNav(!moveSideNav);
+  };
+
+  // send to order detail order api 
+  const handleOrderDetails = () => {
+    let payload = {
+      order: cart?.itemsInCart,
+      tableDetails:TableDetails?.OrderTable,
+
+      "menu":cart?.itemsInCart,
+      // "orderQuantity":2,
+      "orderStatus":"Completed",
+      "orderType":"Dine-In",
+      "floorId":TableDetails?.OrderTable?.floorId,
+      "tableId":TableDetails?.OrderTable?._id,
+      "customerId":"6748192ba97a1cd6977f9d2f",
+      "totalAmount":subTotal
+    };
+    console.log('payload: ', payload);
+    // let response = SendOrderDetailstoAPI(payload)
+    // console.log('response: ', response);
   };
 
   return (
@@ -454,13 +486,14 @@ const Category = ({ cart, payment }) => {
                   </div>
                 </ul>
                 <div className="flex justify-around items-end my-1">
-                  <NavLink to="/chef">
+                  {/* <NavLink to="/chef"> */}
                     <Button
                       title="Save & Generate KOT"
                       btn_type="button"
+                      onClick={() => handleOrderDetails()}
                       btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
                     />
-                  </NavLink>
+                  {/* </NavLink> */}
                   <NavLink to="/payment">
                     <Button
                       title="Save & Print Bill"
@@ -572,6 +605,8 @@ const Category = ({ cart, payment }) => {
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
+  TableDetails: state.table,
+  customerStatus: state.customerStatus,
 });
 
 export default connect(mapStateToProps, {})(Category);

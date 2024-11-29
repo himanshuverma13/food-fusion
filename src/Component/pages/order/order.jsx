@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
 import Button from "../../Common/Button/button";
@@ -22,7 +22,7 @@ import {
 import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
 import CategoryModal from "../../Common/Modal/categoryModal";
 import { useForm } from "react-hook-form";
-import { CustomerOrderRegisterAPI } from "../../Common/APIs/api";
+import { CheckTableStatus, CustomerOrderRegisterAPI } from "../../Common/APIs/api";
 import axios from "axios";
 const Token = JSON.parse(localStorage.getItem("userAuth"));
 const URL = `${process.env.REACT_APP_API}/cashier`;
@@ -30,54 +30,31 @@ const Order = ({ cart }) => {
   const [isOpen, setIsOpen] = useState(false);
   // const [selectedFoodItem, setSelectedFoodItem] = useState(null);
 
+  let OrderStatus = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
+
   const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async(data) => {
-
-    try {
   let payload = {
       customer_name : data?.name,
       customer_mobile_no : data?.phone_number,
       customer_email : data?.email,
       customer_table:cart?.TableNo,
+      // customer_table:data?.table_Number
     }
+const response = await CheckTableStatus(payload)
 
-      const response = await axios.post(`${URL}/customer/register`,payload, {
-        headers: {
-          Authorization: `Bearer ${Token?.accessToken}`,
-          session: `${Token?.session}`,
-          "ngrok-skip-browser-warning": "69420",
-        },
-      });
-      console.log('response?.data: ', response?.data);
-      
-let statusData = JSON.parse(localStorage.getItem('orderStatus')) || [];
-let updatedData = [...statusData,  response?.data ];
-console.log('updatedData: ', updatedData);
-localStorage.setItem('orderStatus', JSON.stringify(updatedData));
-      
-      return response?.data;
-    } catch (error) {
-      console.log("error: ", error);
-    }
-    // let payload = {
-    //   coustmer_name : data?.name,
-    //   coustmer_mobile_no : data?.phone_number,
-    //   coustmer_email : data?.email
-    // }
-    // let response = CustomerOrderRegisterAPI(payload)
-    // console.log('response: ', response);
   };
 
   const dispatch = useDispatch();
   const handleIncrementQuantity = (item) => {
-    console.log("id: ", item);
     dispatch(increment(item));
   };
 
@@ -97,6 +74,19 @@ localStorage.setItem('orderStatus', JSON.stringify(updatedData));
   // };
 
   const closeModal = () => setIsOpen(false);
+
+
+// to show prev field values on ordered Table
+const [OrderPreFiled, setOrderPreFiled] = useState([]);
+useEffect(() => {
+  const checkTableStatus = OrderStatus.filter(
+    (table) => table?.data?.customer_table === cart?.TableNo
+  );
+  setOrderPreFiled(checkTableStatus[0]?.data);
+}, []); 
+
+
+
 
   // to show filter food items
   const filterFoodItems = cart?.itemsInCart?.filter(
@@ -143,6 +133,7 @@ localStorage.setItem('orderStatus', JSON.stringify(updatedData));
                 id="name"
                 type="text"
                 class="py-1 w-7/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
+                value={OrderPreFiled?.customer_name}
                 {...register("name", {
                   required: "Name is required",
                 })}
@@ -162,6 +153,7 @@ localStorage.setItem('orderStatus', JSON.stringify(updatedData));
                 id="phone_number"
                 type="tel"
                 class="py-1 w-7/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
+                value={OrderPreFiled?.customer_mobile_no}
                 {...register("phone_number", {
                   required: "Phone Number is required",
                 })}
@@ -183,6 +175,7 @@ localStorage.setItem('orderStatus', JSON.stringify(updatedData));
                 id="email"
                 type="email"
                 class="py-1 w-9/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
+                value={OrderPreFiled?.customer_email}
                 {...register("email", {
                   required: "E-mail is required",
                 })}

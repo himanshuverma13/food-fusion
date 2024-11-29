@@ -1292,3 +1292,85 @@
 
 // export default Test;
 
+
+// import React, { useState } from "react";
+
+// const Testing = () => {
+//   const [tables, setTables] = useState([
+//     { id: 1, color: "white", order: null },
+//     { id: 2, color: "white", order: null },
+//     { id: 3, color: "white", order: null },
+//     { id: 4, color: "white", order: null },
+//   ]);
+//   const [inputValue, setInputValue] = useState("");
+
+//   const handleSubmit = () => {
+//     // Split the input into table number and dish name
+//     const [tableNumberStr, dishName] = inputValue.split(" ");
+//     const tableNumber = parseInt(tableNumberStr.trim());
+
+//     // Validate table number and dish name
+//     if (
+//       isNaN(tableNumber) ||
+//       tableNumber < 1 ||
+//       tableNumber > tables.length ||
+//       !dishName ||
+//       dishName.trim() === ""
+//     ) {
+//       alert("Invalid input! Use format 'tableNumber-dishName' (e.g., '1-Pasta')");
+//       return;
+//     }
+
+//     setTables((prevTables) =>
+//       prevTables.map((table) =>
+//         table.id === tableNumber
+//           ? { ...table, color: "red", order: dishName.trim() }
+//           : table
+//       )
+//     );
+
+//     alert(`Order created: Table ${tableNumber} - Dish: ${dishName.trim()}`);
+//     setInputValue(""); // Reset the input field
+//   };
+
+//   return (
+//     <div style={{ padding: "20px" }}>
+//       <div>
+//         <input
+//           type="text"
+//           placeholder="Enter tableNumber-dishName"
+//           value={inputValue}
+//           onChange={(e) => setInputValue(e.target.value)}
+//         />
+//         <button onClick={handleSubmit}>Submit</button>
+//       </div>
+//       <div style={{ display: "flex", marginTop: "20px" }}>
+//         {tables.map((table) => (
+//           <div
+//             key={table.id}
+//             style={{
+//               width: "100px",
+//               height: "100px",
+//               margin: "10px",
+//               backgroundColor: table.color,
+//               display: "flex",
+//               justifyContent: "center",
+//               alignItems: "center",
+//               cursor: "pointer",
+//               border: "1px solid black",
+//             }}
+//           >
+//             <div>
+//               <p>Table {table.id}</p>
+//               {table.order && <p>Dish: {table.order}</p>}
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Testing;
+
+
