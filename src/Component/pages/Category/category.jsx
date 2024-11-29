@@ -19,14 +19,14 @@ import CategoryModal from "../../Common/Modal/categoryModal";
 // Images
 import Appetizers from "../../assets/Images/menu/Appetizers.svg";
 import check from "../../assets/Images/category/foodItems/Coconut water - CW08.svg";
-import Vegetarian from "../../assets/Images/menu/veg.svg";
-import Non_Vegetarian from "../../assets/Images/menu/non-veg.svg";
+import Veg from "../../assets/Images/menu/veg.svg";
+import NonVeg from "../../assets/Images/menu/non-veg.svg";
 import Breads from "../../assets/Images/menu/breads.svg";
 import Rice from "../../assets/Images/menu/rice-and-biryani.svg";
 import Desserts from "../../assets/Images/menu/desserts.svg";
 import Snacks from "../../assets/Images/menu/snacks.svg";
 import Beverages from "../../assets/Images/menu/beverages.svg";
-import South_Indian from "../../assets/Images/menu/South indian.svg";
+import SouthIndian from "../../assets/Images/menu/South indian.svg";
 import Rajasthani from "../../assets/Images/menu/rajasthani.svg";
 // import IndoChinese from '../../assets/Images/menu/indoChinese.svg'
 
@@ -547,20 +547,20 @@ const Category = ({ cart,TableDetails,customerStatus, payment,chatbot }) => {
 
   const { register, handleSubmit, reset, setValue } = useForm();
 
-  const fetchMenu = async () => {
-    let menu = await FoodMenuAPI();
-    console.log("menu: ", menu?.data?.data);
-    // setMenuItemsJson(menu?.data?.data);
-    setFilteredOptions(menu?.data?.data[0].subcategories);
-  };
+  // const fetchMenu = async () => {
+  //   let menu = await FoodMenuAPI();
+  //   console.log("menu: ", menu?.data?.data);
+  //   setMenuItemsJson(menu?.data?.data);
+  //   setFilteredOptions(menu?.data?.data[0].subcategories);
+  // };
 
   let customerDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
   useEffect(() => {
     fetchMenu();
   }, []);
 
-  const [filteredOptions, setFilteredOptions] = useState([]);
-  const [selectedTab, setSelectedTab] = useState([]);
+  const [filteredOptions, setFilteredOptions] = useState(MenuItemsJson[0]?.subcategories);
+  const [selectedTab, setSelectedTab] = useState(MenuItemsJson[0]?.subcategories);
   // const handleTabClick = (tab) => {
   //   setSelectedTab(tab);  // Set the selected tab
   //   setFilteredOptions(tab?.subcategories);  // Update filtered options based on subcategories
@@ -683,6 +683,10 @@ const Category = ({ cart,TableDetails,customerStatus, payment,chatbot }) => {
   };
 
   useEffect(() => {
+    console.log(
+      "MenuItemsJson[0]?.subcategories[0]: ",
+      MenuItemsJson[0]?.subcategories
+    );
     showSubTotal();
   }, [selectedFoodItems]);
 
@@ -719,10 +723,7 @@ const Category = ({ cart,TableDetails,customerStatus, payment,chatbot }) => {
       console.log("filtered: ", filtered);
     } else {
       setFilteredOptions(MenuItemsJson[0]?.subcategories);
-      console.log(
-        "MenuItemsJson[0]?.subcategories[0]: ",
-        MenuItemsJson[0]?.subcategories
-      );
+ 
     }
   };
   // Side Nav Functionality
