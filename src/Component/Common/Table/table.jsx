@@ -7,7 +7,7 @@ import { createTable, getTable, getTableDetails } from "../Redux/Table/tableSlic
 import { getCustomerStatus } from "../Redux/CustomerStatus/customerStatusSlice";
 
 const Table = ({ cart, table,chatbot }) => {
-  console.log('chatbot: ', chatbot?.chatbotData[0]);
+  console.log('chatbot: ', chatbot?.chatbotData);
   // console.log('customerStatus: ', customerStatus);
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -65,6 +65,7 @@ const Table = ({ cart, table,chatbot }) => {
   ];
 
   let status = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
+  // console.log('status: ', status);
   useEffect(() => {
     const fetch = async (data) => {
       let tableData = await GetTableAPI();
@@ -93,7 +94,7 @@ const Table = ({ cart, table,chatbot }) => {
 
     return status.some(
       (s) =>
-        parseInt(s?.data?.customer_table) == tableNumber?.tableNumber && s?.customer_status == "Table_Order"
+        parseInt(s?.customer_table) == tableNumber?.tableNumber && s?.customer_status == "Table_Order"
     );
   };
 
