@@ -536,12 +536,10 @@ const Menu = () => {
     fetchMenu();
   }, []);
 
-  const [filteredOptions, setFilteredOptions] = useState(
-    MenuItemsJson[0]?.subcategories
-  );
+  const [filteredOptions, setFilteredOptions] = useState([]);
   console.log("filteredOptions: ", filteredOptions);
   const [query, setQuery] = useState("");
-  const [selectedTab, setSelectedTab] = useState([MenuItemsJson[0]]);
+  const [selectedTab, setSelectedTab] = useState([]);
   const filter = [
     "Specials",
     "Frequently Ordered",
@@ -601,7 +599,7 @@ const Menu = () => {
   };
 
   const options = [];
-  MenuItemsJson.map((item) => {
+  MenuItemsJson?.map((item) => {
     item?.subcategories?.map((foodName) => options?.push(foodName));
   });
 

@@ -4,13 +4,14 @@ import chefReducer from "./Chef/chefSlice";
 import tableReducer from "./Table/tableSlice";
 import customerStatusReducer from "./CustomerStatus/customerStatusSlice";
 import chatbotPopUpReducer from "./ChatBotPopup/chatBotPopupSlice";
-
+import paymentReducer from "./Payment/paymentSlice";
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
     chef: chefReducer,
     table: tableReducer,
     customerStatus: customerStatusReducer,
-    chatbot:chatbotPopUpReducer
+    chatbot:chatbotPopUpReducer,
+    payment: paymentReducer,
   },
 });

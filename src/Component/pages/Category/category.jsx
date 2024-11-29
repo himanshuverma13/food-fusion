@@ -46,8 +46,7 @@ import ApplyOffer from "../../Common/Modal/applyOfferModal";
 import { useForm } from "react-hook-form";
   import { FoodMenuAPI, SendOrderDetailstoAPI } from "../../Common/APIs/api";
 
-
-const Category = ({ cart,TableDetails,customerStatus }) => {
+const Category = ({ cart,TableDetails,customerStatus, payment }) => {
   // console.log('cart: ', customerStatus);
   const [MenuItemsJson, setMenuItemsJson] = useState([]);
 
@@ -57,7 +56,7 @@ const Category = ({ cart,TableDetails,customerStatus }) => {
     let menu = await FoodMenuAPI();
     console.log("menu: ", menu?.data?.data);
     setMenuItemsJson(menu?.data?.data);
-    setFilteredOptions(menu?.data?.data[0].subcategories ?? []);
+    setFilteredOptions(menu?.data?.data[0].subcategories);
   };
 
   let customerDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
@@ -67,6 +66,10 @@ const Category = ({ cart,TableDetails,customerStatus }) => {
 
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [selectedTab, setSelectedTab] = useState([]);
+  // const handleTabClick = (tab) => {
+  //   setSelectedTab(tab);  // Set the selected tab
+  //   setFilteredOptions(tab?.subcategories);  // Update filtered options based on subcategories
+  // };
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFoodItem, setSelectedFoodItem] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -83,15 +86,15 @@ const Category = ({ cart,TableDetails,customerStatus }) => {
   };
 
   const closeModal = () => {
-    setValue("comment",'')
-    reset()
+    setValue("comment", "");
+    reset();
     setIsOpen(false);
   };
 
   const handleModalClose = () => {
     // setTimeout(() => {
-      reset()
-      setValue("comment",'')
+    reset();
+    setValue("comment", "");
     // }, 3000)
     closeModal();
   };
@@ -304,12 +307,13 @@ const Category = ({ cart,TableDetails,customerStatus }) => {
               <div className="w-1/4 h-[60vh] cursor-pointer font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
                 {MenuItemsJson?.map((tab) => (
                   <a
-                  onClick={() => {
+                    onClick={() => {
                       setFilteredOptions(tab?.subcategories);
+                      // handleTabClick(tab)
                     }}
-                    key={tab.name}
+                    key={tab?.name}
                     className={`block text-left text-sm truncate w-full my-2 shadow-lg py-1 px-2 ${
-                      tab.category === selectedTab
+                      tab === selectedTab
                         ? "bg-[#d79555] border-solid border-2 border-black text-white"
                         : "bg-white"
                     }`}
