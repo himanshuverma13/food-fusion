@@ -36,10 +36,10 @@ const AdminRemoveUser = () => {
     setFormData(null); // Clear formData after cancel
   };
 
-    // Hide loader after 3 seconds
-  setTimeout(() => {
-    setIsSubmitting(false);
-  }, 3000);
+  //   // Hide loader after 3 seconds
+  // setTimeout(() => {
+  //   setIsSubmitting(false);
+  // }, 3000);
 
   // Side Nav Functionality
   const [moveSideNav, setmoveSideNav] = useState(true);
@@ -132,9 +132,9 @@ const AdminRemoveUser = () => {
               <div className="flex items-center justify-between">
                 <button
                   type="submit"
-                  className="px-6 py-1 rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
+                  className="px-6 py-1 flex items-center rounded-2xl bg-[#d79555] uppercase text-white hover:bg-[#7a4f24]"
                 >
-                   <span className={isSubmitting ? "hidden" : ""}>Remove User</span>
+                   <span className={isSubmitting ? "me-2" : ""}>Remove User</span>
                    <Loader isVisible={isSubmitting} />
                 </button>
               </div>
