@@ -7,62 +7,62 @@ import { createTable, getTable, getTableDetails } from "../Redux/Table/tableSlic
 import { getCustomerStatus } from "../Redux/CustomerStatus/customerStatusSlice";
 
 const Table = ({ cart, table,chatbot }) => {
-  console.log('chatbot: ', chatbot?.chatbotData);
+  console.log('table: ', table);
   // console.log('customerStatus: ', customerStatus);
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const TableData = [
-    {
-      tableNumber: 1,
-    },
-    {
-      tableNumber: 2,
-    },
-    {
-      tableNumber: 3,
-    },
-    {
-      tableNumber: 4,
-    },
-    {
-      tableNumber: 5,
-    },
-    {
-      tableNumber: 6,
-    },
-    {
-      tableNumber: 7,
-    },
-    {
-      tableNumber: 8,
-    },
-    {
-      tableNumber: 9,
-    },
-    {
-      tableNumber: 10,
-    },
-    {
-      tableNumber: 11,
-    },
-    {
-      tableNumber: 12,
-    },
-    {
-      tableNumber: 13,
-    },
-    {
-      tableNumber: 14,
-    },
-    {
-      tableNumber: 15,
-    },
-    {
-      tableNumber: 16,
-    },
+  // const TableData = [
+  //   {
+  //     tableNumber: 1,
+  //   },
+  //   {
+  //     tableNumber: 2,
+  //   },
+  //   {
+  //     tableNumber: 3,
+  //   },
+  //   {
+  //     tableNumber: 4,
+  //   },
+  //   {
+  //     tableNumber: 5,
+  //   },
+  //   {
+  //     tableNumber: 6,
+  //   },
+  //   {
+  //     tableNumber: 7,
+  //   },
+  //   {
+  //     tableNumber: 8,
+  //   },
+  //   {
+  //     tableNumber: 9,
+  //   },
+  //   {
+  //     tableNumber: 10,
+  //   },
+  //   {
+  //     tableNumber: 11,
+  //   },
+  //   {
+  //     tableNumber: 12,
+  //   },
+  //   {
+  //     tableNumber: 13,
+  //   },
+  //   {
+  //     tableNumber: 14,
+  //   },
+  //   {
+  //     tableNumber: 15,
+  //   },
+  //   {
+  //     tableNumber: 16,
+  //   },
 
-  ];
+  // ];
 
   let status = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
   // console.log('status: ', status);
@@ -94,7 +94,7 @@ const Table = ({ cart, table,chatbot }) => {
 
     return status.some(
       (s) =>
-        parseInt(s?.customer_table) == tableNumber?.tableNumber && s?.customer_status == "Table_Order"
+        parseInt(s?.data?.customer_table) == tableNumber?.tableNumber && s?.customer_status == "Table_Order"
     );
   };
 
@@ -104,7 +104,7 @@ const Table = ({ cart, table,chatbot }) => {
       <div className=" px-3">
         <div className="flex justify-center items-center">
           <div className="circle-container grid grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-7 w-3/4 ">
-            {TableData?.map(
+            {table?.tableDetails[0]?.map(
               (items, index) =>
               (
                 <div className="cursor-pointer">

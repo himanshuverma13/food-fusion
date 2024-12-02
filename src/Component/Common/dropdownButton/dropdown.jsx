@@ -2,7 +2,7 @@
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
   import React, { useState } from 'react';
 
-  const DropdownButton = ({ options, buttonLabel }) => {
+  const DropdownButton = ({ options, buttonLabel,selectedValue }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selected, setSelected] = useState(buttonLabel);
 
@@ -12,6 +12,7 @@
 
       // Function to handle selecting an option
       const handleSelect = (person) => {
+        selectedValue(person)
         setSelected(person); // Update the selected person
         setIsDropdownOpen(false);
       };

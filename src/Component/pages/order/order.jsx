@@ -80,11 +80,17 @@ const response = await CheckTableStatus(payload)
 const [OrderPreFiled, setOrderPreFiled] = useState([]);
 useEffect(() => {
   const checkTableStatus = OrderStatus.filter(
-    (table) => table?.data?.customer_table === cart?.TableNo
+    (table) => table?.data?.customer_table === cart?.TableNo // change for Local format
   );
   setOrderPreFiled(checkTableStatus[0]?.data);
+  console.log('checkTableStatus: ', checkTableStatus);
 }, []); 
 
+// get order type dropdown value 
+const [orderType, setorderType] = useState();
+const handleOrderType = (data) => {
+  setorderType(data);
+};
 
 
 
@@ -114,7 +120,7 @@ useEffect(() => {
               <p className="text-xl font-bold text-[#544013]">Generate Order</p>
             </div>
             <div className="flex">
-              <DropdownButton options={orderTypes} buttonLabel="Order Type" />
+              <DropdownButton options={orderTypes} selectedValue={handleOrderType} buttonLabel="Order Type" />
               <p className="text-xl font-semibold text-[#544013]">
                 Order No. : 123
               </p>
@@ -331,7 +337,7 @@ useEffect(() => {
           </div>
         </div>
         <div className="flex justify-center fixed bottom-12 left-0 right-0 my-3">
-          <NavLink to="/chef">
+          <NavLink to="/payment">
             <Button
               title="Save & Generate KOT"
               btn_type="submit"

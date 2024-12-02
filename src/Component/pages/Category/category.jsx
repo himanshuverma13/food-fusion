@@ -56,6 +56,7 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
   const [applyOffer, setApplyOffer] = useState('');
   const { register, handleSubmit, reset, setValue } = useForm();
 
+
   const fetchMenu = async () => {
     let menu = await FoodMenuAPI();
     console.log("menu: ", menu?.data?.data);
@@ -63,17 +64,13 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
     setFilteredOptions(menu?.data?.data[0].subcategories);
   };
 
-  let customerDetails = JSON?.parse(
-    localStorage.getItem("orderStatus") ?? "[]"
-  );
+  let customerDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
   useEffect(() => {
     fetchMenu();
   }, []);
 
-  const [filteredOptions, setFilteredOptions] = useState();
-  // MenuItemsJson[0]?.subcategories
-  const [selectedTab, setSelectedTab] = useState();
-  // MenuItemsJson[0]?.subcategories
+  const [filteredOptions, setFilteredOptions] = useState([]);
+  const [selectedTab, setSelectedTab] = useState([]);
   // const handleTabClick = (tab) => {
   //   setSelectedTab(tab);  // Set the selected tab
   //   setFilteredOptions(tab?.subcategories);  // Update filtered options based on subcategories
@@ -110,7 +107,6 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
   const onSubmit = (data) => {
     let comment = data.comment;
     delete data.comment;
-    console.log("data: ", data);
     //  let val =  handelOptions(data)
     let price = [];
     let category = [];
@@ -129,10 +125,9 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
 
     // }, [])
 
-    let customer = customerDetails?.data?.find(
-      (c) => c?.customer_table === cart?.TableNo
-    );
-    console.log("customer: ", customer);
+    let customer = customerDetails?.data?.find((c) => c?.customer_table === cart?.TableNo);
+    console.log('customer: ', customer);
+
 
     // create onsubmit functionality on categorymodal component to handle comment or note feature
 
@@ -148,7 +143,6 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
       price: price.reduce((a, b) => a + b, Number(selectedFoodItem?.price)),
       amount: 1,
     };
-    console.log("payload:---------- ", payload);
     price = [];
     category = [];
     dispatch(add(payload));
@@ -210,13 +204,11 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
     const filteredItems = MenuItemsJson?.categories?.filter(
       (item) => item.id === value
     );
-    console.log("filteredItems: ", filteredItems[0].subcategories);
   };
 
   // Set Payment Method
   const SelectPayMode = (Mode) => {
     setPaymentMethod(Mode);
-    console.log("Mode: ", Mode);
   };
 
   const options = [];
@@ -233,49 +225,43 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
         option?.name?.toLowerCase()?.includes(value?.toLowerCase())
       );
       setFilteredOptions(filtered);
-      console.log("filtered: ", filtered);
     } else {
       setFilteredOptions(MenuItemsJson[0]?.subcategories);
     }
   };
   // Side Nav Functionality
-
   const [moveSideNav, setmoveSideNav] = useState(true);
   const SideNavFunctionality = () => {
     setmoveSideNav(!moveSideNav);
   };
 
+  // get order type dropdown value 
+const [orderType, setorderType] = useState('Dine-In');
+const handleOrderType = (data) => {
+  console.log('data: ', data);
+  setorderType(data);
+};
+
+
+  // to show customer details of that table
+  const getCustomerDetails = customerDetails?.filter(
+    (table) => table?.data?.customer_table === cart?.TableNo // change for Local format
+  );
+
   // send to order detail order api
   const handleOrderDetails = () => {
     let payload = {
-      order: cart?.itemsInCart,
-      tableDetails: TableDetails?.OrderTable,
-
-      menu: cart?.itemsInCart,
-      // "orderQuantity":2,
+      orderDetails: cart?.itemsInCart,
       orderStatus: "Completed",
-      orderType: "Dine-In",
-      floorId: TableDetails?.OrderTable?.floorId,
-      tableId: TableDetails?.OrderTable?._id,
-      customerId: "6748192ba97a1cd6977f9d2f",
+      orderType: orderType,
+      floorId: orderType == "Dine-In" ? TableDetails?.OrderTable[0]?.floorId : null,
+      tableId:orderType == "Dine-In" ? TableDetails?.OrderTable[0]?._id : null ,
+      customerId: orderType == "Dine-In" ? getCustomerDetails[0]?.data?._id : null ,
       totalAmount: subTotal,
     };
-    console.log("payload: ", payload);
-    let response = SendOrderDetailstoAPI(payload);
-    console.log("response: ", response);
-  };
-
-  const handlePaymentDetails = () => {
-    let payload = {
-      billId: 1,
-      paymentMethod: paymentMethod,
-      offerDiscount: applyOffer,
-      couponCode: "xyz",
-      status: "Completed",
-    };
-    console.log("payload: ", payload);
-    let response = SendPaymentDetailstoAPI(payload)
-    console.log('response: ', response);
+    console.log('payload: ', payload);
+    // let response = SendOrderDetailstoAPI(payload)
+    // console.log('response: ', response);
   };
 
   return (
@@ -391,7 +377,7 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
           {/* display */}
           <div className="col-span-5 bg-[#ede9dd] border-solid border-2 border-black rounded-2xl">
             <div className="flex items-center justify-evenly my-2">
-              <DropdownButton options={orderTypes} buttonLabel="Order Type" />
+              <DropdownButton options={orderTypes} selectedValue={handleOrderType} buttonLabel="Order Type" />
 
               <DropdownButton options={tableOptions} buttonLabel="Table No." />
 
