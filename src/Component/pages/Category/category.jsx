@@ -45,34 +45,32 @@ import TableStatusModal from "../../Common/Modal/tableStatusModal";
 import ApplyOffer from "../../Common/Modal/applyOfferModal";
 import { useForm } from "react-hook-form";
 import { FoodMenuAPI, SendOrderDetailstoAPI } from "../../Common/APIs/api";
-
-
+import { SendPaymentDetailstoAPI } from "../../Common/APIs/api";
 
 const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
-
+  console.log("TableDetails: ", TableDetails);
+  console.log("payment: ", payment);
+  // console.log("chatbot: ", chatbot?.chatbotData);
+  // console.log('cart: ', customerStatus);
+  const [MenuItemsJson, setMenuItemsJson] = useState([]);
+  const [applyOffer, setApplyOffer] = useState('');
   const { register, handleSubmit, reset, setValue } = useForm();
 
-  const [MenuItemsJson, setMenuItemsJson] = useState([])
 
   const fetchMenu = async () => {
     let menu = await FoodMenuAPI();
+    console.log("menu: ", menu?.data?.data);
     setMenuItemsJson(menu?.data?.data);
     setFilteredOptions(menu?.data?.data[0].subcategories);
   };
 
-  let customerDetails = JSON?.parse(
-    localStorage.getItem("orderStatus") ?? "[]"
-  );
+  let customerDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
   useEffect(() => {
     fetchMenu();
   }, []);
 
-  const [filteredOptions, setFilteredOptions] = useState(
-    []
-  );
-  const [selectedTab, setSelectedTab] = useState(
-    []
-  );
+  const [filteredOptions, setFilteredOptions] = useState([]);
+  const [selectedTab, setSelectedTab] = useState([]);
   // const handleTabClick = (tab) => {
   //   setSelectedTab(tab);  // Set the selected tab
   //   setFilteredOptions(tab?.subcategories);  // Update filtered options based on subcategories
@@ -123,10 +121,13 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
 
     // filter funtionality to get customer information
 
+    // useEffect(() => {
 
-    let customer = customerDetails?.data?.find(
-      (c) => c?.customer_table === cart?.TableNo
-    );
+    // }, [])
+
+    let customer = customerDetails?.data?.find((c) => c?.customer_table === cart?.TableNo);
+    console.log('customer: ', customer);
+
 
     // create onsubmit functionality on categorymodal component to handle comment or note feature
 
@@ -189,6 +190,10 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
   };
 
   useEffect(() => {
+    console.log(
+      "MenuItemsJson[0]?.subcategories[0]: ",
+      MenuItemsJson[0]?.subcategories
+    );
     showSubTotal();
   }, [selectedFoodItems]);
 
@@ -255,8 +260,8 @@ const handleOrderType = (data) => {
       totalAmount: subTotal,
     };
     console.log('payload: ', payload);
-    let response = SendOrderDetailstoAPI(payload);
-    console.log('response: ', response);
+    // let response = SendOrderDetailstoAPI(payload)
+    // console.log('response: ', response);
   };
 
   return (
@@ -453,7 +458,7 @@ const handleOrderType = (data) => {
                   </li>
                   <div className="flex">
                     <SplitBill />
-                    <ApplyOffer />
+                    <ApplyOffer applyOffer={applyOffer} setApplyOffer={setApplyOffer} />
                   </div>
                   {/* <Link to="/payment" className="mx-3"> */}
                   {/* <Button
@@ -499,6 +504,7 @@ const handleOrderType = (data) => {
                   <NavLink to="/payment">
                     <Button
                       title="Save & Print Bill"
+                      onClick={() => handlePaymentDetails()}
                       btn_type="button"
                       btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
                     />
@@ -610,6 +616,7 @@ const mapStateToProps = (state) => ({
   TableDetails: state.table,
   chatbot: state.chatbot,
   customerStatus: state.customerStatus,
+  payment: state.payment,
 });
 
 export default connect(mapStateToProps, {})(Category);

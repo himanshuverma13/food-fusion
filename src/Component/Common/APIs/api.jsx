@@ -105,3 +105,22 @@ export const SendOrderDetailstoAPI = async () => {
     console.log("error: ", error);
   }
 };
+
+
+
+//  Send payment details to backend
+
+export const SendPaymentDetailstoAPI = async () => {
+  try {
+    const response = await axios.post(`${URL}/restaurant/payment/order`, {
+      headers: {
+        Authorization: `Bearer ${Token?.accessToken}`,
+        session: `${Token?.session}`,
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    return response?.data;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
