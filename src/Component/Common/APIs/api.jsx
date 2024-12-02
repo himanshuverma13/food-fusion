@@ -46,7 +46,6 @@ export const FoodMenuAPI = async () => {
         "ngrok-skip-browser-warning": "69420",
       },
     });
-    console.log("Payload: ", response.data);
     return response;
   } catch (error) {
     console.log("error: ", error);
