@@ -16,9 +16,9 @@ const SplitBill = ({ }) => {
     watch,
   } = useForm();
   const dispatch = useDispatch();
-  // const [noOfPeople, setNoOfPeople] = useState(0);
-  // const [totalAmount, setTotalAmount] = useState(0);
-  // const [billPerPerson, setBillPerPerson] = useState(0);
+  const [noOfPeople, setNoOfPeople] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [billPerPerson, setBillPerPerson] = useState(0);
 
   const handleButtonClick = () => {
     setIsOpen(true);
@@ -30,26 +30,26 @@ const SplitBill = ({ }) => {
   };
 
   // Watch form data for real-time calculations
-  const totalAmount = watch("totalAmount", 0);
-  const noOfPeople = watch("numberOfPeople", 0);
+  // const totalAmount = watch("totalAmount", 0);
+  // const noOfPeople = watch("numberOfPeople", 0);
 
   // Calculate bill per person
-  const billPerPerson = noOfPeople > 0 ? totalAmount / noOfPeople : 0;
+  // const billPerPerson = noOfPeople > 0 ? totalAmount / noOfPeople : 0;
 
-  // const handleTotalAmountChange = (e) => {
-  //   const amount = parseFloat(e.target.value);
-  //   setTotalAmount(amount);
-  // };
+  const handleTotalAmountChange = (e) => {
+    const amount = parseFloat(e.target.value);
+    setTotalAmount(amount);
+  };
 
-  // const handleSplitBill = (e) => {
-  //   const people = parseInt(e.target.value, 10);
-  //   setNoOfPeople(people);
-  //   if (people > 0) {
-  //     setBillPerPerson(totalAmount / people); // Calculate bill per person
-  //   } else {
-  //     setBillPerPerson(0); // Avoid division by zero
-  //   }
-  // };
+  const handleSplitBill = (e) => {
+    const people = parseInt(e.target.value, 10);
+    setNoOfPeople(people);
+    if (people > 0) {
+      setBillPerPerson(totalAmount / people); // Calculate bill per person
+    } else {
+      setBillPerPerson(0); // Avoid division by zero
+    }
+  };
 
   
   const onSubmit = (data) => {
@@ -106,8 +106,8 @@ const SplitBill = ({ }) => {
                     </label>
                     <input
                       id="totalAmount"
-                      // value={totalAmount}
-                      // onChange={handleTotalAmountChange}
+                      value={totalAmount}
+                      onChange={handleTotalAmountChange}
                       type="number"
                       placeholder="Rs."
                       class="peer py-2 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
@@ -126,15 +126,15 @@ const SplitBill = ({ }) => {
                       <label
                         for="numberOfPeople"
                         class="pb-1 text-xl font-light text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
-                      >
+                       >
                         No. Of People :
                       </label>
                       <input
                         id="numberOfPeople"
                         type="number"
                         placeholder="Enter No. of People"
-                        // value={noOfPeople}
-                        // onChange={handleSplitBill}
+                              value={noOfPeople}
+                              onChange={handleSplitBill}
                         class="py-2 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
                         {...register("numberOfPeople", {
                           required: "No. of People is Required",
