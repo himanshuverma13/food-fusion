@@ -45,7 +45,7 @@ const SideNavbar = () => {
 
   return (
     <>
-      <div className="row-start-2 mt-20 flex flex-col justify-start items-center">
+      <div className="row-start-2  flex flex-col justify-start items-center">
         {URL?.pathname !== "/admin/dashboard" &&
         URL?.pathname !== "/admin/register" &&
         URL?.pathname !== "/admin/remove" &&
