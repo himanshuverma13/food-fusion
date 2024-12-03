@@ -7,20 +7,18 @@ const Token = JSON.parse(localStorage.getItem("userAuth"));
 export const RegistrationAPI = async (Payload) => {
   try {
     const response = await axios.post(`${URL}/register`, Payload);
-    console.log("Payload: ", response);
     return response;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 
 export const LoginAPI = async (Payload) => {
   try {
     const response = await axios.post(`${URL}/login`, Payload);
-    console.log("Payload: ", response);
     return response;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 
@@ -31,7 +29,7 @@ export const CustomerOrderRegisterAPI = async (Payload) => {
     const response = await axiosInstance.post(`/customer/register`, Payload);
     return response;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 
@@ -39,32 +37,20 @@ export const CustomerOrderRegisterAPI = async (Payload) => {
 
 export const FoodMenuAPI = async () => {
   try {
-    const response = await axios.get(`${URL}/customer/allmenu`, {
-      headers: {
-        Authorization: `Bearer ${Token?.accessToken}`,
-        session: `${Token?.session}`,
-        "ngrok-skip-browser-warning": "69420",
-      },
-    });
+    const response = await axiosInstance.get(`${URL}/customer/allmenu`);
     return response;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 
 //  Get Table APIs
 export const GetTableAPI = async () => {
   try {
-    const response = await axios.get(`${URL}/restaurant/getTable`, {
-      headers: {
-        Authorization: `Bearer ${Token?.accessToken}`,
-        session: `${Token?.session}`,
-        "ngrok-skip-browser-warning": "69420",
-      },
-    });
+    const response = await axiosInstance.get(`${URL}/restaurant/getTable`);
     return response?.data;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 
@@ -72,55 +58,43 @@ export const GetTableAPI = async () => {
 
 export const CheckTableStatus = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/customer/register`, payload, {
-      headers: {
-        Authorization: `Bearer ${Token?.accessToken}`,
-        session: `${Token?.session}`,
-        "ngrok-skip-browser-warning": "69420",
-      },
-    });
+    const response = await axiosInstance.post(`${URL}/customer/register`, payload);
     let statusData = JSON.parse(localStorage.getItem("orderStatus")) || [];
     let updatedData = [...statusData, response?.data];
     localStorage.setItem("orderStatus", JSON.stringify(updatedData));
     return response?.data;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
-
 
 //  Send order details to backend
-
-export const SendOrderDetailstoAPI = async () => {
+export const SendOrderDetailstoAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/restaurant/create/order`, {
-      headers: {
-        Authorization: `Bearer ${Token?.accessToken}`,
-        session: `${Token?.session}`,
-        "ngrok-skip-browser-warning": "69420",
-      },
-    });
+    const response = await axiosInstance.post(`${URL}/restaurant/create/order`,payload);
     return response?.data;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 
-
+//  get order details to backend
+export const GetOrderDetailstoAPI = async (payload) => {
+  try {
+    const response = await axiosInstance.get(`${URL}/restaurant/create/getallorder`);
+    return response?.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 //  Send payment details to backend
 
 export const SendPaymentDetailstoAPI = async () => {
   try {
-    const response = await axios.post(`${URL}/restaurant/payment/order`, {
-      headers: {
-        Authorization: `Bearer ${Token?.accessToken}`,
-        session: `${Token?.session}`,
-        "ngrok-skip-browser-warning": "69420",
-      },
-    });
+    const response = await axiosInstance.post(`${URL}/restaurant/payment/order`);
     return response?.data;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
