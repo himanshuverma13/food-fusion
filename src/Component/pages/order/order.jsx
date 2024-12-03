@@ -28,7 +28,6 @@ const Token = JSON.parse(localStorage.getItem("userAuth"));
 const URL = `${process.env.REACT_APP_API}/cashier`;
 const Order = ({ cart }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [selectedFoodItem, setSelectedFoodItem] = useState(null);
 
   let OrderStatus = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
 
@@ -42,12 +41,11 @@ const Order = ({ cart }) => {
   } = useForm();
 
   const onSubmit = async(data) => {
-  let payload = {
+  const payload = {
       customer_name : data?.name,
       customer_mobile_no : data?.phone_number,
       customer_email : data?.email,
       customer_table:cart?.TableNo,
-      // customer_table:data?.table_Number
     }
 const response = await CheckTableStatus(payload)
 
@@ -83,7 +81,6 @@ useEffect(() => {
     (table) => table?.data?.customer_table === cart?.TableNo // change for Local format
   );
   setOrderPreFiled(checkTableStatus[0]?.data);
-  // console.log('checkTableStatus: ', checkTableStatus);
 }, []); 
 
 // get order type dropdown value 

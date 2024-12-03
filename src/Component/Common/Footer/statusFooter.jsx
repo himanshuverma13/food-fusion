@@ -4,7 +4,7 @@ import PaymentModal from "../Modal/paymentModal";
 import footerBot from "../../assets/Images/skill-bot.svg";
 import ChatBot from "../ChatBot/chatbot";
 
-const StatusFooter = ({ cart }) => {
+const StatusFooter = ({ cart,table }) => {
   const [ActiveStatus, setActiveStatus] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const openModal = (item) => {
@@ -12,6 +12,8 @@ const StatusFooter = ({ cart }) => {
   };
 
   const closeModal = () => setIsOpen(false);
+
+  let getTableStatusDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
 
   return (
     <div className="fixed bottom-0 left-0 right-0 mx-20">
@@ -22,7 +24,7 @@ const StatusFooter = ({ cart }) => {
       >
         <div className="flex justify-around items-center">
           <span className="tracking-wider font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
-            Active tables <div>12</div>
+            Active tables <div>{getTableStatusDetails?.length}</div>
           </span>
           <span className="tracking-wider font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
             Available tables <div>20</div>
@@ -126,6 +128,7 @@ const StatusFooter = ({ cart }) => {
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
+  table: state.table,
 });
 
 export default connect(mapStateToProps, {})(StatusFooter);
