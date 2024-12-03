@@ -265,7 +265,7 @@ const handleOrderType = (data) => {
       totalAmount: subTotal,
     };
      await SendOrderDetailstoAPI(payload)
-     let response = GetOrderDetailstoAPI()
+     let response = await GetOrderDetailstoAPI()
     console.log('response: ', response);
   };
 
