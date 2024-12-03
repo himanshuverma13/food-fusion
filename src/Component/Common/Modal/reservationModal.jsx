@@ -21,7 +21,7 @@ const TableReservationModal = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     setIsOpen(false);
 
   };

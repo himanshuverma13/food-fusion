@@ -39,7 +39,10 @@ const Navbar = ({ SideNavFunctionality }) => {
         </div>
       </div>
       <div className="flex items-center mx-4 space-x-4">
-        <h3 className="m-0 ">CHASIER</h3>
+       <div>
+       <p className="font-semibold">Full Name</p>
+       <h4 className="m-0 ">CHASIER</h4>
+       </div>
         <img
           className="bg-red-700 h-11 rounded-full p-1"
           src={billing}
