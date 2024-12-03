@@ -48,23 +48,24 @@ import { FoodMenuAPI, SendOrderDetailstoAPI } from "../../Common/APIs/api";
 import { SendPaymentDetailstoAPI } from "../../Common/APIs/api";
 
 const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
-  console.log("TableDetails: ", TableDetails);
-  console.log("payment: ", payment);
+  // console.log("TableDetails: ", TableDetails);
+  // console.log("payment: ", payment);
   // console.log("chatbot: ", chatbot?.chatbotData);
   // console.log('cart: ', customerStatus);
   const [MenuItemsJson, setMenuItemsJson] = useState([]);
-  const [applyOffer, setApplyOffer] = useState('');
+  const [applyOffer, setApplyOffer] = useState("");
   const { register, handleSubmit, reset, setValue } = useForm();
-
 
   const fetchMenu = async () => {
     let menu = await FoodMenuAPI();
-    console.log("menu: ", menu?.data?.data);
+    // console.log("menu: ", menu?.data?.data);
     setMenuItemsJson(menu?.data?.data);
     setFilteredOptions(menu?.data?.data[0].subcategories);
   };
 
-  let customerDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
+  let customerDetails = JSON?.parse(
+    localStorage.getItem("orderStatus") ?? "[]"
+  );
   useEffect(() => {
     fetchMenu();
   }, []);
@@ -125,9 +126,10 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
 
     // }, [])
 
-    let customer = customerDetails?.data?.find((c) => c?.customer_table === cart?.TableNo);
-    console.log('customer: ', customer);
-
+    let customer = customerDetails?.data?.find(
+      (c) => c?.customer_table === cart?.TableNo
+    );
+    // console.log('customer: ', customer);
 
     // create onsubmit functionality on categorymodal component to handle comment or note feature
 
@@ -190,10 +192,10 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
   };
 
   useEffect(() => {
-    console.log(
-      "MenuItemsJson[0]?.subcategories[0]: ",
-      MenuItemsJson[0]?.subcategories
-    );
+    // console.log(
+    //   "MenuItemsJson[0]?.subcategories[0]: ",
+    //   MenuItemsJson[0]?.subcategories
+    // );
     showSubTotal();
   }, [selectedFoodItems]);
 
@@ -235,13 +237,12 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
     setmoveSideNav(!moveSideNav);
   };
 
-  // get order type dropdown value 
-const [orderType, setorderType] = useState('Dine-In');
-const handleOrderType = (data) => {
-  console.log('data: ', data);
-  setorderType(data);
-};
-
+  // get order type dropdown value
+  const [orderType, setorderType] = useState("Dine-In");
+  const handleOrderType = (data) => {
+    // console.log('data: ', data);
+    setorderType(data);
+  };
 
   // to show customer details of that table
   const getCustomerDetails = customerDetails?.filter(
@@ -254,14 +255,30 @@ const handleOrderType = (data) => {
       orderDetails: cart?.itemsInCart,
       orderStatus: "Completed",
       orderType: orderType,
-      floorId: orderType == "Dine-In" ? TableDetails?.OrderTable[0]?.floorId : null,
-      tableId:orderType == "Dine-In" ? TableDetails?.OrderTable[0]?._id : null ,
-      customerId: orderType == "Dine-In" ? getCustomerDetails[0]?.data?._id : null ,
+      floorId:
+        orderType == "Dine-In" ? TableDetails?.OrderTable[0]?.floorId : null,
+      tableId: orderType == "Dine-In" ? TableDetails?.OrderTable[0]?._id : null,
+      customerId:
+        orderType == "Dine-In" ? getCustomerDetails[0]?.data?._id : null,
       totalAmount: subTotal,
     };
-    console.log('payload: ', payload);
+    // console.log("payload: ", payload);
     // let response = SendOrderDetailstoAPI(payload)
     // console.log('response: ', response);
+  };
+
+  // send to Payment details API
+  const handlePaymentDetails = () => {
+    let payload = {
+      billId: 1,
+      paymentMethod: paymentMethod,
+      offerDiscount: applyOffer,
+      couponCode: "xyz",
+      status: "Completed",
+    };
+    // console.log("payload: ", payload);
+    let response = SendPaymentDetailstoAPI(payload);
+    // console.log("response: ", response);
   };
 
   return (
@@ -377,7 +394,11 @@ const handleOrderType = (data) => {
           {/* display */}
           <div className="col-span-5 bg-[#ede9dd] border-solid border-2 border-black rounded-2xl">
             <div className="flex items-center justify-evenly my-2">
-              <DropdownButton options={orderTypes} selectedValue={handleOrderType} buttonLabel="Order Type" />
+              <DropdownButton
+                options={orderTypes}
+                selectedValue={handleOrderType}
+                buttonLabel="Order Type"
+              />
 
               <DropdownButton options={tableOptions} buttonLabel="Table No." />
 
@@ -458,7 +479,10 @@ const handleOrderType = (data) => {
                   </li>
                   <div className="flex">
                     <SplitBill />
-                    <ApplyOffer applyOffer={applyOffer} setApplyOffer={setApplyOffer} />
+                    <ApplyOffer
+                      applyOffer={applyOffer}
+                      setApplyOffer={setApplyOffer}
+                    />
                   </div>
                   {/* <Link to="/payment" className="mx-3"> */}
                   {/* <Button

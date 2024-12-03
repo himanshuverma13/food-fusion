@@ -20,7 +20,7 @@ const PaymentModal = ({ isOpen, closeModal }) => {
     const { register, handleSubmit,reset, formState: { errors } } = useForm();
   
     const onSubmit = (data) => {
-      console.log(data);
+      // console.log(data);
       // Handle form submission
     };
 

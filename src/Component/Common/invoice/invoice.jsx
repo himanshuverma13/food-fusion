@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import Button from "../Button/button";
 
 const Invoice = ({ cart }) => {
-  console.log("cart: ", cart);
+  // console.log("cart: ", cart);
 
   // Calculate total price (if needed for the footer)
   const totalPrice = cart?.itemsInCart?.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-  console.log("totalPrice: ", totalPrice);
+  // console.log("totalPrice: ", totalPrice);
 
   return (
     <div className="">

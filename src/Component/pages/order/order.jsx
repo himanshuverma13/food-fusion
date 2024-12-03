@@ -83,7 +83,7 @@ useEffect(() => {
     (table) => table?.data?.customer_table === cart?.TableNo // change for Local format
   );
   setOrderPreFiled(checkTableStatus[0]?.data);
-  console.log('checkTableStatus: ', checkTableStatus);
+  // console.log('checkTableStatus: ', checkTableStatus);
 }, []); 
 
 // get order type dropdown value 

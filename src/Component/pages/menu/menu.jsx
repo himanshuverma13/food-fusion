@@ -527,7 +527,7 @@ const Menu = () => {
 
   const fetchMenu = async () => {
     let menu = await FoodMenuAPI();
-    console.log("menu: ", menu?.data?.data);
+    // console.log("menu: ", menu?.data?.data);
     setMenuItemsJson(menu?.data?.data);
     setFilteredOptions(menu?.data?.data[0].subcategories);
   };
@@ -537,7 +537,7 @@ const Menu = () => {
   }, []);
 
   const [filteredOptions, setFilteredOptions] = useState([]);
-  console.log("filteredOptions: ", filteredOptions);
+  // console.log("filteredOptions: ", filteredOptions);
   const [query, setQuery] = useState("");
   const [selectedTab, setSelectedTab] = useState([]);
   const filter = [
@@ -614,10 +614,10 @@ const Menu = () => {
       setFilteredOptions(filtered);
     } else {
       setFilteredOptions(MenuItemsJson[0]?.subcategories);
-      console.log(
-        "MenuItemsJson[0]?.subcategories[0]: ",
-        MenuItemsJson[0]?.subcategories
-      );
+      // console.log(
+      //   "MenuItemsJson[0]?.subcategories[0]: ",
+      //   MenuItemsJson[0]?.subcategories
+      // );
     }
   };
 

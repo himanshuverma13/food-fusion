@@ -7,7 +7,7 @@ import { createTable, getTable, getTableDetails } from "../Redux/Table/tableSlic
 import { getCustomerStatus } from "../Redux/CustomerStatus/customerStatusSlice";
 
 const Table = ({ cart, table,chatbot }) => {
-  console.log('table: ', table);
+  // console.log('table: ', table);
   // console.log('customerStatus: ', customerStatus);
   let navigate = useNavigate();
   const dispatch = useDispatch();

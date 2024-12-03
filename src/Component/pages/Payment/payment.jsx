@@ -5,7 +5,7 @@ import StatusFooter from "../../Common/Footer/statusFooter";
 import Invoice from "../../Common/invoice/invoice";
 
 const Payment = ({ cart }) => {
-  console.log("cart?.totalCount: ", cart);
+  // console.log("cart?.totalCount: ", cart);
   // Side Nav Functionality
   const [moveSideNav, setmoveSideNav] = useState(true);
   const SideNavFunctionality = () => {

@@ -667,7 +667,7 @@ const ChatBot = () => {
         dishName: null,
         customer_status: "Table_Order",
       };
-      console.log("payload: ", payload);
+      // console.log("payload: ", payload);
       dispatch(setChatBotTableOrder(payload));
   
       setInputValue(""); // Reset the input field
@@ -696,7 +696,7 @@ const ChatBot = () => {
       dishName: dishName,
       customer_status: "Table_Order",
     };
-    console.log("payload: ", payload);
+    // console.log("payload: ", payload);
     dispatch(setChatBotTableOrder(payload));
   
     // Update table with the dish and change the color to red
@@ -708,7 +708,7 @@ const ChatBot = () => {
       )
     );
     let filterObject = filterDishName(dishName);
-    console.log("filterObject: ", filterObject);
+    // console.log("filterObject: ", filterObject);
     let filterOrder = {
       id: filterObject[0]?.id,
       food: filterObject[0]?.name,
