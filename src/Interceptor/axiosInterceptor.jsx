@@ -5,6 +5,7 @@ const axiosInstance = axios.create({
   baseURL: `${process.env.REACT_APP_API}/cashier`,
   headers: {
     "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "69420",
   },
 });
  
@@ -13,10 +14,9 @@ Interceptor to add token to request headers
 **/
 axiosInstance.interceptors.request.use(
   (config) => {
-    const userAuth = localStorage.getItem("userAuth")
-    console.log('userAuth iiiiiiiiii: ', userAuth);
+    const userAuth = JSON.parse(localStorage.getItem("userAuth"))
     if (userAuth) config.headers["Authorization"] = `Bearer ${userAuth.accessToken}`;
-    if (userAuth) config.headers["session"] = `${userAuth.sessionId}`;
+    if (userAuth) config.headers["Session"] = `${userAuth.session}`;
  
     return config;
   },

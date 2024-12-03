@@ -7,69 +7,19 @@ import { createTable, getTable, getTableDetails } from "../Redux/Table/tableSlic
 import { getCustomerStatus } from "../Redux/CustomerStatus/customerStatusSlice";
 
 const Table = ({ cart, table,chatbot }) => {
-  console.log('table: ', table);
-  // console.log('customerStatus: ', customerStatus);
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const TableData = [
-  //   {
-  //     tableNumber: 1,
-  //   },
-  //   {
-  //     tableNumber: 2,
-  //   },
-  //   {
-  //     tableNumber: 3,
-  //   },
-  //   {
-  //     tableNumber: 4,
-  //   },
-  //   {
-  //     tableNumber: 5,
-  //   },
-  //   {
-  //     tableNumber: 6,
-  //   },
-  //   {
-  //     tableNumber: 7,
-  //   },
-  //   {
-  //     tableNumber: 8,
-  //   },
-  //   {
-  //     tableNumber: 9,
-  //   },
-  //   {
-  //     tableNumber: 10,
-  //   },
-  //   {
-  //     tableNumber: 11,
-  //   },
-  //   {
-  //     tableNumber: 12,
-  //   },
-  //   {
-  //     tableNumber: 13,
-  //   },
-  //   {
-  //     tableNumber: 14,
-  //   },
-  //   {
-  //     tableNumber: 15,
-  //   },
-  //   {
-  //     tableNumber: 16,
-  //   },
-
-  // ];
 
   let status = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
-  // console.log('status: ', status);
   useEffect(() => {
     const fetch = async (data) => {
-      let tableData = await GetTableAPI();
-      dispatch(createTable(tableData?.data));
+      try {
+        let tableData = await GetTableAPI();
+        dispatch(createTable(tableData?.data));
+      } catch (error) {
+        console.log('error: ', error);
+      }
     };
     fetch();
   }, []);
@@ -78,8 +28,7 @@ const Table = ({ cart, table,chatbot }) => {
     let customerDetails =  status?.filter((i)=>
        i?.data?.customer_table == item?.tableNumber
   )
-  // console.log('customerDetails: ', customerDetails);
-  // dispatch(getCustomerStatus(customerDetails));
+  dispatch(getCustomerStatus(customerDetails));
     dispatch(getTableDetails(item));
     dispatch(TableNo(item?.tableNumber));
     navigate("/order");
