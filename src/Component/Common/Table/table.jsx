@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { TableNo } from "../../Common/Redux/Category/categorySlice";
 import { connect, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,9 @@ const Table = ({ cart, table, chatbot }) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-  let status = JSON?.parse(localStorage.getItem("orderStatus") ?? "[]");
+
+  let status = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
+
   useEffect(() => {
     const fetch = async (data) => {
       try {
@@ -30,6 +32,27 @@ const Table = ({ cart, table, chatbot }) => {
     };
     fetch();
   }, []);
+
+  // showing floor wise tables functionality
+  const [selectedFloor, setSelectedFloor] = useState(1); // Set initial state to floor 1
+
+  // Extract unique floors from the data
+  const uniqueFloors = Array?.from(
+    new Set(table?.tableDetails[0]?.map((item) => item?.floorDetails?.floorNumber))
+  );
+
+  // Handle floor selection
+  const handleFloorSelection = (event) => {
+    const floorNumber = Number(event?.target?.value);
+    setSelectedFloor(floorNumber);
+  };
+
+  // Filter tables by selected floor
+  const filteredTables = selectedFloor
+    ? table?.tableDetails[0]?.filter(
+        (table) => table?.floorDetails?.floorNumber === selectedFloor
+      )
+    : [];
 
   const GetTableNo = (item) => {
     let customerDetails = status?.filter(
@@ -53,12 +76,21 @@ const Table = ({ cart, table, chatbot }) => {
     );
   };
 
+
   return (
     <>
       <div className=" px-3">
+      <select id="floor-select" className="ml-28" value={selectedFloor} onChange={handleFloorSelection}>
+      <option value="">Select a floor</option>
+        {uniqueFloors.map((floorNumber) => (
+          <option key={floorNumber} value={floorNumber}>
+            Floor {floorNumber}
+          </option>
+        ))}
+      </select>
         <div className="flex justify-center items-center">
           <div className="circle-container grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-5 w-3/4">
-            {table?.tableDetails[0]?.map((items, index) => (
+            {filteredTables?.map((items, index) => (
               <div
                 className={`${
                   isTableRed(items)

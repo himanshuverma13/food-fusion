@@ -556,7 +556,9 @@ const ChatBot = () => {
 
   const filterDishName = (dish) => {
     const value = MenuItemsJson.flatMap((category) =>
-      category.subcategories.filter((item) => item.name?.toLowerCase() === dish?.toLowerCase())
+      category.subcategories.filter(
+        (item) => item.name?.toLowerCase() === dish?.toLowerCase()
+      )
     );
     return value;
   };
@@ -632,17 +634,17 @@ const ChatBot = () => {
   //   setInputValue(""); // Reset the input field
   // };
 
-
-
   const handleFilterSubmit = () => {
     // Split the input into table number and dish name
     const spaceIndex = inputValue.indexOf(" "); // Find the first space
     const tableNumberStr =
-      spaceIndex === -1 ? inputValue.trim() : inputValue.slice(0, spaceIndex).trim(); // Extract the table number
+      spaceIndex === -1
+        ? inputValue.trim()
+        : inputValue.slice(0, spaceIndex).trim(); // Extract the table number
     const dishName =
       spaceIndex === -1 ? null : inputValue.slice(spaceIndex + 1).trim(); // Extract the rest as the dish name
     const tableNumber = parseInt(tableNumberStr);
-  
+
     // Validate table number
     if (isNaN(tableNumber) || tableNumber < 1 || tableNumber > tables.length) {
       alert(
@@ -650,7 +652,7 @@ const ChatBot = () => {
       );
       return;
     }
-  
+
     // If no dish name is provided, just book the table
     if (!dishName || dishName === "") {
       // Update the table color to yellow to indicate it's reserved
@@ -661,7 +663,7 @@ const ChatBot = () => {
             : table
         )
       );
-  
+
       const payload = {
         customer_table: tableNumber,
         dishName: null,
@@ -669,7 +671,7 @@ const ChatBot = () => {
       };
       // console.log("payload: ", payload);
       dispatch(setChatBotTableOrder(payload));
-  
+
       setInputValue(""); // Reset the input field
       toast.success("Table Booked Successful", {
         position: "top-center",
@@ -683,13 +685,13 @@ const ChatBot = () => {
       });
       return;
     }
-  
+
     // Check if the dish is available
     if (!availableDishes.includes(dishName?.toLowerCase())) {
       alert(`Sorry, ${dishName} is not available!`);
       return;
     }
-  
+
     // Log the selected table number and dish to the console
     const payload = {
       customer_table: tableNumber,
@@ -698,7 +700,7 @@ const ChatBot = () => {
     };
     // console.log("payload: ", payload);
     dispatch(setChatBotTableOrder(payload));
-  
+
     // Update table with the dish and change the color to red
     setTables((prevTables) =>
       prevTables.map((table) =>
@@ -718,7 +720,7 @@ const ChatBot = () => {
       price: filterObject[0]?.price,
       amount: 1,
     };
-  
+
     dispatch(add(filterOrder));
     toast.success("Table Booked with Order Successful", {
       position: "top-center",
@@ -730,17 +732,16 @@ const ChatBot = () => {
       progress: undefined,
       theme: "light",
     });
-  
+
     setInputValue(""); // Reset the input field
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      setIsDropdownOpen(false)
+      setIsDropdownOpen(false);
       handleFilterSubmit();
     }
   };
-
 
   return (
     <div
@@ -757,17 +758,17 @@ const ChatBot = () => {
           style={{ bottom: "100%" }} // This positions the dropdown above the button
         >
           <div className="p-2">
-          <div>
-      <input
-        type="text"
-        id="name"
-        placeholder="ex : 1 Samosa"
-        className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
-    </div>
+            <div>
+              <input
+                type="text"
+                id="name"
+                placeholder="ex : 1 Samosa"
+                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+            </div>
           </div>
         </div>
       )}
