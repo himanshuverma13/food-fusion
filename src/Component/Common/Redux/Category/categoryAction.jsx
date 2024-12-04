@@ -79,6 +79,12 @@ export const PaymentStatus = (state, action) => {
 // Payment Mode
 
 export const PaymentMode = (state, action) => {
-    console.log('PaymentMode: ', action.payload);
+    // state.paymentMode = action.payload;
+};
+
+
+// store previous order of particular table by API hit
+export const GetPrevOrderByApi = (state, action) => {
+    console.log('GetPrevOrderByApi: ', action.payload);
     // state.paymentMode = action.payload;
 };

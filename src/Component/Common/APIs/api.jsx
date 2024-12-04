@@ -48,6 +48,7 @@ export const FoodMenuAPI = async () => {
 export const GetTableAPI = async () => {
   try {
     const response = await axiosInstance.get(`${URL}/restaurant/getTable`);
+    console.log('response?.data: ', response?.data);
     return response?.data;
   } catch (error) {
     throw error;
@@ -79,7 +80,7 @@ export const SendOrderDetailstoAPI = async (payload) => {
 };
 
 //  get order details to backend
-export const GetOrderDetailstoAPI = async (payload) => {
+export const GetOrderDetailstoAPI = async () => {
   try {
     const response = await axiosInstance.get(`${URL}/restaurant/create/getallorder`);
     return response?.data;
@@ -89,7 +90,6 @@ export const GetOrderDetailstoAPI = async (payload) => {
 };
 
 //  Send payment details to backend
-
 export const SendPaymentDetailstoAPI = async () => {
   try {
     const response = await axiosInstance.post(`${URL}/restaurant/payment/order`);

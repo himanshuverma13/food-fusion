@@ -56,7 +56,7 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
   const fetchMenu = async () => {
     let menu = await FoodMenuAPI();
     setMenuItemsJson(menu?.data?.data);
-    console.log('menu?.data?.data: ', menu?.data?.data);
+    // console.log('menu?.data?.data: ', menu?.data?.data);
     setFilteredOptions(menu?.data?.data[0].subcategories);
   };
 
@@ -262,8 +262,14 @@ const handleOrderType = (data) => {
       totalAmount: subTotal,
     };
      await SendOrderDetailstoAPI(payload)
-     let response = GetOrderDetailstoAPI()
-    console.log('response: ', response);
+     const response = await GetOrderDetailstoAPI()
+     if(response?.succcess == true){
+     console.log('response?.succcess: ', response?.success);
+     response?.data?.map((items)=>{
+      console.log('items: ', items);
+     })
+
+     }
   };
 
   return (
