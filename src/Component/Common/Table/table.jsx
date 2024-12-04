@@ -80,7 +80,7 @@ const Table = ({ cart, table, chatbot }) => {
   return (
     <>
       <div className=" px-3">
-      <select id="floor-select" className="ml-28" value={selectedFloor} onChange={handleFloorSelection}>
+      <select id="floor-select" className="ml-20" value={selectedFloor} onChange={handleFloorSelection}>
       <option value="">Select a floor</option>
         {uniqueFloors.map((floorNumber) => (
           <option key={floorNumber} value={floorNumber}>
