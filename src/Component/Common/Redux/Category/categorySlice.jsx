@@ -1,6 +1,6 @@
 // cartReducer.js
 import { createSlice } from '@reduxjs/toolkit';
-import { addToCart, removeFromCart, incrementQuantity, decrementQuantity, GetTableNo, SetTableNo, PaymentStatus, PaymentMode, } from './categoryAction';
+import { addToCart, removeFromCart, incrementQuantity, decrementQuantity, GetTableNo, SetTableNo, PaymentStatus, PaymentMode, GetPrevOrderByApi, } from './categoryAction';
 export const initialState = {
   itemsInCart: [],
   totalCount: 0,
@@ -19,11 +19,12 @@ const cartSlice = createSlice({
     GetTableNo,
     SetTableNo,
     PaymentStatus,
-    PaymentMode
+    PaymentMode,
+    GetPrevOrderByApi,
   },
 }
 );
 
-export const { addToCart: add, removeFromCart: remove, incrementQuantity: increment, decrementQuantity: decrement, GetTableNo: TableNo, SetTableNo: SetTable, PaymentStatus: CheckPaymentStatus , PaymentMode : PayMode } = cartSlice.actions;
+export const { addToCart: add, removeFromCart: remove, incrementQuantity: increment, decrementQuantity: decrement, GetTableNo: TableNo, SetTableNo: SetTable, PaymentStatus: CheckPaymentStatus , PaymentMode : PayMode,GetPrevOrderByApi:getPrevOrderByApi } = cartSlice.actions;
 
 export default cartSlice.reducer;

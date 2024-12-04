@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PaymentModal from "../Modal/paymentModal";
 import footerBot from "../../assets/Images/skill-bot.svg";
 import ChatBot from "../ChatBot/chatbot";
+import FooterSearchBar from "../FooterSearchBarFunctionality/footerSearchBar";
 
 const StatusFooter = ({ cart,table }) => {
   const [ActiveStatus, setActiveStatus] = useState(false);
@@ -49,11 +50,12 @@ const StatusFooter = ({ cart,table }) => {
             </svg>
 
             {/* Input Field */}
-            <input
+            {/* <input
               type="text"
               className="flex-grow px-4 bg-transparent py-2 focus:outline-none"
               placeholder="table status"
-            />
+            /> */}
+            <FooterSearchBar/>
 
             {/* Arrow Icon */}
             <svg
