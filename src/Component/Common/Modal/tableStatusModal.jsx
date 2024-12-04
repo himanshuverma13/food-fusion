@@ -10,6 +10,7 @@ function TableStatusModal() {
     {
       tableNo: 1,
       name: "xyz",
+      number: 245678322,
       date: "20-11-2024",
       time: "5 p.m.",
       people: 4,
@@ -17,6 +18,7 @@ function TableStatusModal() {
     {
       tableNo: 3,
       name: "xyz",
+      number: 245678322,
       date: "20-11-2024",
       time: "5 p.m.",
       people: 4,
@@ -24,6 +26,7 @@ function TableStatusModal() {
     {
       tableNo: 5,
       name: "xyz",
+      number: 245678322,
       date: "20-11-2024",
       time: "5 p.m.",
       people: 4,
@@ -31,6 +34,7 @@ function TableStatusModal() {
     {
       tableNo: 5,
       name: "xyz",
+      number: 245678322,
       date: "20-11-2024",
       time: "5 p.m.",
       people: 4,
@@ -98,6 +102,7 @@ function TableStatusModal() {
                     </div>
                     <div className="text-white">
                       <p className="text-sm">Name : {items.name}</p>
+                      <p className="text-sm">Number : {items.number}</p>
                       <p className="text-sm">Date : {items.date}</p>
                       <p className="text-sm">Time : {items.time}</p>
                       <p className="text-sm">No. of People - {items.people}</p>

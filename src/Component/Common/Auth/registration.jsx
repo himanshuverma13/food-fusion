@@ -32,13 +32,12 @@ const Registration = () => {
       joining: data?.join_date,
       salary: data?.salary,
       age: data?.age,
-      dob: data?.birth_date, 
+      dob: data?.birth_date,
     };
     // reset();
-    setIsSubmitting(true);
     let response = await RegistrationAPI(Payload);
     console.log("response: ", response);
-    if (response?.data.success) {
+    if (response?.data) {
       setIsSubmitting(true);
     } else {
       setIsSubmitting(false);
