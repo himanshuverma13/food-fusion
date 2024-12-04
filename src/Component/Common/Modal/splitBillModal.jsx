@@ -16,9 +16,9 @@ const SplitBill = ({ }) => {
     watch,
   } = useForm();
   const dispatch = useDispatch();
-  const [noOfPeople, setNoOfPeople] = useState(0);
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [billPerPerson, setBillPerPerson] = useState(0);
+  const [noOfPeople, setNoOfPeople] = useState();
+  const [totalAmount, setTotalAmount] = useState();
+  const [billPerPerson, setBillPerPerson] = useState();
 
   const handleButtonClick = () => {
     setIsOpen(true);
@@ -53,14 +53,14 @@ const SplitBill = ({ }) => {
 
   
   const onSubmit = (data) => {
-    console.log("data: ", data);
+    // console.log("data: ", data);
     const paymentData = {
       totalAmount: data.totalAmount,
       numberOfPeople: data.numberOfPeople,
       billPerPerson: billPerPerson,
     };
     dispatch(getpaymentDetails(paymentData));
-    console.log('paymentData: ', paymentData);    
+    // console.log('paymentData: ', paymentData);    
 
     reset();
   };

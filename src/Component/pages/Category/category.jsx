@@ -49,9 +49,8 @@ import { SendPaymentDetailstoAPI } from "../../Common/APIs/api";
 
 const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
   const [MenuItemsJson, setMenuItemsJson] = useState([]);
-  const [applyOffer, setApplyOffer] = useState('');
+  const [applyOffer, setApplyOffer] = useState("");
   const { register, handleSubmit, reset, setValue } = useForm();
-
 
   const fetchMenu = async () => {
     let menu = await FoodMenuAPI();
@@ -60,7 +59,9 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
     setFilteredOptions(menu?.data?.data[0].subcategories);
   };
 
-  let customerDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
+  let customerDetails = JSON?.parse(
+    localStorage.getItem("orderStatus") ?? "[]"
+  );
   useEffect(() => {
     fetchMenu();
   }, []);
@@ -256,9 +257,11 @@ const handleOrderType = (data) => {
       orderDetails: cart?.itemsInCart,
       orderStatus: "Completed",
       orderType: orderType,
-      floorId: orderType == "Dine-In" ? TableDetails?.OrderTable[0]?.floorId : null,
-      tableId:orderType == "Dine-In" ? TableDetails?.OrderTable[0]?._id : null ,
-      customerId: orderType == "Dine-In" ? getCustomerDetails[0]?.data?._id : null ,
+      floorId:
+        orderType == "Dine-In" ? TableDetails?.OrderTable[0]?.floorId : null,
+      tableId: orderType == "Dine-In" ? TableDetails?.OrderTable[0]?._id : null,
+      customerId:
+        orderType == "Dine-In" ? getCustomerDetails[0]?.data?._id : null,
       totalAmount: subTotal,
     };
      await SendOrderDetailstoAPI(payload)
@@ -270,6 +273,20 @@ const handleOrderType = (data) => {
      })
 
      }
+  };
+
+  // send to Payment details API
+  const handlePaymentDetails = () => {
+    let payload = {
+      billId: 1,
+      paymentMethod: paymentMethod,
+      offerDiscount: applyOffer,
+      couponCode: "xyz",
+      status: "Completed",
+    };
+    // console.log("payload: ", payload);
+    let response = SendPaymentDetailstoAPI(payload);
+    // console.log("response: ", response);
   };
 
   return (
@@ -385,7 +402,11 @@ const handleOrderType = (data) => {
           {/* display */}
           <div className="col-span-5 bg-[#ede9dd] border-solid border-2 border-black rounded-2xl">
             <div className="flex items-center justify-evenly my-2">
-              <DropdownButton options={orderTypes} selectedValue={handleOrderType} buttonLabel="Order Type" />
+              <DropdownButton
+                options={orderTypes}
+                selectedValue={handleOrderType}
+                buttonLabel="Order Type"
+              />
 
               <DropdownButton options={tableOptions} buttonLabel="Table No." />
 
@@ -466,7 +487,10 @@ const handleOrderType = (data) => {
                   </li>
                   <div className="flex">
                     <SplitBill />
-                    <ApplyOffer applyOffer={applyOffer} setApplyOffer={setApplyOffer} />
+                    <ApplyOffer
+                      applyOffer={applyOffer}
+                      setApplyOffer={setApplyOffer}
+                    />
                   </div>
                   {/* <Link to="/payment" className="mx-3"> */}
                   {/* <Button

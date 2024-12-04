@@ -843,10 +843,10 @@ const AutoSuggestSearch = ({ cart }) => {
 
   // Function to handle clicking on an option
   const handleOptionClick = (option) => {
-    console.log("option: ", option);
+    // console.log("option: ", option);
     setIsOpen(true);
     setSelectedFoodItem(option);
-    console.log("SelectedFoodItem: ", selectedFoodItem);
+    // console.log("SelectedFoodItem: ", selectedFoodItem);
     setQuery(""); // Reset search bar
     setFilteredOptions(); // Hide suggestions
   };
@@ -861,9 +861,9 @@ const AutoSuggestSearch = ({ cart }) => {
       if (value !== false)  {
         acc[key] = value;
         price.push(Number(acc[key] = value));
-        console.log('price: ', price);
+        // console.log('price: ', price);
         category.push(acc[key] = key);
-        console.log('category: ', category);
+        // console.log('category: ', category);
       }
       return acc;
     }, {});
@@ -878,7 +878,7 @@ const AutoSuggestSearch = ({ cart }) => {
       price: price.reduce((a, b) => a + b, selectedFoodItem?.price),
       amount: 1,
     };
-    console.log("Payload:", payload);
+    // console.log("Payload:", payload);
     // setshowFoodData(selectedFoodItem);
     dispatch(add(payload));
     closeModal();

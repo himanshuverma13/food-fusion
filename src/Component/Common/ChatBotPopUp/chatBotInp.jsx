@@ -1,13 +1,7 @@
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-
-import footerBot from "../../assets/Images/skill-bot.svg";
-import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setChatBotTableOrder } from "../Redux/ChatBotPopup/chatBotPopupSlice";
 import { add } from "../Redux/Category/categorySlice";
-import { toast } from "react-toastify";
 
 let MenuItemsJson = [
   {
@@ -501,54 +495,23 @@ let MenuItemsJson = [
     ],
   },
 ];
-const ChatBot = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
 
-  const onSubmit = () => {};
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
-
-  const handleBlur = (e) => {
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      setIsDropdownOpen(false);
-    }
-  };
-
-  // --------------------
+const ChatBotFunctionality = () => {
   const availableDishes = [];
   MenuItemsJson?.map((t) => {
     t?.subcategories?.map((i) => {
-      availableDishes.push(i?.name?.toLowerCase());
+      availableDishes.push(i?.name);
     });
   });
 
   const dispatch = useDispatch();
 
-  // List of available Tables
+  // List of available dishes
   const [tables, setTables] = useState([
     { id: 1, color: "white", order: null },
     { id: 2, color: "white", order: null },
     { id: 3, color: "white", order: null },
     { id: 4, color: "white", order: null },
-    { id: 5, color: "white", order: null },
-    { id: 6, color: "white", order: null },
-    { id: 7, color: "white", order: null },
-    { id: 8, color: "white", order: null },
-    { id: 9, color: "white", order: null },
-    { id: 10, color: "white", order: null },
-    { id: 11, color: "white", order: null },
-    { id: 12, color: "white", order: null },
-    { id: 13, color: "white", order: null },
-    { id: 14, color: "white", order: null },
-    { id: 15, color: "white", order: null },
-    { id: 16, color: "white", order: null },
   ]);
   const [inputValue, setInputValue] = useState("");
 
@@ -556,138 +519,41 @@ const ChatBot = () => {
 
   const filterDishName = (dish) => {
     const value = MenuItemsJson.flatMap((category) =>
-      category.subcategories.filter(
-        (item) => item.name?.toLowerCase() === dish?.toLowerCase()
-      )
+      category.subcategories.filter((item) => item.name === dish)
     );
     return value;
   };
 
-  // const handleFilterSubmit = () => {
-  //   // Split the input into table number and dish name
-  //   const spaceIndex = inputValue.indexOf(" "); // Find the first space
-  //   if (spaceIndex === -1) {
-  //     alert(
-  //       "Invalid input! Use format 'tableNumber dishName' (e.g., '1 Pizza Supreme')"
-  //     );
-  //     return;
-  //   }
-
-  //   const tableNumberStr = inputValue.slice(0, spaceIndex).trim(); // Extract the table number
-  //   const dishName = inputValue.slice(spaceIndex + 1).trim(); // Extract the rest as the dish name
-  //   const tableNumber = parseInt(tableNumberStr);
-
-  //   // Validate table number and dish name
-  //   if (
-  //     isNaN(tableNumber) ||
-  //     tableNumber < 1 ||
-  //     tableNumber > tables.length ||
-  //     !dishName ||
-  //     dishName === ""
-  //   ) {
-  //     alert(
-  //       "Invalid input! Use format 'tableNumber dishName' (e.g., '1 Pizza Supreme')"
-  //     );
-  //     return;
-  //   }
-
-  //   // Check if the dish is available
-  //   if (!availableDishes.includes(dishName?.toLowerCase())) {
-  //     alert(`Sorry, ${dishName} is not available!`);
-  //     return;
-  //   }
-
-  //   // Log the selected table number and dish to the console
-  //   const payload = {
-  //     customer_table: tableNumber,
-  //     dishName: dishName,
-  //     customer_status: "Table_Order",
-  //   };
-  //   console.log("payload: ", payload);
-  //   dispatch(setChatBotTableOrder(payload));
-
-  //   // Update table with the dish and change the color to red
-  //   setTables((prevTables) =>
-  //     prevTables.map((table) =>
-  //       table.id === tableNumber
-  //         ? { ...table, color: "red", order: dishName }
-  //         : table
-  //     )
-  //   );
-  //   let filterObject = filterDishName(dishName);
-  //   console.log("filterObject: ", filterObject);
-  //   let filterOrder = {
-  //     id: filterObject[0]?.id,
-  //     food: filterObject[0]?.name,
-  //     // image: selectedFoodItem?.image,
-  //     // category: category,
-  //     // comment,
-  //     tableNo: tableNumber,
-  //     status: "open",
-  //     quantity: 1,
-  //     price: filterObject[0]?.price,
-  //     amount: 1,
-  //   };
-
-  //   dispatch(add(filterOrder));
-
-  //   setInputValue(""); // Reset the input field
-  // };
-
-  const handleFilterSubmit = () => {
+  const handleSubmit = () => {
     // Split the input into table number and dish name
     const spaceIndex = inputValue.indexOf(" "); // Find the first space
-    const tableNumberStr =
-      spaceIndex === -1
-        ? inputValue.trim()
-        : inputValue.slice(0, spaceIndex).trim(); // Extract the table number
-    const dishName =
-      spaceIndex === -1 ? null : inputValue.slice(spaceIndex + 1).trim(); // Extract the rest as the dish name
-    const tableNumber = parseInt(tableNumberStr);
-
-    // Validate table number
-    if (isNaN(tableNumber) || tableNumber < 1 || tableNumber > tables.length) {
+    if (spaceIndex === -1) {
       alert(
-        "Invalid table number! Enter a valid table number (e.g., '1' or '1 Samosa')."
+        "Invalid input! Use format 'tableNumber dishName' (e.g., '1 Pizza Supreme')"
       );
       return;
     }
 
-    // If no dish name is provided, just book the table
-    if (!dishName || dishName === "") {
-      // Update the table color to yellow to indicate it's reserved
-      setTables((prevTables) =>
-        prevTables.map((table) =>
-          table.id === tableNumber
-            ? { ...table, color: "yellow", order: "Reserved" }
-            : table
-        )
+    const tableNumberStr = inputValue.slice(0, spaceIndex).trim(); // Extract the table number
+    const dishName = inputValue.slice(spaceIndex + 1).trim(); // Extract the rest as the dish name
+    const tableNumber = parseInt(tableNumberStr);
+
+    // Validate table number and dish name
+    if (
+      isNaN(tableNumber) ||
+      tableNumber < 1 ||
+      tableNumber > tables.length ||
+      !dishName ||
+      dishName === ""
+    ) {
+      alert(
+        "Invalid input! Use format 'tableNumber dishName' (e.g., '1 Pizza Supreme')"
       );
-
-      const payload = {
-        customer_table: tableNumber,
-        dishName: null,
-        customer_status: "Table_Order",
-      };
-      // console.log("payload: ", payload);
-      dispatch(setChatBotTableOrder(payload));
-
-      setInputValue(""); // Reset the input field
-      toast.success("Table Booked Successful", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
       return;
     }
 
     // Check if the dish is available
-    if (!availableDishes.includes(dishName?.toLowerCase())) {
+    if (!availableDishes.includes(dishName)) {
       alert(`Sorry, ${dishName} is not available!`);
       return;
     }
@@ -698,7 +564,7 @@ const ChatBot = () => {
       dishName: dishName,
       customer_status: "Table_Order",
     };
-    // console.log("payload: ", payload);
+    console.log("payload: ", payload);
     dispatch(setChatBotTableOrder(payload));
 
     // Update table with the dish and change the color to red
@@ -710,10 +576,13 @@ const ChatBot = () => {
       )
     );
     let filterObject = filterDishName(dishName);
-    // console.log("filterObject: ", filterObject);
+    console.log("filterObject: ", filterObject);
     let filterOrder = {
       id: filterObject[0]?.id,
       food: filterObject[0]?.name,
+      // image: selectedFoodItem?.image,
+      // category: category,
+      // comment,
       tableNo: tableNumber,
       status: "open",
       quantity: 1,
@@ -722,58 +591,28 @@ const ChatBot = () => {
     };
 
     dispatch(add(filterOrder));
-    toast.success("Table Booked with Order Successful", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
 
     setInputValue(""); // Reset the input field
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      setIsDropdownOpen(false);
-      handleFilterSubmit();
+      handleSubmit();
     }
   };
 
   return (
-    <div
-      className="relative inline-block"
-      tabIndex={0} // Make the div focusable
-      onBlur={handleBlur} // Handle blur to detect when the dropdown loses focus
-    >
-      <div onClick={toggleDropdown} className="relative cursor-pointer">
-        <img src={footerBot} className="h-20" alt="loading" />
-      </div>
-      {isDropdownOpen && (
-        <div
-          className="absolute z-20 right-0 mb-2 h-80 w-64 rounded-md bg-[#e8e8d7] py-1 text-base border-2 border-black shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-          style={{ bottom: "100%" }} // This positions the dropdown above the button
-        >
-          <div className="p-2">
-            <div>
-              <input
-                type="text"
-                id="name"
-                placeholder="ex : 1 Samosa"
-                className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+    <div>
+      <input
+        type="text"
+        id="name"
+        placeholder="ex : 1 Samosa"
+        className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleKeyDown}
+      />
     </div>
   );
 };
-
-export default ChatBot;
+export default ChatBotFunctionality;

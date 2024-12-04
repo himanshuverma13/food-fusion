@@ -5,10 +5,10 @@ import StatusFooter from '../../Common/Footer/statusFooter';
 
 const Waiter = ({ chef }) => {
   
-  console.log('chef: ', chef);
+  // console.log('chef: ', chef);
 
   const serveringFood = chef?.foodOrders?.filter((food) => food.status == "done")
-  console.log('serveringFood: ', serveringFood);
+  // console.log('serveringFood: ', serveringFood);
 
   return (
     <>
