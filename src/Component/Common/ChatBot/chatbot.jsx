@@ -754,8 +754,8 @@ const ChatBot = () => {
       </div>
       {isDropdownOpen && (
         <div
-          className="absolute z-20 right-0 mb-2 h-80 w-64 rounded-md bg-[#e8e8d7] py-1 text-base border-2 border-black shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-          style={{ bottom: "100%" }} // This positions the dropdown above the button
+          className="absolute z-20 right-0 bottom-full mb-2 h-80 w-64 rounded-md bg-[#e8e8d7] py-1 text-base border-2 border-black shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+          // style={{ bottom: "100%" }}
         >
           <div className="p-2">
             <div>

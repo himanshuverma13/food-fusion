@@ -351,11 +351,11 @@ const handleOrderType = (data) => {
                     }`}
                   >
                     <img
-                      src={tab.image}
-                      alt={tab.name}
+                      src={tab?.image}
+                      alt={tab?.name}
                       className="h-10 w-h-10 inline-block mr-2"
                     />
-                    {tab.category}
+                    {tab?.category}
                   </a>
                 ))}
               </div>
@@ -443,7 +443,7 @@ const handleOrderType = (data) => {
                         <th scope="row" class="py-2 px-6 font-light">
                           {items?.food}
                         </th>
-                        <td class="font-light py-2 px-6">{items.price}</td>
+                        <td class="font-light py-2 px-6">{items?.price}</td>
                         <td class="flex items-center justify-center font-normal py-2 px-6">
                           <FontAwesomeIcon
                             className=" rounded-full text-red-500 text-lg cursor-pointer bg-white"
