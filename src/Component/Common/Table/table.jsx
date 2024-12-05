@@ -86,7 +86,7 @@ const Table = ({ cart, table, chatbot }) => {
           value={selectedFloor}
           onChange={handleFloorSelection}
         >
-          <option value="">Select floor</option>
+          {/* <option value="">Select floor</option> */}
           {uniqueFloors.map((floorNumber) => (
             <option key={floorNumber} value={floorNumber}>
               Floor {floorNumber}

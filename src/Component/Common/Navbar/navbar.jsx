@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import SideNavbar from "./sideNav";
 
 const Navbar = ({ SideNavFunctionality }) => {
+  let UserName = JSON?.parse(localStorage.getItem("userAuth") ?? []);
   const [sidebarOpen, setSidebarOpen] = useState(true); // Default to open sidebar
   let navigate = useNavigate();
 
@@ -39,10 +40,12 @@ const Navbar = ({ SideNavFunctionality }) => {
         </div>
       </div>
       <div className="flex items-center mx-4 space-x-4">
-       <div>
-       <p className="font-semibold">Full Name</p>
-       <h4 className="m-0 ">CHASIER</h4>
-       </div>
+        <div className="text-center">
+          <p className="font-semibold uppercase tracking-widest text-red-600">
+            {UserName?.user?.fullname}
+          </p>
+          <h4 className="m-0 ">CHASIER</h4>
+        </div>
         <img
           className="bg-red-700 h-11 rounded-full p-1"
           src={billing}

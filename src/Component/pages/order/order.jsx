@@ -79,15 +79,6 @@ const Order = ({ cart, table }) => {
 
   const closeModal = () => setIsOpen(false);
 
-  // to show prev field values on ordered Table
-  const [OrderPreFiled, setOrderPreFiled] = useState([]);
-  useEffect(() => {
-    const checkTableStatus = OrderStatus.filter(
-      (table) => table?.data?.customer_table === cart?.TableNo // change for Local format
-    );
-    setOrderPreFiled(checkTableStatus[0]?.data);
-  }, []);
-
   // get order type dropdown value
   const [orderType, setorderType] = useState();
   const handleOrderType = (data) => {
@@ -143,7 +134,7 @@ const Order = ({ cart, table }) => {
                 id="name"
                 type="text"
                 class="py-1 w-7/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
-                value={OrderPreFiled?.customer_name}
+                value={table?.OrderTable?.customerDetails?.customer_name}
                 {...register("name", {
                   required: "Name is required",
                 })}
@@ -163,7 +154,7 @@ const Order = ({ cart, table }) => {
                 id="phone_number"
                 type="tel"
                 class="py-1 w-7/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
-                value={OrderPreFiled?.customer_mobile_no}
+                value={table?.OrderTable?.customerDetails?.customer_mobile_no}
                 {...register("phone_number", {
                   required: "Phone Number is required",
                 })}
@@ -185,7 +176,7 @@ const Order = ({ cart, table }) => {
                 id="email"
                 type="email"
                 class="py-1 w-9/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
-                value={OrderPreFiled?.customer_email}
+                value={table?.OrderTable?.customerDetails?.customer_email}
                 {...register("email", {
                   required: "E-mail is required",
                 })}
