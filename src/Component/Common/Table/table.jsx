@@ -86,7 +86,7 @@ const Table = ({ cart, table, chatbot }) => {
           value={selectedFloor}
           onChange={handleFloorSelection}
         >
-          <option value="">Select floor</option>
+          {/* <option value="">Select floor</option> */}
           {uniqueFloors.map((floorNumber) => (
             <option key={floorNumber} value={floorNumber}>
               Floor {floorNumber}
@@ -98,14 +98,14 @@ const Table = ({ cart, table, chatbot }) => {
             {filteredTables?.map((items, index) => (
               <div
                 className={`cursor-pointer flex flex-col justify-center items-center ${
-                  isTableRed(items)
+                  isTableBooked(items)
                     ? "relative border-2 border-black rounded-2xl pb-1 pt-8 px-0 bg-[#fddcbf]"
                     : "  "
                 }`}
               >
                 {/* <img src={Order} alt="Loading" className="absolute bottom-10 top-0 right-50 left-50 h-10 rounded-full bg-[#e6ae7e] p-1" /> */}
                {/* <div className="-mt-14 ml-[32%] rounded-full bg-[#eab688] h-14 w-14"> */}
-               <div className={`${isTableRed(items) ? "-mt-14 mb-1 rounded-full shadow-md bg-[#eab688] h-12 w-12 flex justify-center"
+               <div className={`${isTableBooked(items) ? "-mt-14 mb-1 rounded-full shadow-md bg-[#eab688] h-12 w-12 flex justify-center"
                       : "hidden"
                   }`}>
                  <img
