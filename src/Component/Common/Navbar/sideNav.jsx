@@ -18,6 +18,26 @@ const SideNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const SettingData = [
+    {
+      name: "Profile Settings",
+    },
+    {
+      name: "Discount and offer Management",
+    },
+    {
+      name: "Themes",
+    },
+    {
+      name: "Receipt Customization",
+    },
+    {
+      name: "System Updates",
+    },
+    {
+      name: "Order Management",
+    },
+  ];
   // Main navigation items
   const basicNavItems = [
     { path: "/home", icon: navHome, alt: "Home" },
@@ -102,27 +122,30 @@ const SideNavbar = () => {
 
       <div className="row-start-5">
         <ul>
-          <li className="text-center my-2 cursor-pointer" tabIndex={0} onBlur={handleBlur}>
+          <li
+            className="text-center my-2 cursor-pointer"
+            tabIndex={0}
+            onBlur={handleBlur}
+          >
             <div onClick={toggleDropdown}>
-            <img className=" w-6 mx-auto" src={navSetting} alt="loading" />
-            <span className="text-[#cd3f14] text-sm font-bold">settings</span>
+              <img className=" w-6 mx-auto" src={navSetting} alt="loading" />
+              <span className="text-[#cd3f14] text-sm font-bold">settings</span>
             </div>
             {isDropdownOpen && (
               <div
-                className="absolute z-20 left-20 bottom-20 mb-2 w-64 rounded-md  py-1 text-base border-0 shadow-xl  focus:outline-none sm:text-sm"
+                className="absolute z-20 left-20 bottom-20 mb-2 w-64 py-1 border-0"
                 // style={{ bottom: "100%" }} // This positions the dropdown above the button
               >
-                <div className="chef-card grid grid-cols-1 grid-rows-4 border-solid rounded-3xl bg-white shadow-xl">
-                  <div className="border rounded-3xl px-4 py-0.5 m-0.5 bg-[#d79555] text-[#544013]">
-                    <div className="text-sm tracking-wider font-semibold">
-                      Order No. 007
-                    </div>
-                    <div className="flex justify-between text-sm tracking-wider font-semibold">
-                      <span>Time : {new Date().toLocaleTimeString()}</span>
-                      <span>Table No.</span>
-                    </div>
-                  </div>
-                </div>
+                <ul>
+                  {SettingData.map((items, index) => (
+                    <li
+                      key={index}
+                      className="text-lg bg-[#ede9dd] text-[#544013] border-2 border-[#544013] mb-1"
+                    >
+                      {items.name}
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </li>
