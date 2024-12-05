@@ -5,7 +5,7 @@ import footerBot from "../../assets/Images/skill-bot.svg";
 import ChatBot from "../ChatBot/chatbot";
 import FooterSearchBar from "../FooterSearchBarFunctionality/footerSearchBar";
 
-const StatusFooter = ({ cart,table }) => {
+const StatusFooter = ({ cart, table }) => {
   const [ActiveStatus, setActiveStatus] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const openModal = (item) => {
@@ -14,7 +14,13 @@ const StatusFooter = ({ cart,table }) => {
 
   const closeModal = () => setIsOpen(false);
 
-  let getTableStatusDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
+  // showing footer status
+  const showActiveTable = table?.tableDetails?.filter(
+    (s) => s?.customerDetails?.customer_table_Id == s?._id
+  );
+  const showAvailableTable = table?.tableDetails?.filter(
+    (s) => s?.customerDetails?.customer_table_Id !== s?._id
+  );
 
   return (
     <div className="fixed bottom-0 left-0 right-0 mx-20">
@@ -25,10 +31,10 @@ const StatusFooter = ({ cart,table }) => {
       >
         <div className="flex justify-around items-center">
           <span className="tracking-wider font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
-            Active tables <div>{getTableStatusDetails?.length}</div>
+            Active tables <div>{showActiveTable?.length || 0}</div>
           </span>
           <span className="tracking-wider font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
-            Available tables <div>20</div>
+            Available tables <div>{showAvailableTable?.length || 0}</div>
           </span>
           <span className="tracking-wider font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
             Reservations <div>20</div>
@@ -55,7 +61,7 @@ const StatusFooter = ({ cart,table }) => {
               className="flex-grow px-4 bg-transparent py-2 focus:outline-none"
               placeholder="table status"
             /> */}
-            <FooterSearchBar/>
+            <FooterSearchBar />
 
             {/* Arrow Icon */}
             <svg

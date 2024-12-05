@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { GetTableAPI } from "../APIs/api";
 import {
   createTable,
-  getTable,
+  getFooterTableStatus,
   getTableDetails,
 } from "../Redux/Table/tableSlice";
 import { getCustomerStatus } from "../Redux/CustomerStatus/customerStatusSlice";
@@ -15,6 +15,7 @@ import Order from "../../assets/Images/table/1.svg";
 import Pay from "../../assets/Images/table/2.svg";
 
 const Table = ({ cart, table, chatbot }) => {
+  // console.log('table: ', table);
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -38,7 +39,7 @@ const Table = ({ cart, table, chatbot }) => {
 
   // Extract unique floors from the data
   const uniqueFloors = Array?.from(
-    new Set(table?.tableDetails[0]?.map((item) => item?.floorDetails?.floorNumber))
+    new Set(table?.tableDetails?.map((item) => item?.floorDetails?.floorNumber))
   );
 
   // Handle floor selection
@@ -49,30 +50,31 @@ const Table = ({ cart, table, chatbot }) => {
 
   // Filter tables by selected floor
   const filteredTables = selectedFloor
-    ? table?.tableDetails[0]?.filter(
-        (table) => table?.floorDetails?.floorNumber === selectedFloor
-      )
-    : [];
+  ? table?.tableDetails?.filter(
+    (table) => table?.floorDetails?.floorNumber === selectedFloor
+  )
+  : [];
 
   const GetTableNo = (item) => {
     let customerDetails = status?.filter(
       (i) => i?.data?.customer_table == item?.tableNumber
     );
+
+
     dispatch(getCustomerStatus(customerDetails));
     dispatch(getTableDetails(item));
     dispatch(TableNo(item?.tableNumber));
     navigate("/order");
   };
 
+
   useEffect(() => {
-    isTableRed();
+    isTableBooked();
   }, []);
 
-  const isTableRed = (tableNumber) => {
-    return status.some(
-      (s) =>
-        parseInt(s?.data?.customer_table) == tableNumber?.tableNumber &&
-        s?.customer_status == "Table_Order"
+  const isTableBooked = (tableNumber) => {
+    return table?.tableDetails?.some(
+      (s) => s?.customerDetails?.customer_table_Id == tableNumber?._id 
     );
   };
 
@@ -93,7 +95,7 @@ const Table = ({ cart, table, chatbot }) => {
             {filteredTables?.map((items, index) => (
               <div
                 className={`${
-                  isTableRed(items)
+                  isTableBooked(items)
                     ? "relative border-2 border-black rounded-2xl pb-2 pt-8 px-0 bg-[#fddcbf]"
                     : "cursor-pointer flex flex-col justify-center items-center"
                 }`}
@@ -103,7 +105,7 @@ const Table = ({ cart, table, chatbot }) => {
                   src={Order}
                   alt="Loading"
                   className={`${
-                    isTableRed(items)
+                    isTableBooked(items)
                       ? "absolute -top-5 left-[36%] h-12 rounded-full bg-[#e6ae7e] p-1"
                       : "hidden"
                   }`}
@@ -133,16 +135,16 @@ const Table = ({ cart, table, chatbot }) => {
                     strokeWidth="5"
                     xlinkHref="#circle"
                     stroke="#c26767"
-                    strokeDasharray="0,11.2,6,30"
+                    strokeDasharray="0,11.8,6,30"
                   />
                   <use
                     onClick={() => GetTableNo(items)}
                     strokeLinecap="round"
                     strokeWidth="5"
                     xlinkHref="#circle"
-                    // stroke={`${isTableRed(items) ? "red" : "#c6b19b"}`}
+                    // stroke={`${isTableBooked(items) ? "red" : "#c6b19b"}`}
                     stroke="#c6b19b"
-                    strokeDasharray="1,18.2,7,30"
+                    strokeDasharray="1,18.8,7,30"
                   />
                   <circle
                     onClick={() => GetTableNo(items)}
@@ -177,7 +179,7 @@ const Table = ({ cart, table, chatbot }) => {
                 {/* <p className="text-center font-semibold text-sm text-[#69a376]">Name of Costumer</p> */}
                 <p
                   className={`${
-                    isTableRed(items)
+                    isTableBooked(items)
                       ? "text-center font-semibold text-sm text-[#69a376]"
                       : "hidden"
                   }`}
