@@ -22,9 +22,12 @@ import {
 import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
 import CategoryModal from "../../Common/Modal/categoryModal";
 import { useForm } from "react-hook-form";
-import { CheckTableStatus, CustomerOrderRegisterAPI } from "../../Common/APIs/api";
-const Order = ({ cart ,table}) => {
-  console.log('table: ', table);
+import { toast } from "react-toastify";
+import {
+  CheckTableStatus,
+  CustomerOrderRegisterAPI,
+} from "../../Common/APIs/api";
+const Order = ({ cart, table }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   let OrderStatus = JSON?.parse(localStorage.getItem("orderStatus") ?? "[]");
@@ -38,17 +41,27 @@ const Order = ({ cart ,table}) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async(data) => {
-  const payload = {
-      customer_name : data?.name,
-      customer_mobile_no : data?.phone_number,
-      customer_email : data?.email,
-      tableId:table?.OrderTable?._id,
-      tableStatus:"Reserved",
-      customer_table_Id:table?.OrderTable?._id,
-    }
-const response = await CheckTableStatus(payload)
-
+  const onSubmit = async (data) => {
+    const payload = {
+      customer_name: data?.name,
+      customer_mobile_no: data?.phone_number,
+      customer_email: data?.email,
+      tableId: table?.OrderTable?._id,
+      tableStatus: "Reserved",
+      customer_table_Id: table?.OrderTable?._id,
+    };
+    const response = await CheckTableStatus(payload);
+    toast.success("Table Booked Successfully", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    return;
   };
 
   const dispatch = useDispatch();

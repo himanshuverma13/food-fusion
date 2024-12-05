@@ -184,11 +184,11 @@ const Table = ({ cart, table, chatbot }) => {
                 <p
                   className={`${
                     isTableBooked(items)
-                      ? "text-center font-semibold text-sm text-[#69a376]"
+                      ? "text-center font-semibold text-sm text-[#69a376] uppercase tracking-wide"
                       : "hidden"
                   }`}
                 >
-                  Name of Costumer
+                  {items?.customerDetails?.customer_name}
                 </p>
               </div>
             ))}
