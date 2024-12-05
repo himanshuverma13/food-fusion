@@ -1,21 +1,21 @@
 // cartReducer.js
 import { createSlice } from '@reduxjs/toolkit';
-import { CreateTable, GetTable, GetTableDetails } from './tableAction';
+import { CreateTable,  GetFooterTableStatus , GetTableDetails } from './tableAction';
 export const initialState = {
-  tableDetails: [],
-  OrderTable:[]
+  tableDetails: null,
+  OrderTable:{},
 };
 const tableSlice = createSlice({
   name: 'table',
   initialState,
   reducers: {
     CreateTable,
-    GetTable,
+    GetFooterTableStatus,
     GetTableDetails,
   },
 }
 );
 
-export const {CreateTable:createTable,GetTable:getTable,GetTableDetails:getTableDetails} = tableSlice.actions;
+export const {CreateTable:createTable,GetFooterTableStatus:getFooterTableStatus,GetTableDetails:getTableDetails} = tableSlice.actions;
 
 export default tableSlice.reducer;

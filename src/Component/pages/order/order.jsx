@@ -23,10 +23,7 @@ import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSear
 import CategoryModal from "../../Common/Modal/categoryModal";
 import { useForm } from "react-hook-form";
 import { CheckTableStatus, CustomerOrderRegisterAPI } from "../../Common/APIs/api";
-import axios from "axios";
-const Token = JSON.parse(localStorage.getItem("userAuth"));
-const URL = `${process.env.REACT_APP_API}/cashier`;
-const Order = ({ cart }) => {
+const Order = ({ cart ,table}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   let OrderStatus = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
@@ -45,7 +42,9 @@ const Order = ({ cart }) => {
       customer_name : data?.name,
       customer_mobile_no : data?.phone_number,
       customer_email : data?.email,
-      customer_table:cart?.TableNo,
+      tableId:table?.OrderTable?._id,
+      tableStatus:"Reserved",
+      customer_table_Id:table?.OrderTable?._id,
     }
 const response = await CheckTableStatus(payload)
 
@@ -63,13 +62,6 @@ const response = await CheckTableStatus(payload)
   const handleRemoveFromCart = (id) => {
     dispatch(remove(id?.id));
   };
-
-  //  serchbar modal functionality
-
-  // const openModal = (food) => {
-  //   // setSelectedFoodItem(food);
-  //   setIsOpen(true);
-  // };
 
   const closeModal = () => setIsOpen(false);
 
@@ -203,9 +195,9 @@ const handleOrderType = (data) => {
                   required: "Table Number is required",
                 })}
               />
-              {errors.name && (
+              {errors?.name && (
                 <span className="text-red-600">
-                  {errors.table_Number.message}
+                  {errors?.table_Number?.message}
                 </span>
               )}
             </div>
@@ -374,6 +366,7 @@ const handleOrderType = (data) => {
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
+  table: state.table,
 });
 
 export default connect(mapStateToProps, {})(Order);

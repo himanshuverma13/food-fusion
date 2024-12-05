@@ -21,8 +21,7 @@ const FooterSearchBar = ({ table }) => {
     }
   };
 
-  //    show previous order data by filter from order
-  const [showprevOrder, setshowprevOrder] = useState();
+
 
   return (
     <div

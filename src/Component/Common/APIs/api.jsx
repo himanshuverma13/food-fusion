@@ -23,7 +23,6 @@ export const LoginAPI = async (Payload) => {
 };
 
 // Order page Customer Order Form
-
 export const CustomerOrderRegisterAPI = async (Payload) => {
   try {
     const response = await axiosInstance.post(`/customer/register`, Payload);
@@ -34,7 +33,6 @@ export const CustomerOrderRegisterAPI = async (Payload) => {
 };
 
 //  Category Page all menu
-
 export const FoodMenuAPI = async () => {
   try {
     const response = await axiosInstance.get(`${URL}/customer/allmenu`);
@@ -48,7 +46,6 @@ export const FoodMenuAPI = async () => {
 export const GetTableAPI = async () => {
   try {
     const response = await axiosInstance.get(`${URL}/restaurant/getTable`);
-    console.log('response?.data: ', response?.data);
     return response?.data;
   } catch (error) {
     throw error;
@@ -56,13 +53,9 @@ export const GetTableAPI = async () => {
 };
 
 // Table Status for Reserve , order Delived and ready for payment
-
 export const CheckTableStatus = async (payload) => {
   try {
     const response = await axiosInstance.post(`${URL}/customer/register`, payload);
-    let statusData = JSON.parse(localStorage.getItem("orderStatus")) || [];
-    let updatedData = [...statusData, response?.data];
-    localStorage.setItem("orderStatus", JSON.stringify(updatedData));
     return response?.data;
   } catch (error) {
     throw error;
@@ -83,7 +76,8 @@ export const SendOrderDetailstoAPI = async (payload) => {
 export const GetOrderDetailstoAPI = async () => {
   try {
     const response = await axiosInstance.get(`${URL}/restaurant/create/getallorder`);
-    return response?.data;
+    console.log('response?.data?.data: ', response?.data?.data);
+    return response?.data?.data;
   } catch (error) {
     throw error;
   }
