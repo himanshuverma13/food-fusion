@@ -22,15 +22,8 @@ import {
 import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
 import CategoryModal from "../../Common/Modal/categoryModal";
 import { useForm } from "react-hook-form";
-import {
-  CheckTableStatus,
-  CustomerOrderRegisterAPI,
-} from "../../Common/APIs/api";
-import axios from "axios";
-import { toast } from "react-toastify";
-const Token = JSON.parse(localStorage.getItem("userAuth"));
-const URL = `${process.env.REACT_APP_API}/cashier`;
-const Order = ({ cart }) => {
+import { CheckTableStatus, CustomerOrderRegisterAPI } from "../../Common/APIs/api";
+const Order = ({ cart ,table}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   let OrderStatus = JSON?.parse(localStorage.getItem("orderStatus") ?? "[]");
@@ -44,24 +37,17 @@ const Order = ({ cart }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    const payload = {
-      customer_name: data?.name,
-      customer_mobile_no: data?.phone_number,
-      customer_email: data?.email,
-      customer_table: cart?.TableNo,
-    };
-    const response = await CheckTableStatus(payload);
-    toast.success("Table Booked Successfully", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+  const onSubmit = async(data) => {
+  const payload = {
+      customer_name : data?.name,
+      customer_mobile_no : data?.phone_number,
+      customer_email : data?.email,
+      tableId:table?.OrderTable?._id,
+      tableStatus:"Reserved",
+      customer_table_Id:table?.OrderTable?._id,
+    }
+const response = await CheckTableStatus(payload)
+
   };
 
   const dispatch = useDispatch();
@@ -76,13 +62,6 @@ const Order = ({ cart }) => {
   const handleRemoveFromCart = (id) => {
     dispatch(remove(id?.id));
   };
-
-  //  serchbar modal functionality
-
-  // const openModal = (food) => {
-  //   // setSelectedFoodItem(food);
-  //   setIsOpen(true);
-  // };
 
   const closeModal = () => setIsOpen(false);
 
@@ -217,9 +196,9 @@ const Order = ({ cart }) => {
                   required: "Table Number is required",
                 })}
               />
-              {errors.name && (
+              {errors?.name && (
                 <span className="text-red-600">
-                  {errors.table_Number.message}
+                  {errors?.table_Number?.message}
                 </span>
               )}
             </div>
@@ -393,6 +372,7 @@ const Order = ({ cart }) => {
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
+  table: state.table,
 });
 
 export default connect(mapStateToProps, {})(Order);
