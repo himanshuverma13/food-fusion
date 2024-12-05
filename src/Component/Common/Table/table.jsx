@@ -18,8 +18,7 @@ const Table = ({ cart, table, chatbot }) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-
-  let status = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
+  let status = JSON?.parse(localStorage.getItem("orderStatus") ?? "[]");
 
   useEffect(() => {
     const fetch = async (data) => {
@@ -38,7 +37,9 @@ const Table = ({ cart, table, chatbot }) => {
 
   // Extract unique floors from the data
   const uniqueFloors = Array?.from(
-    new Set(table?.tableDetails[0]?.map((item) => item?.floorDetails?.floorNumber))
+    new Set(
+      table?.tableDetails[0]?.map((item) => item?.floorDetails?.floorNumber)
+    )
   );
 
   // Handle floor selection
@@ -76,38 +77,43 @@ const Table = ({ cart, table, chatbot }) => {
     );
   };
 
-
   return (
     <>
       <div className=" px-3">
-      <select id="floor-select" className="ml-20" value={selectedFloor} onChange={handleFloorSelection}>
-      <option value="">Select a floor</option>
-        {uniqueFloors.map((floorNumber) => (
-          <option key={floorNumber} value={floorNumber}>
-            Floor {floorNumber}
-          </option>
-        ))}
-      </select>
+        <select
+          id="floor-select"
+          className="ml-20 mb-5 tracking-wider cursor-pointer rounded-md truncate py-1.5 px-1 text-left text-gray-900 shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm ring-[#cd3f14] hover:bg-[#eee9e3]"
+          value={selectedFloor}
+          onChange={handleFloorSelection}
+        >
+          <option value="">Select floor</option>
+          {uniqueFloors.map((floorNumber) => (
+            <option key={floorNumber} value={floorNumber}>
+              Floor {floorNumber}
+            </option>
+          ))}
+        </select>
         <div className="flex justify-center items-center">
-          <div className="circle-container grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-5 w-3/4">
+          <div className="circle-container grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-7 w-3/4">
             {filteredTables?.map((items, index) => (
               <div
-                className={`${
+                className={`cursor-pointer flex flex-col justify-center items-center ${
                   isTableRed(items)
-                    ? "relative border-2 border-black rounded-2xl pb-2 pt-8 px-0 bg-[#fddcbf]"
-                    : "cursor-pointer flex flex-col justify-center items-center"
+                    ? "relative border-2 border-black rounded-2xl pb-1 pt-8 px-0 bg-[#fddcbf]"
+                    : "  "
                 }`}
               >
                 {/* <img src={Order} alt="Loading" className="absolute bottom-10 top-0 right-50 left-50 h-10 rounded-full bg-[#e6ae7e] p-1" /> */}
-                <img
+               {/* <div className="-mt-14 ml-[32%] rounded-full bg-[#eab688] h-14 w-14"> */}
+               <div className={`${isTableRed(items) ? "-mt-14 mb-1 rounded-full shadow-md bg-[#eab688] h-12 w-12 flex justify-center"
+                      : "hidden"
+                  }`}>
+                 <img
                   src={Order}
                   alt="Loading"
-                  className={`${
-                    isTableRed(items)
-                      ? "absolute -top-5 left-[36%] h-12 rounded-full bg-[#e6ae7e] p-1"
-                      : "hidden"
-                  }`}
+                  className="h-9"
                 />
+               </div>
                 <svg viewBox="-8 0 27 10">
                   <defs>
                     <circle
@@ -125,7 +131,7 @@ const Table = ({ cart, table, chatbot }) => {
                     strokeWidth="5"
                     xlinkHref="#circle"
                     stroke="#8d8e8e"
-                    strokeDasharray="1,2,6.3,30"
+                    strokeDasharray="1,2,6.8,30"
                   />
                   <use
                     onClick={() => GetTableNo(items)}
@@ -133,7 +139,7 @@ const Table = ({ cart, table, chatbot }) => {
                     strokeWidth="5"
                     xlinkHref="#circle"
                     stroke="#c26767"
-                    strokeDasharray="0,11.2,6,30"
+                    strokeDasharray="0,11.8,6,30"
                   />
                   <use
                     onClick={() => GetTableNo(items)}
@@ -142,7 +148,7 @@ const Table = ({ cart, table, chatbot }) => {
                     xlinkHref="#circle"
                     // stroke={`${isTableRed(items) ? "red" : "#c6b19b"}`}
                     stroke="#c6b19b"
-                    strokeDasharray="1,18.2,7,30"
+                    strokeDasharray="1,18.8,7,30"
                   />
                   <circle
                     onClick={() => GetTableNo(items)}

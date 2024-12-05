@@ -22,14 +22,18 @@ import {
 import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
 import CategoryModal from "../../Common/Modal/categoryModal";
 import { useForm } from "react-hook-form";
-import { CheckTableStatus, CustomerOrderRegisterAPI } from "../../Common/APIs/api";
+import {
+  CheckTableStatus,
+  CustomerOrderRegisterAPI,
+} from "../../Common/APIs/api";
 import axios from "axios";
+import { toast } from "react-toastify";
 const Token = JSON.parse(localStorage.getItem("userAuth"));
 const URL = `${process.env.REACT_APP_API}/cashier`;
 const Order = ({ cart }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  let OrderStatus = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
+  let OrderStatus = JSON?.parse(localStorage.getItem("orderStatus") ?? "[]");
 
   const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
 
@@ -40,15 +44,24 @@ const Order = ({ cart }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async(data) => {
-  const payload = {
-      customer_name : data?.name,
-      customer_mobile_no : data?.phone_number,
-      customer_email : data?.email,
-      customer_table:cart?.TableNo,
-    }
-const response = await CheckTableStatus(payload)
-
+  const onSubmit = async (data) => {
+    const payload = {
+      customer_name: data?.name,
+      customer_mobile_no: data?.phone_number,
+      customer_email: data?.email,
+      customer_table: cart?.TableNo,
+    };
+    const response = await CheckTableStatus(payload);
+    toast.success("Table Booked Successfully", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   const dispatch = useDispatch();
@@ -73,23 +86,20 @@ const response = await CheckTableStatus(payload)
 
   const closeModal = () => setIsOpen(false);
 
+  // to show prev field values on ordered Table
+  const [OrderPreFiled, setOrderPreFiled] = useState([]);
+  useEffect(() => {
+    const checkTableStatus = OrderStatus.filter(
+      (table) => table?.data?.customer_table === cart?.TableNo // change for Local format
+    );
+    setOrderPreFiled(checkTableStatus[0]?.data);
+  }, []);
 
-// to show prev field values on ordered Table
-const [OrderPreFiled, setOrderPreFiled] = useState([]);
-useEffect(() => {
-  const checkTableStatus = OrderStatus.filter(
-    (table) => table?.data?.customer_table === cart?.TableNo // change for Local format
-  );
-  setOrderPreFiled(checkTableStatus[0]?.data);
-}, []); 
-
-// get order type dropdown value 
-const [orderType, setorderType] = useState();
-const handleOrderType = (data) => {
-  setorderType(data);
-};
-
-
+  // get order type dropdown value
+  const [orderType, setorderType] = useState();
+  const handleOrderType = (data) => {
+    setorderType(data);
+  };
 
   // to show filter food items
   const filterFoodItems = cart?.itemsInCart?.filter(
@@ -117,7 +127,11 @@ const handleOrderType = (data) => {
               <p className="text-xl font-bold text-[#544013]">Generate Order</p>
             </div>
             <div className="flex">
-              <DropdownButton options={orderTypes} selectedValue={handleOrderType} buttonLabel="Order Type" />
+              <DropdownButton
+                options={orderTypes}
+                selectedValue={handleOrderType}
+                buttonLabel="Order Type"
+              />
               <p className="text-xl font-semibold text-[#544013]">
                 Order No. : 123
               </p>
@@ -355,7 +369,12 @@ const handleOrderType = (data) => {
             btn_type="submit"
             btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
           /> */}
-          <button className="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8" type="submit">save</button>
+          <button
+            className="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
+            type="submit"
+          >
+            save
+          </button>
           {/* </NavLink> */}
 
           <NavLink>

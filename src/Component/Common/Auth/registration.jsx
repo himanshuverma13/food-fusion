@@ -35,12 +35,13 @@ const Registration = () => {
       dob: data?.birth_date,
     };
     // reset();
+    setIsSubmitting(true);
     let response = await RegistrationAPI(Payload);
     console.log("response: ", response);
-    if (response?.data) {
-      setIsSubmitting(true);
-    } else {
+    if (response?.data.success === true) {
       setIsSubmitting(false);
+    } else {
+      setIsSubmitting(true);
     }
   };
 

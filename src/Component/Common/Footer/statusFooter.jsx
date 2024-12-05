@@ -17,7 +17,7 @@ const StatusFooter = ({ cart,table }) => {
   let getTableStatusDetails = JSON?.parse(localStorage.getItem('orderStatus') ?? '[]')
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 mx-20">
+    <div className="fixed bottom-0 left-0 right-0 mx-28">
       <footer
         className="relative bg-[#d79555] text-white py-1 px-6 cursor-pointer rounded-t-3xl"
         onMouseEnter={() => setActiveStatus(true)}
