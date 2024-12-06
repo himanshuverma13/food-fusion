@@ -18,7 +18,7 @@
       };
 
     const handleBlur = (e) => {
-      if (!e.currentTarget.contains(e.relatedTarget)) {
+      if (!e.currentTarget.contains(e?.relatedTarget)) {
         setIsDropdownOpen(false);
       }
     };

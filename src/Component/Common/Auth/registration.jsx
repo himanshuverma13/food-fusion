@@ -121,7 +121,7 @@ const Registration = () => {
                   </svg>
                 </div>
                 {errors.option && (
-                  <span className="text-red-600">{errors.option.message}</span>
+                  <span className="text-red-600">{errors?.option?.message}</span>
                 )}
               </div>
             </div>
@@ -143,7 +143,7 @@ const Registration = () => {
                 })}
               />
               {errors.name && (
-                <span className="text-red-600">{errors.name.message}</span>
+                <span className="text-red-600">{errors?.name?.message}</span>
               )}
             </div>
             <div className="">
@@ -165,7 +165,7 @@ const Registration = () => {
               />
               {errors.mobile_number && (
                 <span className="text-red-600">
-                  {errors.mobile_number.message}
+                  {errors?.mobile_number?.message}
                 </span>
               )}
             </div>
@@ -232,8 +232,8 @@ const Registration = () => {
                   },
                 })}
               />
-              {errors.join_date && (
-                <span className="text-red-600">{errors.join_date.message}</span>
+              {errors?.join_date && (
+                <span className="text-red-600">{errors?.join_date?.message}</span>
               )}
             </div>
             <div>

@@ -1,8 +1,6 @@
 import axios from "axios";
 import axiosInstance from "../../../Interceptor/axiosInterceptor";
 const URL = `${process.env.REACT_APP_API}/cashier`;
-const Token = JSON.parse(localStorage.getItem("userAuth"));
-// console.log('Token: ', Token.accessToken);
 
 export const RegistrationAPI = async (Payload) => {
   try {
@@ -56,6 +54,7 @@ export const GetTableAPI = async () => {
 export const CheckTableStatus = async (payload) => {
   try {
     const response = await axiosInstance.post(`${URL}/customer/register`, payload);
+    GetTableAPI()
     return response?.data;
   } catch (error) {
     throw error;
@@ -76,7 +75,6 @@ export const SendOrderDetailstoAPI = async (payload) => {
 export const GetOrderDetailstoAPI = async () => {
   try {
     const response = await axiosInstance.get(`${URL}/restaurant/create/getallorder`);
-    console.log('response?.data?.data: ', response?.data?.data);
     return response?.data?.data;
   } catch (error) {
     throw error;

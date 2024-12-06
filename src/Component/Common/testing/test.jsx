@@ -1376,121 +1376,121 @@
 
 
 
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
-// Example data
-const data = [
-  {
-    _id: "6746c80a95b089107da95db1",
-    tableName: "Table 1",
-    tableNumber: 1,
-    tableChairs: 4,
-    floorId: "6746c5967ec2671f894c1bc5",
-    createdAt: "2024-11-27T07:19:38.856Z",
-    updatedAt: "2024-11-27T07:19:38.856Z",
-    __v: 0,
-    floorDetails: {
-      _id: "6746c5967ec2671f894c1bc5",
-      floorName: "First Floor",
-      floorNumber: 1,
-      floorCapacity: 50,
-      createdAt: "2024-11-27T07:09:10.674Z",
-      updatedAt: "2024-11-27T07:09:10.674Z",
-      __v: 0,
-    },
-  },
-  {
-    _id: "6746c81a95b089107da95db6",
-    tableName: "Table 2",
-    tableNumber: 2,
-    tableChairs: 4,
-    floorId: "6746c5967ec2671f894c1bc5",
-    createdAt: "2024-11-27T07:19:54.207Z",
-    updatedAt: "2024-11-27T07:19:54.207Z",
-    __v: 0,
-    floorDetails: {
-      _id: "6746c5967ec2671f894c1bc5",
-      floorName: "First Floor",
-      floorNumber: 1,
-      floorCapacity: 50,
-      createdAt: "2024-11-27T07:09:10.674Z",
-      updatedAt: "2024-11-27T07:09:10.674Z",
-      __v: 0,
-    },
-  },
-  {
-    _id: "6746c85395b089107da95dca",
-    tableName: "Table 6",
-    tableNumber: 6,
-    tableChairs: 8,
-    floorId: "6746c5967ec2671f894c1bc5",
-    createdAt: "2024-11-27T07:20:51.364Z",
-    updatedAt: "2024-11-27T07:20:51.364Z",
-    __v: 0,
-    floorDetails: {
-      _id: "6746c5967ec2671f894c1bc5",
-      floorName: "First Floor",
-      floorNumber: 1,
-      floorCapacity: 50,
-      createdAt: "2024-11-27T07:09:10.674Z",
-      updatedAt: "2024-11-27T07:09:10.674Z",
-      __v: 0,
-    },
-  },
-  // Add more table entries as needed
-];
+// // Example data
+// const data = [
+//   {
+//     _id: "6746c80a95b089107da95db1",
+//     tableName: "Table 1",
+//     tableNumber: 1,
+//     tableChairs: 4,
+//     floorId: "6746c5967ec2671f894c1bc5",
+//     createdAt: "2024-11-27T07:19:38.856Z",
+//     updatedAt: "2024-11-27T07:19:38.856Z",
+//     __v: 0,
+//     floorDetails: {
+//       _id: "6746c5967ec2671f894c1bc5",
+//       floorName: "First Floor",
+//       floorNumber: 1,
+//       floorCapacity: 50,
+//       createdAt: "2024-11-27T07:09:10.674Z",
+//       updatedAt: "2024-11-27T07:09:10.674Z",
+//       __v: 0,
+//     },
+//   },
+//   {
+//     _id: "6746c81a95b089107da95db6",
+//     tableName: "Table 2",
+//     tableNumber: 2,
+//     tableChairs: 4,
+//     floorId: "6746c5967ec2671f894c1bc5",
+//     createdAt: "2024-11-27T07:19:54.207Z",
+//     updatedAt: "2024-11-27T07:19:54.207Z",
+//     __v: 0,
+//     floorDetails: {
+//       _id: "6746c5967ec2671f894c1bc5",
+//       floorName: "First Floor",
+//       floorNumber: 1,
+//       floorCapacity: 50,
+//       createdAt: "2024-11-27T07:09:10.674Z",
+//       updatedAt: "2024-11-27T07:09:10.674Z",
+//       __v: 0,
+//     },
+//   },
+//   {
+//     _id: "6746c85395b089107da95dca",
+//     tableName: "Table 6",
+//     tableNumber: 6,
+//     tableChairs: 8,
+//     floorId: "6746c5967ec2671f894c1bc5",
+//     createdAt: "2024-11-27T07:20:51.364Z",
+//     updatedAt: "2024-11-27T07:20:51.364Z",
+//     __v: 0,
+//     floorDetails: {
+//       _id: "6746c5967ec2671f894c1bc5",
+//       floorName: "First Floor",
+//       floorNumber: 1,
+//       floorCapacity: 50,
+//       createdAt: "2024-11-27T07:09:10.674Z",
+//       updatedAt: "2024-11-27T07:09:10.674Z",
+//       __v: 0,
+//     },
+//   },
+//   // Add more table entries as needed
+// ];
 
-// React Component
-const FloorTableSelector = () => {
-  const [selectedFloor, setSelectedFloor] = useState(1); // Set initial state to floor 1
+// // React Component
+// const FloorTableSelector = () => {
+//   const [selectedFloor, setSelectedFloor] = useState(1); // Set initial state to floor 1
 
-  // Extract unique floors from the data
-  const uniqueFloors = Array.from(
-    new Set(data.map((item) => item.floorDetails.floorNumber))
-  );
+//   // Extract unique floors from the data
+//   const uniqueFloors = Array.from(
+//     new Set(data.map((item) => item.floorDetails.floorNumber))
+//   );
 
-  // Handle floor selection
-  const handleFloorSelection = (event) => {
-    const floorNumber = Number(event.target.value);
-    setSelectedFloor(floorNumber);
-  };
+//   // Handle floor selection
+//   const handleFloorSelection = (event) => {
+//     const floorNumber = Number(event.target.value);
+//     setSelectedFloor(floorNumber);
+//   };
 
-  // Filter tables by selected floor
-  const filteredTables = selectedFloor
-    ? data.filter(
-        (table) => table.floorDetails.floorNumber === selectedFloor
-      )
-    : [];
+//   // Filter tables by selected floor
+//   const filteredTables = selectedFloor
+//     ? data.filter(
+//         (table) => table.floorDetails.floorNumber === selectedFloor
+//       )
+//     : [];
 
-  return (
-    <div>
-      <h2>Floor and Table Selector</h2>
-      {/* Dropdown for floors */}
-      <label htmlFor="floor-select">Select a Floor:</label>
-      <select id="floor-select" value={selectedFloor} onChange={handleFloorSelection}>
-        <option value="">-- Select a floor --</option>
-        {uniqueFloors.map((floorNumber) => (
-          <option key={floorNumber} value={floorNumber}>
-            Floor {floorNumber}
-          </option>
-        ))}
-      </select>
+//   return (
+//     <div>
+//       <h2>Floor and Table Selector</h2>
+//       {/* Dropdown for floors */}
+//       <label htmlFor="floor-select">Select a Floor:</label>
+//       <select id="floor-select" value={selectedFloor} onChange={handleFloorSelection}>
+//         <option value="">-- Select a floor --</option>
+//         {uniqueFloors.map((floorNumber) => (
+//           <option key={floorNumber} value={floorNumber}>
+//             Floor {floorNumber}
+//           </option>
+//         ))}
+//       </select>
 
-      {/* Display tables for selected floor */}
-      {/* {selectedFloor && ( */}
-        <div style={{ marginTop: "20px" }}>
-          {/* <h3>Tables on Floor {selectedFloor}:</h3> */}
-          <ul>
-            {filteredTables.map((table) => (
-              <li key={table._id}>
-                {table.tableName} (Seats: {table.tableChairs})
-              </li>
-            ))}
-          </ul>
-        </div>
-      {/* )} */}
-    </div>
-  );
-};
+//       {/* Display tables for selected floor */}
+//       {/* {selectedFloor && ( */}
+//         <div style={{ marginTop: "20px" }}>
+//           {/* <h3>Tables on Floor {selectedFloor}:</h3> */}
+//           <ul>
+//             {filteredTables.map((table) => (
+//               <li key={table._id}>
+//                 {table.tableName} (Seats: {table.tableChairs})
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       {/* )} */}
+//     </div>
+//   );
+// };
 
-export default FloorTableSelector;
+// export default FloorTableSelector;

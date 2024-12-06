@@ -555,8 +555,8 @@ const ChatBot = () => {
   // filter input dish name with json
 
   const filterDishName = (dish) => {
-    const value = MenuItemsJson.flatMap((category) =>
-      category.subcategories.filter(
+    const value = MenuItemsJson?.flatMap((category) =>
+      category?.subcategories?.filter(
         (item) => item.name?.toLowerCase() === dish?.toLowerCase()
       )
     );
@@ -646,7 +646,7 @@ const ChatBot = () => {
     const tableNumber = parseInt(tableNumberStr);
 
     // Validate table number
-    if (isNaN(tableNumber) || tableNumber < 1 || tableNumber > tables.length) {
+    if (isNaN(tableNumber) || tableNumber < 1 || tableNumber > tables?.length) {
       alert(
         "Invalid table number! Enter a valid table number (e.g., '1' or '1 Samosa')."
       );
@@ -737,7 +737,7 @@ const ChatBot = () => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e?.key === "Enter") {
       setIsDropdownOpen(false);
       handleFilterSubmit();
     }
@@ -765,7 +765,7 @@ const ChatBot = () => {
                 placeholder="ex : 1 Samosa"
                 className="w-full py-1 px-2 border-2 border-black rounded-lg text-gray-800 bg-white shadow-lg"
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={(e) => setInputValue(e?.target?.value)}
                 onKeyDown={handleKeyDown}
               />
             </div>
