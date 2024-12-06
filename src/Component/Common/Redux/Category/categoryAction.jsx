@@ -69,22 +69,3 @@ export const SetTableNo = (state, action) => {
     // console.log('setTableNo: ', setTableNo);
     state.TableNo = 0;
 };
-
-
-export const PaymentStatus = (state, action) => {
-    console.log('action: ', action);
-
-};
-
-// Payment Mode
-
-export const PaymentMode = (state, action) => {
-    // state.paymentMode = action.payload;
-};
-
-
-// store previous order of particular table by API hit
-export const GetPrevOrderByApi = (state, action) => {
-    console.log('GetPrevOrderByApi: ', action.payload);
-    // state.paymentMode = action.payload;
-};

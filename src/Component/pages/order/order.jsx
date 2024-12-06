@@ -30,8 +30,6 @@ import {
 const Order = ({ cart, table }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  let OrderStatus = JSON?.parse(localStorage.getItem("orderStatus") ?? "[]");
-
   const orderTypes = ["Dine-In", "Delivery", "Pick-Up"];
 
   const {
@@ -41,7 +39,51 @@ const Order = ({ cart, table }) => {
     formState: { errors },
   } = useForm();
 
+  // ----------
+
+  // get previous booking details
+  // const getPrevBooking = table?.tableDetails?.filter(
+  //   (s) => console.log('s: ', s?.customerDetails)
+  // );
+  // // (s) => s?.customerDetails?.customer_table_Id
+  // console.log('getPrevBooking: ', getPrevBooking);
+
+  const [previousCustomers, setPreviousCustomers] = useState([
+    { name: "John Doe", mobile_no: "1234567890", email: "john@example.com" },
+    { name: "Jane Smith", mobile_no: "0987654321", email: "jane@example.com" },
+    { name: 'kevin', email:"admin@gmail.com", mobile_no: '123-456-7890' },
+    { name: 'herry', email:"admin@gmail.com", mobile_no: '987-654-3210' },
+    { name: 'nike', email:"admin@gmail.com", mobile_no: '555-555-5555' },
+    // Add more previous customers as needed
+  ]);
+  const [filteredCustomers, setFilteredCustomers] = useState([]);
+
+  const handleNameChange = (e) => {
+    const value = e.target.value;
+    setValue("name", value);
+    if (value) {
+      const filtered = previousCustomers.filter((customer) =>
+        customer.name.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredCustomers(filtered);
+    } else {
+      setFilteredCustomers([]);
+      setValue("name", "");
+      setValue("phone_number", "");
+      setValue("email", "");
+    }
+  };
+
+  const handleSelectCustomer = (customer) => {
+    setValue("name", customer.name);
+    setValue("phone_number", customer.mobile_no);
+    setValue("email", customer.email);
+    setFilteredCustomers([]);
+  };
+  // -----------
+
   const onSubmit = async (data) => {
+    console.log('data: ', data);
     const payload = {
       customer_name: data?.name,
       customer_mobile_no: data?.phone_number,
@@ -50,7 +92,7 @@ const Order = ({ cart, table }) => {
       tableStatus: "Reserved",
       customer_table_Id: table?.OrderTable?._id,
     };
-    const response = await CheckTableStatus(payload);
+    // const response = await CheckTableStatus(payload);
     toast.success("Table Booked Successfully", {
       position: "top-center",
       autoClose: 2000,
@@ -123,65 +165,76 @@ const Order = ({ cart, table }) => {
           </div>
           {/* user Form start*/}
           <div className="grid grid-cols-2 gap-2">
-            <div class="group flex items-center">
+            <div className="group flex items-center">
               <label
-                for="name"
-                class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                htmlFor="name"
+                className="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
-                Costumer Name :
+                Customer Name:
               </label>
               <input
                 id="name"
                 type="text"
-                class="py-1 w-7/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
-                value={table?.OrderTable?.customerDetails?.customer_name}
+                className="py-1 w-7/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
                 {...register("name", {
                   required: "Name is required",
+                  onChange: handleNameChange,
                 })}
               />
               {errors.name && (
                 <span className="text-red-600">{errors.name.message}</span>
               )}
+              {filteredCustomers.length > 0 && (
+                <ul className="absolute bg-white border border-gray-300 mt-1 rounded-md max-h-60 overflow-scroll z-10">
+                  {filteredCustomers.map((customer, index) => (
+                    <li
+                      key={index}
+                      className="p-2 hover:bg-gray-200 cursor-pointer"
+                      onClick={() => handleSelectCustomer(customer)}
+                    >
+                      {customer.name} - {customer.mobile_no}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
-            <div class="group flex items-center">
+            <div className="group flex items-center">
               <label
-                for="phone_number"
-                class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                htmlFor="phone_number"
+                className="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
-                Phone Number :
+                Phone Number:
               </label>
               <input
                 id="phone_number"
                 type="tel"
-                class="py-1 w-7/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
-                value={table?.OrderTable?.customerDetails?.customer_mobile_no}
+                className="py-1 w-7/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
                 {...register("phone_number", {
                   required: "Phone Number is required",
                 })}
               />
-              {errors.name && (
+              {errors.phone_number && (
                 <span className="text-red-600">
                   {errors.phone_number.message}
                 </span>
               )}
             </div>
-            <div class="group flex items-center">
+            <div className="group flex items-center">
               <label
-                for="email"
-                class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                htmlFor="email"
+                className="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
-                E-mail Address :
+                E-mail Address:
               </label>
               <input
                 id="email"
                 type="email"
-                class="py-1 w-9/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
-                value={table?.OrderTable?.customerDetails?.customer_email}
+                className="py-1 w-9/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
                 {...register("email", {
                   required: "E-mail is required",
                 })}
               />
-              {errors.name && (
+              {errors.email && (
                 <span className="text-red-600">{errors.email.message}</span>
               )}
             </div>

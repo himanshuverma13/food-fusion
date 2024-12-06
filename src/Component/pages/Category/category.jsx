@@ -4,7 +4,6 @@ import { Dialog } from "@headlessui/react";
 // import Button from "../Button/button";
 import {
   add,
-  CheckPaymentStatus,
   decrement,
   increment,
   remove,
@@ -166,7 +165,6 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
   };
   const handlePayment = (pay) => {
     setIsOpen(true);
-    dispatch(CheckPaymentStatus(pay));
   };
 
   let selectedFoodItems = cart.itemsInCart.filter(
@@ -504,7 +502,7 @@ const handleOrderType = (data) => {
                     <form action="">
                       <hr className="border-dashed border-1 border-black" />
                       <div className="flex space-x-4 justify-evenly py-0.5">
-                        {["Cash", "UPI", "Card"].map((method) => (
+                        {["Cash", "UPI", "Card"]?.map((method) => (
                           <label
                             key={method}
                             className="flex items-center font-bold"
@@ -587,8 +585,8 @@ const handleOrderType = (data) => {
                         type="checkbox"
                         className="mx-1"
                         id={item?.option}
-                        value={item.price}
-                        {...register(item.option)}
+                        value={item?.price}
+                        {...register(item?.option)}
                       />
                       <span>{item?.option} </span>
                       <span

@@ -37,12 +37,12 @@ const SplitBill = ({ }) => {
   // const billPerPerson = noOfPeople > 0 ? totalAmount / noOfPeople : 0;
 
   const handleTotalAmountChange = (e) => {
-    const amount = parseFloat(e.target.value);
+    const amount = parseFloat(e?.target?.value);
     setTotalAmount(amount);
   };
 
   const handleSplitBill = (e) => {
-    const people = parseInt(e.target.value, 10);
+    const people = parseInt(e?.target?.value, 10);
     setNoOfPeople(people);
     if (people > 0) {
       setBillPerPerson(totalAmount / people); // Calculate bill per person
@@ -55,8 +55,8 @@ const SplitBill = ({ }) => {
   const onSubmit = (data) => {
     // console.log("data: ", data);
     const paymentData = {
-      totalAmount: data.totalAmount,
-      numberOfPeople: data.numberOfPeople,
+      totalAmount: data?.totalAmount,
+      numberOfPeople: data?.numberOfPeople,
       billPerPerson: billPerPerson,
     };
     dispatch(getpaymentDetails(paymentData));
@@ -115,9 +115,9 @@ const SplitBill = ({ }) => {
                         required: "Total Amount is Required",
                       })}
                     />
-                    {errors.totalAmount && (
+                    {errors?.totalAmount && (
                       <span className="text-red-600">
-                        {errors.totalAmount.message}
+                        {errors?.totalAmount?.message}
                       </span>
                     )}
                   </div>
@@ -140,9 +140,9 @@ const SplitBill = ({ }) => {
                           required: "No. of People is Required",
                         })}
                       />
-                      {errors.numberOfPeople && (
+                      {errors?.numberOfPeople && (
                         <span className="text-red-600">
-                          {errors.numberOfPeople.message}
+                          {errors?.numberOfPeople?.message}
                         </span>
                       )}
                     </div>

@@ -44,7 +44,7 @@ const Navbar = ({ SideNavFunctionality }) => {
           <p className="font-semibold uppercase tracking-widest text-red-600">
             {UserName?.user?.fullname}
           </p>
-          <h4 className="m-0 ">CHASIER</h4>
+          <h4 className="m-0 uppercase">{UserName?.user?.role}</h4>
         </div>
         <img
           className="bg-red-700 h-11 rounded-full p-1"

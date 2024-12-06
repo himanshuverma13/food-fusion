@@ -14,14 +14,11 @@ const FooterSearchBar = ({ table }) => {
   };
 
   const handleKeyDown = async (e) => {
-    if (e.key === "Enter") {
-      setIsDropdownOpen((prev) => !prev);
-      let response = await GetOrderDetailstoAPI();
-      console.log("response: ", response);
-    }
+      if (e?.target?.value && e?.key === "Enter") {
+        setIsDropdownOpen((prev) => !prev);
+        let response = await GetOrderDetailstoAPI();
+      }
   };
-
-
 
   return (
     <div
@@ -46,7 +43,7 @@ const FooterSearchBar = ({ table }) => {
                 Order No. 007
               </div>
               <div className="flex justify-between text-sm tracking-wider font-semibold">
-                <span>Time : {new Date().toLocaleTimeString()}</span>
+                <span>Time : {new Date()?.toLocaleTimeString()}</span>
                 <span>Table No.</span>
               </div>
             </div>
