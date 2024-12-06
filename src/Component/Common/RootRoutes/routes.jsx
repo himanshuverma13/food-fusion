@@ -21,6 +21,7 @@ import AdminRemoveUser from '../Auth/adminRemoveUser';
 import Registration from '../Auth/registration';
 import Inventory from '../../pages/Admin/inventory';
 import AdminUserTable from '../Auth/adminUserTable';
+import PreviousOrders from '../../pages/PreviousOrder/previousOrder';
 
 
 const RootRoutes = () => {
@@ -51,6 +52,7 @@ const RootRoutes = () => {
           <Route path="/order" element={<Order />} />
           <Route path="/order-history" element={<OrderHistory />} />
           <Route path="/employee" element={<EmployeeTable />} />
+          <Route path="/previousorder" element={<PreviousOrders />} />
           <Route path="*" element={<Home />} />
 
           {/* Admin Routes */}

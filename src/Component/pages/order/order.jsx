@@ -148,11 +148,13 @@ const Order = ({ cart, table }) => {
             moveSideNav ? "ms-16" : "ms-0"
           }`}
         >
-          <div className="flex justify-between my-2">
+          <div className=" my-2">
             <div>
-              <p className="text-xl font-bold text-[#544013]">Generate Order</p>
+              <p className="text-2xl font-bold text-[#544013] mb-3">
+                Generate Order
+              </p>
             </div>
-            <div className="flex">
+            <div className="flex justify-between">
               <DropdownButton
                 options={orderTypes}
                 selectedValue={handleOrderType}
@@ -164,8 +166,8 @@ const Order = ({ cart, table }) => {
             </div>
           </div>
           {/* user Form start*/}
-          <div className="grid grid-cols-2 gap-2">
-            <div className="group flex items-center">
+          <div className="grid grid-cols-2 gap-2 mb-6">
+            <div class="group flex items-center">
               <label
                 htmlFor="name"
                 className="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
@@ -263,8 +265,31 @@ const Order = ({ cart, table }) => {
           </div>
           {/* user Form End*/}
 
+          {/* Buttons start */}
+          <div className="text-right">
+          <NavLink to="/previousorder">
+            <Button
+              title="Previous Orders"
+              btn_type="button"
+              btn_class="border-2 border-black rounded-lg bg-[#cd3f14] p-2 text-white tracking-wider font-bold me-3"
+            />
+            </NavLink>
+            <NavLink to="/category">
+            <Button
+              title="Take New Order"
+              btn_type="button"
+              btn_class="border-2 border-black rounded-lg bg-[#cd3f14] p-2 text-white tracking-wider font-bold me-3"
+            />
+            </NavLink>
+            <Button
+              title="+ Add"
+              btn_type="submit"
+              btn_class="border-2 border-black rounded-lg bg-[#cd3f14] p-2 text-white tracking-wider font-bold me-3"
+            />
+          </div>
+
           {/* Search bar */}
-          <div class="text-black flex justify-around my-4">
+          {/* <div class="text-black flex justify-around my-4">
             <NavLink to="/category">
               <Button
                 title="Menu View"
@@ -286,7 +311,7 @@ const Order = ({ cart, table }) => {
                 </svg>
               </button>
             </div>
-          </div>
+          </div> */}
           {/* Auto Searchbar Modal */}
           <CategoryModal
             isOpen={isOpen}
@@ -297,7 +322,7 @@ const Order = ({ cart, table }) => {
 
           {/* Table View */}
           {/* <h2 class="mt-6 text-2xl text-red-600">Simple Table</h2> */}
-          <div class="h-[50vh] bg-[#ede9dd] overflow-auto">
+          {/* <div class="h-[50vh] bg-[#ede9dd] overflow-auto">
             <table class="w-full text-sm text-center text -[#544013] border-solid border-4 border-[#d79555] border-x-0 border-b-0">
               <thead class="text-lg text-[#544013] uppercase bg-[#ede9dd]">
                 <tr className="border-solid border-4 border-[#d79555] border-x-0">
@@ -382,23 +407,23 @@ const Order = ({ cart, table }) => {
                 ))}
               </tbody>
             </table>
-          </div>
+          </div> */}
         </div>
-        <div className="flex justify-center fixed bottom-12 left-0 right-0 my-3">
-          <NavLink to="/payment">
+        {/* <div className="flex justify-center fixed bottom-12 left-0 right-0 my-3"> */}
+          {/* <NavLink to="/payment">
             <Button
               title="Save & Generate KOT"
               btn_type="submit"
               btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase me-8"
             />
-          </NavLink>
-          <NavLink to="/payment">
+          </NavLink> */}
+          {/* <NavLink to="/payment">
             <Button
               title="Save & Print Bill"
               btn_type="submit"
               btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
             />
-          </NavLink>
+          </NavLink> */}
 
           {/* <NavLink> */}
           {/* <Button
@@ -406,12 +431,12 @@ const Order = ({ cart, table }) => {
             btn_type="submit"
             btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
           /> */}
-          <button
+          {/* <button
             className="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
             type="submit"
           >
             save
-          </button>
+          </button> */}
           {/* </NavLink> */}
 
           <NavLink>
@@ -421,7 +446,7 @@ const Order = ({ cart, table }) => {
           btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-sm text-white font-bold px-3 py-1 ms-8"
         /> */}
           </NavLink>
-        </div>
+        {/* </div> */}
       </form>
       <StatusFooter />
     </>

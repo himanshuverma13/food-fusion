@@ -332,9 +332,9 @@ const handleOrderType = (data) => {
                 buttonLabel="Filters"
               />
             </div>
-            <div className="flex">
+            <div className="grid grid-cols-8 grid-rows-1 gap-4">
               {/* Side Tabs */}
-              <div className="w-1/4 h-[60vh] cursor-pointer font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
+              <div className="col-span-2 h-[60vh] cursor-pointer font-bold overflow-auto bg-[#ede9dd] rounded-2xl px-4 py-2">
                 {MenuItemsJson?.map((tab) => (
                   <a
                     onClick={() => {
@@ -359,7 +359,7 @@ const handleOrderType = (data) => {
               </div>
 
               {/* Main Content */}
-              <div className="p-2 h-[60vh] overflow-auto">
+              <div className="col-span-6 col-start-3 p-2 h-[60vh] overflow-auto">
                 <div className="grid grid-cols-2 gap-4">
                   {filteredOptions?.map((food) => (
                     <div className="p-2 bg-white border rounded-2xl shadow-2xl">

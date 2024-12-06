@@ -76,7 +76,7 @@ const SideNavbar = () => {
 
   return (
     <>
-      <div className="row-start-2  flex flex-col justify-start items-center">
+      <div className="row-start-2 flex flex-col justify-start items-center">
         {URL?.pathname !== "/admin/dashboard" &&
         URL?.pathname !== "/admin/register" &&
         URL?.pathname !== "/admin/remove" &&
@@ -120,7 +120,7 @@ const SideNavbar = () => {
         )}
       </div>
 
-      <div className="row-start-5">
+      <div className="row-start-6">
         <ul>
           <li
             className="text-center my-2 cursor-pointer"

@@ -97,9 +97,10 @@ const Table = ({ cart, table, chatbot }) => {
           <div className="circle-container grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-7 w-3/4">
             {filteredTables?.map((items, index) => (
               <div
+              onClick={() => GetTableNo(items)}
                 className={`cursor-pointer flex flex-col justify-center items-center ${
                   isTableBooked(items)
-                    ? "relative border-2 border-black rounded-2xl pb-1 pt-8 px-0 bg-[#fddcbf]"
+                    ? "border-2 border-black rounded-2xl pb-1 pt-8 px-0 bg-[#fddcbf]"
                     : "  "
                 }`}
               >
