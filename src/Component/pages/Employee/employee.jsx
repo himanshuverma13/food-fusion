@@ -62,7 +62,7 @@ const EmployeeTable = () => {
   return (
     <>
       <Navbar SideNavFunctionality={SideNavFunctionality} />
-      <div className={`mx-auto p-4 ${moveSideNav ? "ms-16" : "ms-0"}`}>
+      <div className={`overflow-x-auto p-4 ${moveSideNav ? "ms-16" : "ms-0"}`}>
         <table className="w-full border border-slate-500">
           <thead className="text-left bg-[#d79555] uppercase">
             <tr>
