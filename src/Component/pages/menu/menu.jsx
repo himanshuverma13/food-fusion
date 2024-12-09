@@ -572,26 +572,26 @@ const Menu = () => {
     autoplaySpeed: 2000,
     responsive: [
       {
+        breakpoint: 1524,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
+          slidesToScroll: 1,
+          initialSlide: 2,
         },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -717,7 +717,7 @@ const Menu = () => {
         </div>
 
         {/* Menu Items Card */}
-        <div className="grid grid-cols-5 gap-3 mt-1">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:mt-1 md:mt-7">
           {filteredOptions?.map((menu, index) => (
             <div
               key={index}
@@ -725,7 +725,7 @@ const Menu = () => {
             >
               <img src={Appetizers} className="h-12 me-2" alt="Loading" />
               <div>
-                <p className="font-sans uppercase text-lg tracking-wide font-semibold">
+                <p className="font-sans uppercase lg:text-lg tracking-wide font-semibold md:text-base">
                   {menu?.name}
                 </p>
                 <p className="font-sans text-sm tracking-wide">
