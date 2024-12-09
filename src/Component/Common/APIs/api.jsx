@@ -20,15 +20,7 @@ export const LoginAPI = async (Payload) => {
   }
 };
 
-// Order page Customer Order Form
-export const CustomerOrderRegisterAPI = async (Payload) => {
-  try {
-    const response = await axiosInstance.post(`/customer/register`, Payload);
-    return response;
-  } catch (error) {
-    throw error;
-  }
-};
+
 
 //  Category Page all menu
 export const FoodMenuAPI = async () => {
@@ -50,8 +42,8 @@ export const GetTableAPI = async () => {
   }
 };
 
-// Table Status for Reserve , order Delived and ready for payment
-export const CheckTableStatus = async (payload) => {
+// Order page Customer Order Form for table booking 
+export const CustomerTableBookingAPI = async (payload) => {
   try {
     const response = await axiosInstance.post(`${URL}/customer/register`, payload);
     GetTableAPI()
@@ -85,6 +77,16 @@ export const GetOrderDetailstoAPI = async () => {
 export const SendPaymentDetailstoAPI = async () => {
   try {
     const response = await axiosInstance.post(`${URL}/restaurant/payment/order`);
+    return response?.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+//  Send payment details to backend
+export const GetCustomerPreviousDetailsAPI = async () => {
+  try {
+    const response = await axiosInstance.get(`${URL}/restaurant/allCustomer`);
     return response?.data;
   } catch (error) {
     throw error;
