@@ -37,7 +37,7 @@ const TableReservationModal = () => {
         </button>
         {isOpen && (
           <div className="fixed z-10 top-0 right-0 bottom-0 left-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
-            <div className="bg-[#f6f6e9] border-2 border-black rounded-lg shadow-lg p-4 w-1/4 h-2/2 mx-3">
+            <div className="bg-[#f6f6e9] border-2 border-black rounded-lg shadow-lg p-4 w-1/4 lg:w-1/4 md:w-2/5  h-2/2 mx-3">
               <div className="">
                 <div className="flex justify-between">
                   <h2 className="text-2xl font-normal mb-2">
