@@ -94,7 +94,7 @@ const Table = ({ cart, table, chatbot }) => {
           ))}
         </select>
         <div className="flex justify-center items-center">
-          <div className="circle-container grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-7 w-3/4">
+          <div className="circle-container grid grid-cols-2 md:grid-cols-5 lg:grid-cols-6 gap-7 w-3/4 lg:mt-1 md:mt-5">
             {filteredTables?.map((items, index) => (
               <div
               onClick={() => GetTableNo(items)}

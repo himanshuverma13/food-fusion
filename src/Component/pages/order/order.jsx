@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
 import Button from "../../Common/Button/button";
-import {
-  decrement,
-  increment,
-  remove,
-} from "../../Common/Redux/Category/categorySlice";
+// import {
+//   decrement,
+//   increment,
+//   remove,
+// } from "../../Common/Redux/Category/categorySlice";
 import { connect, useDispatch } from "react-redux";
 
 // Images
-import Menu from "../../assets/Images/menu/menu-white.png";
+// import Menu from "../../assets/Images/menu/menu-white.png";
 import { NavLink } from "react-router-dom";
 import StatusFooter from "../../Common/Footer/statusFooter";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleMinus,
-  faCirclePlus,
-  faTrashCan,
-} from "@fortawesome/free-solid-svg-icons";
-import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faCircleMinus,
+//   faCirclePlus,
+//   faTrashCan,
+// } from "@fortawesome/free-solid-svg-icons";
+// import AutoSuggestSearch from "../../Common/AutoSuggestSearchBar/AutoSuggestSearchBar";
 import CategoryModal from "../../Common/Modal/categoryModal";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -122,17 +122,17 @@ const Order = ({ cart, table }) => {
   };
 
   const dispatch = useDispatch();
-  const handleIncrementQuantity = (item) => {
-    dispatch(increment(item));
-  };
+  // const handleIncrementQuantity = (item) => {
+  //   dispatch(increment(item));
+  // };
 
-  const handleDecrementQuantity = (id) => {
-    dispatch(decrement(id?.id));
-  };
+  // const handleDecrementQuantity = (id) => {
+  //   dispatch(decrement(id?.id));
+  // };
 
-  const handleRemoveFromCart = (id) => {
-    dispatch(remove(id?.id));
-  };
+  // const handleRemoveFromCart = (id) => {
+  //   dispatch(remove(id?.id));
+  // };
 
   const closeModal = () => setIsOpen(false);
 
@@ -143,9 +143,9 @@ const Order = ({ cart, table }) => {
   };
 
   // to show filter food items
-  const filterFoodItems = cart?.itemsInCart?.filter(
-    (filterItems) => filterItems?.tableNo === cart?.TableNo
-  );
+  // const filterFoodItems = cart?.itemsInCart?.filter(
+  //   (filterItems) => filterItems?.tableNo === cart?.TableNo
+  // );
 
   // Side Nav Functionality
   const [moveSideNav, setmoveSideNav] = useState(true);
@@ -182,7 +182,7 @@ const Order = ({ cart, table }) => {
           </div>
           {/* user Form start*/}
           <div className="grid grid-cols-2 gap-2 mb-6">
-            <div class="group flex items-center">
+            <div class="relative group flex items-center">
               <label
                 htmlFor="customer_name"
                 className="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
@@ -203,7 +203,7 @@ const Order = ({ cart, table }) => {
                 <span className="text-red-600">{errors?.customer_name?.message}</span>
               )}
               {filteredCustomers.length > 0 && (
-                <ul className="absolute bg-white border border-gray-300 mt-1 rounded-md max-h-60 overflow-scroll z-10">
+                <ul className="absolute left-44 top-7 w-3/6 h-32 overflow-y-scroll mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
                   {filteredCustomers.map((customer, index) => (
                     <li
                       key={index}
