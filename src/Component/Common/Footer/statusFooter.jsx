@@ -23,26 +23,27 @@ const StatusFooter = ({ cart, table }) => {
   );
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 mx-28">
+    <div className="fixed bottom-0 left-0 right-0 sm:mx-20 lg:mx-36 md:mx-20">
       <footer
         className="relative bg-[#d79555] text-white py-1 px-6 cursor-pointer rounded-t-3xl"
         onMouseEnter={() => setActiveStatus(true)}
         onMouseLeave={() => setActiveStatus(false)}
       >
-        <div className="flex justify-around items-center">
-          <span className="tracking-wider font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
+        <div className="grid grid-cols-6 grid-rows-1 gap-2">
+          <span className="tracking-wider truncate font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
             Active tables <div>{showActiveTable?.length || 0}</div>
           </span>
-          <span className="tracking-wider font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
+          <span className="tracking-wider truncate font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
             Available tables <div>{showAvailableTable?.length || 0}</div>
           </span>
-          <span className="tracking-wider font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
+          <span className="tracking-wider truncate font-bold text-center text-sm bg-white text-orange-500 border-2 border-solid border-white rounded-2xl px-2">
             Reservations <div>20</div>
           </span>
-          <div className="flex items-center border bg-[#63898c] border-gray-300 rounded-full py-0 px-1">
+          {/* <div className="col-span-2"> */}
+          <div className="col-span-2 flex items-center justify-between border bg-[#63898c] border-gray-300 rounded-full py-0 px-1">
             {/* Search Icon */}
             <svg
-              className="h-5 mx-1 w-5 text-black"
+              className="h-5 mx-1 text-black"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -98,7 +99,8 @@ const StatusFooter = ({ cart, table }) => {
               </g>
             </svg>
           </div>
-          <div className="absolute bottom-0 right-0">
+          {/* </div> */}
+          <div className="col-start-6 absolute bottom-0 right-0">
             <ChatBot />
           </div>
           {/* <img src={footerBot} className="absolute bottom-0 right-0 h-20" alt="loading" /> */}
