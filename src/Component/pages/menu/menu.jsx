@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
 import { SetTable } from "../../Common/Redux/Category/categorySlice";
@@ -526,10 +526,14 @@ const Menu = () => {
   const [MenuItemsJson, setMenuItemsJson] = useState([]);
 
   const fetchMenu = async () => {
-    let menu = await FoodMenuAPI();
-    // console.log("menu: ", menu?.data?.data);
-    setMenuItemsJson(menu?.data?.data);
-    setFilteredOptions(menu?.data?.data[0].subcategories);
+    try {
+      let menu = await FoodMenuAPI();
+      // console.log("menu: ", menu?.data?.data);
+      setMenuItemsJson(menu?.data?.data);
+      setFilteredOptions(menu?.data?.data[0].subcategories);
+    } catch (error) {
+      console.log("error: ", error);
+    }
   };
 
   useEffect(() => {
@@ -698,7 +702,7 @@ const Menu = () => {
                   href="#"
                   onClick={() => {
                     setFilteredOptions(tab?.subcategories);
-                      }}
+                  }}
                   className={`flex items-center justify-center ms-2 mt-1 py-1 border-solid border-2 border-[#544013] rounded-xl ${
                     tab.category === selectedTab
                       ? "bg-[#d79555] text-white"

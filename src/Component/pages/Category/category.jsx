@@ -52,10 +52,15 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
   const { register, handleSubmit, reset, setValue } = useForm();
 
   const fetchMenu = async () => {
-    let menu = await FoodMenuAPI();
-    setMenuItemsJson(menu?.data?.data);
-    // console.log('menu?.data?.data: ', menu?.data?.data);
-    setFilteredOptions(menu?.data?.data[0].subcategories);
+    try {
+      let menu = await FoodMenuAPI();
+      setMenuItemsJson(menu?.data?.data);
+      // console.log('menu?.data?.data: ', menu?.data?.data);
+      setFilteredOptions(menu?.data?.data[0].subcategories);
+    } catch (error) {
+      console.log('error: ', error);
+
+    }
   };
 
   let customerDetails = JSON?.parse(
@@ -226,10 +231,10 @@ const Category = ({ cart, TableDetails, customerStatus, payment, chatbot }) => {
   };
 
   // get order type dropdown value 
-const [orderType, setorderType] = useState('Dine-In');
-const handleOrderType = (data) => {
-  setorderType(data);
-};
+  const [orderType, setorderType] = useState('Dine-In');
+  const handleOrderType = (data) => {
+    setorderType(data);
+  };
 
 
   // to show customer details of that table
@@ -239,7 +244,7 @@ const handleOrderType = (data) => {
 
   //  find category of order subcategory
   // const [category, setCategory] = useState([]);
-  
+
   // useEffect(() => {
   //   cart?.itemsInCart?.map((item)=>{
   //     const foundCategory = MenuItemsJson.find((cat) =>
@@ -262,19 +267,24 @@ const handleOrderType = (data) => {
         orderType == "Dine-In" ? getCustomerDetails[0]?.data?._id : null,
       totalAmount: subTotal,
     };
-     await SendOrderDetailstoAPI(payload)
-     const response = await GetOrderDetailstoAPI()
-     if(response?.succcess == true){
-     console.log('response?.succcess: ', response?.success);
-     response?.data?.map((items)=>{
-      console.log('items: ', items);
-     })
+    try {
+      await SendOrderDetailstoAPI(payload)
+      const response = await GetOrderDetailstoAPI()
+      if (response?.succcess == true) {
+        console.log('response?.succcess: ', response?.success);
+        response?.data?.map((items) => {
+          console.log('items: ', items);
+        })
 
-     }
+      }
+    } catch (error) {
+      console.log('error: ', error);
+
+    }
   };
 
   // send to Payment details API
-  const handlePaymentDetails = () => {
+  const handlePaymentDetails = async () => {
     let payload = {
       billId: 1,
       paymentMethod: paymentMethod,
@@ -283,8 +293,13 @@ const handleOrderType = (data) => {
       status: "Completed",
     };
     // console.log("payload: ", payload);
-    let response = SendPaymentDetailstoAPI(payload);
-    // console.log("response: ", response);
+    try {
+      let response = await SendPaymentDetailstoAPI(payload);
+      // console.log("response: ", response);
+    } catch (error) {
+      console.log('error: ', error);
+
+    }
   };
 
   return (
@@ -296,9 +311,8 @@ const handleOrderType = (data) => {
       <TableStatusModal />
 
       <div
-        className={` border-solid px-2 pb-4 mx-3 border-4 border-[#544013] transition-all duration-100 ${
-          moveSideNav ? "ms-16" : "ms-0"
-        }  `}
+        className={` border-solid px-2 pb-4 mx-3 border-4 border-[#544013] transition-all duration-100 ${moveSideNav ? "ms-16" : "ms-0"
+          }  `}
       >
         <p className="text-xl font-bold text-[#544013]">Generate Order</p>
         <div className="grid grid-cols-12  gap-4">
@@ -342,11 +356,10 @@ const handleOrderType = (data) => {
                       // handleTabClick(tab)
                     }}
                     key={tab?.name}
-                    className={`block text-left text-sm truncate w-full my-2 shadow-lg py-1 px-2 ${
-                      tab === selectedTab
-                        ? "bg-[#d79555] border-solid border-2 border-black text-white"
-                        : "bg-white"
-                    }`}
+                    className={`block text-left text-sm truncate w-full my-2 shadow-lg py-1 px-2 ${tab === selectedTab
+                      ? "bg-[#d79555] border-solid border-2 border-black text-white"
+                      : "bg-white"
+                      }`}
                   >
                     <img
                       src={tab?.image}
@@ -524,12 +537,12 @@ const handleOrderType = (data) => {
                 </ul>
                 <div className="flex justify-around items-end my-1">
                   {/* <NavLink to="/payment"> */}
-                    <Button
-                      title="Save & Generate KOT"
-                      btn_type="button"
-                      onClick={() => handleOrderDetails()}
-                      btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
-                    />
+                  <Button
+                    title="Save & Generate KOT"
+                    btn_type="button"
+                    onClick={() => handleOrderDetails()}
+                    btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-0.5 text-sm font-bold uppercase"
+                  />
                   {/* </NavLink> */}
                   <NavLink to="/payment">
                     <Button
@@ -590,9 +603,8 @@ const handleOrderType = (data) => {
                       />
                       <span>{item?.option} </span>
                       <span
-                        className={`mx-1 text-red-500 font-semibold ${
-                          item?.price > 0 ? "inline" : "hidden"
-                        }`}
+                        className={`mx-1 text-red-500 font-semibold ${item?.price > 0 ? "inline" : "hidden"
+                          }`}
                       >
                         {" "}
                         (₹ {item?.price})

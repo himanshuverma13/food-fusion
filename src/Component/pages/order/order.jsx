@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import DropdownButton from "../../Common/dropdownButton/dropdown";
 import Button from "../../Common/Button/button";
@@ -39,26 +39,23 @@ const Order = ({ cart, table }) => {
 
   // ----------
   const [previousCustomers, setPreviousCustomers] = useState();
-  
+
   useEffect(() => {
     const fetchCustomerDetails = async () => {
-        try {
-            const getvalue = await GetCustomerPreviousDetailsAPI();
-            setPreviousCustomers(getvalue?.data);
-        } catch (error) {
-            console.error('Error fetching customer details:', error);
-        }
+      try {
+        const getvalue = await GetCustomerPreviousDetailsAPI();
+        setPreviousCustomers(getvalue?.data);
+      } catch (error) {
+        console.error("Error fetching customer details:", error);
+      }
     };
 
     fetchCustomerDetails();
   }, []);
-  
-
-
 
   const [filteredCustomers, setFilteredCustomers] = useState([]);
 
-  const handleNameChange = async(e) => {
+  const handleNameChange = async (e) => {
     const value = e?.target?.value;
     setValue("name", value);
     if (value) {
@@ -104,9 +101,8 @@ const Order = ({ cart, table }) => {
         theme: "light",
       });
       return;
-      
     } catch (error) {
-      console.log('error: ', error?.response?.data?.error);
+      console.log("error: ", error?.response?.data?.error);
       toast.error(error?.response?.data?.error, {
         position: "top-center",
         autoClose: 2000,
@@ -117,7 +113,6 @@ const Order = ({ cart, table }) => {
         progress: undefined,
         theme: "light",
       });
-      
     }
   };
 
@@ -185,7 +180,7 @@ const Order = ({ cart, table }) => {
             <div class="relative group flex items-center">
               <label
                 htmlFor="customer_name"
-                className="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                className="pb-1 lg:text-lg md:text-sm font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
                 Customer Name:
               </label>
@@ -200,9 +195,11 @@ const Order = ({ cart, table }) => {
                 })}
               />
               {errors?.customer_name && (
-                <span className="text-red-600">{errors?.customer_name?.message}</span>
+                <span className="text-red-600">
+                  {errors?.customer_name?.message}
+                </span>
               )}
-              {filteredCustomers.length > 0 && (
+              {filteredCustomers?.length > 0 && (
                 <ul className="absolute left-44 top-7 w-3/6 h-32 overflow-y-scroll mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
                   {filteredCustomers.map((customer, index) => (
                     <li
@@ -219,20 +216,22 @@ const Order = ({ cart, table }) => {
             <div className="group flex items-center">
               <label
                 htmlFor="customer_mobile_no"
-                className="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                className="pb-1 lg:text-lg md:text-sm font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
                 Phone Number:
               </label>
               <input
                 id="customer_mobile_no"
-                defaultValue={table?.OrderTable?.customerDetails?.customer_mobile_no}
+                defaultValue={
+                  table?.OrderTable?.customerDetails?.customer_mobile_no
+                }
                 type="tel"
                 className="py-1 w-7/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
                 {...register("customer_mobile_no", {
                   required: "Phone Number is required",
                 })}
               />
-              {errors.customer_mobile_no && (
+              {errors?.customer_mobile_no && (
                 <span className="text-red-600">
                   {errors?.customer_mobile_no?.message}
                 </span>
@@ -241,27 +240,31 @@ const Order = ({ cart, table }) => {
             <div className="group flex items-center">
               <label
                 htmlFor="customer_email"
-                className="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                className="pb-1 lg:text-lg md:text-sm font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
                 E-mail Address:
               </label>
               <input
                 id="customer_email"
                 type="customer_email"
-                defaultValue={table?.OrderTable?.customerDetails?.customer_email}
+                defaultValue={
+                  table?.OrderTable?.customerDetails?.customer_email
+                }
                 className="py-1 w-9/12 border-solid border-black border-2 rounded-2xl bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:shadow-lg focus:shadow-[#544013]"
                 {...register("customer_email", {
                   required: "E-mail is required",
                 })}
               />
               {errors?.customer_email && (
-                <span className="text-red-600">{errors?.customer_email?.message}</span>
+                <span className="text-red-600">
+                  {errors?.customer_email?.message}
+                </span>
               )}
             </div>
             <div class="group flex items-center">
               <label
                 for="table_Number"
-                class="pb-1 text-lg font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
+                class="pb-1 lg:text-lg md:text-sm font-medium text-black transition-all duration-200 ease-in-out group-focus-within:text-[#544013] me-3"
               >
                 Table No. :
               </label>
@@ -285,19 +288,19 @@ const Order = ({ cart, table }) => {
 
           {/* Buttons start */}
           <div className="text-right">
-          <NavLink to="/previousorder">
-            <Button
-              title="Previous Orders"
-              btn_type="button"
-              btn_class="border-2 border-black rounded-lg bg-[#cd3f14] p-2 text-white tracking-wider font-bold me-3"
-            />
+            <NavLink to="/previousorder">
+              <Button
+                title="Previous Orders"
+                btn_type="button"
+                btn_class="border-2 border-black rounded-lg bg-[#cd3f14] p-2 text-white tracking-wider font-bold me-3"
+              />
             </NavLink>
             <NavLink to="/category">
-            <Button
-              title="Take New Order"
-              btn_type="button"
-              btn_class="border-2 border-black rounded-lg bg-[#cd3f14] p-2 text-white tracking-wider font-bold me-3"
-            />
+              <Button
+                title="Take New Order"
+                btn_type="button"
+                btn_class="border-2 border-black rounded-lg bg-[#cd3f14] p-2 text-white tracking-wider font-bold me-3"
+              />
             </NavLink>
             <Button
               title="+ Add"
@@ -428,14 +431,14 @@ const Order = ({ cart, table }) => {
           </div> */}
         </div>
         {/* <div className="flex justify-center fixed bottom-12 left-0 right-0 my-3"> */}
-          {/* <NavLink to="/payment">
+        {/* <NavLink to="/payment">
             <Button
               title="Save & Generate KOT"
               btn_type="submit"
               btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase me-8"
             />
           </NavLink> */}
-          {/* <NavLink to="/payment">
+        {/* <NavLink to="/payment">
             <Button
               title="Save & Print Bill"
               btn_type="submit"
@@ -443,27 +446,27 @@ const Order = ({ cart, table }) => {
             />
           </NavLink> */}
 
-          {/* <NavLink> */}
-          {/* <Button
+        {/* <NavLink> */}
+        {/* <Button
             title="Save"
             btn_type="submit"
             btn_class="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
           /> */}
-          {/* <button
+        {/* <button
             className="border-solid border-2 border-[#544013] rounded-xl bg-[#f6d8ba] px-3 py-1 text-sm font-bold tracking-wider uppercase mx-8"
             type="submit"
           >
             save
           </button> */}
-          {/* </NavLink> */}
+        {/* </NavLink> */}
 
-          <NavLink>
-            {/* <Button
+        <NavLink>
+          {/* <Button
           title="Cancel"
           btn_type="button"
           btn_class="border-2 border-black border-solid rounded-xl bg-red-500 text-sm text-white font-bold px-3 py-1 ms-8"
         /> */}
-          </NavLink>
+        </NavLink>
         {/* </div> */}
       </form>
       <StatusFooter />

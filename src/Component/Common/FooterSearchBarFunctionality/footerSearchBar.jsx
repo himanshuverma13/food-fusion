@@ -14,21 +14,25 @@ const FooterSearchBar = ({ table }) => {
   };
 
   const handleKeyDown = async (e) => {
-      if (e?.target?.value && e?.key === "Enter") {
-        setIsDropdownOpen((prev) => !prev);
-        let response = await GetOrderDetailstoAPI();
-      }
+    if (e?.target?.value && e?.key === "Enter") {
+      setIsDropdownOpen((prev) => !prev);
+    }
+    try {
+      let response = await GetOrderDetailstoAPI();
+    } catch (error) {
+      console.log("error: ", error);
+    }
   };
 
   return (
     <div
-      className="relative inline-block"
+      className="relative md:w-24 lg:w-72 inline-block"
       tabIndex={0} // Make the div focusable
       onBlur={handleBlur} // Handle blur to detect when the dropdown loses focus
     >
       <input
         type="text"
-        className="flex-grow px-4 bg-transparent py-2 focus:outline-none"
+        className=" bg-transparent focus:outline-none"
         placeholder="table status"
         onKeyDown={handleKeyDown}
       />

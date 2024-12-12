@@ -8,6 +8,7 @@ import Button from "../Button/button";
 import { NavLink } from "react-router-dom";
 import { RegistrationAPI } from "../APIs/api";
 import Loader from "../buttonLoader/buttonLoader";
+import { toast } from "react-toastify";
 const Registration = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {
@@ -36,12 +37,25 @@ const Registration = () => {
     };
     // reset();
     setIsSubmitting(true);
-    let response = await RegistrationAPI(Payload);
-    console.log("response: ", response);
-    if (response?.data.success === true) {
-      setIsSubmitting(false);
-    } else {
-      setIsSubmitting(true);
+    try {
+      const response = await RegistrationAPI(Payload);
+      console.log("response: ", response);
+      if (response?.data.success) {
+        setIsSubmitting(false);
+        toast.success("User registered successfully!", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        reset();
+      }
+    } catch (error) {
+      console.error("Registration failed:", error);
     }
   };
 
@@ -121,7 +135,9 @@ const Registration = () => {
                   </svg>
                 </div>
                 {errors.option && (
-                  <span className="text-red-600">{errors?.option?.message}</span>
+                  <span className="text-red-600">
+                    {errors?.option?.message}
+                  </span>
                 )}
               </div>
             </div>
@@ -233,7 +249,9 @@ const Registration = () => {
                 })}
               />
               {errors?.join_date && (
-                <span className="text-red-600">{errors?.join_date?.message}</span>
+                <span className="text-red-600">
+                  {errors?.join_date?.message}
+                </span>
               )}
             </div>
             <div>
