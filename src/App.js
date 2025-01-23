@@ -6,16 +6,19 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import FloorTableSelector from "./Component/Common/testing/test";
 import NameMobileForm from "./Component/Common/testing/test";
+import WebSocketComponent from "./Component/Common/WebSocket/websocket";
+import TableSelectionForm from "./Component/Common/testing/test";
 function App() {
   return (
     <>
-    <ToastContainer />
-      <Provider store={store}>
+    {/* <ToastContainer /> */}
+      {/* <Provider store={store}>
         <div className="background-image">
           <RootRoutes/>
-          {/* <NameMobileForm/> */}
+          
         </div>
-      </Provider>
+      </Provider> */}
+      <WebSocketComponent/>
     </>
   );
 }

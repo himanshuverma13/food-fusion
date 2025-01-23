@@ -92,3 +92,13 @@ export const GetCustomerPreviousDetailsAPI = async () => {
     throw error;
   }
 };
+
+//  table reservation fucntion
+export const TableReservationAPI = async (payload) => {
+  try {
+    const response = await axiosInstance.post(`${URL}/customer/tableBookByCall`,payload);
+    return response?.data;
+  } catch (error) {
+    throw error;
+  }
+};

@@ -89,11 +89,6 @@
 // // import Hakka_Noodles from "../../assets/Images/category/foodItems/Chicken Frankie - CF07.svg"
 // // // import Manchuria from "../../assets/Images/category/foodItems/Masala fries - MF07.svg"
 
-
-
-
-
-
 // // import DropdownButton from "../../Common/dropdownButton/dropdown";
 
 // // import SplitBill from "../../Common/Modal/splitBillModal";
@@ -962,11 +957,9 @@
 // //     setmoveSideNav(!moveSideNav)
 // //   }
 
-
 // //   return (
 // //     <>
 // //       <Navbar SideNavFunctionality={SideNavFunctionality} />
-      
 
 // //       {/* Table Status Modal Button */}
 // //       <TableStatusModal />
@@ -1002,7 +995,7 @@
 // //                 className="w-20"
 // //                 buttonLabel="Filters"
 // //               />
-              
+
 // //             </div>
 // //             <div className="flex">
 // //               {/* Side Tabs */}
@@ -1231,13 +1224,12 @@
 
 // // export default connect(mapStateToProps, {})(Category);
 
-
 // import React from 'react';
 // import { useForm } from 'react-hook-form';
 
 // const Test = () => {
 //   const { register, handleSubmit, watch } = useForm();
-  
+
 //   const addOns = [
 //     { option: "Extra tamarind chutney", price: 10 },
 //     { option: "Mint chutney", price: 10 },
@@ -1291,7 +1283,6 @@
 // };
 
 // export default Test;
-
 
 // import React, { useState } from "react";
 
@@ -1372,9 +1363,6 @@
 // };
 
 // export default Testing;
-
-
-
 
 // import React, { useState, useEffect } from "react";
 
@@ -1494,3 +1482,152 @@
 // };
 
 // export default FloorTableSelector;
+
+// import React, { useState } from "react";
+// import { useForm, Controller } from "react-hook-form";
+
+// const data = [
+//   {
+//     _id: "6746c81a95b089107da95db6",
+//     tableName: "Table 2",
+//     tableNumber: 2,
+//     tableChairs: 4,
+//     floorId: "6746c5967ec2671f894c1bc5",
+//     tableStatus: "Reserved",
+//     floorDetails: {
+//       _id: "6746c5967ec2671f894c1bc5",
+//       floorName: "First Floor",
+//       floorNumber: 1,
+//       floorCapacity: 50,
+//     },
+//     customerDetails: {
+//       customer_name: "demo",
+//       customer_mobile_no: 1234567891,
+//       customer_email: "admin@gmail.com",
+//     },
+//   },
+//   {
+//     _id: "6746c82195b089107da95dbb",
+//     tableName: "Table 3",
+//     tableNumber: 3,
+//     tableChairs: 4,
+//     floorId: "6746c5967ec2671f894c1bc5",
+//     tableStatus: "Reserved",
+//     floorDetails: {
+//       _id: "6746c5967ec2671f894c1bc5",
+//       floorName: "First Floor",
+//       floorNumber: 1,
+//       floorCapacity: 50,
+//     },
+//     customerDetails: {
+//       customer_name: "admin",
+//       customer_mobile_no: 1234567891,
+//       customer_email: "admin@gmail.com",
+//     },
+//   },
+//   {
+//     _id: "6746c82895b089107da95dc0",
+//     tableName: "Table 4",
+//     tableNumber: 4,
+//     tableChairs: 4,
+//     floorId: "6746c5967ec2671f894c1bc5",
+//     tableStatus: "Reserved",
+//     floorDetails: {
+//       _id: "6746c5967ec2671f894c1bc5",
+//       floorName: "Second Floor",
+//       floorNumber: 2,
+//       floorCapacity: 50,
+//     },
+//     customerDetails: {
+//       customer_name: "admin",
+//       customer_mobile_no: 1234567893,
+//       customer_email: "admin@gmail.com",
+//     },
+//   },
+// ];
+
+// const TableReservationForm = () => {
+//   const { control, handleSubmit, watch } = useForm();
+//   const [filteredTables, setFilteredTables] = useState([]);
+
+//   // Extract unique floors from the data
+//   const floors = [
+//     ...new Map(
+//       data.map((item) => [item.floorDetails.floorNumber, item.floorDetails])
+//     ).values(),
+//   ];
+
+//   const selectedFloor = watch("floor");
+
+//   // Update filtered tables when the floor changes
+//   const handleFloorChange = (floorNumber) => {
+//     const tables = data.filter(
+//       (item) => item.floorDetails.floorNumber === parseInt(floorNumber, 10)
+//     );
+//     setFilteredTables(tables);
+//   };
+
+//   const onSubmit = (formData) => {
+//     const selectedTable = data.find((item) => item._id === formData.table);
+//     console.log("Selected Floor:", selectedTable?.floorDetails.floorName);
+//     console.log("Selected Table:", selectedTable?.tableName);
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit(onSubmit)} className="p-4">
+//       <div className="mb-4">
+//         <label className="block text-gray-700">Select Floor:</label>
+//         <Controller
+//           name="floor"
+//           control={control}
+//           defaultValue=""
+//           render={({ field }) => (
+//             <select
+//               {...field}
+//               onChange={(e) => {
+//                 field.onChange(e);
+//                 handleFloorChange(e.target.value);
+//               }}
+//               className="border rounded w-full p-2"
+//             >
+//               <option value="">Select a Floor</option>
+//               {floors.map((floor) => (
+//                 <option key={floor._id} value={floor.floorNumber}>
+//                   {floor.floorName}
+//                 </option>
+//               ))}
+//             </select>
+//           )}
+//         />
+//       </div>
+
+//       <div className="mb-4">
+//         <label className="block text-gray-700">Select Table:</label>
+//         <Controller
+//           name="table"
+//           control={control}
+//           defaultValue=""
+//           render={({ field }) => (
+//             <select {...field} className="border rounded w-full p-2">
+//               <option value="">Select a Table</option>
+//               {filteredTables.map((table) => (
+//                 <option key={table._id} value={table._id}>
+//                   {table.tableName}
+//                 </option>
+//               ))}
+//             </select>
+//           )}
+//         />
+//       </div>
+
+//       <button
+//         type="submit"
+//         className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600"
+//       >
+//         Submit
+//       </button>
+//     </form>
+//   );
+// };
+
+// export default TableReservationForm;

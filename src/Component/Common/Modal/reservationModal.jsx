@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+import { connect } from "react-redux";
+import { TableReservationAPI } from "../APIs/api";
 
-const TableReservationModal = () => {
+const TableReservationModal = ({ table }) => {
   const {
     register,
+    control,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
-
-
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,10 +22,47 @@ const TableReservationModal = () => {
     setIsOpen(false);
   };
 
-  const onSubmit = (data) => {
-    // console.log(data);
-    setIsOpen(false);
+  // ---filter table
+  const [filteredTables, setFilteredTables] = useState([]);
 
+  // Extract unique floors from the data
+  const floors = [
+    ...new Map(
+      table?.tableDetails?.map((item) => [
+        item?.floorDetails?.floorNumber,
+        item?.floorDetails,
+      ])
+    ).values(),
+  ];
+
+  // const selectedFloor = watch("floor");
+
+  // Update filtered tables when the floor changes
+  const handleFloorChange = (floorNumber) => {
+    const tables = table?.tableDetails?.filter(
+      (item) => item?.floorDetails?.floorNumber === parseInt(floorNumber, 10)
+    );
+    setFilteredTables(tables);
+  };
+
+  const onSubmit = async(data) => {
+    const selectedTable = table?.tableDetails?.find(
+      (item) => item?._id === data?.table
+    );
+    const payload = {
+      customer_name: data?.name,
+      customer_mobile_no: data?.mobile,
+      customer_email: data?.email,
+      date: data?.date,
+      time: data?.time,
+      no_of_person: data?.numberOfPersons,
+      tableId: selectedTable?._id,
+      floorId: selectedTable?.floorId,
+    };
+    console.log(payload);
+    let response = await TableReservationAPI(payload)
+    console.log('response: ', response);
+    // setIsOpen(false);
   };
 
   return (
@@ -72,6 +111,22 @@ const TableReservationModal = () => {
                       className="mt-1 block w-full border border-gray-300 py-1 px-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                     {errors.name && (
+                      <span className="text-red-500 text-sm">
+                        This field is required
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      {...register("email", { required: true })}
+                      className="mt-1 block w-full border border-gray-300 py-1 px-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                    {errors.email && (
                       <span className="text-red-500 text-sm">
                         This field is required
                       </span>
@@ -150,6 +205,54 @@ const TableReservationModal = () => {
                     )}
                   </div>
 
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Select Floor:</label>
+                    <Controller
+                      name="floor"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <select
+                          {...field}
+                          onChange={(e) => {
+                            field.onChange(e);
+                            handleFloorChange(e?.target?.value);
+                          }}
+                          className="border rounded w-full p-2"
+                        >
+                          <option value="">Select a Floor</option>
+                          {floors?.map((floor) => (
+                            <option key={floor?._id} value={floor?.floorNumber}>
+                              Floor {floor?.floorNumber}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Select Table:</label>
+                    <Controller
+                      name="table"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <select
+                          {...field}
+                          className="border rounded w-full p-2"
+                        >
+                          <option value="">Select a Table</option>
+                          {filteredTables?.map((table) => (
+                            <option key={table?._id} value={table?._id}>
+                              Table {table?.tableNumber}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    />
+                  </div>
+
                   <button
                     type="submit"
                     className="w-full bg-gray-600 text-white rounded-md py-2 hover:bg-gray-700"
@@ -165,4 +268,8 @@ const TableReservationModal = () => {
     </>
   );
 };
-export default TableReservationModal;
+const mapStateToProps = (state) => ({
+  table: state.table,
+});
+
+export default connect(mapStateToProps, {})(TableReservationModal);

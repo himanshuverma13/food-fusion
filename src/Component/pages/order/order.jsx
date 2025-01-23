@@ -202,9 +202,9 @@ const Order = ({ cart, table }) => {
               {errors?.customer_name && (
                 <span className="text-red-600">{errors?.customer_name?.message}</span>
               )}
-              {filteredCustomers.length > 0 && (
+              {filteredCustomers?.length > 0 && (
                 <ul className="absolute left-44 top-7 w-3/6 h-32 overflow-y-scroll mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
-                  {filteredCustomers.map((customer, index) => (
+                  {filteredCustomers?.map((customer, index) => (
                     <li
                       key={index}
                       className="p-2 hover:bg-gray-200 cursor-pointer"
